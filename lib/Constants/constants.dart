@@ -1,0 +1,56 @@
+import 'package:flutter/material.dart';
+
+const kBackgroundBoxDecoration = BoxDecoration(
+  boxShadow: [
+    BoxShadow(
+      blurStyle: BlurStyle.outer,
+      offset: Offset(-3, -1),
+      blurRadius: 8.0,
+    ),
+  ],
+  color: Color.fromARGB(255, 255, 255, 255),
+  borderRadius: BorderRadius.only(
+    topLeft: Radius.circular(20.0),
+    topRight: Radius.circular(20.0),
+  ),
+);
+
+const kSeatScreenBoxDecoration = BoxDecoration(
+  boxShadow: [
+    BoxShadow(
+      blurStyle: BlurStyle.outer,
+      offset: Offset(-3, -1),
+      blurRadius: 8.0,
+    ),
+  ],
+  color: Color.fromARGB(255, 255, 255, 255),
+  borderRadius: BorderRadius.all(
+    Radius.circular(30.0),
+  ),
+);
+
+const kEnableBorderSideColor = OutlineInputBorder(
+  borderRadius: BorderRadius.all(
+    Radius.circular(10.0),
+  ),
+  borderSide: BorderSide(
+    color: Colors.grey,
+  ),
+);
+
+const kFocusedBorderColor = OutlineInputBorder(
+  borderRadius: BorderRadius.all(
+    Radius.circular(10.0),
+  ),
+  borderSide: BorderSide(
+    color: Colors.blue,
+  ),
+);
+
+Color selectedSeatColor = const Color(0xFF2575EE);
+Color bookedSeatColor = const Color(0xFFFF6E6F);
+Color emptySeatColor = const Color(0xFFF7F7F7);
+Color? seatBorder;
+
+Color activeSeatNumberColor = const Color.fromARGB(255, 255, 255, 255);
+Color inactiveSeatNumberColor = const Color(0xFF929292);
