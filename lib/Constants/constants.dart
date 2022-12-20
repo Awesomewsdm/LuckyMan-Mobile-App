@@ -4,14 +4,13 @@ const kBackgroundBoxDecoration = BoxDecoration(
   boxShadow: [
     BoxShadow(
       blurStyle: BlurStyle.outer,
-      offset: Offset(-3, -1),
-      blurRadius: 8.0,
+      blurRadius: 1.0,
     ),
   ],
   color: Color.fromARGB(255, 255, 255, 255),
   borderRadius: BorderRadius.only(
-    topLeft: Radius.circular(20.0),
-    topRight: Radius.circular(20.0),
+    topLeft: Radius.circular(18.0),
+    topRight: Radius.circular(18.0),
   ),
 );
 
@@ -54,3 +53,5 @@ Color? seatBorder;
 
 Color activeSeatNumberColor = const Color.fromARGB(255, 255, 255, 255);
 Color inactiveSeatNumberColor = const Color(0xFF929292);
+
+double seatSize = 35.0;

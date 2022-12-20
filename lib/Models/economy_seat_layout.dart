@@ -1,18 +1,20 @@
 import 'package:angie_notebook/Constants/constants.dart';
 import 'package:flutter/material.dart';
 
-import '../Models/seat_layout_mode.dart';
+import 'seat_layout_mode.dart';
 
-class SeatLayout extends StatelessWidget {
-  const SeatLayout({Key? key, this.model}) : super(key: key);
+class EconomySeatLayout extends StatelessWidget {
+  const EconomySeatLayout({Key? key, this.model}) : super(key: key);
   final SeatLayoutModel? model;
   @override
   Widget build(BuildContext context) {
-    int seatCounter = 1;
+    int seatCounter = 0;
+
     return Column(
       children: [
         Expanded(
           child: ListView.builder(
+            physics: const ClampingScrollPhysics(),
             itemCount: model!.seatTypes.length,
             itemBuilder: ((context, index) {
               return Column(
@@ -23,13 +25,13 @@ class SeatLayout extends StatelessWidget {
                         // Adding columns breaks
                         // Adding last seats
                         if ((col == model!.gapColIndex) &&
-                            (row != model!.rowBreaks[index] &&
+                            (row != model!.rowBreaks[index] - 1 &&
                                 model!.isLastFilled)) {
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Container(
-                              height: 30.0,
-                              width: 30.0,
+                              height: seatSize,
+                              width: seatSize,
                               alignment: Alignment.center,
                             ),
                           );
@@ -37,20 +39,28 @@ class SeatLayout extends StatelessWidget {
 
                         // numbering the seats
                         seatCounter++;
+
                         return Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 10.0, vertical: 10.0),
                           child: Container(
-                            height: 30.0,
-                            width: 30.0,
-                            color: bookedSeatColor,
-                            decoration: const BoxDecoration(
+                            height: seatSize,
+                            width: seatSize,
+                            decoration: BoxDecoration(
+                              color: emptySeatColor,
                               shape: BoxShape.rectangle,
-                              borderRadius: BorderRadius.all(
+                              borderRadius: const BorderRadius.all(
                                 Radius.circular(7.0),
                               ),
                             ),
                             alignment: Alignment.center,
-                            child: Text('$seatCounter'),
+                            child: Center(
+                              child: Text(
+                                seatCounter < 10
+                                    ? '0$seatCounter'
+                                    : seatCounter.toString(),
+                              ),
+                            ),
                           ),
                         );
                       }),

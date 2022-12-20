@@ -2,20 +2,24 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 
 class DropdownMenu extends StatelessWidget {
+  
+
   const DropdownMenu({
     Key? key,
     required this.items,
-    required this.formLabel,
+    required this.formLabel,  this.buttonWidth,
   }) : super(key: key);
 
   final List<String> items;
   final String formLabel;
+  final double? buttonWidth;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(8.0),
       child: DropdownButtonFormField2(
+        buttonWidth: buttonWidth,
         decoration: InputDecoration(
           //Add isDense true and zero Padding.
           //Add Horizontal padding using buttonPadding and Vertical padding by increasing buttonHeight instead of add Padding here so that The whole TextField Button become clickable, and also the dropdown menu open under The whole TextField Button.

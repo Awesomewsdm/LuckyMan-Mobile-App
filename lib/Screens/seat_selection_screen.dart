@@ -3,13 +3,17 @@ import 'package:angie_notebook/Components/list_of_seats.dart';
 import 'package:angie_notebook/Components/text_styling.dart';
 import 'package:angie_notebook/Constants/constants.dart';
 import 'package:angie_notebook/Models/economy_seats.dart';
-import 'package:angie_notebook/Screens/seat_layout.dart';
+import 'package:angie_notebook/Models/economy_seat_layout.dart';
 import 'package:flutter/material.dart';
 
+import '../Components/dropdown.dart';
+import '../Models/menu_items.dart';
+
 class SeatSelectionScreen extends StatelessWidget {
-   const SeatSelectionScreen({Key? key, }) : super(key: key);
+  const SeatSelectionScreen({
+    Key? key,
+  }) : super(key: key);
   static String id = '/SeatSelectionScreen';
- 
 
   // final List<int> economySeats = [1, 4, 7, 10, 13, 16, 19, 22, 25, 28, 31];
 
@@ -39,20 +43,17 @@ class SeatSelectionScreen extends StatelessWidget {
           ),
         ),
         title: const BlackTextWidget(
-          text: 'Select Seat',
+          text: 'Select Your Seat',
           fontSize: 20.0,
         ),
         backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         elevation: 0.0,
       ),
-      backgroundColor: const Color.fromARGB(254, 254, 254, 254),
+      backgroundColor: const Color.fromARGB(251, 243, 240, 255),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.only(
-            top: 20.0,
-            left: 30.0,
-            right: 30.0,
-          ),
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -63,32 +64,41 @@ class SeatSelectionScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   SeatStatus(
-                    boxColor: Theme.of(context).scaffoldBackgroundColor,
+                    boxColor: emptySeatColor,
                     iconLabel: 'Available',
-                    borderColor: const Color.fromRGBO(251, 199, 32, 1.0),
                   ),
                   SeatStatus(
                     iconLabel: 'Selected',
-                    boxColor: const Color.fromRGBO(251, 199, 32, 1.0),
-                    borderColor: Theme.of(context).scaffoldBackgroundColor,
+                    boxColor: selectedSeatColor,
                   ),
                   SeatStatus(
-                    boxColor: const Color.fromRGBO(234, 234, 234, 1.0),
+                    boxColor: bookedSeatColor,
                     iconLabel: 'Booked',
-                    borderColor: Theme.of(context).scaffoldBackgroundColor,
                   ),
                 ],
               ),
               const SizedBox(
                 height: 20.0,
               ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width - 35,
+                child: const DropdownMenu(
+                    items: busClasses,
+                    buttonWidth: double.maxFinite,
+                    formLabel: 'Select Bus Class'),
+              ),
               Expanded(
-                child: Container(
-                  width: double.infinity,
-                  // color: const Color.fromRGBO(255, 255, 255, 1.0),
-                  decoration: kBackgroundBoxDecoration,
-                  padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
-                  child:SeatLayout(model: seatLayout),
+                child: SingleChildScrollView(
+                  child: Container(
+                    height: MediaQuery.of(context).size.height,
+                    width: MediaQuery.of(context).size.width - 50,
+                    // color: const Color.fromRGBO(255, 255, 255, 1.0),
+                    decoration: kBackgroundBoxDecoration,
+                    padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
+                    child: SizedBox(
+                      child: EconomySeatLayout(model: economyseatLayout),
+                    ),
+                  ),
                 ),
               ),
             ],
@@ -147,11 +157,13 @@ class SeatSelectionScreen extends StatelessWidget {
                 ],
               ),
             ),
-            BottomButton(
-              bottomTextLabel: 'Proceed to make payment',
-              onPressed: () {
-                Navigator.pushNamed(context, '/PaymentScreen');
-              },
+            Expanded(
+              child: BottomButton(
+                bottomTextLabel: 'Proceed to make payment',
+                onPressed: () {
+                  Navigator.pushNamed(context, '/PaymentScreen');
+                },
+              ),
             ),
           ],
         ),
