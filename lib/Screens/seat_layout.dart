@@ -8,6 +8,7 @@ class SeatLayout extends StatelessWidget {
   final SeatLayoutModel? model;
   @override
   Widget build(BuildContext context) {
+    int seatCounter = 1;
     return Column(
       children: [
         Expanded(
@@ -19,7 +20,6 @@ class SeatLayout extends StatelessWidget {
                   ...List.generate(model!.rowBreaks[index], (row) {
                     return Wrap(
                       children: List.generate(model!.cols, (col) {
-
                         // Adding columns breaks
                         // Adding last seats
                         if ((col == model!.gapColIndex) &&
@@ -36,6 +36,7 @@ class SeatLayout extends StatelessWidget {
                         }
 
                         // numbering the seats
+                        seatCounter++;
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
@@ -49,6 +50,7 @@ class SeatLayout extends StatelessWidget {
                               ),
                             ),
                             alignment: Alignment.center,
+                            child: Text('$seatCounter'),
                           ),
                         );
                       }),
