@@ -45,7 +45,7 @@ class _SeatSectionPageState extends State<SeatSectionPage> {
                 ),
               ),
               const SizedBox(height: 30),
-              const DropdownMenu(
+               const DropdownMenu(
                 items: destinations,
                 formLabel: 'Select your destination',
               ),

@@ -2,12 +2,11 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 
 class DropdownMenu extends StatelessWidget {
-  
-
   const DropdownMenu({
     Key? key,
     required this.items,
-    required this.formLabel,  this.buttonWidth,
+    required this.formLabel,
+    this.buttonWidth,
   }) : super(key: key);
 
   final List<String> items;
@@ -19,6 +18,7 @@ class DropdownMenu extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(8.0),
       child: DropdownButtonFormField2(
+        
         buttonWidth: buttonWidth,
         decoration: InputDecoration(
           //Add isDense true and zero Padding.

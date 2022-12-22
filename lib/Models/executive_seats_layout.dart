@@ -1,19 +1,24 @@
 import 'package:angie_notebook/Constants/constants.dart';
+import 'package:angie_notebook/controllers/seat_selection_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-import '../Models/seat_layout_mode.dart';
+import 'seat_layout_mode.dart';
 
 class ExecutiveSeatLayout extends StatelessWidget {
-  const ExecutiveSeatLayout({Key? key, this.model}) : super(key: key);
+  final SeatSelectionController seatSelectionController =
+      Get.put(SeatSelectionController());
+  ExecutiveSeatLayout({Key? key, this.model}) : super(key: key);
   final SeatLayoutModel? model;
   @override
   Widget build(BuildContext context) {
     int seatCounter = 0;
-   
+
     return Column(
       children: [
         Expanded(
           child: ListView.builder(
+            physics: const ClampingScrollPhysics(),
             itemCount: model!.seatTypes.length,
             itemBuilder: ((context, index) {
               return Column(
@@ -38,27 +43,50 @@ class ExecutiveSeatLayout extends StatelessWidget {
 
                         // numbering the seats
                         seatCounter++;
-
+                        String seatNo = '$seatCounter';
                         return Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: Container(
-                            height: seatSize,
-                            width: seatSize,
-                            decoration: BoxDecoration(
-                              color: emptySeatColor,
-                              shape: BoxShape.rectangle,
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(7.0),
-                              ),
-                            ),
-                            alignment: Alignment.center,
-                            child: Center(
-                              child: Text(
-                                seatCounter < 10
-                                    ? '0$seatCounter'
-                                    : seatCounter.toString(),
-                              ),
-                            ),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 10.0, vertical: 10.0),
+                          child: GestureDetector(
+                            onTap: () {
+                              // ignore: avoid_print
+                              print(seatNo);
+                              if (SeatSelectionController.instance.selectedSeats
+                                  .contains(seatNo)) {
+                                SeatSelectionController.instance.selectedSeats
+                                    .remove(seatNo);
+                              } else {
+                                SeatSelectionController.instance.selectedSeats
+                                    .add(seatNo);
+                              }
+                            },
+                            child: Obx(() => Container(
+                                  height: seatSize,
+                                  width: seatSize,
+                                  decoration: BoxDecoration(
+                                    color: SeatSelectionController
+                                            .instance.selectedSeats
+                                            .contains(seatNo)
+                                        ? selectedSeatColor
+                                        : emptySeatColor,
+                                    shape: BoxShape.rectangle,
+                                    borderRadius: const BorderRadius.all(
+                                      Radius.circular(7.0),
+                                    ),
+                                  ),
+                                  alignment: Alignment.center,
+                                  child: Center(
+                                    child: Text(
+                                      seatNo,
+                                      style: TextStyle(
+                                          color: SeatSelectionController
+                                                  .instance.selectedSeats
+                                                  .contains(seatNo)
+                                              ? activeSeatNumberColor
+                                              : inactiveSeatNumberColor),
+                                    ),
+                                  ),
+                                )),
                           ),
                         );
                       }),

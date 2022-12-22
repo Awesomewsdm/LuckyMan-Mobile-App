@@ -18,13 +18,13 @@ const kSeatScreenBoxDecoration = BoxDecoration(
   boxShadow: [
     BoxShadow(
       blurStyle: BlurStyle.outer,
-      offset: Offset(-3, -1),
-      blurRadius: 8.0,
+      offset: Offset(-1, -1),
+      blurRadius: 2.0,
     ),
   ],
   color: Color.fromARGB(255, 255, 255, 255),
   borderRadius: BorderRadius.all(
-    Radius.circular(30.0),
+    Radius.circular(20.0),
   ),
 );
 
