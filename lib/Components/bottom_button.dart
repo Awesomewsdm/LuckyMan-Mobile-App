@@ -17,25 +17,26 @@ class BottomButton extends StatelessWidget {
       style: ButtonStyle(
         shape: MaterialStatePropertyAll(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30.0),
+            borderRadius: BorderRadius.circular(10.0),
           ),
         ),
         backgroundColor: const MaterialStatePropertyAll(
-          Color.fromARGB(249, 255, 217, 46),
+          Color(0xFFFFCA28),
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 1.0),
+        padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 1.0),
         child: Text(
           bottomTextLabel,
           style: const TextStyle(
-            fontSize: 22.0,
-            color: Colors.black,
+            fontSize: 18.0,
+            color: Colors.black87,
             fontFamily: 'Roboto',
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w400,
           ),
         ),
       ),
     );
   }
 }
+// 0xFF448AFF

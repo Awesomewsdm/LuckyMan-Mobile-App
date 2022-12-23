@@ -80,7 +80,7 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
                   ],
                 ),
                 const SizedBox(
-                  height: 20.0,
+                  height: 10.0,
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width - 50,
@@ -157,7 +157,12 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
                       // color: const Color.fromRGBO(255, 255, 255, 1.0),
                       decoration: kBackgroundBoxDecoration,
                       padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
-                      child: SizedBox(
+                      child: AnimatedContainer(
+                        duration: const Duration(seconds: 300),
+                        height: MediaQuery.of(context).size.height,
+                        width: MediaQuery.of(context).size.width - 50,
+                        // color: const Color.fromRGBO(255, 255, 255, 1.0),
+                        decoration: kBackgroundBoxDecoration,
                         child: selectedValue == busClasses[0]
                             ? EconomySeatLayout(
                                 model: economyseatLayout,

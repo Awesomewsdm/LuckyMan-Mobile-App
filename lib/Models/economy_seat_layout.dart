@@ -55,6 +55,7 @@ class EconomySeatLayout extends StatelessWidget {
                                   .contains(seatNo)) {
                                 SeatSelectionController.instance.selectedSeats
                                     .remove(seatNo);
+                               
                               } else {
                                 SeatSelectionController.instance.selectedSeats
                                     .add(seatNo);

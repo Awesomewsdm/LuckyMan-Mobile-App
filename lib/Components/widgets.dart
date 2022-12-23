@@ -7,29 +7,69 @@ class CirclesBackgroundPage extends StatelessWidget {
 
   final List<CircleInfo> circles = [
     CircleInfo(
-        size: const Size(300, 500),
-        color: Colors.blue,
+        size: const Size(600, 1000),
+        color: const Color.fromARGB(255, 174, 201, 241),
         borderRadius: const BorderRadius.only(
-          bottomLeft: Radius.circular(200),
+          bottomLeft: Radius.circular(10),
         ),
         alignment: Alignment.topRight),
+    // CircleInfo(
+    //     turns: -40.0,
+    //     size: const Size(50, 400),
+    //     gradient: LinearGradient(
+    //         begin: Alignment.topCenter,
+    //         end: Alignment.bottomCenter,
+    //         colors: [Colors.blue[800]!, Colors.blue]),
+    //     borderRadius: const BorderRadius.only(
+    //       bottomLeft: Radius.circular(200),
+    //     ),
+    //     alignment: Alignment.topCenter),
+     CircleInfo(
+      turns: 0.1,
+      size: const Size(100, 800),
+      gradient: const LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Color.fromARGB(255, 126, 190, 243),
+            Color.fromARGB(255, 118, 183, 236)
+          ]),
+      borderRadius: const BorderRadius.all(
+        Radius.circular(150),
+      ),
+      alignment: Alignment.topLeft,
+    ),
     CircleInfo(
-        size: const Size(300, 900),
-        gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Colors.blue[800]!, Colors.blue]),
-        borderRadius: const BorderRadius.only(),
-        alignment: Alignment.topLeft),
+      turns: 0.1,
+      size: const Size(100, 800),
+      gradient: const LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Color.fromARGB(255, 126, 190, 243),
+            Color.fromARGB(255, 118, 183, 236)
+          ]),
+      borderRadius: const BorderRadius.all(
+        Radius.circular(150),
+      ),
+      alignment: Alignment.topLeft,
+    ),
+
     CircleInfo(
-        size: const Size(200, 500),
-        gradient: const LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Colors.blue, Colors.blue]),
-        borderRadius: const BorderRadius.only(
-            bottomLeft: Radius.circular(50), topLeft: Radius.circular(150)),
-        alignment: Alignment.bottomRight),
+      turns: 0.1,
+      size: const Size(100, 800),
+      gradient: const LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Color.fromARGB(255, 126, 190, 243),
+            Color.fromARGB(255, 118, 183, 236)
+          ]),
+      borderRadius: const BorderRadius.all(
+        Radius.circular(150),
+      ),
+      alignment: Alignment.bottomCenter,
+    ),
   ];
 
   @override
@@ -47,7 +87,7 @@ class ThreeCirclesBackgroundPage extends StatelessWidget {
   final GradientColor gradientColor;
   final Widget child;
   const ThreeCirclesBackgroundPage(this.gradientColor,
-      {Key? key,  required this.child})
+      {Key? key, required this.child})
       : super(key: key);
 
   @override

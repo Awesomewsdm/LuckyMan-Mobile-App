@@ -1,5 +1,4 @@
 
-import 'package:angie_notebook/Screens/book_a_seat.dart';
 import 'package:angie_notebook/Screens/seat_selection_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
@@ -44,7 +43,7 @@ class MyApp extends StatelessWidget {
         PaymentPage.id: (context) => const PaymentPage(),
         BusBookingScreen.id: (context) => const BusBookingScreen(),
         SeatSectionPage.id:(context) => const SeatSectionPage(),
-        BookASeatScreen.id:(context) => const BookASeatScreen(),
+        
       },
     );
   }

@@ -16,7 +16,7 @@ class InputField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       decoration: InputDecoration(
-        contentPadding: const EdgeInsets.all(0.0),
+        contentPadding: const EdgeInsets.all(8.0),
         labelText: labelText,
         icon: widget,
         enabledBorder: enabledBorderColor,

@@ -14,7 +14,7 @@ class SeatStatus extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       children: [
         Container(
           height: 28,
@@ -29,7 +29,7 @@ class SeatStatus extends StatelessWidget {
           alignment: Alignment.center,
         ),
         const SizedBox(
-          width: 8.0,
+          height: 8.0,
         ),
         BlackTextWidget(text: iconLabel),
       ],
