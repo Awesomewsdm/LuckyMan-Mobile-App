@@ -61,9 +61,7 @@ class HomeScreen extends StatelessWidget {
             ),
             Expanded(
               child: Container(
-                // margin: EdgeInsets.only(
-                //   top: MediaQuery.of(context).size.height / 4,
-                // ),
+                
                 decoration: kBackgroundBoxDecoration,
                 child: GridView(
                     padding: const EdgeInsets.all(20.0),
