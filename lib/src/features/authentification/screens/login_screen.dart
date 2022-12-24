@@ -1,12 +1,11 @@
-import 'package:angie_notebook/Components/image_strings.dart';
-import 'package:angie_notebook/Components/sign_in_redirect.dart';
-import 'package:angie_notebook/Components/sizes.dart';
-import 'package:angie_notebook/Components/text.dart';
-import 'package:angie_notebook/Components/text_styling.dart';
+import 'package:angie_notebook/src/common_widgets/form/form_header.dart';
+import 'package:angie_notebook/src/common_widgets/form/form_footer.dart';
+import 'package:angie_notebook/src/constants/sizes.dart';
+import 'package:angie_notebook/src/constants/text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../Components/form_field_widget.dart';
+import '../../../common_widgets/form/form_body.dart';
 import '../../../../Components/text_form_field_widget.dart';
 import 'sign_up_page.dart';
 
@@ -23,21 +22,8 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Align(
-                alignment: Alignment.topCenter,
-                child: Image(
-                  image: const AssetImage(
-                    tWelcomeScreenImage,
-                  ),
-                  height: size.height * 0.3,
-                ),
-              ),
-              const BlackTextWidget(
-                text: tLoginTitle,
-                fontSize: 30.0,
-              ),
-              const Text(tLoginSubTitle),
-              FormFieldWIdget(
+              FormHeader(size: size),
+              FormBody(
                 children: [
                   const SizedBox(
                     height: 20.0,
@@ -83,13 +69,14 @@ class LoginScreen extends StatelessWidget {
                   const SizedBox(
                     height: 20.0,
                   ),
-                  SignInRedirect(
+                  FormFooter(
                     text: tDontHaveAnAccount,
                     onTap: (() {
                       Get.to(
                         () => const SignUpScreen(),
                       );
-                    }), redirectText: tSignup,
+                    }),
+                    redirectText: tSignup,
                   )
                 ],
               )

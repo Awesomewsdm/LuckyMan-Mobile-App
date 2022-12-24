@@ -1,15 +1,14 @@
 import 'package:angie_notebook/src/common_widgets/buttons/bottom_button.dart';
-import 'package:angie_notebook/Components/image_strings.dart';
-import 'package:angie_notebook/Components/sizes.dart';
-import 'package:angie_notebook/Components/text.dart';
-import 'package:angie_notebook/Components/text_styling.dart';
+import 'package:angie_notebook/src/constants/sizes.dart';
+import 'package:angie_notebook/src/constants/text.dart';
 import 'package:angie_notebook/src/features/authentification/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../Components/form_field_widget.dart';
-import '../../../../Components/sign_in_redirect.dart';
-import '../../../../Components/text_form_field_widget.dart';
+import '../../../common_widgets/form/form_body.dart';
+import '../../../common_widgets/form/form_footer.dart';
+import '../../../../../../../Components/text_form_field_widget.dart';
+import '../../../common_widgets/form/form_header.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -24,21 +23,8 @@ class SignUpScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Align(
-                alignment: Alignment.topCenter,
-                child: Image(
-                  image: const AssetImage(
-                    tWelcomeScreenImage,
-                  ),
-                  height: size.height * 0.25,
-                ),
-              ),
-              const BlackTextWidget(
-                text: tSignUpTitle,
-                fontSize: 30.0,
-              ),
-              const Text(tSignUpSubTitle),
-              FormFieldWIdget(
+              FormHeader(size: size),
+              FormBody(
                 children: [
                   const SizedBox(
                     height: 20.0,
@@ -104,11 +90,12 @@ class SignUpScreen extends StatelessWidget {
                   const SizedBox(
                     height: 20.0,
                   ),
-                  SignInRedirect(
+                  FormFooter(
                     text: tAlreadyHaveAnAccount,
                     onTap: (() {
                       Get.to(() => const LoginScreen());
-                    }), redirectText: tLogin,
+                    }),
+                    redirectText: tLogin,
                   ),
                 ],
               )
@@ -119,3 +106,4 @@ class SignUpScreen extends StatelessWidget {
     );
   }
 }
+

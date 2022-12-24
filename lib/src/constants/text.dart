@@ -14,7 +14,7 @@ const String tForgetPassword = "Forgot password ?";
 const String tSignInWithGoogle = "Sign-In with Google";
 
 // -- Splash Screen Text
-const String tAppName = ".appable/";
+const String tAppName = "LUCKYMAN T & L";
 const String tAppTagLine = "Learn To Code. \nFree For Everyone";
 
 // -- On Boarding Text

@@ -15,7 +15,7 @@ const String tOnBoardingImage3 = "assets/images/on_boarding_images/on-boarding-i
 
 // -- Welcome Screen Images
 // -- also used in Login & SignUp
-const String tWelcomeScreenImage = "assets/images/luckyman_logo.png";
+const String tLogo = "assets/images/luckyman_logo.png";
 
 
 // -- Login & SignUp Images

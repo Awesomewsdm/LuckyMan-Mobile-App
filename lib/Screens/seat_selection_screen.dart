@@ -1,5 +1,4 @@
 import 'package:angie_notebook/src/common_widgets/buttons/bottom_button.dart';
-import 'package:angie_notebook/Components/list_of_seats.dart';
 import 'package:angie_notebook/Components/text_styling.dart';
 import 'package:angie_notebook/Constants/constants.dart';
 import 'package:angie_notebook/Models/economy_seat_layout.dart';
@@ -12,8 +11,9 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../Components/seat_status.dart';
 import '../Components/widgets.dart';
-import '../Models/menu_items.dart';
+import '../Models/form_items.dart';
 
 class SeatSelectionScreen extends StatefulWidget {
   const SeatSelectionScreen({

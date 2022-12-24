@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class FormFieldWIdget extends StatelessWidget {
-  const FormFieldWIdget({
+class FormBody extends StatelessWidget {
+  const FormBody({
     Key? key,
     required this.children,
   }) : super(key: key);

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../Components/dropdown.dart';
-import '../Models/menu_items.dart';
+import '../Models/form_items.dart';
 
 class SeatSectionPage extends StatefulWidget {
   const SeatSectionPage({Key? key}) : super(key: key);

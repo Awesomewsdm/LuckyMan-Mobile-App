@@ -37,5 +37,4 @@ class SeatStatus extends StatelessWidget {
   }
 }
 
-// enum SeatState { booked, empty, selected }
 

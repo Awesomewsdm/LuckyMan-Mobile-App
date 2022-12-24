@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class SignInRedirect extends StatelessWidget {
-  const SignInRedirect({
+class FormFooter extends StatelessWidget {
+  const FormFooter({
     Key? key,
     required this.text,
     required this.onTap,

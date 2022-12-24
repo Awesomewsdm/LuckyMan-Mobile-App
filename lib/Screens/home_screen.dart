@@ -1,6 +1,7 @@
 import 'package:angie_notebook/Components/widgets.dart';
 import 'package:angie_notebook/Constants/constants.dart';
 import 'package:angie_notebook/Screens/bus_ticket_page.dart';
+import 'package:angie_notebook/Screens/profile_screen.dart';
 import 'package:angie_notebook/src/features/authentification/screens/login_screen.dart';
 import 'package:angie_notebook/Screens/seat_selection_screen.dart';
 import 'package:flutter/material.dart';
@@ -87,6 +88,14 @@ class HomeScreen extends StatelessWidget {
                             );
                           },
                           label: 'Sign-Up Screen',
+                        ),
+                        Navigate(
+                          onTap: () {
+                            Get.to(
+                              () => const ProfileScreen(),
+                            );
+                          },
+                          label: 'Profile Screen',
                         ),
                         const SizeBoz(),
                       ]),
