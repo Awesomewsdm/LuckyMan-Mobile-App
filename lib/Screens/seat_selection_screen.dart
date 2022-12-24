@@ -1,4 +1,4 @@
-import 'package:angie_notebook/Components/bottom_button.dart';
+import 'package:angie_notebook/src/common_widgets/buttons/bottom_button.dart';
 import 'package:angie_notebook/Components/list_of_seats.dart';
 import 'package:angie_notebook/Components/text_styling.dart';
 import 'package:angie_notebook/Constants/constants.dart';
@@ -183,77 +183,59 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
           ),
         ),
         alignment: Alignment.bottomCenter,
-        child: Column(
-          children: [
-            Container(
-              padding: const EdgeInsets.only(
-                  left: 30, right: 30, top: 10, bottom: 8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const AshTextWidget(text: 'Selected Seat'),
-                        Obx(
-                          () => Text(
-                            SeatSelectionController.instance.selectedSeats
-                                .join(' , '),
-                            style: const TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.w900,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: Column(
+            children: [
+              Container(
+                padding: const EdgeInsets.only(top: 10, bottom: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const AshTextWidget(text: 'Selected Seat'),
+                          Obx(
+                            () => Text(
+                              SeatSelectionController.instance.selectedSeats
+                                  .join(' , '),
+                              style: const TextStyle(
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.w900,
+                              ),
                             ),
                           ),
+                        ]),
+                    Column(
+                      children: const [
+                        AshTextWidget(text: 'Total Price'),
+                        Text(
+                          'GH¢1000',
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w900,
+                          ),
                         ),
-                      ]),
-                  const VerticalDivider(
-                    // indent: 20.0,
-                    // endIndent: 20.0,
-                    // thickness: 1.0,
-                    color: Color(0xFFFFCA40),
-                  ),
-                  Column(
-                    children: const [
-                      AshTextWidget(text: 'Total Price'),
-                      Text(
-                        'GH¢1000',
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w900,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Expanded(
-              child: BottomButton(
-                bottomTextLabel: 'Proceed to make payment',
-                onPressed: () {
-                  Get.to(
-                    () => const PaymentPage(),
-                  );
-                },
+              Expanded(
+                child: BottomButton(
+                  bottomTextLabel: 'Proceed to make payment',
+                  onPressed: () {
+                    Get.to(
+                      () => const PaymentPage(),
+                    );
+                  },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
 }
-
-
-//  ListView(
-//                     scrollDirection: Axis.vertical,
-//                     children: [
-//                       Column(
-//                         children: economySeats
-//                             .map(
-//                               (item) => _buildSeats(item),
-//                             )
-//                             .toList(),
-//                       ),
-//                     ],
-//                   ),

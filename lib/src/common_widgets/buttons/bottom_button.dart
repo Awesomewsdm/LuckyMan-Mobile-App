@@ -12,25 +12,27 @@ class BottomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: onPressed,
-      style: ButtonStyle(
-        shape: MaterialStatePropertyAll(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
+    return SizedBox(
+      width: double.infinity,
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ButtonStyle(
+          shape: MaterialStatePropertyAll(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
           ),
+//           backgroundColor: const MaterialStatePropertyAll(
+// // 0xFFFFCA28
+
+//             Colors.lightBlue,
+//           ),
         ),
-        backgroundColor: const MaterialStatePropertyAll(
-          Color(0xFFFFCA28),
-        ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 1.0),
         child: Text(
           bottomTextLabel,
           style: const TextStyle(
             fontSize: 18.0,
-            color: Colors.black87,
+            color: Colors.white,
             fontFamily: 'Roboto',
             fontWeight: FontWeight.w400,
           ),
@@ -39,4 +41,3 @@ class BottomButton extends StatelessWidget {
     );
   }
 }
-// 0xFF448AFF

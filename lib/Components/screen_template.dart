@@ -1,4 +1,4 @@
-import 'package:angie_notebook/Components/bottom_button.dart';
+import 'package:angie_notebook/src/common_widgets/buttons/bottom_button.dart';
 import 'package:flutter/material.dart';
 
 class ScreenTemplate extends StatelessWidget {

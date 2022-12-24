@@ -41,7 +41,7 @@ class CirclesBackgroundPage extends StatelessWidget {
     // ),
     CircleInfo(
       turns: 0.1,
-      size: const Size(500, 700),
+      size: const Size(150, 200),
       gradient: const LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
@@ -50,26 +50,26 @@ class CirclesBackgroundPage extends StatelessWidget {
             Color.fromARGB(255, 118, 183, 236)
           ]),
       borderRadius: const BorderRadius.all(
-        Radius.circular(80),
+        Radius.circular(35),
       ),
-      alignment: Alignment.centerLeft,
-    )
+      alignment: Alignment.bottomLeft,
+    ),
 
-    //   CircleInfo(
-    //     turns: 0.1,
-    //     size: const Size(100, 800),
-    //     gradient: const LinearGradient(
-    //         begin: Alignment.topCenter,
-    //         end: Alignment.bottomCenter,
-    //         colors: [
-    //           Color.fromARGB(255, 126, 190, 243),
-    //           Color.fromARGB(255, 118, 183, 236)
-    //         ]),
-    //     borderRadius: const BorderRadius.all(
-    //       Radius.circular(150),
-    //     ),
-    //     alignment: Alignment.bottomCenter,
-    //   ),
+    CircleInfo(
+      turns: 0.1,
+      size: const Size(1500, 1500),
+      gradient: const LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Color.fromARGB(255, 126, 190, 243),
+            Color.fromARGB(255, 118, 183, 236)
+          ]),
+      borderRadius: const BorderRadius.all(
+        Radius.circular(50),
+      ),
+      alignment: Alignment.topRight,
+    ),
   ];
 
   @override

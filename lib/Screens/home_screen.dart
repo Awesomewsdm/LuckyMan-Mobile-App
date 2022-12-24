@@ -1,11 +1,13 @@
 import 'package:angie_notebook/Components/widgets.dart';
 import 'package:angie_notebook/Constants/constants.dart';
 import 'package:angie_notebook/Screens/bus_ticket_page.dart';
-import 'package:angie_notebook/Screens/login_screen.dart';
+import 'package:angie_notebook/src/features/authentification/screens/login_screen.dart';
 import 'package:angie_notebook/Screens/seat_selection_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+
+import '../src/features/authentification/screens/sign_up_page.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -50,7 +52,7 @@ class HomeScreen extends StatelessWidget {
               ),
               Expanded(
                 child: Container(
-                  decoration: kBackgroundBoxDecoration,
+                  decoration: kHomeBackgroundBoxDecoration,
                   child: GridView(
                       padding: const EdgeInsets.all(20.0),
                       gridDelegate:
@@ -78,8 +80,13 @@ class HomeScreen extends StatelessWidget {
                         const SizeBoz(
                           label: 'Login Page',
                         ),
-                        const SizeBoz(
-                          label: 'Sign up Page',
+                        Navigate(
+                          onTap: () {
+                            Get.to(
+                              () => const SignUpScreen(),
+                            );
+                          },
+                          label: 'Sign-Up Screen',
                         ),
                         const SizeBoz(),
                       ]),
@@ -122,7 +129,6 @@ class SizeBoz extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // color: const Color.fromARGB(255, 190, 138, 248),
       height: 80,
       width: 80.0,
       decoration: kSeatScreenBoxDecoration,
@@ -131,8 +137,7 @@ class SizeBoz extends StatelessWidget {
           const Expanded(
             child: CircleAvatar(
               radius: 50,
-              backgroundImage:
-                  AssetImage('assets/images/Intercity-STC-Coaches.jpg'),
+              backgroundImage: AssetImage('assets/images/man-with-guiter.jpg'),
             ),
           ),
           Text(
@@ -144,6 +149,3 @@ class SizeBoz extends StatelessWidget {
     );
   }
 }
-
-
-// Image.asset('assets/images/man-with-guiter.jpg', height: 50, width: 50,),

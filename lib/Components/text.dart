@@ -4,11 +4,13 @@
 const String tNext = "Next";
 const String tLogin = "Login";
 const String tEmail = "E-mail";
-const String tSignup = "Signup";
-const String tPhoneNo = "Phone No";
+const String tSignup = "Sign-up";
+const String tPhoneNo = "Phone Number";
+const String tStudentID = "Student ID";
 const String tPassword = "Password";
+const String tConfirmPassword = "Confirm Password";
 const String tFullName = "Full Name";
-const String tForgetPassword = "Forget Password";
+const String tForgetPassword = "Forgot password ?";
 const String tSignInWithGoogle = "Sign-In with Google";
 
 // -- Splash Screen Text
@@ -35,8 +37,8 @@ const String tWelcomeSubTitle =
     "Let's put your creativity on the development highway.";
 
 // -- Login Screen Text
-const String tLoginTitle = "Welcome Back,";
-const String tLoginSubTitle = "Sign to start booking a seat!";
+const String tLoginTitle = "Welcome back,";
+const String tLoginSubTitle = "Login to start booking a seat !";
 const String tRememberMe = "Remember Me";
 const String tDontHaveAnAccount = "Don't have an Account ? ";
 

@@ -1,17 +1,30 @@
 import 'package:flutter/material.dart';
 
-var kBackgroundBoxDecoration = BoxDecoration(
-  border: Border.all(color: Colors.blue),
-  boxShadow: const [
+var kBackgroundBoxDecoration = const BoxDecoration(
+  boxShadow: [
     BoxShadow(
       blurStyle: BlurStyle.outer,
       blurRadius: 1.0,
     ),
   ],
-  color: const Color.fromARGB(255, 255, 255, 255),
-  borderRadius: const BorderRadius.only(
-    topLeft: Radius.circular(18.0),
-    topRight: Radius.circular(18.0),
+  color: Color.fromARGB(255, 255, 255, 255),
+  borderRadius: BorderRadius.only(
+    topLeft: Radius.circular(15.0),
+    topRight: Radius.circular(15.0),
+  ),
+);
+
+var kHomeBackgroundBoxDecoration = const BoxDecoration(
+  boxShadow: [
+    BoxShadow(
+      blurStyle: BlurStyle.outer,
+      blurRadius: 1.0,
+    ),
+  ],
+  color: Color.fromARGB(255, 255, 255, 255),
+  borderRadius: BorderRadius.only(
+    topLeft: Radius.circular(45.0),
+    topRight: Radius.circular(45.0),
   ),
 );
 

@@ -72,6 +72,7 @@ flutter:
   assets:
     - assets/images/Intercity-STC-Coaches.jpg
     - assets/images/luckyman_logo.png
+    - assets/images/man-with-guiter.jpg
     
 
   # An image asset can refer to one or more resolution-specific "variants", see
