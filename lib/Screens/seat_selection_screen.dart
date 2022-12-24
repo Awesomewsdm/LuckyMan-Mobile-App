@@ -6,6 +6,7 @@ import 'package:angie_notebook/Models/economy_seat_layout.dart';
 import 'package:angie_notebook/Models/economy_seats.dart';
 import 'package:angie_notebook/Models/executive_seat_layout_model.dart';
 import 'package:angie_notebook/Models/executive_seats_layout.dart';
+import 'package:angie_notebook/Screens/payment_page.dart';
 import 'package:angie_notebook/controllers/seat_selection_controller.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
@@ -60,7 +61,7 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 const SizedBox(
-                  height: 20.0,
+                  height: 10.0,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -80,7 +81,7 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
                   ],
                 ),
                 const SizedBox(
-                  height: 10.0,
+                  height: 2.0,
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width - 50,
@@ -156,21 +157,13 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
                       width: MediaQuery.of(context).size.width - 50,
                       // color: const Color.fromRGBO(255, 255, 255, 1.0),
                       decoration: kBackgroundBoxDecoration,
-                      padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
-                      child: AnimatedContainer(
-                        duration: const Duration(seconds: 300),
-                        height: MediaQuery.of(context).size.height,
-                        width: MediaQuery.of(context).size.width - 50,
-                        // color: const Color.fromRGBO(255, 255, 255, 1.0),
-                        decoration: kBackgroundBoxDecoration,
-                        child: selectedValue == busClasses[0]
-                            ? EconomySeatLayout(
-                                model: economyseatLayout,
-                              )
-                            : ExecutiveSeatLayout(
-                                model: executiveseatLayout,
-                              ),
-                      ),
+                      child: selectedValue == busClasses[0]
+                          ? EconomySeatLayout(
+                              model: economyseatLayout,
+                            )
+                          : ExecutiveSeatLayout(
+                              model: executiveseatLayout,
+                            ),
                     ),
                   ),
                 ),
@@ -238,7 +231,9 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
               child: BottomButton(
                 bottomTextLabel: 'Proceed to make payment',
                 onPressed: () {
-                  Navigator.pushNamed(context, '/PaymentScreen');
+                  Get.to(
+                    () => const PaymentPage(),
+                  );
                 },
               ),
             ),

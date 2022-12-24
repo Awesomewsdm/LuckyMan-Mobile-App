@@ -7,7 +7,7 @@ class CirclesBackgroundPage extends StatelessWidget {
 
   final List<CircleInfo> circles = [
     CircleInfo(
-        size: const Size(600, 1000),
+        size: const Size(2000, 2000),
         color: const Color.fromARGB(255, 174, 201, 241),
         borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(10),
@@ -24,24 +24,24 @@ class CirclesBackgroundPage extends StatelessWidget {
     //       bottomLeft: Radius.circular(200),
     //     ),
     //     alignment: Alignment.topCenter),
-     CircleInfo(
-      turns: 0.1,
-      size: const Size(100, 800),
-      gradient: const LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-            Color.fromARGB(255, 126, 190, 243),
-            Color.fromARGB(255, 118, 183, 236)
-          ]),
-      borderRadius: const BorderRadius.all(
-        Radius.circular(150),
-      ),
-      alignment: Alignment.topLeft,
-    ),
+    // CircleInfo(
+    //   turns: 0.9,
+    //   size: const Size(100, 800),
+    //   gradient: const LinearGradient(
+    //       begin: Alignment.topCenter,
+    //       end: Alignment.bottomCenter,
+    //       colors: [
+    //         Color.fromARGB(255, 126, 190, 243),
+    //         Color.fromARGB(255, 118, 183, 236)
+    //       ]),
+    //   borderRadius: const BorderRadius.all(
+    //     Radius.circular(100),
+    //   ),
+    //   alignment: Alignment.topLeft,
+    // ),
     CircleInfo(
       turns: 0.1,
-      size: const Size(100, 800),
+      size: const Size(500, 700),
       gradient: const LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
@@ -50,26 +50,26 @@ class CirclesBackgroundPage extends StatelessWidget {
             Color.fromARGB(255, 118, 183, 236)
           ]),
       borderRadius: const BorderRadius.all(
-        Radius.circular(150),
+        Radius.circular(80),
       ),
-      alignment: Alignment.topLeft,
-    ),
+      alignment: Alignment.centerLeft,
+    )
 
-    CircleInfo(
-      turns: 0.1,
-      size: const Size(100, 800),
-      gradient: const LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-            Color.fromARGB(255, 126, 190, 243),
-            Color.fromARGB(255, 118, 183, 236)
-          ]),
-      borderRadius: const BorderRadius.all(
-        Radius.circular(150),
-      ),
-      alignment: Alignment.bottomCenter,
-    ),
+    //   CircleInfo(
+    //     turns: 0.1,
+    //     size: const Size(100, 800),
+    //     gradient: const LinearGradient(
+    //         begin: Alignment.topCenter,
+    //         end: Alignment.bottomCenter,
+    //         colors: [
+    //           Color.fromARGB(255, 126, 190, 243),
+    //           Color.fromARGB(255, 118, 183, 236)
+    //         ]),
+    //     borderRadius: const BorderRadius.all(
+    //       Radius.circular(150),
+    //     ),
+    //     alignment: Alignment.bottomCenter,
+    //   ),
   ];
 
   @override

@@ -1,5 +1,7 @@
+import 'package:angie_notebook/Components/widgets.dart';
 import 'package:angie_notebook/Constants/constants.dart';
 import 'package:angie_notebook/Screens/bus_ticket_page.dart';
+import 'package:angie_notebook/Screens/login_screen.dart';
 import 'package:angie_notebook/Screens/seat_selection_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -30,69 +32,92 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: const PersistentBottomNavBar(),
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-          color: const Color(0xFF10A2E0),
-          borderRadius: const BorderRadius.only(
-            bottomLeft: Radius.circular(34.0),
-            bottomRight: Radius.circular(34.0),
-          ),
-          image: DecorationImage(
-            fit: BoxFit.cover,
-            colorFilter: ColorFilter.mode(
-                Colors.blueAccent.withOpacity(0.2), BlendMode.dstATop),
-            image: const AssetImage('assets/images/Intercity-STC-Coaches.jpg'),
-          ),
-        ),
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 50.0,
-            ),
-            const Text(
-              ' Welcome Awesome',
-              style: TextStyle(fontSize: 30.0),
-            ),
-            const SizedBox(
-              height: 50.0,
-            ),
-            Expanded(
-              child: Container(
-                
-                decoration: kBackgroundBoxDecoration,
-                child: GridView(
-                    padding: const EdgeInsets.all(20.0),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            mainAxisSpacing: 20.0,
-                            crossAxisSpacing: 20.0,
-                            crossAxisCount: 2),
-                    children: [
-                      GestureDetector(
-                          onTap: () {
-                            Get.to(() => const BusTicketScreen());
-                          },
-                          child: const SizeBoz()),
-                      const SizeBoz(),
-                      const SizeBoz(),
-                      const SizeBoz(),
-                    ]),
+      body: CirclesBackgroundPage(
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 50.0,
               ),
-            ),
-          ],
+              const Text(
+                ' Welcome Awesome',
+                style: TextStyle(fontSize: 30.0),
+              ),
+              const SizedBox(
+                height: 50.0,
+              ),
+              Expanded(
+                child: Container(
+                  decoration: kBackgroundBoxDecoration,
+                  child: GridView(
+                      padding: const EdgeInsets.all(20.0),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              mainAxisSpacing: 20.0,
+                              crossAxisSpacing: 20.0,
+                              crossAxisCount: 2),
+                      children: [
+                        Navigate(
+                          onTap: () {
+                            Get.to(
+                              () => const BusTicketScreen(),
+                            );
+                          },
+                          label: 'Bus Ticket Screen',
+                        ),
+                        Navigate(
+                          onTap: () {
+                            Get.to(
+                              () => const LoginScreen(),
+                            );
+                          },
+                          label: 'Login Screen',
+                        ),
+                        const SizeBoz(
+                          label: 'Login Page',
+                        ),
+                        const SizeBoz(
+                          label: 'Sign up Page',
+                        ),
+                        const SizeBoz(),
+                      ]),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 }
 
+class Navigate extends StatelessWidget {
+  const Navigate({
+    Key? key,
+    this.onTap,
+    required this.label,
+  }) : super(key: key);
+  final void Function()? onTap;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+        onTap: onTap,
+        child: SizeBoz(
+          label: label,
+        ));
+  }
+}
+
 class SizeBoz extends StatelessWidget {
   const SizeBoz({
     Key? key,
+    this.label = 'Book Bus Seat',
   }) : super(key: key);
+  final String? label;
 
   @override
   Widget build(BuildContext context) {
@@ -102,8 +127,8 @@ class SizeBoz extends StatelessWidget {
       width: 80.0,
       decoration: kSeatScreenBoxDecoration,
       child: Column(
-        children: const [
-          Expanded(
+        children: [
+          const Expanded(
             child: CircleAvatar(
               radius: 50,
               backgroundImage:
@@ -111,8 +136,8 @@ class SizeBoz extends StatelessWidget {
             ),
           ),
           Text(
-            'Book Bus Seat',
-            style: TextStyle(fontSize: 10),
+            label!,
+            style: const TextStyle(fontSize: 10),
           ),
         ],
       ),

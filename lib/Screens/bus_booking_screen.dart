@@ -1,6 +1,8 @@
 import 'package:angie_notebook/Components/text_styling.dart';
 import 'package:angie_notebook/Models/menu_items.dart';
+import 'package:angie_notebook/Screens/seat_selection_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../Components/dropdown.dart';
 import '../Components/input_field.dart';
@@ -16,8 +18,6 @@ class BusBookingScreen extends StatefulWidget {
 }
 
 class _BusBookingScreenState extends State<BusBookingScreen> {
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,9 +27,8 @@ class _BusBookingScreenState extends State<BusBookingScreen> {
       body: ScreenTemplate(
         decoration: kBackgroundBoxDecoration,
         onPressed: () {
-          Navigator.pushNamed(
-            context,
-            '/SeatSelectionScreen',
+          Get.to(
+            () => const SeatSelectionScreen(),
           );
         },
         bottomTextLabel: 'Continue to select a seat',

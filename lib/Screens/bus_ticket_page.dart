@@ -1,5 +1,7 @@
 
+import 'package:angie_notebook/Screens/bus_booking_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../Components/divider_widget.dart';
 import '../Components/screen_template.dart';
@@ -15,10 +17,10 @@ class BusTicketScreen extends StatelessWidget {
     return ScreenTemplate(
       decoration: kBackgroundBoxDecoration,
       onPressed: () {
-        Navigator.pushNamed(
-          context,
-          '/BusBookingScreen',
-        );
+        
+          
+           Get.to(() => const BusBookingScreen());
+
       },
       bottomTextLabel: 'Download Ticket',
       title: 'Your Ticket',
