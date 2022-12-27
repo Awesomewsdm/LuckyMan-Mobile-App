@@ -13,6 +13,11 @@ const String tFullName = "Full Name";
 const String tForgetPassword = "Forgot password ?";
 const String tSignInWithGoogle = "Sign-In with Google";
 
+// -- Bottom App Bar
+const String tHomeIconName = "Home";
+const String tHistoryIconName = "History";
+const String tProfileIconName = "Profile";
+
 // -- Splash Screen Text
 const String tAppName = "LUCKYMAN T & L";
 const String tAppTagLine = "Learn To Code. \nFree For Everyone";

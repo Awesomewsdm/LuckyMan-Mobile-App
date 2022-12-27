@@ -1,8 +1,9 @@
 import 'dart:async';
-import 'package:angie_notebook/Screens/home_screen.dart';
 import 'package:angie_notebook/src/constants/image_strings.dart';
 import 'package:angie_notebook/src/constants/text.dart';
 import 'package:flutter/material.dart';
+
+import '../src/common_widgets/bottom_nav/bottom_nav.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -27,7 +28,7 @@ class _MyCustomSplashScreenState extends State<SplashScreen>
     super.initState();
 
     _controller =
-        AnimationController(vsync: this, duration: const Duration(seconds: 3));
+        AnimationController(vsync: this, duration: const Duration(seconds: 3),);
 
     animation1 = Tween<double>(begin: 40, end: 20).animate(CurvedAnimation(
         parent: _controller!, curve: Curves.fastLinearToSlowEaseIn))
@@ -54,7 +55,7 @@ class _MyCustomSplashScreenState extends State<SplashScreen>
 
     Timer(const Duration(seconds: 4), () {
       setState(() {
-        Navigator.pushReplacement(context, PageTransition(const HomeScreen()));
+        Navigator.pushReplacement(context, PageTransition( const BottomNav()));
       });
     });
   }

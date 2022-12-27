@@ -6,19 +6,20 @@ class DropdownMenu extends StatelessWidget {
     Key? key,
     required this.items,
     required this.formLabel,
-    this.buttonWidth,
+    this.buttonWidth, this.formKey,
   }) : super(key: key);
 
   final List<String> items;
   final String formLabel;
   final double? buttonWidth;
+  final Key? formKey;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(8.0),
       child: DropdownButtonFormField2(
-        
+        key: formKey,
         buttonWidth: buttonWidth,
         decoration: InputDecoration(
           //Add isDense true and zero Padding.

@@ -12,6 +12,7 @@ const String tOnBoardingImage1 = "assets/images/on_boarding_images/on-boarding-i
 const String tOnBoardingImage2 = "assets/images/on_boarding_images/on-boarding-image-2.png";
 const String tOnBoardingImage3 = "assets/images/on_boarding_images/on-boarding-image-3.png";
 
+const String manWithGuitar ='assets/images/man-with-guiter.jpg';
 
 // -- Welcome Screen Images
 // -- also used in Login & SignUp

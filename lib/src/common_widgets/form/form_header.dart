@@ -1,17 +1,17 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../Components/text_styling.dart';
 import '../../constants/image_strings.dart';
-import '../../constants/text.dart';
 
 class FormHeader extends StatelessWidget {
   const FormHeader({
     Key? key,
-    required this.size,
+    required this.size, required this.title, required this.subtitle,
   }) : super(key: key);
 
   final Size size;
+  final String title;
+  final String subtitle;
 
   @override
   Widget build(BuildContext context) {
@@ -26,11 +26,11 @@ class FormHeader extends StatelessWidget {
             height: size.height * 0.25,
           ),
         ),
-        const BlackTextWidget(
-          text: tSignUpTitle,
+         BlackTextWidget(
+          text: title,
           fontSize: 30.0,
         ),
-        const Text(tSignUpSubTitle),
+         Text(subtitle),
       ],
     );
   }

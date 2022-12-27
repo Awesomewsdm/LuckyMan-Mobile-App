@@ -4,6 +4,7 @@ import 'package:angie_notebook/src/constants/text.dart';
 import 'package:angie_notebook/src/features/authentification/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:regexed_validator/regexed_validator.dart';
 
 import '../../../common_widgets/form/form_body.dart';
 import '../../../common_widgets/form/form_footer.dart';
@@ -23,16 +24,26 @@ class SignUpScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              FormHeader(size: size),
+              FormHeader(
+                size: size,
+                subtitle: tSignUpSubTitle,
+                title: tSignUpTitle,
+              ),
               FormBody(
                 children: [
                   const SizedBox(
                     height: 20.0,
                   ),
-                  const TextFormFieldWidget(
+                  TextFormFieldWidget(
+                    validator: (value) {
+                      if (value == null || !validator.name(value)) {
+                        return 'Enter your full name';
+                      }
+                      return null;
+                    },
                     labelText: tFullName,
                     hintText: tFullName,
-                    prefixIcon: Icon(Icons.person_outline_outlined),
+                    prefixIcon: const Icon(Icons.person_outline_outlined), obscureText: false,
                   ),
                   const SizedBox(
                     height: 20.0,
@@ -40,7 +51,7 @@ class SignUpScreen extends StatelessWidget {
                   const TextFormFieldWidget(
                     labelText: tStudentID,
                     hintText: tStudentID,
-                    prefixIcon: Icon(Icons.credit_card_outlined),
+                    prefixIcon: Icon(Icons.credit_card_outlined), obscureText: false,
                   ),
                   const SizedBox(
                     height: 20.0,
@@ -48,15 +59,21 @@ class SignUpScreen extends StatelessWidget {
                   const TextFormFieldWidget(
                     labelText: tPhoneNo,
                     hintText: tPhoneNo,
-                    prefixIcon: Icon(Icons.call),
+                    prefixIcon: Icon(Icons.call), obscureText: false,
                   ),
                   const SizedBox(
                     height: 20.0,
                   ),
-                  const TextFormFieldWidget(
+                  TextFormFieldWidget(
+                    validator: (value) {
+                      if (value == null || validator.email(value)) {
+                        return 'Please enter a valid passworn';
+                      }
+                      return null;
+                    },
                     labelText: tEmail,
                     hintText: tEmail,
-                    prefixIcon: Icon(Icons.email_outlined),
+                    prefixIcon: const Icon(Icons.email_outlined), obscureText: false,
                   ),
                   const SizedBox(
                     height: 20.0,
@@ -67,7 +84,7 @@ class SignUpScreen extends StatelessWidget {
                     suffixIcon: Icon(Icons.remove_red_eye_outlined),
                     prefixIcon: Icon(
                       Icons.lock_outlined,
-                    ),
+                    ), obscureText: false,
                   ),
                   const SizedBox(
                     height: 20.0,
@@ -78,7 +95,7 @@ class SignUpScreen extends StatelessWidget {
                     suffixIcon: Icon(Icons.remove_red_eye_outlined),
                     prefixIcon: Icon(
                       Icons.lock_outlined,
-                    ),
+                    ), obscureText: false,
                   ),
                   const SizedBox(
                     height: 20.0,
@@ -106,4 +123,3 @@ class SignUpScreen extends StatelessWidget {
     );
   }
 }
-

@@ -1,4 +1,3 @@
-
 import 'package:angie_notebook/Screens/seat_selection_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
@@ -37,16 +36,16 @@ class MyApp extends StatelessWidget {
           1,
         ),
       ),
-      initialRoute: SplashScreen2.id,  
+      initialRoute: SplashScreen.id,
       routes: <String, WidgetBuilder>{
-        SplashScreen2.id:(context) => const SplashScreen2(),
-        SplashScreen.id:(context) => const SplashScreen(),
-        HomeScreen.id:(context) => const HomeScreen(),
+        SplashScreen2.id: (context) => const SplashScreen2(),
+        SplashScreen.id: (context) => const SplashScreen(),
+        HomeScreen.id: (context) => const HomeScreen(),
         BusTicketScreen.id: (context) => const BusTicketScreen(),
-        SeatSelectionScreen.id: (context) =>  const SeatSelectionScreen(),
+        SeatSelectionScreen.id: (context) => const SeatSelectionScreen(),
         PaymentPage.id: (context) => const PaymentPage(),
         BusBookingScreen.id: (context) => const BusBookingScreen(),
-        SeatSectionPage.id:(context) => const SeatSectionPage(),
+        SeatSectionPage.id: (context) => const SeatSectionPage(),
       },
     );
   }

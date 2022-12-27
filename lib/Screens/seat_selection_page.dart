@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../Components/dropdown.dart';
-import '../Models/form_items.dart';
+import '../Models/utils/form_items.dart';
 
 class SeatSectionPage extends StatefulWidget {
   const SeatSectionPage({Key? key}) : super(key: key);
@@ -12,11 +12,7 @@ class SeatSectionPage extends StatefulWidget {
 }
 
 class _SeatSectionPageState extends State<SeatSectionPage> {
-  final List<String> genderItems = [
-    'Male',
-    'Female',
-  ];
-
+ 
   String? selectedValue;
 
   final _formKey = GlobalKey<FormState>();
@@ -45,6 +41,10 @@ class _SeatSectionPageState extends State<SeatSectionPage> {
                 ),
               ),
               const SizedBox(height: 30),
+               const DropdownMenu(
+                items: destinations,
+                formLabel: 'Select your destination',
+              ),
                const DropdownMenu(
                 items: destinations,
                 formLabel: 'Select your destination',

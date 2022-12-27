@@ -17,9 +17,9 @@ var kBackgroundBoxDecoration = const BoxDecoration(
 var kHomeBackgroundBoxDecoration = const BoxDecoration(
   boxShadow: [
     BoxShadow(
-      blurStyle: BlurStyle.outer,
-      blurRadius: 1.0,
-    ),
+        // blurStyle: BlurStyle.outer,
+        // blurRadius: 1.0
+        ),
   ],
   color: Color.fromARGB(255, 255, 255, 255),
   borderRadius: BorderRadius.only(

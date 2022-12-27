@@ -1,4 +1,4 @@
-import 'seat_layout_mode.dart';
+import '../seat_layout_mode.dart';
 
 final executiveseatLayout = SeatLayoutModel(
   rows: 10,

@@ -51,15 +51,26 @@ class EconomySeatLayout extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap: () {
-                              // ignore: avoid_print
-                              print(seatNo);
-                              if (SeatSelectionController.instance.selectedSeats
-                                  .contains(seatNo)) {
-                                SeatSelectionController.instance.selectedSeats
-                                    .remove(seatNo);
+                              RxList seats = SeatSelectionController
+                                  .instance.selectedSeats;
+                              if (seats.contains(seatNo)) {
+                                seats.remove(seatNo);
                               } else {
-                                SeatSelectionController.instance.selectedSeats
-                                    .add(seatNo);
+                                if (seats.length >
+                                    SeatSelectionController
+                                        .instance.noOfSeats) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      content: Text(
+                                          'Sorry, you can select only up to 5 seats!'),
+                                    ),
+                                  );
+                                  seats.removeAt(4);
+
+                                  seats.add(seatNo);
+                                } else {
+                                  seats.add(seatNo);
+                                }
                               }
                             },
                             child: Obx(() => Container(

@@ -45,7 +45,7 @@ class _SecondPageState extends State<SplashScreen2> {
       setState(() {
         Navigator.of(context).pushReplacement(
           ThisIsFadeRoute(
-            route: const HomeScreen(),
+            route:  const HomeScreen(),
           ),
         );
       });

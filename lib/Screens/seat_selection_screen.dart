@@ -2,8 +2,8 @@ import 'package:angie_notebook/src/common_widgets/buttons/bottom_button.dart';
 import 'package:angie_notebook/Components/text_styling.dart';
 import 'package:angie_notebook/Constants/constants.dart';
 import 'package:angie_notebook/Models/economy_seat_layout.dart';
-import 'package:angie_notebook/Models/economy_seats.dart';
-import 'package:angie_notebook/Models/executive_seat_layout_model.dart';
+import 'package:angie_notebook/Models/utils/economy_seats.dart';
+import 'package:angie_notebook/Models/utils/executive_seat_layout_model.dart';
 import 'package:angie_notebook/Models/executive_seats_layout.dart';
 import 'package:angie_notebook/Screens/payment_page.dart';
 import 'package:angie_notebook/controllers/seat_selection_controller.dart';
@@ -13,7 +13,7 @@ import 'package:get/get.dart';
 
 import '../Components/seat_status.dart';
 import '../Components/widgets.dart';
-import '../Models/form_items.dart';
+import '../Models/utils/form_items.dart';
 
 class SeatSelectionScreen extends StatefulWidget {
   const SeatSelectionScreen({
@@ -26,7 +26,6 @@ class SeatSelectionScreen extends StatefulWidget {
 }
 
 class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
-  // final List<int> economySeats = [1, 4, 7, 10, 13, 16, 19, 22, 25, 28, 31];
   String selectedValue = 'ECONOMY';
   @override
   Widget build(BuildContext context) {
