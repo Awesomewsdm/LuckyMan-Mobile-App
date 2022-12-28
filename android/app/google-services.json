@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "344465135850",
+    "project_id": "luckyman-t-and-l",
+    "storage_bucket": "luckyman-t-and-l.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:344465135850:android:926710db3c8504013adf93",
+        "android_client_info": {
+          "package_name": "com.example.luckyman"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "344465135850-kinu7m0k0plmg93g50snjj8rkfou8p44.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCr_eddRxwiYwt-uZuI0P82f_oPvRRB-9Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "344465135850-kinu7m0k0plmg93g50snjj8rkfou8p44.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "344465135850-0in2jrb9c929g49vt0ifdfunhp9rnt70.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.luckyman"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -10,7 +10,8 @@ class TextFormFieldWidget extends StatelessWidget {
     required this.prefixIcon,
     this.validator,
     this.inputFormatters,
-    this.keyboardType, required this.obscureText,
+    this.keyboardType,
+    required this.obscureText, this.controller,
   }) : super(key: key);
   final String labelText;
   final String hintText;
@@ -20,9 +21,13 @@ class TextFormFieldWidget extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatters;
   final TextInputType? keyboardType;
   final bool obscureText;
+  final TextEditingController? controller;
+
+  
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
       obscureText: obscureText,
       keyboardType: keyboardType,
       validator: validator,

@@ -76,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Navigate(
                         onTap: () {
                           Get.to(
-                            () => const SignUpScreen(),
+                            () =>  SignUpScreen(),
                           );
                         },
                         label: 'Sign-Up Screen',

@@ -59,12 +59,10 @@ class EconomySeatLayout extends StatelessWidget {
                                 if (seats.length >
                                     SeatSelectionController
                                         .instance.noOfSeats) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                      content: Text(
-                                          'Sorry, you can select only up to 5 seats!'),
-                                    ),
-                                  );
+                                  Get.snackbar('Sorry',
+                                      'you can select only up to 5 seats!',
+                                      backgroundColor: Colors.blue);
+
                                   seats.removeAt(4);
 
                                   seats.add(seatNo);

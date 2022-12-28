@@ -1,6 +1,6 @@
 import 'package:angie_notebook/Screens/seat_selection_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
 
 import 'Screens/bus_booking_screen.dart';
 import 'Screens/bus_ticket_page.dart';
@@ -9,8 +9,17 @@ import 'Screens/payment_page.dart';
 import 'Screens/seat_selection_page.dart';
 import 'Screens/splash_screen.dart';
 import 'Screens/splash_screen_2.dart';
+import 'firebase_options.dart';
+import 'package:get/get.dart';
+
+import 'src/repository/authentification/authentification_repository.dart';
+
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  ).then((value) => Get.put(AuthenticationRepository()));
   runApp(
     const MyApp(),
   );
