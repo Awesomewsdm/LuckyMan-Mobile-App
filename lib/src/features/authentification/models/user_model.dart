@@ -1,4 +1,3 @@
-
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 class UserModel {
@@ -8,7 +7,7 @@ class UserModel {
   final String studentID;
   final String phoneNumber;
   final String password;
-  UserModel( {
+  UserModel({
     this.id,
     required this.fullNmae,
     required this.email,
@@ -26,10 +25,4 @@ class UserModel {
       'password': password,
     };
   }
-
-  
-
-  
-
-  
 }
