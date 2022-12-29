@@ -55,7 +55,7 @@ class _MyCustomSplashScreenState extends State<SplashScreen>
 
     Timer(const Duration(seconds: 4), () {
       setState(() {
-        Navigator.pushReplacement(context, PageTransition(  SignUpScreen()));
+        Navigator.pushReplacement(context, PageTransition(   SignUpScreen()));
       });
     });
   }

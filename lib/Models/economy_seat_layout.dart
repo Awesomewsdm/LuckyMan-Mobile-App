@@ -61,7 +61,10 @@ class EconomySeatLayout extends StatelessWidget {
                                         .instance.noOfSeats) {
                                   Get.snackbar('Sorry',
                                       'you can select only up to 5 seats!',
-                                      backgroundColor: Colors.blue);
+                                      colorText: Colors.white,
+                                      backgroundColor:
+                                          Colors.blue.withOpacity(0.7),
+                                      snackPosition: SnackPosition.BOTTOM);
 
                                   seats.removeAt(4);
 

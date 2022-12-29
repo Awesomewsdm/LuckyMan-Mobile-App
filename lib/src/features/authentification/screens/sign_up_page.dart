@@ -1,7 +1,7 @@
-import 'package:angie_notebook/Screens/home_screen.dart';
 import 'package:angie_notebook/src/common_widgets/buttons/bottom_button.dart';
 import 'package:angie_notebook/src/constants/sizes.dart';
 import 'package:angie_notebook/src/constants/text.dart';
+import 'package:angie_notebook/src/features/authentification/models/user_model.dart';
 import 'package:angie_notebook/src/features/authentification/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -124,15 +124,20 @@ class SignUpScreen extends StatelessWidget {
                     ),
                     BottomButton(
                       onPressed: () {
-                         if (_formkey.currentState!.validate()) {
+                        if (_formkey.currentState!.validate()) {
                           SignUpController.instance.registerUser(
                             controller.email.text.trim(),
                             controller.password.text.trim(),
-                            
                           );
-                           Get.to(
-                          () => const HomeScreen(),
-                        );
+
+                          final user = UserModel(
+                            fullNmae: controller.fullName.text.trim(),
+                            email: controller.email.text.trim(),
+                            phoneNumber: controller.phoneNo.text.trim(),
+                            password: controller.password.text.trim(),
+                            studentID: controller.studentID.text.trim(),
+                          );
+                          SignUpController.instance.creatUser(user);
                         }
                       },
                       bottomTextLabel: tSignup.toUpperCase(),

@@ -91,7 +91,7 @@ class LoginScreen extends StatelessWidget {
                     text: tDontHaveAnAccount,
                     onTap: (() {
                       Get.to(
-                        () =>  SignUpScreen(),
+                        () =>   SignUpScreen(),
                       );
                     }),
                     redirectText: tSignup,

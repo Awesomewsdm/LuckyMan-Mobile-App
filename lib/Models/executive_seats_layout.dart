@@ -59,12 +59,12 @@ class ExecutiveSeatLayout extends StatelessWidget {
                                 if (seats.length >
                                     SeatSelectionController
                                         .instance.noOfSeats) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                      content: Text(
-                                          'Sorry, you can select only up to 5 seats!'),
-                                    ),
-                                  );
+                                  Get.snackbar('Sorry',
+                                      'you can select only up to 5 seats!',
+                                      colorText: Colors.white,
+                                      backgroundColor:
+                                          Colors.lightBlue.withOpacity(0.7),
+                                      snackPosition: SnackPosition.BOTTOM);
                                   seats.removeAt(4);
                                   seats.add(seatNo);
                                 } else {
