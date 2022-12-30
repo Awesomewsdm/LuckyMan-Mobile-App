@@ -8,9 +8,9 @@ class UserRepository extends GetxController {
   static UserRepository get instance => Get.find();
   final _db = FirebaseFirestore.instance;
 
-  createNewUser(UserModel user) async {
+  createUser(UserModel user) async {
   await  _db
-        .collection("Users")
+        .collection('Users')
         .add(user.toJson())
         .whenComplete(
           () => Get.snackbar(
@@ -21,6 +21,7 @@ class UserRepository extends GetxController {
             backgroundColor: Colors.lightBlue.shade400.withOpacity(0.1),
           ),
         )
+        
         .catchError((error, stackTrace) {
       Get.snackbar(
         "Error",

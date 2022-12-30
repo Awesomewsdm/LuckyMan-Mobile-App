@@ -12,14 +12,21 @@ import 'Screens/splash_screen_2.dart';
 import 'firebase_options.dart';
 import 'package:get/get.dart';
 
+import 'src/features/authentification/controllers/sign_up_controller.dart';
 import 'src/repository/authentification/authentification_repository.dart';
-
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-  ).then((value) => Get.put(AuthenticationRepository()));
+  ).then(
+    (value) => Get.put(
+      AuthenticationRepository(),
+    ),
+  );
+  Get.put(
+    SignUpController(),
+  );
   runApp(
     const MyApp(),
   );

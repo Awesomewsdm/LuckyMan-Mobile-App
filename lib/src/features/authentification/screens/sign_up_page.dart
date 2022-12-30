@@ -109,16 +109,16 @@ class SignUpScreen extends StatelessWidget {
                     const SizedBox(
                       height: 20.0,
                     ),
-                    TextFormFieldWidget(
-                      controller: controller.password,
-                      labelText: tConfirmPassword,
-                      hintText: tConfirmPassword,
-                      suffixIcon: const Icon(Icons.remove_red_eye_outlined),
-                      prefixIcon: const Icon(
-                        Icons.lock_outlined,
-                      ),
-                      obscureText: false,
-                    ),
+                    // TextFormFieldWidget(
+                    //   controller: controller.password,
+                    //   labelText: tConfirmPassword,
+                    //   hintText: tConfirmPassword,
+                    //   suffixIcon: const Icon(Icons.remove_red_eye_outlined),
+                    //   prefixIcon: const Icon(
+                    //     Icons.lock_outlined,
+                    //   ),
+                    //   obscureText: false,
+                    // ),
                     const SizedBox(
                       height: 20.0,
                     ),
@@ -130,14 +130,15 @@ class SignUpScreen extends StatelessWidget {
                             controller.password.text.trim(),
                           );
 
-                          final user = UserModel(
-                            fullNmae: controller.fullName.text.trim(),
+                          final UserModel user = UserModel(
+                            fullName: controller.fullName.text.trim(),
                             email: controller.email.text.trim(),
                             phoneNumber: controller.phoneNo.text.trim(),
                             password: controller.password.text.trim(),
                             studentID: controller.studentID.text.trim(),
                           );
-                          SignUpController.instance.creatUser(user);
+                          SignUpController.instance.createUser(user);
+                          // Get.to(() => const BottomNav());
                         }
                       },
                       bottomTextLabel: tSignup.toUpperCase(),

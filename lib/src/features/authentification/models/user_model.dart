@@ -2,14 +2,14 @@
 
 class UserModel {
   final String? id;
-  final String fullNmae;
+  final String fullName;
   final String email;
   final String studentID;
   final String phoneNumber;
   final String password;
   UserModel({
     this.id,
-    required this.fullNmae,
+    required this.fullName,
     required this.email,
     required this.phoneNumber,
     required this.password,
@@ -17,9 +17,9 @@ class UserModel {
   });
 
   toJson() {
-    return <String, dynamic>{
-      'id': id,
-      'fullNmae': fullNmae,
+    return {
+      'fullName': fullName,
+      'studentID': studentID,
       'email': email,
       'phoneNumber': phoneNumber,
       'password': password,
