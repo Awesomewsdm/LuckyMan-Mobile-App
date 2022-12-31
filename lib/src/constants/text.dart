@@ -66,3 +66,8 @@ const String tForgetPhoneSubTitle =
 // -- Forget Password Via E-Mail - Text
 const String tForgetMailSubTitle =
     "Enter your registered E-Mail to receive OTP";
+
+// -- Profile Page Info - Text
+const String tContact1 = "0544627962 - Mr. Kassim";
+const String tContact2 = "0242581363 - Smart";
+const String tContact3 = "0548504172 - Miss Gifty";

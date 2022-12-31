@@ -6,15 +6,16 @@ import '../../constants/image_strings.dart';
 class FormHeader extends StatelessWidget {
   const FormHeader({
     Key? key,
-    required this.size, required this.title, required this.subtitle,
+     required this.title, required this.subtitle,
   }) : super(key: key);
 
-  final Size size;
+ 
   final String title;
   final String subtitle;
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Column(
       children: [
         Align(

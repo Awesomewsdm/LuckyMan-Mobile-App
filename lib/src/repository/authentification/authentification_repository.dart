@@ -1,4 +1,4 @@
-import 'package:angie_notebook/src/features/authentification/screens/sign_up_page.dart';
+import 'package:angie_notebook/src/features/authentification/sign_up/widgets/sign_up_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
@@ -23,7 +23,7 @@ class AuthenticationRepository extends GetxController {
 
   _setInitialScreen(User? user) {
     user == null
-        ? Get.offAll(() => SignUpScreen())
+        ? Get.offAll(() => const SignUpScreen())
         : Get.offAll(() => const BottomNav());
   }
 
@@ -33,7 +33,7 @@ class AuthenticationRepository extends GetxController {
       await _auth.createUserWithEmailAndPassword(email: email, password: password);
       firebaseUser.value != null
           ? Get.offAll(() =>const BottomNav() )
-          : Get.offAll(() =>  SignUpScreen());
+          : Get.offAll(() =>  const SignUpScreen());
     } on FirebaseAuthException catch (e) {
       final ex = SignUpWithEmailAndPasswordFailure.code(e.code);
       print('FIREBASE AUTH EXCEPTION ${ex.message}');
@@ -47,11 +47,18 @@ class AuthenticationRepository extends GetxController {
 
   Future<void> loginUserWithEmailAndPassword(
       String email, String password) async {
-    try {
-      await _auth.signInWithEmailAndPassword(email: email, password: password);
-    } on FirebaseAuthException catch (e) {
-      print(e);
-    } catch (_) {}
+   try {
+   await FirebaseAuth.instance.signInWithEmailAndPassword(
+    email: email,
+    password: password
+  );
+} on FirebaseAuthException catch (e) {
+  if (e.code == 'user-not-found') {
+    print('No user found for that email.');
+  } else if (e.code == 'wrong-password') {
+    print('Wrong password provided for that user.');
+  }
+} catch (e) {}
   }
 
   Future<void> logout() async => await _auth.signOut();

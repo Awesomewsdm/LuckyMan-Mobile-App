@@ -20,12 +20,7 @@ class SignUpController extends GetxController {
   Future<void> registerUser(String email, String password) async {
   await  AuthenticationRepository.instance
         .createUserWithEmailAndPassword(email, password);
-//  Future<void> error
-    // Get.showSnackbar(
-    //   GetSnackBar(
-    //     message: error.toString(),
-    //   ),
-    // );
+
   }
 
   Future<void> createUser(UserModel user) async {

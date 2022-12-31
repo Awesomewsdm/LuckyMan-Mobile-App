@@ -3,9 +3,7 @@ import 'package:angie_notebook/Components/input_field.dart';
 import 'package:angie_notebook/Components/screen_template.dart';
 import 'package:angie_notebook/Components/text_styling.dart';
 import 'package:angie_notebook/Constants/constants.dart';
-import 'package:angie_notebook/Screens/seat_selection_page.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class PaymentPage extends StatelessWidget {
   static const String id = '/PaymentScreen';
@@ -19,7 +17,7 @@ class PaymentPage extends StatelessWidget {
     return ScreenTemplate(
       decoration: kBackgroundBoxDecoration,
       onPressed: () {
-        Get.to(() => const SeatSectionPage());
+       
       },
       bottomTextLabel: 'Continue',
       title: 'Make Payment',

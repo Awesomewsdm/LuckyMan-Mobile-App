@@ -1,8 +1,9 @@
 import 'dart:async';
 import 'package:angie_notebook/src/constants/image_strings.dart';
 import 'package:angie_notebook/src/constants/text.dart';
-import 'package:angie_notebook/src/features/authentification/screens/sign_up_page.dart';
 import 'package:flutter/material.dart';
+
+import '../src/features/authentification/sign_up/widgets/sign_up_screen.dart';
 
 
 class SplashScreen extends StatefulWidget {
@@ -55,7 +56,7 @@ class _MyCustomSplashScreenState extends State<SplashScreen>
 
     Timer(const Duration(seconds: 4), () {
       setState(() {
-        Navigator.pushReplacement(context, PageTransition(   SignUpScreen()));
+        Navigator.pushReplacement(context, PageTransition(   const SignUpScreen()));
       });
     });
   }

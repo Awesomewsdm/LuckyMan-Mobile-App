@@ -18,7 +18,7 @@ class UserRepository extends GetxController {
             'Your account has been created',
             snackPosition: SnackPosition.BOTTOM,
             colorText: Colors.blue[100],
-            backgroundColor: Colors.lightBlue.shade400.withOpacity(0.1),
+            backgroundColor: Colors.blue.withOpacity(0.7),
           ),
         )
         
@@ -28,7 +28,7 @@ class UserRepository extends GetxController {
         'Sorry, something went wrong',
         snackPosition: SnackPosition.BOTTOM,
         colorText: Colors.red,
-        backgroundColor: Colors.lightBlue.shade400.withOpacity(0.1),
+        backgroundColor:  Colors.blue.withOpacity(0.7),
       );
       print(error.toString());
     });

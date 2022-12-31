@@ -1,6 +1,9 @@
 import 'package:angie_notebook/Components/widgets.dart';
 import 'package:angie_notebook/Constants/constants.dart';
+import 'package:angie_notebook/src/common_widgets/buttons/bottom_button.dart';
 import 'package:angie_notebook/src/constants/image_strings.dart';
+import 'package:angie_notebook/src/constants/text.dart';
+import 'package:angie_notebook/src/repository/authentification/authentification_repository.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -27,8 +30,9 @@ class ProfileScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: Colors.green,
                       borderRadius: BorderRadius.circular(20.0),
-                      image: const DecorationImage(
-                          image: AssetImage(manWithGuitar), fit: BoxFit.fill),
+                      
+                      // image: const DecorationImage(
+                      //     image: AssetImage(manWithGuitar), fit: BoxFit.fill),
                       border: Border.all(
                         width: 3,
                         color: Colors.grey.shade800,
@@ -51,34 +55,71 @@ class ProfileScreen extends StatelessWidget {
                         padding: const EdgeInsets.all(20.0),
                         child: Column(
                           children: [
+                            const Text('Account Info'),
                             Card(
-                              child: Column(
-                                children: [
-                                  ListTile(
-                                    leading: Icon(
-                                      Icons.credit_card,
-                                      color: Colors.lightBlue[500],
-                                    ),
-                                    title: const Text('Student ID: 20768928'),
-                                  ),
-                                  ListTile(
-                                    leading: Icon(
-                                      Icons.email,
-                                      color: Colors.lightBlue[500],
-                                    ),
-                                    title: const Text(
-                                        'E-mail: awesomewsdm@gmail.com'),
-                                  ),
-                                  ListTile(
-                                    leading: Icon(
-                                      Icons.phone_outlined,
-                                      color: Colors.lightBlue[500],
-                                    ),
-                                    title:
-                                        const Text('Mobile Number: 0206447220'),
-                                  ),
-                                ],
+                              child: ListTile(
+                                leading: Icon(
+                                  Icons.credit_card,
+                                  color: Colors.lightBlue[500],
+                                ),
+                                title: const Text('Student ID: 20768928'),
                               ),
+                            ),
+                            Card(
+                              child: ListTile(
+                                leading: Icon(
+                                  Icons.credit_card,
+                                  color: Colors.lightBlue[500],
+                                ),
+                                title: const Text('Mobile Number: 0206447220'),
+                              ),
+                            ),
+                            Card(
+                              child: ListTile(
+                                leading: Icon(
+                                  Icons.credit_card,
+                                  color: Colors.lightBlue[500],
+                                ),
+                                title:
+                                    const Text('E-mail: awesomewsdm@gmail.com'),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            const Text('Customer Care'),
+                            Card(
+                              child: ListTile(
+                                leading: Icon(
+                                  Icons.phone_outlined,
+                                  color: Colors.lightBlue[500],
+                                ),
+                                title: const Text(tContact1),
+                              ),
+                            ),
+                            Card(
+                              child: ListTile(
+                                leading: Icon(
+                                  Icons.phone_outlined,
+                                  color: Colors.lightBlue[500],
+                                ),
+                                title: const Text(tContact2),
+                              ),
+                            ),
+                            Card(
+                              child: ListTile(
+                                leading: Icon(
+                                  Icons.phone_outlined,
+                                  color: Colors.lightBlue[500],
+                                ),
+                                title: const Text(tContact3),
+                              ),
+                            ),
+                            BottomButton(
+                              bottomTextLabel: 'Logout',
+                              onPressed: () {
+                                AuthenticationRepository.instance.logout();
+                              },
                             ),
                           ],
                         ),
