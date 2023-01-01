@@ -1,12 +1,11 @@
+import 'package:angie_notebook/Components/text_styling.dart';
 import 'package:angie_notebook/Constants/constants.dart';
-import 'package:angie_notebook/Screens/bus_ticket_page.dart';
-import 'package:angie_notebook/Screens/profile_screen.dart';
-import 'package:angie_notebook/src/features/authentification/screens/login/login_screen.dart';
+import 'package:angie_notebook/Screens/bus_booking_screen.dart';
+import 'package:angie_notebook/src/common_widgets/user_info/user_profile_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../src/features/authentification/sign_up/widgets/sign_up_screen.dart';
-
+import '../src/constants/image_strings.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -25,19 +24,20 @@ class _HomeScreenState extends State<HomeScreen> {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(
-              height: 40.0,
+              height: 30.0,
             ),
             const Padding(
-              padding: EdgeInsets.only(right: 30.0),
+              padding: EdgeInsets.only(left: 30.0),
               child: Text(
                 'Home',
                 style: TextStyle(
-                    fontSize: 30.0,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w700),
+                  fontSize: 30.0,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
             ),
             const SizedBox(
@@ -45,53 +45,86 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Expanded(
               child: Container(
+                padding: const EdgeInsets.all(20.0),
                 height: MediaQuery.of(context).size.height,
                 decoration: kHomeBackgroundBoxDecoration,
-                child: GridView(
-                    padding: const EdgeInsets.all(20.0),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            mainAxisSpacing: 20.0,
-                            crossAxisSpacing: 20.0,
-                            crossAxisCount: 2),
-                    children: [
-                      Navigate(
-                        onTap: () {
-                          Get.to(
-                            () => const BusTicketScreen(),
-                          );
-                        },
-                        label: 'Bus Ticket Screen',
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: const [
+                            AshTextWidget(
+                              text: 'Welcome, ',
+                              fontSize: 18,
+                            ),
+                            BlackTextWidget(
+                              text: 'Awesome Wisdom',
+                              fontSize: 25,
+                              color: Colors.lightBlue,
+                            ),
+                          ],
+                        ),
+                        const Expanded(
+                          child: UserProfileImage(
+                            width: 50,
+                            height: 80,
+                          ),
+                        )
+                      ],
+                    ),
+                    const Divider(
+                      thickness: 0.5,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const BlackTextWidget(
+                      text: 'What would you like to do?',
+                      // color: Colors.lightBlue,
+                      fontSize: 20,
+                    ),
+                    Expanded(
+                      child: GridView(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          mainAxisSpacing: 20.0,
+                          crossAxisSpacing: 20.0,
+                          crossAxisCount: 2,
+                        ),
+                        children: [
+                          HomeWidget(
+                            imageLink: tBusIcon,
+                            label: 'Book Bus Ticket',
+                            onTap: () {
+                              Get.to(
+                                const BusBookingScreen(),
+                              );
+                            },
+                          ),
+                          HomeWidget(
+                            imageLink: tTourIcon,
+                            label: 'Go On Tour',
+                            onTap: () {},
+                          ),
+                          HomeWidget(
+                            imageLink: tLuggagesIcon,
+                            label: 'Luggage Storage',
+                            onTap: () {},
+                          ),
+                          HomeWidget(
+                            imageLink: tLuggageTransport,
+                            label: 'Luggage Transportation',
+                            onTap: () {},
+                          ),
+                        ],
                       ),
-                      Navigate(
-                        onTap: () {
-                          Get.to(
-                            () => const LoginScreen(),
-                          );
-                        },
-                        label: 'Login Screen',
-                      ),
-                      const SizeBoz(
-                        label: 'Login Page',
-                      ),
-                      Navigate(
-                        onTap: () {
-                          Get.to(
-                            () =>   const SignUpScreen(),
-                          );
-                        },
-                        label: 'Sign-Up Screen',
-                      ),
-                      Navigate(
-                        onTap: () {
-                          Get.to(
-                            () => const ProfileScreen(),
-                          );
-                        },
-                        label: 'Profile Screen',
-                      ),
-                      const SizeBoz(),
-                    ]),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
@@ -101,56 +134,73 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-class Navigate extends StatelessWidget {
-  const Navigate({
+class HomeWidget extends StatelessWidget {
+  const HomeWidget({
     Key? key,
-    this.onTap,
     required this.label,
+    required this.imageLink,
+    required this.onTap,
   }) : super(key: key);
-  final void Function()? onTap;
   final String label;
+  final String imageLink;
+  final void Function() onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: onTap,
-        child: SizeBoz(
-          label: label,
-        ));
-  }
-}
-
-class SizeBoz extends StatelessWidget {
-  const SizeBoz({
-    Key? key,
-    this.label = 'Book Bus Seat',
-  }) : super(key: key);
-  final String? label;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 80,
-      width: 80.0,
-      decoration: kSeatScreenBoxDecoration,
-      child: Column(
-        children: [
-          const Expanded(
-            child: CircleAvatar(
-              radius: 50,
-              backgroundImage: AssetImage('assets/images/man-with-guiter.jpg'),
+      onTap: onTap,
+      child: AnimatedContainer(
+        height: 80.0,
+        width: 80.0,
+        decoration: kSeatScreenBoxDecoration,
+        duration: const Duration(seconds: 200),
+        child: Column(
+          children: [
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(15.0),
+                  image: DecorationImage(
+                    image: AssetImage(imageLink),
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
             ),
-          ),
-          Text(
-            label!,
-            style: const TextStyle(fontSize: 10),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                label,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              
+            ),
+          ],
+        ),
       ),
     );
   }
 }
-
 
 // import 'package:flutter/material.dart';
 // import 'package:google_fonts/google_fonts.dart';

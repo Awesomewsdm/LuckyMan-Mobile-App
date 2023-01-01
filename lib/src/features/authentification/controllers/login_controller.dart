@@ -14,7 +14,7 @@ class LoginController extends GetxController {
     await AuthenticationRepository.instance
         .loginUserWithEmailAndPassword(email, password);
     Get.to(
-      const BottomNav(),
+      () => const BottomNav(),
     );
   }
 }

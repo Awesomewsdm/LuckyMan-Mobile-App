@@ -60,7 +60,7 @@ class ExecutiveSeatLayout extends StatelessWidget {
                                     SeatSelectionController
                                         .instance.noOfSeats) {
                                   Get.snackbar('Sorry',
-                                      'you can select only up to 5 seats!',
+                                      'you can select up to 5 seats only!',
                                       colorText: Colors.white,
                                       backgroundColor:
                                           Colors.lightBlue.withOpacity(0.7),

@@ -71,3 +71,6 @@ const String tForgetMailSubTitle =
 const String tContact1 = "0544627962 - Mr. Kassim";
 const String tContact2 = "0242581363 - Smart";
 const String tContact3 = "0548504172 - Miss Gifty";
+
+// -- Booking History Screen - Text
+const String tBookingHistoryScreenTittle = 'Booking History';

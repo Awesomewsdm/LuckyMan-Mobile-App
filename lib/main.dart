@@ -51,7 +51,6 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: SplashScreen.id,
       routes: <String, WidgetBuilder>{
-        
         SplashScreen.id: (context) => const SplashScreen(),
         HomeScreen.id: (context) => const HomeScreen(),
         BusTicketScreen.id: (context) => const BusTicketScreen(),

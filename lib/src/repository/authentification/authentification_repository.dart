@@ -54,11 +54,11 @@ class AuthenticationRepository extends GetxController {
   );
 } on FirebaseAuthException catch (e) {
   if (e.code == 'user-not-found') {
-    print('No user found for that email.');
+   Get.snackbar('Sorry', 'No user found for that email');
   } else if (e.code == 'wrong-password') {
-    print('Wrong password provided for that user.');
+     Get.snackbar('Sorry','You provided a wrong password.');
   }
-} catch (e) {}
+}
   }
 
   Future<void> logout() async => await _auth.signOut();

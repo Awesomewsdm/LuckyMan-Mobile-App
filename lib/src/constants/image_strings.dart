@@ -1,6 +1,12 @@
 
 /* -- App Image Strings -- */
 
+// -- HomeScreen Images -- HomeScreen Images
+
+const String tBusIcon =  "assets/images/bus_icon.jpg";
+   const String tLuggageTransport =  "assets/images/luggage-transport-icon.png";
+    const String tLuggagesIcon =   "assets/images/luggages_icon.jpg";
+ const String tTourIcon =    "assets/images/tour_icon.png";
 
 // -- Splash Screen Images
 const String tSplashTopIcon = "assets/images/splash_images/splash-top-icon.png";

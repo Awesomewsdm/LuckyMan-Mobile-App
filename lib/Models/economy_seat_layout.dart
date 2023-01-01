@@ -40,7 +40,6 @@ class EconomySeatLayout extends StatelessWidget {
                             ),
                           );
                         }
-
                         // numbering the seats
                         seatCounter++;
                         String seatNo = '$seatCounter';
@@ -60,7 +59,7 @@ class EconomySeatLayout extends StatelessWidget {
                                     SeatSelectionController
                                         .instance.noOfSeats) {
                                   Get.snackbar('Sorry',
-                                      'you can select only up to 5 seats!',
+                                      'you can select up to 5 seats only!',
                                       colorText: Colors.white,
                                       backgroundColor:
                                           Colors.blue.withOpacity(0.7),

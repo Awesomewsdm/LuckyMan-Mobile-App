@@ -15,16 +15,24 @@ var kBackgroundBoxDecoration = const BoxDecoration(
 );
 
 var kHomeBackgroundBoxDecoration = const BoxDecoration(
-  boxShadow: [
-    BoxShadow(
-        // blurStyle: BlurStyle.outer,
-        // blurRadius: 1.0
-        ),
-  ],
-  color: Color.fromARGB(255, 255, 255, 255),
+  // boxShadow: [
+  //   BoxShadow(
+  //       // blurStyle: BlurStyle.outer,
+  //       // blurRadius: 1.0
+  //       ),
+  // ],
+  color: Color.fromARGB(253, 253, 253, 253),
   borderRadius: BorderRadius.only(
-    topLeft: Radius.circular(45.0),
-    topRight: Radius.circular(45.0),
+    topLeft: Radius.circular(20.0),
+    topRight: Radius.circular(20.0),
+  ),
+);
+
+var kHomeBackgroundBoxDecoration2 = const BoxDecoration(
+  color: Colors.lightBlue,
+  borderRadius: BorderRadius.only(
+    topLeft: Radius.circular(20.0),
+    topRight: Radius.circular(20.0),
   ),
 );
 
@@ -36,9 +44,9 @@ const kSeatScreenBoxDecoration = BoxDecoration(
       blurRadius: 2.0,
     ),
   ],
-  color: Color.fromARGB(255, 255, 255, 255),
+  color: Colors.white,
   borderRadius: BorderRadius.all(
-    Radius.circular(20.0),
+    Radius.circular(10.0),
   ),
 );
 

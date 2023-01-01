@@ -1,10 +1,11 @@
 import 'package:angie_notebook/Components/widgets.dart';
 import 'package:angie_notebook/Constants/constants.dart';
 import 'package:angie_notebook/src/common_widgets/buttons/bottom_button.dart';
-import 'package:angie_notebook/src/constants/image_strings.dart';
 import 'package:angie_notebook/src/constants/text.dart';
 import 'package:angie_notebook/src/repository/authentification/authentification_repository.dart';
 import 'package:flutter/material.dart';
+
+import '../src/common_widgets/user_info/user_profile_image.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -15,47 +16,49 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       body: CirclesBackgroundPage(
         child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 18.0),
-            child: SizedBox(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              child: Column(
-                children: [
-                  Container(
-                    width: 100.0,
-                    height: 100.0,
-                    padding: const EdgeInsets.all(20.0),
-                    margin: const EdgeInsets.all(10.0),
-                    decoration: BoxDecoration(
-                      color: Colors.green,
-                      borderRadius: BorderRadius.circular(20.0),
-                      
-                      // image: const DecorationImage(
-                      //     image: AssetImage(manWithGuitar), fit: BoxFit.fill),
-                      border: Border.all(
-                        width: 3,
-                        color: Colors.grey.shade800,
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 15,
+                  ),
+                  child: Row(
+                    children: const [
+                      UserProfileImage(),
+                      Text(
+                        'Awesome Wisdom',
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
-                    ),
+                    ],
                   ),
-                  const Text(
-                    'Awesome Wisdom',
-                    style: TextStyle(fontSize: 30.0),
-                  ),
-                  const SizedBox(
-                    height: 20.0,
-                  ),
-                  Expanded(
-                    child: Container(
-                      height: MediaQuery.of(context).size.height,
-                      width: double.infinity,
-                      decoration: kHomeBackgroundBoxDecoration,
-                      child: Padding(
-                        padding: const EdgeInsets.all(20.0),
+                ),
+                Expanded(
+                  child: Container(
+                    height: MediaQuery.of(context).size.height,
+                    width: double.infinity,
+                    decoration: kHomeBackgroundBoxDecoration,
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Expanded(
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text('Account Info'),
+                            const Text(
+                              'Account Info',
+                              style: TextStyle(
+                                color: Colors.blue,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
                             Card(
                               child: ListTile(
                                 leading: Icon(
@@ -68,7 +71,7 @@ class ProfileScreen extends StatelessWidget {
                             Card(
                               child: ListTile(
                                 leading: Icon(
-                                  Icons.credit_card,
+                                  Icons.phone_outlined,
                                   color: Colors.lightBlue[500],
                                 ),
                                 title: const Text('Mobile Number: 0206447220'),
@@ -77,7 +80,7 @@ class ProfileScreen extends StatelessWidget {
                             Card(
                               child: ListTile(
                                 leading: Icon(
-                                  Icons.credit_card,
+                                  Icons.email_outlined,
                                   color: Colors.lightBlue[500],
                                 ),
                                 title:
@@ -87,33 +90,47 @@ class ProfileScreen extends StatelessWidget {
                             const SizedBox(
                               height: 20,
                             ),
-                            const Text('Customer Care'),
-                            Card(
-                              child: ListTile(
-                                leading: Icon(
-                                  Icons.phone_outlined,
-                                  color: Colors.lightBlue[500],
-                                ),
-                                title: const Text(tContact1),
+                            const Text(
+                              'Customer Care',
+                              style: TextStyle(
+                                color: Colors.blue,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
                               ),
                             ),
-                            Card(
-                              child: ListTile(
-                                leading: Icon(
-                                  Icons.phone_outlined,
-                                  color: Colors.lightBlue[500],
-                                ),
-                                title: const Text(tContact2),
-                              ),
+                            const SizedBox(
+                              height: 10.0,
                             ),
                             Card(
-                              child: ListTile(
-                                leading: Icon(
-                                  Icons.phone_outlined,
-                                  color: Colors.lightBlue[500],
-                                ),
-                                title: const Text(tContact3),
+                              color: const Color.fromARGB(250, 250, 250, 250),
+                              child: Column(
+                                children: [
+                                  ListTile(
+                                    leading: Icon(
+                                      Icons.phone_outlined,
+                                      color: Colors.lightBlue[500],
+                                    ),
+                                    title: const Text(tContact1),
+                                  ),
+                                  ListTile(
+                                    leading: Icon(
+                                      Icons.phone_outlined,
+                                      color: Colors.lightBlue[500],
+                                    ),
+                                    title: const Text(tContact2),
+                                  ),
+                                  ListTile(
+                                    leading: Icon(
+                                      Icons.phone_outlined,
+                                      color: Colors.lightBlue[500],
+                                    ),
+                                    title: const Text(tContact3),
+                                  ),
+                                ],
                               ),
+                            ),
+                            const SizedBox(
+                              height: 20.0,
                             ),
                             BottomButton(
                               bottomTextLabel: 'Logout',
@@ -126,8 +143,8 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
