@@ -51,7 +51,7 @@ class EconomySeatLayout extends StatelessWidget {
                           child: GestureDetector(
                             onTap: () {
                               RxList seats = SeatSelectionController
-                                  .instance.selectedSeats;
+                                  .instance.selectedEconomySeats;
                               if (seats.contains(seatNo)) {
                                 seats.remove(seatNo);
                               } else {
@@ -78,7 +78,7 @@ class EconomySeatLayout extends StatelessWidget {
                                   width: seatSize,
                                   decoration: BoxDecoration(
                                     color: SeatSelectionController
-                                            .instance.selectedSeats
+                                            .instance.selectedEconomySeats
                                             .contains(seatNo)
                                         ? selectedSeatColor
                                         : emptySeatColor,
@@ -93,7 +93,7 @@ class EconomySeatLayout extends StatelessWidget {
                                       seatNo,
                                       style: TextStyle(
                                           color: SeatSelectionController
-                                                  .instance.selectedSeats
+                                                  .instance.selectedEconomySeats
                                                   .contains(seatNo)
                                               ? activeSeatNumberColor
                                               : inactiveSeatNumberColor),

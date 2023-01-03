@@ -73,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             width: 50,
                             height: 80,
                           ),
-                        )
+                        ),
                       ],
                     ),
                     const Divider(
@@ -84,7 +84,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     const BlackTextWidget(
                       text: 'What would you like to do?',
-                      // color: Colors.lightBlue,
                       fontSize: 20,
                     ),
                     Expanded(
@@ -113,12 +112,16 @@ class _HomeScreenState extends State<HomeScreen> {
                           HomeWidget(
                             imageLink: tLuggagesIcon,
                             label: 'Luggage Storage',
-                            onTap: () {},
+                            onTap: () {
+                              
+                            },
                           ),
                           HomeWidget(
                             imageLink: tLuggageTransport,
                             label: 'Luggage Transportation',
-                            onTap: () {},
+                            onTap: () {
+
+                            },
                           ),
                         ],
                       ),
@@ -193,7 +196,7 @@ class HomeWidget extends StatelessWidget {
 
 
 
-              
+
             ),
           ],
         ),

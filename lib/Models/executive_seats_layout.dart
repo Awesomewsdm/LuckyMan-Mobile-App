@@ -52,7 +52,7 @@ class ExecutiveSeatLayout extends StatelessWidget {
                           child: GestureDetector(
                             onTap: () {
                               RxList seats = SeatSelectionController
-                                  .instance.selectedSeats;
+                                  .instance.selectedExecutiveSeats;
                               if (seats.contains(seatNo)) {
                                 seats.remove(seatNo);
                               } else {
@@ -77,7 +77,7 @@ class ExecutiveSeatLayout extends StatelessWidget {
                                   width: seatSize,
                                   decoration: BoxDecoration(
                                     color: SeatSelectionController
-                                            .instance.selectedSeats
+                                            .instance.selectedExecutiveSeats
                                             .contains(seatNo)
                                         ? selectedSeatColor
                                         : emptySeatColor,
@@ -92,7 +92,7 @@ class ExecutiveSeatLayout extends StatelessWidget {
                                       seatNo,
                                       style: TextStyle(
                                           color: SeatSelectionController
-                                                  .instance.selectedSeats
+                                                  .instance.selectedExecutiveSeats
                                                   .contains(seatNo)
                                               ? activeSeatNumberColor
                                               : inactiveSeatNumberColor),

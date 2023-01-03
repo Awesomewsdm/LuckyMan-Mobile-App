@@ -1,3 +1,4 @@
+import 'package:angie_notebook/src/common_widgets/buttons/bottom_button.dart';
 import 'package:flutter/material.dart';
 
 class ScreenTemplate extends StatelessWidget {
@@ -16,68 +17,65 @@ class ScreenTemplate extends StatelessWidget {
   final String subTitle;
   final String bottomTextLabel;
   final void Function() onPressed;
+
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Stack(children: <Widget>[
-      Column(
-        children: <Widget>[
-          Container(
-            decoration: BoxDecoration(
-              color: const Color(0xFF10A2E0),
-              borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(34.0),
-                bottomRight: Radius.circular(34.0),
-              ),
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                colorFilter: ColorFilter.mode(
-                    Colors.blueAccent.withOpacity(0.2), BlendMode.dstATop),
-                image:
-                    const AssetImage('assets/images/Intercity-STC-Coaches.jpg'),
-              ),
-            ),
-            width: double.infinity,
-            height: 300.0,
-            child: SafeArea(
-              minimum: const EdgeInsets.only(top: 50.0),
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    children: [
-                      const BackButton(
-                        color: Colors.white,
-                      ),
-                      const SizedBox(
-                        width: 70,
-                      ),
-                      Text(
-                        title,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          fontSize: 24.0,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
+      Container(
+        decoration: BoxDecoration(
+          color: const Color(0xFF10A2E0),
+          borderRadius: const BorderRadius.only(
+            bottomLeft: Radius.circular(34.0),
+            bottomRight: Radius.circular(34.0),
+          ),
+          image: DecorationImage(
+            fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(
+                Colors.blueAccent.withOpacity(0.2), BlendMode.dstATop),
+            image: const AssetImage('assets/images/Intercity-STC-Coaches.jpg'),
+          ),
+        ),
+        width: double.infinity,
+        height: size.height * 0.4,
+        child: SafeArea(
+          minimum: const EdgeInsets.only(top: 50.0),
+          child: Column(
+            children: <Widget>[
+              Row(
+                children: [
+                  const BackButton(
+                    color: Colors.white,
+                  ),
+                  const SizedBox(
+                    width: 70,
                   ),
                   Text(
-                    subTitle,
+                    title,
                     textAlign: TextAlign.center,
                     style: const TextStyle(
-                      fontSize: 14.0,
+                      fontSize: 24.0,
                       color: Colors.white,
                     ),
                   ),
                 ],
               ),
-            ),
+              Text(
+                subTitle,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 14.0,
+                  color: Colors.white,
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
       Center(
         child: Container(
-          height: 560.0,
-          width: 320.0,
+          height: size.height * 0.8,
+          width: size.width * 0.85,
           margin: const EdgeInsets.only(
             top: 120.0,
           ),
@@ -86,6 +84,7 @@ class ScreenTemplate extends StatelessWidget {
           // todo: place booking info here
         ),
       ),
+      BottomButton(onPressed: () {}, bottomTextLabel: 'bottomTextLabel'),
     ]);
   }
 }

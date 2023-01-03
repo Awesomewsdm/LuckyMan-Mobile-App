@@ -29,6 +29,7 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
   String selectedValue = 'ECONOMY';
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -54,8 +55,8 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
       body: CirclesBackgroundPage(
         child: SafeArea(
           child: SizedBox(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
+            height: size.height,
+            width: size.width,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -83,7 +84,7 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
                   height: 2.0,
                 ),
                 Container(
-                  width: MediaQuery.of(context).size.width - 50,
+                  width: size.width - 50,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: Colors.white,
@@ -152,8 +153,8 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
                 Expanded(
                   child: SingleChildScrollView(
                     child: Container(
-                      height: MediaQuery.of(context).size.height,
-                      width: MediaQuery.of(context).size.width - 50,
+                      height: size.height,
+                      width: size.width - 50,
                       // color: const Color.fromRGBO(255, 255, 255, 1.0),
                       decoration: kBackgroundBoxDecoration,
                       child: selectedValue == busClasses[0]
@@ -195,16 +196,29 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const AshTextWidget(text: 'Selected Seat'),
-                          Obx(
-                            () => Text(
-                              SeatSelectionController.instance.selectedSeats
-                                  .join(' , '),
-                              style: const TextStyle(
-                                fontSize: 18.0,
-                                fontWeight: FontWeight.w900,
-                              ),
-                            ),
-                          ),
+                          selectedValue == busClasses[0]
+                              ? Obx(
+                                  () => Text(
+                                    SeatSelectionController
+                                        .instance.selectedEconomySeats
+                                        .join(' , '),
+                                    style: const TextStyle(
+                                      fontSize: 18.0,
+                                      fontWeight: FontWeight.w900,
+                                    ),
+                                  ),
+                                )
+                              : Obx(
+                                  () => Text(
+                                    SeatSelectionController
+                                        .instance.selectedExecutiveSeats
+                                        .join(' , '),
+                                         style: const TextStyle(
+                                      fontSize: 18.0,
+                                      fontWeight: FontWeight.w900,
+                                    ),
+                                  ),
+                                ),
                         ]),
                     Column(
                       children: const [
