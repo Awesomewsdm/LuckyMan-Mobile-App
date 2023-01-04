@@ -34,7 +34,7 @@ class _BusBookingScreenState extends State<BusBookingScreen> {
                   _formKey.currentState!.save();
                 }
                 Get.to(
-                  () => const SeatSelectionScreen(),
+                  () =>  const SeatSelectionScreen(),
                 );
               },
               bottomTextLabel: 'Continue to select a seat',

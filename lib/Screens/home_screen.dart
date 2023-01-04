@@ -1,6 +1,7 @@
 import 'package:angie_notebook/Components/text_styling.dart';
 import 'package:angie_notebook/Constants/constants.dart';
 import 'package:angie_notebook/Screens/bus_booking_screen.dart';
+import 'package:angie_notebook/Screens/seat_selection_screen.dart';
 import 'package:angie_notebook/src/common_widgets/user_info/user_profile_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -107,21 +108,21 @@ class _HomeScreenState extends State<HomeScreen> {
                           HomeWidget(
                             imageLink: tTourIcon,
                             label: 'Go On Tour',
-                            onTap: () {},
+                            onTap: () {
+                              Get.to(
+                                 const SeatSelectionScreen(),
+                              );
+                            },
                           ),
                           HomeWidget(
                             imageLink: tLuggagesIcon,
                             label: 'Luggage Storage',
-                            onTap: () {
-                              
-                            },
+                            onTap: () {},
                           ),
                           HomeWidget(
                             imageLink: tLuggageTransport,
                             label: 'Luggage Transportation',
-                            onTap: () {
-
-                            },
+                            onTap: () {},
                           ),
                         ],
                       ),
@@ -180,23 +181,6 @@ class HomeWidget extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                 ),
               ),
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             ),
           ],
         ),
