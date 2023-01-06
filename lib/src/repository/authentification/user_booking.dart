@@ -1,3 +1,5 @@
+import 'package:angie_notebook/Models/utils/economy_seats.dart';
+import 'package:angie_notebook/Models/utils/executive_seat_layout_model.dart';
 import 'package:angie_notebook/src/common_widgets/destination_seats_layouts/economy__seats_layout/accra_seats_layout.dart';
 import 'package:angie_notebook/src/common_widgets/destination_seats_layouts/economy__seats_layout/cape_coast_seats_layout.dart';
 import 'package:angie_notebook/src/common_widgets/destination_seats_layouts/economy__seats_layout/kasoa_seats_layout.dart';
@@ -5,7 +7,6 @@ import 'package:angie_notebook/src/common_widgets/destination_seats_layouts/econ
 import 'package:angie_notebook/src/common_widgets/destination_seats_layouts/economy__seats_layout/sunyani_seats_layout.dart';
 import 'package:angie_notebook/src/common_widgets/destination_seats_layouts/economy__seats_layout/takoradi_seats_layout.dart';
 import 'package:angie_notebook/src/common_widgets/destination_seats_layouts/economy__seats_layout/tema_seats_layout.dart';
-import 'package:flutter/cupertino.dart';
 
 import '../../common_widgets/destination_seats_layouts/executive_seats_layout/accra_seats_layout.dart';
 import '../../common_widgets/destination_seats_layouts/executive_seats_layout/cape_coast_seats_layout.dart';
@@ -16,11 +17,12 @@ import '../../common_widgets/destination_seats_layouts/executive_seats_layout/ta
 import '../../common_widgets/destination_seats_layouts/executive_seats_layout/tema_seats_layout.dart';
 
 class UserBooking {
-  final int selectedSeats;
-  final String selectedbusClass;
+  // final int selectedSeats;
+  // final String selectedbusClass;
 
-  UserBooking(this.selectedSeats, this.selectedbusClass);
+  final String? selectedDestination;
 
+  UserBooking(this.selectedDestination);
   final economySeatPrice = {
     'Accra': 100,
     'Tema': 110,
@@ -38,48 +40,73 @@ class UserBooking {
     'Sunyani': 110,
   };
 
-  Widget changeSeatsLayout(String selectedDestination) {
+  changeEconomySeatsLayout() {
     if (selectedDestination == 'Accra') {
-      return AccraEconomySeatLayout();
+      return AccraEconomySeatLayout(
+        model: economyseatLayout,
+      );
     } else if (selectedDestination == 'Tema') {
-      return TemaEconomySeatLayout();
+      return TemaEconomySeatLayout(
+        model: economyseatLayout,
+      );
     } else if (selectedDestination == 'Takoradi') {
-      return TakoradiEconomySeatLayout();
+      return TakoradiEconomySeatLayout(
+        model: economyseatLayout,
+      );
     } else if (selectedDestination == 'Cape Coast') {
-      return CapeCoastEconomySeatLayout();
+      return CapeCoastEconomySeatLayout(
+        model: economyseatLayout,
+      );
     } else if (selectedDestination == 'Sunyani') {
-      return SunyaniEconomySeatLayout();
+      return SunyaniEconomySeatLayout(
+        model: economyseatLayout,
+      );
     } else if (selectedDestination == 'Kasoa') {
-      return KasoaEconomySeatLayout();
-    } else if (selectedDestination == 'Koforidua') {
-      return KoforiduaEconomySeatLayout();
+      return KasoaEconomySeatLayout(
+        model: economyseatLayout,
+      );
+    } else {
+      return KoforiduaEconomySeatLayout(
+        model: economyseatLayout,
+      );
     }
+  }
 
-    return AccraEconomySeatLayout();
+  changeExecutiveSeatsLayout() {
+    if (selectedDestination == 'Accra') {
+      return AccraExecutiveSeatLayout(
+        model: executiveseatLayout,
+      );
+    } else if (selectedDestination == 'Tema') {
+      return TemaExecutiveSeatLayout(
+        model: executiveseatLayout,
+      );
+    } else if (selectedDestination == 'Takoradi') {
+      return TakoradiExecutiveSeatLayout(
+        model: executiveseatLayout,
+      );
+    } else if (selectedDestination == 'Cape Coast') {
+      return CapeCoastExecutiveSeatLayout(
+        model: executiveseatLayout,
+      );
+    } else if (selectedDestination == 'Sunyani') {
+      return SunyaniExecutiveSeatLayout(
+        model: executiveseatLayout,
+      );
+    } else if (selectedDestination == 'Kasoa') {
+      return KasoaExecutiveSeatLayout(
+        model: executiveseatLayout,
+      );
+    } else {
+      return KoforiduaExecutiveSeatLayout(
+        model: executiveseatLayout,
+      );
+    }
   }
 }
+  
    
-   
-  Widget changeSeatsLayout(String selectedDestination) {
-    if (selectedDestination == 'Accra') {
-      return AccraExecutiveSeatLayout();
-    } else if (selectedDestination == 'Tema') {
-      return TemaExecutiveSeatLayout();
-    } else if (selectedDestination == 'Takoradi') {
-      return TakoradiExecutiveSeatLayout();
-    } else if (selectedDestination == 'Cape Coast') {
-      return CapeCoastExecutiveSeatLayout();
-    } else if (selectedDestination == 'Sunyani') {
-      return SunyaniExecutiveSeatLayout();
-    } else if (selectedDestination == 'Kasoa') {
-      return KasoaExecutiveSeatLayout();
-    } else if (selectedDestination == 'Koforidua') {
-      return KoforiduaExecutiveSeatLayout();
-    }
-
-    return AccraExecutiveSeatLayout();
-  }
-
+ 
  // void calcPrice() {
     //   // var seatPrice = selectedSeats * executiveSeatPrice.values ;
     // }

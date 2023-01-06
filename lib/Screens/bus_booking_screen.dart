@@ -8,6 +8,7 @@ import '../Components/input_field.dart';
 import '../Components/screen_template.dart';
 import '../Components/text_styling.dart';
 import '../Constants/constants.dart';
+import '../src/common_widgets/buttons/bottom_button.dart';
 
 class BusBookingScreen extends StatefulWidget {
   const BusBookingScreen({Key? key}) : super(key: key);
@@ -18,7 +19,7 @@ class BusBookingScreen extends StatefulWidget {
 }
 
 class _BusBookingScreenState extends State<BusBookingScreen> {
-  String? selectedValue;
+   String? selectedDestination;
 
   final _formKey = GlobalKey<FormState>();
   @override
@@ -33,9 +34,7 @@ class _BusBookingScreenState extends State<BusBookingScreen> {
                 if (_formKey.currentState!.validate()) {
                   _formKey.currentState!.save();
                 }
-                Get.to(
-                  () =>  const SeatSelectionScreen(),
-                );
+               
               },
               bottomTextLabel: 'Continue to select a seat',
               title: 'Bus Selection',
@@ -45,29 +44,35 @@ class _BusBookingScreenState extends State<BusBookingScreen> {
                 child: Form(
                   key: _formKey,
                   child: Column(
-                    children: const [
-                      DropdownMenu(
+                    children: [
+                      const DropdownMenu(
                           items: busType, formLabel: 'Select Bus Type'),
                       DropdownMenu(
-                          items: destinations, formLabel: 'Select destination'),
-                      DropdownMenu(
+                        items: destinations,
+                        formLabel: 'Select destination',
+                        onChanged: (value) {
+                          selectedDestination = value!;
+                          print(selectedDestination);
+                        },
+                      ),
+                      const DropdownMenu(
                           items: departureDate,
                           formLabel: 'Select Depature Date'),
-                      DropdownMenu(
+                      const DropdownMenu(
                           items: departureTime,
                           formLabel: 'Select Depature Time'),
-                      DropdownMenu(
+                      const DropdownMenu(
                           items: pickUpPoints,
                           formLabel: 'Select Pick Up Point'),
-                      SizedBox(height: 10.0),
-                      Text(
+                      const SizedBox(height: 10.0),
+                      const Text(
                         'Leave blank if you don\'t have any agent',
                         style: TextStyle(
                             color: Colors.redAccent,
                             fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(height: 10.0),
-                      Card(
+                      const SizedBox(height: 10.0),
+                      const Card(
                         child: Padding(
                           padding: EdgeInsets.all(8.0),
                           child: InputField(
@@ -83,7 +88,18 @@ class _BusBookingScreenState extends State<BusBookingScreen> {
                 ),
               ),
             ),
-           
+            Positioned(
+              bottom: 0.0,
+              child: BottomButton(
+                  onPressed: () {
+                    Get.to(
+                      () =>  SeatSelectionScreen(
+                        selectedDestination:selectedDestination,
+                      ),
+                    );
+                  },
+                  bottomTextLabel: 'Contine to select a seat'),
+            ),
           ],
         ),
       ),

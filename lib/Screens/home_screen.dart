@@ -100,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             imageLink: tBusIcon,
                             label: 'Book Bus Ticket',
                             onTap: () {
-                              Get.to(
+                              Get.to(()=>
                                 const BusBookingScreen(),
                               );
                             },
@@ -110,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             label: 'Go On Tour',
                             onTap: () {
                               Get.to(
-                                 const SeatSelectionScreen(),
+                                 const SeatSelectionScreen(selectedDestination: '',),
                               );
                             },
                           ),

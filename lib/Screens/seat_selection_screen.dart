@@ -1,12 +1,9 @@
 import 'package:angie_notebook/src/common_widgets/buttons/bottom_button.dart';
 import 'package:angie_notebook/Components/text_styling.dart';
 import 'package:angie_notebook/Constants/constants.dart';
-import 'package:angie_notebook/Models/economy_seat_layout.dart';
-import 'package:angie_notebook/Models/utils/economy_seats.dart';
-import 'package:angie_notebook/Models/utils/executive_seat_layout_model.dart';
-import 'package:angie_notebook/Models/executive_seats_layout.dart';
 import 'package:angie_notebook/Screens/payment_page.dart';
 import 'package:angie_notebook/controllers/seat_selection_controller.dart';
+import 'package:angie_notebook/src/repository/authentification/user_booking.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -167,12 +164,8 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
                       // color: const Color.fromRGBO(255, 255, 255, 1.0),
                       decoration: kBackgroundBoxDecoration,
                       child: selectedValue == busClasses[0]
-                          ? EconomySeatLayout(
-                              model: economyseatLayout,
-                            )
-                          : ExecutiveSeatLayout(
-                              model: executiveseatLayout,
-                            ),
+                          ? UserBooking(  widget.selectedDestination).changeEconomySeatsLayout()
+                          : UserBooking(widget.selectedDestination).changeExecutiveSeatsLayout()
                     ),
                   ),
                 ),

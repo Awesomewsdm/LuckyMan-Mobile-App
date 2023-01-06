@@ -1,4 +1,3 @@
-import 'package:angie_notebook/src/common_widgets/buttons/bottom_button.dart';
 import 'package:flutter/material.dart';
 
 class ScreenTemplate extends StatelessWidget {
@@ -84,7 +83,7 @@ class ScreenTemplate extends StatelessWidget {
           // todo: place booking info here
         ),
       ),
-      BottomButton(onPressed: () {}, bottomTextLabel: 'bottomTextLabel'),
+     
     ]);
   }
 }

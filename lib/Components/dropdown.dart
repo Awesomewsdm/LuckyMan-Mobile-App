@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 
@@ -6,13 +8,17 @@ class DropdownMenu extends StatelessWidget {
     Key? key,
     required this.items,
     required this.formLabel,
-    this.buttonWidth, this.formKey,
+    this.buttonWidth,
+    this.formKey,
+    this.onSaved, this.onChanged,
   }) : super(key: key);
 
   final List<String> items;
   final String formLabel;
   final double? buttonWidth;
   final Key? formKey;
+  final void Function(String?)? onSaved;
+  final void Function(String?)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -51,15 +57,17 @@ class DropdownMenu extends StatelessWidget {
           borderRadius: BorderRadius.circular(8.0),
         ),
         items: items
-            .map((item) => DropdownMenuItem<String>(
-                  value: item,
-                  child: Text(
-                    item,
-                    style: const TextStyle(
-                      fontSize: 14,
-                    ),
+            .map(
+              (item) => DropdownMenuItem<String>(
+                value: item,
+                child: Text(
+                  item,
+                  style: const TextStyle(
+                    fontSize: 14,
                   ),
-                ))
+                ),
+              ),
+            )
             .toList(),
         validator: (value) {
           if (value == null) {
@@ -67,12 +75,11 @@ class DropdownMenu extends StatelessWidget {
           }
           return null;
         },
-        onChanged: (value) {
-          //Do something when changing the item if you want.
-        },
-        onSaved: (value) {
-          // selectedValue = value.toString();
-        },
+        onChanged: onChanged
+        //Do something when changing the item if you want.
+        // widget.selectedDestination = value;
+        ,
+        onSaved: onSaved,
       ),
     );
   }
