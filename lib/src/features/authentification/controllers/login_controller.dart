@@ -13,8 +13,6 @@ class LoginController extends GetxController {
   Future<void> signInUser(String email, String password) async {
     await AuthenticationRepository.instance
         .loginUserWithEmailAndPassword(email, password);
-    Get.to(
-      () => const BottomNav(),
-    );
+    
   }
 }

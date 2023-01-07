@@ -1,6 +1,8 @@
+import 'package:angie_notebook/Models/utils/validators.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../common_widgets/bottom_nav/bottom_nav.dart';
 import '../../../../constants/input_decoration.dart';
 import '../../../../constants/sizes.dart';
 import '../../../../constants/text.dart';
@@ -31,6 +33,13 @@ class SignUpFormWidget extends StatelessWidget {
               height: tFormHeight - 20,
             ),
             TextFormField(
+              validator: (value) {
+                if (value!.isEmpty || value.isValidName) {
+                  return "Please enter a valid name";
+                } else {
+                  return null;
+                }
+              },
               controller: controller.fullName,
               keyboardType: TextInputType.name,
               decoration: const InputDecoration(
@@ -45,6 +54,13 @@ class SignUpFormWidget extends StatelessWidget {
               height: tFormHeight - 20,
             ),
             TextFormField(
+              validator: (value) {
+                if (value!.isEmpty || value.isValidPhone) {
+                  return "Enter a valid phone number";
+                } else {
+                  return null;
+                }
+              },
               controller: controller.studentID,
               keyboardType: TextInputType.number,
               decoration: const InputDecoration(
@@ -59,6 +75,13 @@ class SignUpFormWidget extends StatelessWidget {
               height: tFormHeight - 20,
             ),
             TextFormField(
+              validator: (value) {
+                if (value!.isEmpty || value.isValidPhone) {
+                  return "Enter a valid phone number";
+                } else {
+                  return null;
+                }
+              },
               controller: controller.phoneNo,
               keyboardType: TextInputType.phone,
               decoration: const InputDecoration(
@@ -73,6 +96,13 @@ class SignUpFormWidget extends StatelessWidget {
               height: tFormHeight - 20,
             ),
             TextFormField(
+              validator: (value) {
+                if (value != null || value!.isValidEmail) {
+                  return "Please enter a valid email address";
+                } else {
+                  return null;
+                }
+              },
               controller: controller.email,
               keyboardType: TextInputType.emailAddress,
               decoration: const InputDecoration(
@@ -87,6 +117,13 @@ class SignUpFormWidget extends StatelessWidget {
               height: tFormHeight - 20,
             ),
             TextFormField(
+              validator: (value) {
+                if (value!.isEmpty || value.isValidPassword) {
+                  return "Please enter a valid password";
+                } else {
+                  return null;
+                }
+              },
               controller: controller.password,
               keyboardType: TextInputType.visiblePassword,
               decoration: const InputDecoration(
@@ -118,7 +155,8 @@ class SignUpFormWidget extends StatelessWidget {
                       controller.email.text.trim(),
                       controller.password.text.trim(),
                     );
-                    // Get.to(() => const BottomNav());
+                    _formkey.currentState!.save();
+                    Get.to(() => const BottomNav());
                   }
                 },
                 child: Text(
