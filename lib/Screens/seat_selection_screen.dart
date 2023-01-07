@@ -141,7 +141,7 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
                       //Do something when changing the item if you want.
 
                       // seatSelectionController
-                      //     .selectedDropdownMenuItem = value! ;
+                      //     .selectedDropdownMenuItem = value!;
                       setState(() {
                         selectedValue = value!;
                       });

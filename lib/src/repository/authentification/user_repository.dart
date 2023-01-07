@@ -30,7 +30,7 @@ class UserRepository extends GetxController {
         colorText: Colors.red,
         backgroundColor:  Colors.blue.withOpacity(0.7),
       );
-      print(error.toString());
+      // print(error.toString());
     });
   }
 }
