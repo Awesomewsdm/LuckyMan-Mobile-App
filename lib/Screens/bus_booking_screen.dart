@@ -19,7 +19,7 @@ class BusBookingScreen extends StatefulWidget {
 }
 
 class _BusBookingScreenState extends State<BusBookingScreen> {
-   String? selectedDestination;
+  String? selectedDestination;
 
   final _formKey = GlobalKey<FormState>();
   @override
@@ -34,7 +34,6 @@ class _BusBookingScreenState extends State<BusBookingScreen> {
                 if (_formKey.currentState!.validate()) {
                   _formKey.currentState!.save();
                 }
-               
               },
               bottomTextLabel: 'Continue to select a seat',
               title: 'Bus Selection',
@@ -45,11 +44,10 @@ class _BusBookingScreenState extends State<BusBookingScreen> {
                   key: _formKey,
                   child: Column(
                     children: [
-                       DropdownMenu(
-                        onChanged: (value){
-
-                        },
-                          items: busType, formLabel: 'Select Bus Type'),
+                      DropdownMenu(
+                          onChanged: (value) {},
+                          items: busType,
+                          formLabel: 'Select Bus Type'),
                       DropdownMenu(
                         items: destinations,
                         formLabel: 'Select destination',
@@ -58,22 +56,16 @@ class _BusBookingScreenState extends State<BusBookingScreen> {
                           // print(selectedDestination);
                         },
                       ),
-                       DropdownMenu(
-                        onChanged: (value){
-
-                        },
+                      DropdownMenu(
+                          onChanged: (value) {},
                           items: departureDate,
                           formLabel: 'Select Depature Date'),
-                       DropdownMenu(
-                        onChanged: (value){
-
-                        },
+                      DropdownMenu(
+                          onChanged: (value) {},
                           items: departureTime,
                           formLabel: 'Select Depature Time'),
-                     DropdownMenu(
-                      onChanged: (value){
-
-                        },
+                      DropdownMenu(
+                          onChanged: (value) {},
                           items: pickUpPoints,
                           formLabel: 'Select Pick Up Point'),
                       const SizedBox(height: 10.0),
@@ -105,8 +97,8 @@ class _BusBookingScreenState extends State<BusBookingScreen> {
               child: BottomButton(
                   onPressed: () {
                     Get.to(
-                      () =>  SeatSelectionScreen(
-                        selectedDestination:selectedDestination,
+                      () => SeatSelectionScreen(
+                        selectedDestination: selectedDestination,
                       ),
                     );
                   },

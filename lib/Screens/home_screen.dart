@@ -55,25 +55,25 @@ class _HomeScreenState extends State<HomeScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            AshTextWidget(
-                              text: 'Welcome, ',
-                              fontSize: 18,
-                            ),
-                            BlackTextWidget(
-                              text: 'Awesome Wisdom',
-                              fontSize: 25,
-                              color: Colors.lightBlue,
-                            ),
-                          ],
-                        ),
-                        const Expanded(
-                          child: UserProfileImage(
-                            width: 50,
-                            height: 80,
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: const [
+                              AshTextWidget(
+                                text: 'Welcome, ',
+                                fontSize: 18,
+                              ),
+                              BlackTextWidget(
+                                text: 'Awesome Wisdom',
+                                fontSize: 25,
+                                color: Colors.lightBlue,
+                              ),
+                            ],
                           ),
+                        ),
+                        const UserProfileImage(
+                          width: 60,
+                          height: 60,
                         ),
                       ],
                     ),
