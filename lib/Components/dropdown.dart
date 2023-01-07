@@ -10,7 +10,8 @@ class DropdownMenu extends StatelessWidget {
     required this.formLabel,
     this.buttonWidth,
     this.formKey,
-    this.onSaved, this.onChanged,
+    this.onSaved,
+    this.onChanged, this.validator,
   }) : super(key: key);
 
   final List<String> items;
@@ -19,6 +20,7 @@ class DropdownMenu extends StatelessWidget {
   final Key? formKey;
   final void Function(String?)? onSaved;
   final void Function(String?)? onChanged;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -69,12 +71,7 @@ class DropdownMenu extends StatelessWidget {
               ),
             )
             .toList(),
-        validator: (value) {
-          if (value == null) {
-            return formLabel;
-          }
-          return null;
-        },
+        validator: validator,
         onChanged: onChanged
         //Do something when changing the item if you want.
         // widget.selectedDestination = value;
