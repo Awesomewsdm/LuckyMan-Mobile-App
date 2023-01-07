@@ -12,8 +12,6 @@ class SeatSelectionController extends GetxController {
   RxList selectedTakoradiEconomySeats = [].obs;
   RxList selectedTemaEconomySeats = [].obs;
 
-  
-
   RxList selectedTakoradiExecutiveSeats = [].obs;
   RxList selectedAccraExecutiveSeats = [].obs;
   RxList selectedCapeCoastExecutiveSeats = [].obs;
@@ -26,6 +24,13 @@ class SeatSelectionController extends GetxController {
 
   int noOfSeats = 4;
   RxDouble seatPrice = 0.0.obs;
+
+  @override
+  void onReady() {
+    super.onReady();
+    seatPrice = 0.0.obs;
+    noOfSeats = 4;
+  }
 }
 
 class BottomNavController extends GetxController {

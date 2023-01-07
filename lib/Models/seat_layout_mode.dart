@@ -76,7 +76,7 @@ class SeatLayoutModel {
 
   @override
   String toString() {
-    return 'SeatLayoutModel(rows: $rows, cols: $cols, int>seatTypes: $seatTypes, gap: $gap, gapColIndex: $gapColIndex, isLastFilled: $isLastFilled, rowBreaks: $rowBreaks,)';
+    return 'SeatLayoutModel(rows: $rows, cols: $cols, seatTypes: $seatTypes, gap: $gap, gapColIndex: $gapColIndex, isLastFilled: $isLastFilled, rowBreaks: $rowBreaks,)';
   }
 
   @override

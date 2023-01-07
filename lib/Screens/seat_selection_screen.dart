@@ -1,3 +1,4 @@
+import 'package:angie_notebook/controllers/seat_selection_controller.dart';
 import 'package:angie_notebook/src/common_widgets/buttons/bottom_button.dart';
 import 'package:angie_notebook/Components/text_styling.dart';
 import 'package:angie_notebook/Constants/constants.dart';
@@ -24,11 +25,11 @@ class SeatSelectionScreen extends StatefulWidget {
 }
 
 class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
-  // final SeatSelectionController seatSelectionController =
-  //     Get.put(SeatSelectionController());
+  final SeatSelectionController seatSelectionController =
+      Get.put(SeatSelectionController());
 
   String selectedValue = 'ECONOMY';
-  double amount = 0.0;
+  RxDouble amount = 0.0.obs;
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -194,23 +195,26 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const AshTextWidget(text: 'Selected Seat'),
-                          selectedValue == busClasses[0]
-                              ? UserBooking(widget.selectedDestination)
-                                  .changeEconomySeatList()
-                              : UserBooking(widget.selectedDestination)
-                                  .changeExecutiveSeatList(),
-                        ]),
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const AshTextWidget(text: 'Selected Seat'),
+                        selectedValue == busClasses[0]
+                            ? UserBooking(widget.selectedDestination)
+                                .changeEconomySeatList()
+                            : UserBooking(widget.selectedDestination)
+                                .changeExecutiveSeatList(),
+                      ],
+                    ),
                     Column(
-                      children: const [
-                        AshTextWidget(text: 'Total Price'),
-                        Text(
-                          'GH¢1000',
-                          style: TextStyle(
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.w900,
+                      children: [
+                        const AshTextWidget(text: 'Total Price'),
+                        Obx(
+                          () => Text(
+                            'GH¢${seatSelectionController.seatPrice}',
+                            style: const TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.w900,
+                            ),
                           ),
                         ),
                       ],

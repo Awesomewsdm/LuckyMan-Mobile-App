@@ -17,8 +17,8 @@ class SeatStatus extends StatelessWidget {
     return Column(
       children: [
         Container(
-          height: 28,
-          width: 28,
+          height: 25,
+          width: 25,
           decoration: BoxDecoration(
             shape: BoxShape.rectangle,
             color: boxColor,
@@ -29,12 +29,10 @@ class SeatStatus extends StatelessWidget {
           alignment: Alignment.center,
         ),
         const SizedBox(
-          height: 8.0,
+          height: 5.0,
         ),
         BlackTextWidget(text: iconLabel),
       ],
     );
   }
 }
-
-

@@ -12,9 +12,10 @@ class AccraEconomySeatLayout extends StatelessWidget {
       Get.put(SeatSelectionController());
 
   final SeatLayoutModel? model;
-  final double amount = 0.0;
+
   @override
   Widget build(BuildContext context) {
+    double amount = 0.00;
     int seatCounter = 0;
     // int seatLength = economyseatLayout.seatTypes.length;
     return Column(
@@ -56,10 +57,11 @@ class AccraEconomySeatLayout extends StatelessWidget {
                             onTap: () {
                               RxList seats = SeatSelectionController
                                   .instance.selectedAccraEconomySeats;
-                              double? a = economyseatLayout
-                                  .seatTypes[0]["Accra"];
-                              print(a);
+                              double price =
+                                  economyseatLayout.seatTypes[0]["Accra"]!;
+                              print(price);
                               if (seats.contains(seatNo)) {
+                                amount = amount - price;
                                 seats.remove(seatNo);
                               } else {
                                 if (seats.length >
@@ -73,41 +75,46 @@ class AccraEconomySeatLayout extends StatelessWidget {
                                       snackPosition: SnackPosition.BOTTOM);
 
                                   seats.removeAt(4);
-
+                                  amount = amount + price;
                                   seats.add(seatNo);
                                 } else {
+                                  amount = amount + price;
                                   seats.add(seatNo);
                                 }
                               }
+                              seatSelectionController.seatPrice = amount.obs;
+                              seatSelectionController.update();
+                              print(seatSelectionController.seatPrice);
                             },
-                            child: Obx(() => Container(
-                                  height: seatSize,
-                                  width: seatSize,
-                                  decoration: BoxDecoration(
-                                    color: SeatSelectionController
-                                            .instance.selectedAccraEconomySeats
-                                            .contains(seatNo)
-                                        ? selectedSeatColor
-                                        : emptySeatColor,
-                                    shape: BoxShape.rectangle,
-                                    borderRadius: const BorderRadius.all(
-                                      Radius.circular(7.0),
-                                    ),
+                            child: Obx(
+                              () => Container(
+                                height: seatSize,
+                                width: seatSize,
+                                decoration: BoxDecoration(
+                                  color: SeatSelectionController
+                                          .instance.selectedAccraEconomySeats
+                                          .contains(seatNo)
+                                      ? selectedSeatColor
+                                      : emptySeatColor,
+                                  shape: BoxShape.rectangle,
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(7.0),
                                   ),
-                                  alignment: Alignment.center,
-                                  child: Center(
-                                    child: Text(
-                                      seatNo,
-                                      style: TextStyle(
-                                          color: SeatSelectionController
-                                                  .instance
-                                                  .selectedAccraEconomySeats
-                                                  .contains(seatNo)
-                                              ? activeSeatNumberColor
-                                              : inactiveSeatNumberColor),
-                                    ),
+                                ),
+                                alignment: Alignment.center,
+                                child: Center(
+                                  child: Text(
+                                    seatNo,
+                                    style: TextStyle(
+                                        color: SeatSelectionController.instance
+                                                .selectedAccraEconomySeats
+                                                .contains(seatNo)
+                                            ? activeSeatNumberColor
+                                            : inactiveSeatNumberColor),
                                   ),
-                                )),
+                                ),
+                              ),
+                            ),
                           ),
                         );
                       }),

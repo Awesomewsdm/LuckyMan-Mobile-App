@@ -52,7 +52,7 @@ class _BusBookingScreenState extends State<BusBookingScreen> {
                         formLabel: 'Select destination',
                         onChanged: (value) {
                           selectedDestination = value!;
-                          print(selectedDestination);
+                          // print(selectedDestination);
                         },
                       ),
                       const DropdownMenu(
