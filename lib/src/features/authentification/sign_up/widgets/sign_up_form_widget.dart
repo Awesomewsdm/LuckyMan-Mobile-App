@@ -56,7 +56,7 @@ class SignUpFormWidget extends StatelessWidget {
             TextFormField(
               validator: (value) {
                 if (value!.isEmpty || value.isValidPhone) {
-                  return "Enter a valid phone number";
+                  return "Enter a valid $tStudentID";
                 } else {
                   return null;
                 }
@@ -97,7 +97,7 @@ class SignUpFormWidget extends StatelessWidget {
             ),
             TextFormField(
               validator: (value) {
-                if (value != null || value!.isValidEmail) {
+                if (value!.isEmpty || value.isValidEmail) {
                   return "Please enter a valid email address";
                 } else {
                   return null;

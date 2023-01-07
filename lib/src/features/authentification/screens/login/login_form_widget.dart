@@ -30,7 +30,7 @@ class LoginFormWidget extends StatelessWidget {
             ),
             TextFormField(
               validator: (value) {
-                if (value != null || value!.isValidEmail) {
+                if (value!.isEmpty || value.isValidEmail) {
                   return "Please enter a valid email address";
                 } else {
                   return null;

@@ -17,7 +17,7 @@ extension ExtString on String {
   }
 
   // bool get isNotNull {
-  //   return this != null;
+  // return this != null;
   // }
 
   bool get isValidPhone {
