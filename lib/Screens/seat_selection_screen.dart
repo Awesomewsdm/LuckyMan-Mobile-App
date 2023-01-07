@@ -210,7 +210,7 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
                         const AshTextWidget(text: 'Total Price'),
                         Obx(
                           () => Text(
-                            'GH¢${seatSelectionController.seatPrice}',
+                            'GH¢${seatSelectionController.seatPrice.value}',
                             style: const TextStyle(
                               fontSize: 18.0,
                               fontWeight: FontWeight.w900,

@@ -23,12 +23,12 @@ class SeatSelectionController extends GetxController {
   // RxString selectedDropdownMenuItem = 'ECONOMY'.obs;
 
   int noOfSeats = 4;
-  RxDouble seatPrice = 0.0.obs;
+  RxDouble seatPrice = 0.00.obs;
 
   @override
   void onReady() {
     super.onReady();
-    seatPrice = 0.0.obs;
+    seatPrice = 0.00.obs;
     noOfSeats = 4;
   }
 }

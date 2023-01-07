@@ -59,11 +59,12 @@ class AccraEconomySeatLayout extends StatelessWidget {
                                   .instance.selectedAccraEconomySeats;
                               double price =
                                   economyseatLayout.seatTypes[0]["Accra"]!;
-                              print(price);
+                              // print(price);
                               if (seats.contains(seatNo)) {
                                 amount = amount - price;
                                 seats.remove(seatNo);
                               } else {
+                                amount = amount + price;
                                 if (seats.length >
                                     SeatSelectionController
                                         .instance.noOfSeats) {
@@ -75,15 +76,15 @@ class AccraEconomySeatLayout extends StatelessWidget {
                                       snackPosition: SnackPosition.BOTTOM);
 
                                   seats.removeAt(4);
-                                  amount = amount + price;
+                                  
                                   seats.add(seatNo);
                                 } else {
-                                  amount = amount + price;
+                                  // amount = amount + price;
                                   seats.add(seatNo);
                                 }
                               }
                               seatSelectionController.seatPrice = amount.obs;
-                              seatSelectionController.update();
+                              
                               print(seatSelectionController.seatPrice);
                             },
                             child: Obx(
