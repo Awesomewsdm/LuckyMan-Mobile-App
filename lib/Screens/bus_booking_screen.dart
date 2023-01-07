@@ -45,7 +45,10 @@ class _BusBookingScreenState extends State<BusBookingScreen> {
                   key: _formKey,
                   child: Column(
                     children: [
-                      const DropdownMenu(
+                       DropdownMenu(
+                        onChanged: (value){
+
+                        },
                           items: busType, formLabel: 'Select Bus Type'),
                       DropdownMenu(
                         items: destinations,
@@ -55,13 +58,22 @@ class _BusBookingScreenState extends State<BusBookingScreen> {
                           // print(selectedDestination);
                         },
                       ),
-                      const DropdownMenu(
+                       DropdownMenu(
+                        onChanged: (value){
+
+                        },
                           items: departureDate,
                           formLabel: 'Select Depature Date'),
-                      const DropdownMenu(
+                       DropdownMenu(
+                        onChanged: (value){
+
+                        },
                           items: departureTime,
                           formLabel: 'Select Depature Time'),
-                      const DropdownMenu(
+                     DropdownMenu(
+                      onChanged: (value){
+
+                        },
                           items: pickUpPoints,
                           formLabel: 'Select Pick Up Point'),
                       const SizedBox(height: 10.0),
