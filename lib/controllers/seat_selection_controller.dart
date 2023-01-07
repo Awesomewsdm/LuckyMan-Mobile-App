@@ -2,12 +2,29 @@ import 'package:get/get.dart';
 
 class SeatSelectionController extends GetxController {
   static SeatSelectionController instance = Get.find();
-  RxList selectedEconomySeats = [].obs;
-  RxList selectedExecutiveSeats = [].obs;
+  RxList selectedKoforiduaEconomySeats = [].obs;
+  RxList selectedKoforiduaExecutiveSeats = [].obs;
+
+  RxList selectedAccraEconomySeats = [].obs;
+  RxList selectedCapeCoastEconomySeats = [].obs;
+  RxList selectedKasoaEconomySeats = [].obs;
+  RxList selectedSunyaniEconomySeats = [].obs;
+  RxList selectedTakoradiEconomySeats = [].obs;
+  RxList selectedTemaEconomySeats = [].obs;
+
+  
+
+  RxList selectedTakoradiExecutiveSeats = [].obs;
+  RxList selectedAccraExecutiveSeats = [].obs;
+  RxList selectedCapeCoastExecutiveSeats = [].obs;
+  RxList selectedKasoaExecutiveSeats = [].obs;
+  RxList selectedSunyaniExecutiveSeats = [].obs;
+  RxList selectedTemaExecutiveSeats = [].obs;
+
   //  RxString selectedValue = 'ECONOMY'.obs;
   // RxString selectedDropdownMenuItem = 'ECONOMY'.obs;
 
-    int noOfSeats = 4;
+  int noOfSeats = 4;
   RxDouble seatPrice = 0.0.obs;
 }
 

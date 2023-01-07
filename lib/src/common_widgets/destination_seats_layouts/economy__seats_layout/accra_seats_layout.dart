@@ -1,4 +1,5 @@
 import 'package:angie_notebook/Constants/constants.dart';
+import 'package:angie_notebook/Models/utils/economy_seats.dart';
 import 'package:angie_notebook/controllers/seat_selection_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,20 +7,23 @@ import 'package:get/get.dart';
 import '../../../../Models/seat_layout_mode.dart';
 
 class AccraEconomySeatLayout extends StatelessWidget {
+  AccraEconomySeatLayout({Key? key, this.model}) : super(key: key);
   final SeatSelectionController seatSelectionController =
       Get.put(SeatSelectionController());
-  AccraEconomySeatLayout({Key? key, this.model}) : super(key: key);
+
   final SeatLayoutModel? model;
+  final double amount = 0.0;
   @override
   Widget build(BuildContext context) {
     int seatCounter = 0;
-
+    // int seatLength = economyseatLayout.seatTypes.length;
     return Column(
       children: [
         Expanded(
           child: ListView.builder(
             physics: const ClampingScrollPhysics(),
-            itemCount: model!.seatTypes.length,
+            // model!.seatTypes!.length
+            itemCount: 1,
             itemBuilder: ((context, index) {
               return Column(
                 children: [
@@ -51,7 +55,10 @@ class AccraEconomySeatLayout extends StatelessWidget {
                           child: GestureDetector(
                             onTap: () {
                               RxList seats = SeatSelectionController
-                                  .instance.selectedEconomySeats;
+                                  .instance.selectedAccraEconomySeats;
+                              double? a = economyseatLayout
+                                  .seatTypes[0]["Accra"];
+                              print(a);
                               if (seats.contains(seatNo)) {
                                 seats.remove(seatNo);
                               } else {
@@ -78,7 +85,7 @@ class AccraEconomySeatLayout extends StatelessWidget {
                                   width: seatSize,
                                   decoration: BoxDecoration(
                                     color: SeatSelectionController
-                                            .instance.selectedEconomySeats
+                                            .instance.selectedAccraEconomySeats
                                             .contains(seatNo)
                                         ? selectedSeatColor
                                         : emptySeatColor,
@@ -93,7 +100,8 @@ class AccraEconomySeatLayout extends StatelessWidget {
                                       seatNo,
                                       style: TextStyle(
                                           color: SeatSelectionController
-                                                  .instance.selectedEconomySeats
+                                                  .instance
+                                                  .selectedAccraEconomySeats
                                                   .contains(seatNo)
                                               ? activeSeatNumberColor
                                               : inactiveSeatNumberColor),

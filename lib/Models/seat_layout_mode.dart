@@ -6,7 +6,7 @@ import 'package:flutter/foundation.dart';
 class SeatLayoutModel {
   final int rows;
   final int cols;
-  final List<String> seatTypes;
+  final List<Map<String, double>> seatTypes;
   final int gap;
   final int gapColIndex;
   final bool isLastFilled;
@@ -24,7 +24,7 @@ class SeatLayoutModel {
   SeatLayoutModel copyWith({
     int? rows,
     int? cols,
-    List<String>? seatTypes,
+    List<Map<String, double>>? seatTypes,
     int? gap,
     int? gapColIndex,
     bool? isLastFilled,
@@ -33,11 +33,11 @@ class SeatLayoutModel {
     return SeatLayoutModel(
       rows: rows ?? this.rows,
       cols: cols ?? this.cols,
-      seatTypes: seatTypes ?? this.seatTypes,
+   
       gap: gap ?? this.gap,
       gapColIndex: gapColIndex ?? this.gapColIndex,
       isLastFilled: isLastFilled ?? this.isLastFilled,
-      rowBreaks: rowBreaks ?? this.rowBreaks,
+      rowBreaks: rowBreaks ?? this.rowBreaks, seatTypes: [],
     );
   }
 
@@ -57,14 +57,14 @@ class SeatLayoutModel {
     return SeatLayoutModel(
       rows: map['rows'] as int,
       cols: map['cols'] as int,
-      seatTypes: List<String>.from(
-        (map['seatTypes'] as List<String>),
-      ),
       gap: map['gap'] as int,
       gapColIndex: map['gapColIndex'] as int,
       isLastFilled: map['isLastFilled'] as bool,
       rowBreaks: List<int>.from(
         (map['rowBreaks'] as List<int>),
+      ),
+      seatTypes: List<Map<String, double>>.from(
+        (map['seatTypes'] as List<Map<String, double>>),
       ),
     );
   }
@@ -76,7 +76,7 @@ class SeatLayoutModel {
 
   @override
   String toString() {
-    return 'SeatLayoutModel(rows: $rows, cols: $cols, seatTypes: $seatTypes, gap: $gap, gapColIndex: $gapColIndex, isLastFilled: $isLastFilled, rowBreaks: $rowBreaks)';
+    return 'SeatLayoutModel(rows: $rows, cols: $cols, int>seatTypes: $seatTypes, gap: $gap, gapColIndex: $gapColIndex, isLastFilled: $isLastFilled, rowBreaks: $rowBreaks,)';
   }
 
   @override

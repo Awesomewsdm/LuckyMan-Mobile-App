@@ -19,7 +19,7 @@ class TemaEconomySeatLayout extends StatelessWidget {
         Expanded(
           child: ListView.builder(
             physics: const ClampingScrollPhysics(),
-            itemCount: model!.seatTypes.length,
+            itemCount: 1,
             itemBuilder: ((context, index) {
               return Column(
                 children: [
@@ -51,7 +51,7 @@ class TemaEconomySeatLayout extends StatelessWidget {
                           child: GestureDetector(
                             onTap: () {
                               RxList seats = SeatSelectionController
-                                  .instance.selectedEconomySeats;
+                                  .instance.selectedTemaEconomySeats;
                               if (seats.contains(seatNo)) {
                                 seats.remove(seatNo);
                               } else {
@@ -78,7 +78,7 @@ class TemaEconomySeatLayout extends StatelessWidget {
                                   width: seatSize,
                                   decoration: BoxDecoration(
                                     color: SeatSelectionController
-                                            .instance.selectedEconomySeats
+                                            .instance.selectedTemaEconomySeats
                                             .contains(seatNo)
                                         ? selectedSeatColor
                                         : emptySeatColor,
@@ -93,7 +93,7 @@ class TemaEconomySeatLayout extends StatelessWidget {
                                       seatNo,
                                       style: TextStyle(
                                           color: SeatSelectionController
-                                                  .instance.selectedEconomySeats
+                                                  .instance.selectedTemaEconomySeats
                                                   .contains(seatNo)
                                               ? activeSeatNumberColor
                                               : inactiveSeatNumberColor),
