@@ -15,6 +15,8 @@ class SignUpController extends GetxController {
   final phoneNo = TextEditingController();
   final studentID = TextEditingController();
 
+  RxBool passwordVisible = false.obs;
+  
   final userRepo = Get.put(UserRepository());
 
   Future<void> registerUser(String email, String password) async {

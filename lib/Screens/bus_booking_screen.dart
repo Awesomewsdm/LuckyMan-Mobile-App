@@ -31,9 +31,9 @@ class _BusBookingScreenState extends State<BusBookingScreen> {
             ScreenTemplate(
               decoration: kBackgroundBoxDecoration,
               onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  _formKey.currentState!.save();
-                }
+                // if (_formKey.currentState!.validate()) {
+                //   _formKey.currentState!.save();
+                // }
               },
               bottomTextLabel: 'Continue to select a seat',
               title: 'Bus Selection',
@@ -58,7 +58,6 @@ class _BusBookingScreenState extends State<BusBookingScreen> {
                       ),
                       DropdownMenu(
                           onChanged: (value) {},
-                          
                           items: departureDate,
                           formLabel: 'Select Depature Date'),
                       DropdownMenu(
@@ -93,18 +92,15 @@ class _BusBookingScreenState extends State<BusBookingScreen> {
                 ),
               ),
             ),
-            Positioned(
-              bottom: 0.0,
-              child: BottomButton(
-                  onPressed: () {
-                    Get.to(
-                      () => SeatSelectionScreen(
-                        selectedDestination: selectedDestination,
-                      ),
-                    );
-                  },
-                  bottomTextLabel: 'Contine to select a seat'),
-            ),
+            BottomButton(
+                onPressed: () {
+                  Get.to(
+                    () => SeatSelectionScreen(
+                      selectedDestination: selectedDestination,
+                    ),
+                  );
+                },
+                bottomTextLabel: 'Contine to select a seat'),
           ],
         ),
       ),

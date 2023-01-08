@@ -1,6 +1,7 @@
 import 'package:angie_notebook/Models/utils/validators.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:regexed_validator/regexed_validator.dart';
 
 import '../../../../common_widgets/bottom_nav/bottom_nav.dart';
 import '../../../../constants/input_decoration.dart';
@@ -97,7 +98,7 @@ class SignUpFormWidget extends StatelessWidget {
             ),
             TextFormField(
               validator: (value) {
-                if (value!.isEmpty || value.isValidEmail) {
+                if (value!.isEmpty || !validator.email(value)) {
                   return "Please enter a valid email address";
                 } else {
                   return null;
@@ -116,23 +117,34 @@ class SignUpFormWidget extends StatelessWidget {
             const SizedBox(
               height: tFormHeight - 20,
             ),
-            TextFormField(
-              validator: (value) {
-                if (value!.isEmpty || value.isValidPassword) {
-                  return "Please enter a valid password";
-                } else {
-                  return null;
-                }
-              },
-              controller: controller.password,
-              keyboardType: TextInputType.visiblePassword,
-              decoration: const InputDecoration(
-                contentPadding: EdgeInsets.all(8.0),
-                prefixIcon: Icon(Icons.lock_outline_rounded),
-                suffixIcon: Icon(Icons.remove_red_eye_outlined),
-                labelText: tPassword,
-                hintText: tPassword,
-                border: kOutlineInputBorder,
+            Obx(
+              () => TextFormField(
+                obscureText: controller.passwordVisible.value,
+                validator: (value) {
+                  if (value!.isEmpty || value.isValidPassword) {
+                    return "Please enter a valid password";
+                  } else {
+                    return null;
+                  }
+                },
+                controller: controller.password,
+                keyboardType: TextInputType.visiblePassword,
+                decoration: InputDecoration(
+                  contentPadding: const EdgeInsets.all(8.0),
+                  prefixIcon: const Icon(Icons.lock_outline_rounded),
+                  suffixIcon: IconButton(
+                    icon: Icon(controller.passwordVisible.value
+                        ? Icons.visibility_outlined
+                        : Icons.visibility_off_outlined),
+                    onPressed: () {
+                      controller.passwordVisible.value =
+                          !controller.passwordVisible.value;
+                    },
+                  ),
+                  labelText: tPassword,
+                  hintText: tPassword,
+                  border: kOutlineInputBorder,
+                ),
               ),
             ),
             const SizedBox(
