@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../Models/seat_layout_mode.dart';
+import '../../../../Models/utils/economy_seats.dart';
 
 class CapeCoastEconomySeatLayout extends StatelessWidget {
   final SeatSelectionController seatSelectionController =
@@ -13,7 +14,7 @@ class CapeCoastEconomySeatLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int seatCounter = 0;
-
+    double amount = 0.0;
     return Column(
       children: [
         Expanded(
@@ -54,21 +55,28 @@ class CapeCoastEconomySeatLayout extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap: () {
+                              double price =
+                                  economyseatLayout.seatTypes[4]['Cape Coast']!;
                               RxList seats = SeatSelectionController
                                   .instance.selectedCapeCoastEconomySeats;
                               if (seats.contains(seatNo)) {
+                                amount = amount - price;
                                 seats.remove(seatNo);
                               } else {
+                                amount = amount + price;
+
                                 if (seats.length >
                                     SeatSelectionController
                                         .instance.noOfSeats) {
-                                  Get.snackbar('Sorry',
-                                      'you can select up to 5 seats only!',
-                                      colorText: Colors.white,
-                                      backgroundColor:
-                                          Colors.blue.withOpacity(0.7),
-                                      snackPosition: SnackPosition.BOTTOM);
-
+                                  Get.snackbar(
+                                    'Sorry',
+                                    'you can select up to 5 seats only!',
+                                    colorText: Colors.white,
+                                    backgroundColor:
+                                        Colors.blue.withOpacity(0.7),
+                                    snackPosition: SnackPosition.BOTTOM,
+                                  );
+                                  amount = amount - price;
                                   seats.removeAt(4);
 
                                   seats.add(seatNo);
@@ -76,6 +84,11 @@ class CapeCoastEconomySeatLayout extends StatelessWidget {
                                   seats.add(seatNo);
                                 }
                               }
+                              seatSelectionController.pCapeCoastseatPrice =
+                                  amount.obs;
+
+                              print(
+                                  seatSelectionController.pCapeCoastseatPrice);
                             },
                             child: Obx(() => Container(
                                   height: seatSize,

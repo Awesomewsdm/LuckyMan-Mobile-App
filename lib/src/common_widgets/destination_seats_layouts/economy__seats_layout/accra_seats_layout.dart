@@ -87,9 +87,9 @@ class AccraEconomySeatLayout extends StatelessWidget {
                                   seats.add(seatNo);
                                 }
                               }
-                              seatSelectionController.seatPrice = amount.obs;
+                              seatSelectionController.pAcrraseatPrice = amount.obs;
 
-                              print(seatSelectionController.seatPrice);
+                              print(seatSelectionController.pAcrraseatPrice);
                             },
                             child: Obx(
                               () => Container(

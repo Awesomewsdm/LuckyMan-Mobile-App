@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:regexed_validator/regexed_validator.dart';
 
-import '../../../../common_widgets/bottom_nav/bottom_nav.dart';
 import '../../../../constants/input_decoration.dart';
 import '../../../../constants/sizes.dart';
 import '../../../../constants/text.dart';
