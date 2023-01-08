@@ -20,6 +20,10 @@ class AccraEconomySeatLayout extends StatelessWidget {
     // int seatLength = economyseatLayout.seatTypes.length;
     return Column(
       children: [
+        const Text("Bus Type: Accra - Economy"),
+        const Divider(
+          color: Colors.lightBlue,
+        ),
         Expanded(
           child: ListView.builder(
             physics: const ClampingScrollPhysics(),
@@ -37,7 +41,7 @@ class AccraEconomySeatLayout extends StatelessWidget {
                             (row != model!.rowBreaks[index] - 1 &&
                                 model!.isLastFilled)) {
                           return Padding(
-                            padding: const EdgeInsets.all(13.5),
+                            padding: const EdgeInsets.all(12.0),
                             child: Container(
                               height: seatSize,
                               width: seatSize,

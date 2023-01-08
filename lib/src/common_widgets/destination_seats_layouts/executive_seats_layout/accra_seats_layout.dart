@@ -23,6 +23,10 @@ class AccraExecutiveSeatLayout extends StatelessWidget {
             itemBuilder: ((context, index) {
               return Column(
                 children: [
+                  const Text("Bus Type: Accra - Executive"),
+                  const Divider(
+                    color: Colors.lightBlue,
+                  ),
                   ...List.generate(model!.rowBreaks[index], (row) {
                     return Wrap(
                       children: List.generate(model!.cols, (col) {
@@ -45,8 +49,8 @@ class AccraExecutiveSeatLayout extends StatelessWidget {
                         String seatNo = '$seatCounter';
                         return Padding(
                           padding: const EdgeInsets.symmetric(
-                            horizontal: 10.0,
-                            vertical: 10.0,
+                            horizontal: 15.0,
+                            vertical: 15.0,
                           ),
                           child: GestureDetector(
                             onTap: () {
@@ -77,8 +81,8 @@ class AccraExecutiveSeatLayout extends StatelessWidget {
                                   height: seatSize,
                                   width: seatSize,
                                   decoration: BoxDecoration(
-                                    color: SeatSelectionController
-                                            .instance.selectedAccraExecutiveSeats
+                                    color: SeatSelectionController.instance
+                                            .selectedAccraExecutiveSeats
                                             .contains(seatNo)
                                         ? selectedSeatColor
                                         : emptySeatColor,
@@ -93,7 +97,8 @@ class AccraExecutiveSeatLayout extends StatelessWidget {
                                       seatNo,
                                       style: TextStyle(
                                           color: SeatSelectionController
-                                                  .instance.selectedAccraExecutiveSeats
+                                                  .instance
+                                                  .selectedAccraExecutiveSeats
                                                   .contains(seatNo)
                                               ? activeSeatNumberColor
                                               : inactiveSeatNumberColor),

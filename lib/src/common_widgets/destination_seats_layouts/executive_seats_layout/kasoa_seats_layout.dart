@@ -23,6 +23,10 @@ class KasoaExecutiveSeatLayout extends StatelessWidget {
             itemBuilder: ((context, index) {
               return Column(
                 children: [
+                  const Text("Bus Type: Kasoa - Executive"),
+                  const Divider(
+                    color: Colors.lightBlue,
+                  ),
                   ...List.generate(model!.rowBreaks[index], (row) {
                     return Wrap(
                       children: List.generate(model!.cols, (col) {
@@ -45,8 +49,8 @@ class KasoaExecutiveSeatLayout extends StatelessWidget {
                         String seatNo = '$seatCounter';
                         return Padding(
                           padding: const EdgeInsets.symmetric(
-                            horizontal: 10.0,
-                            vertical: 10.0,
+                            horizontal: 15.0,
+                            vertical: 15.0,
                           ),
                           child: GestureDetector(
                             onTap: () {

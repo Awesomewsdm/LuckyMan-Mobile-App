@@ -3,7 +3,6 @@ import 'package:angie_notebook/src/common_widgets/buttons/bottom_button.dart';
 import 'package:angie_notebook/Components/text_styling.dart';
 import 'package:angie_notebook/Constants/constants.dart';
 import 'package:angie_notebook/Screens/payment_page.dart';
-import 'package:angie_notebook/src/common_widgets/destination_seats_layouts/economy__seats_layout/accra_seats_layout.dart';
 import 'package:angie_notebook/src/repository/authentification/user_booking.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +10,6 @@ import 'package:get/get.dart';
 
 import '../Components/seat_status.dart';
 import '../Components/widgets.dart';
-import '../Models/utils/economy_seats.dart';
 import '../Models/utils/form_items.dart';
 
 class SeatSelectionScreen extends StatefulWidget {
@@ -59,126 +57,121 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
       backgroundColor: const Color.fromARGB(251, 243, 240, 255),
       body: CirclesBackgroundPage(
         child: SafeArea(
-          child: SizedBox(
-            height: size.height,
-            width: size.width,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                const SizedBox(
-                  height: 10.0,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    SeatStatus(
-                      boxColor: emptySeatColor,
-                      iconLabel: 'Available',
-                    ),
-                    SeatStatus(
-                      iconLabel: 'Selected',
-                      boxColor: selectedSeatColor,
-                    ),
-                    SeatStatus(
-                      boxColor: bookedSeatColor,
-                      iconLabel: 'Booked',
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 2.0,
-                ),
-                Container(
-                  width: size.width - 50,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.white,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              const SizedBox(
+                height: 10.0,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  SeatStatus(
+                    boxColor: emptySeatColor,
+                    iconLabel: 'Available',
                   ),
-                  child: DropdownButtonFormField2(
-                    decoration: InputDecoration(
-                      //Add isDense true and zero Padding.
-                      //Add Horizontal padding using buttonPadding and Vertical padding by increasing buttonHeight instead of add Padding here so that The whole TextField Button become clickable, and also the dropdown menu open under The whole TextField Button.
-                      isDense: true,
-                      contentPadding: EdgeInsets.zero,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(
-                          color: Colors.blue,
-                        ),
+                  SeatStatus(
+                    iconLabel: 'Selected',
+                    boxColor: selectedSeatColor,
+                  ),
+                  SeatStatus(
+                    boxColor: bookedSeatColor,
+                    iconLabel: 'Booked',
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 2.0,
+              ),
+              Container(
+                width: size.width - 50,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.white,
+                ),
+                child: DropdownButtonFormField2(
+                  decoration: InputDecoration(
+                    //Add isDense true and zero Padding.
+                    //Add Horizontal padding using buttonPadding and Vertical padding by increasing buttonHeight instead of add Padding here so that The whole TextField Button become clickable, and also the dropdown menu open under The whole TextField Button.
+                    isDense: true,
+                    contentPadding: EdgeInsets.zero,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Colors.blue,
                       ),
-                      //Add more decoration as you want here
-                      //Add label If you want but add hint outside the decoration to be aligned in the button perfectly.
                     ),
-                    isExpanded: true,
-                    hint: const Text(
-                      'Select Bus Class',
-                      style: TextStyle(fontSize: 14),
-                    ),
-                    icon: const Icon(
-                      Icons.arrow_drop_down,
-                      color: Colors.black45,
-                    ),
-                    iconSize: 30,
-                    buttonHeight: 45,
-                    buttonPadding: const EdgeInsets.only(left: 10, right: 10),
-                    dropdownDecoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    items: busClasses
-                        .map((item) => DropdownMenuItem<String>(
-                              value: item,
-                              child: Text(
-                                item,
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                ),
+                    //Add more decoration as you want here
+                    //Add label If you want but add hint outside the decoration to be aligned in the button perfectly.
+                  ),
+                  isExpanded: true,
+                  hint: const Text(
+                    'Select Bus Class',
+                    style: TextStyle(fontSize: 14),
+                  ),
+                  icon: const Icon(
+                    Icons.arrow_drop_down,
+                    color: Colors.black45,
+                  ),
+                  iconSize: 30,
+                  buttonHeight: 45,
+                  buttonPadding: const EdgeInsets.only(left: 10, right: 10),
+                  dropdownDecoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  items: busClasses
+                      .map((item) => DropdownMenuItem<String>(
+                            value: item,
+                            child: Text(
+                              item,
+                              style: const TextStyle(
+                                fontSize: 14,
                               ),
-                            ))
-                        .toList(),
-                    validator: (value) {
-                      if (value == null) {}
-                      return null;
-                    },
-                    onChanged: (value) {
-                      //Do something when changing the item if you want.
+                            ),
+                          ))
+                      .toList(),
+                  validator: (value) {
+                    if (value == null) {}
+                    return null;
+                  },
+                  onChanged: (value) {
+                    //Do something when changing the item if you want.
 
-                      // seatSelectionController
-                      //     .selectedDropdownMenuItem = value!;
-                      setState(() {
-                        selectedValue = value!;
-                      });
-                    },
-                    onSaved: (value) {
-                      // selectedValue = value.toString();
-                    },
+                    // seatSelectionController
+                    //     .selectedDropdownMenuItem = value!;
+                    setState(() {
+                      selectedValue = value!;
+                    });
+                  },
+                  onSaved: (value) {
+                    // selectedValue = value.toString();
+                  },
+                ),
+              ),
+              const SizedBox(
+                height: 10.0,
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Container(
+                    height: size.height,
+                    width: size.width - 50,
+                    // color: const Color.fromRGBO(255, 255, 255, 1.0),
+                    decoration: kBackgroundBoxDecoration,
+                    child: selectedValue == busClasses[0]
+                        ? UserBooking(widget.selectedDestination)
+                            .changeEconomySeatsLayout()
+                        : UserBooking(widget.selectedDestination)
+                            .changeExecutiveSeatsLayout(),
                   ),
                 ),
-                const SizedBox(
-                  height: 10.0,
-                ),
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: Container(
-                      height: size.height,
-                      width: size.width - 50,
-                      // color: const Color.fromRGBO(255, 255, 255, 1.0),
-                      decoration: kBackgroundBoxDecoration,
-                      child: selectedValue == busClasses[0]
-                          ? AccraEconomySeatLayout(
-                              model: economyseatLayout,
-                            )
-                          : UserBooking(widget.selectedDestination)
-                              .changeExecutiveSeatsLayout(),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
       bottomSheet: Container(
-        height: 120.0,
+        height: size.height * 0.15,
         padding: const EdgeInsets.fromLTRB(0, 0, 0, 15.0),
         decoration: const BoxDecoration(
           color: Color.fromARGB(255, 255, 255, 255),
@@ -202,17 +195,8 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
                       children: [
                         const AshTextWidget(text: 'Selected Seat'),
                         selectedValue == busClasses[0]
-                            ? Obx(
-                                () => Text(
-                                  seatSelectionController
-                                      .selectedAccraEconomySeats
-                                      .join(' , '),
-                                  style: const TextStyle(
-                                    fontSize: 18.0,
-                                    fontWeight: FontWeight.w900,
-                                  ),
-                                ),
-                              )
+                            ? UserBooking(widget.selectedDestination)
+                                .changeEconomySeatList()
                             : UserBooking(widget.selectedDestination)
                                 .changeExecutiveSeatList(),
                       ],

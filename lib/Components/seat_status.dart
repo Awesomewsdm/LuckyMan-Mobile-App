@@ -29,7 +29,7 @@ class SeatStatus extends StatelessWidget {
           alignment: Alignment.center,
         ),
         const SizedBox(
-          height: 5.0,
+          height: 3.0,
         ),
         BlackTextWidget(text: iconLabel),
       ],

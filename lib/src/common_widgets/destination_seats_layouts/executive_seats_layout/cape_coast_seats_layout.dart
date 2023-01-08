@@ -19,10 +19,14 @@ class CapeCoastExecutiveSeatLayout extends StatelessWidget {
         Expanded(
           child: ListView.builder(
             physics: const ClampingScrollPhysics(),
-            itemCount:1,
+            itemCount: 1,
             itemBuilder: ((context, index) {
               return Column(
                 children: [
+                  const Text("Bus Type: Cape-Coast - Executive"),
+                  const Divider(
+                    color: Colors.lightBlue,
+                  ),
                   ...List.generate(model!.rowBreaks[index], (row) {
                     return Wrap(
                       children: List.generate(model!.cols, (col) {
@@ -45,8 +49,8 @@ class CapeCoastExecutiveSeatLayout extends StatelessWidget {
                         String seatNo = '$seatCounter';
                         return Padding(
                           padding: const EdgeInsets.symmetric(
-                            horizontal: 10.0,
-                            vertical: 10.0,
+                            horizontal: 15.0,
+                            vertical: 12.0,
                           ),
                           child: GestureDetector(
                             onTap: () {
@@ -77,8 +81,8 @@ class CapeCoastExecutiveSeatLayout extends StatelessWidget {
                                   height: seatSize,
                                   width: seatSize,
                                   decoration: BoxDecoration(
-                                    color: SeatSelectionController
-                                            .instance.selectedCapeCoastExecutiveSeats
+                                    color: SeatSelectionController.instance
+                                            .selectedCapeCoastExecutiveSeats
                                             .contains(seatNo)
                                         ? selectedSeatColor
                                         : emptySeatColor,
@@ -93,7 +97,8 @@ class CapeCoastExecutiveSeatLayout extends StatelessWidget {
                                       seatNo,
                                       style: TextStyle(
                                           color: SeatSelectionController
-                                                  .instance.selectedCapeCoastExecutiveSeats
+                                                  .instance
+                                                  .selectedCapeCoastExecutiveSeats
                                                   .contains(seatNo)
                                               ? activeSeatNumberColor
                                               : inactiveSeatNumberColor),

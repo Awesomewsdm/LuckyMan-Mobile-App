@@ -23,6 +23,10 @@ class SunyaniEconomySeatLayout extends StatelessWidget {
             itemBuilder: ((context, index) {
               return Column(
                 children: [
+                  const Text("Bus Type: Sunyani - Economy"),
+                  const Divider(
+                    color: Colors.lightBlue,
+                  ),
                   ...List.generate(model!.rowBreaks[index], (row) {
                     return Wrap(
                       children: List.generate(model!.cols, (col) {
@@ -32,7 +36,7 @@ class SunyaniEconomySeatLayout extends StatelessWidget {
                             (row != model!.rowBreaks[index] - 1 &&
                                 model!.isLastFilled)) {
                           return Padding(
-                            padding: const EdgeInsets.all(13.5),
+                            padding: const EdgeInsets.all(12.0),
                             child: Container(
                               height: seatSize,
                               width: seatSize,
@@ -77,8 +81,8 @@ class SunyaniEconomySeatLayout extends StatelessWidget {
                                   height: seatSize,
                                   width: seatSize,
                                   decoration: BoxDecoration(
-                                    color: SeatSelectionController
-                                            .instance.selectedSunyaniEconomySeats
+                                    color: SeatSelectionController.instance
+                                            .selectedSunyaniEconomySeats
                                             .contains(seatNo)
                                         ? selectedSeatColor
                                         : emptySeatColor,
@@ -93,7 +97,8 @@ class SunyaniEconomySeatLayout extends StatelessWidget {
                                       seatNo,
                                       style: TextStyle(
                                           color: SeatSelectionController
-                                                  .instance.selectedSunyaniEconomySeats
+                                                  .instance
+                                                  .selectedSunyaniEconomySeats
                                                   .contains(seatNo)
                                               ? activeSeatNumberColor
                                               : inactiveSeatNumberColor),

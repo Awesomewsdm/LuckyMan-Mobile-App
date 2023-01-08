@@ -23,6 +23,10 @@ class KasoaEconomySeatLayout extends StatelessWidget {
             itemBuilder: ((context, index) {
               return Column(
                 children: [
+                  const Text("Bus Type: Kasoa - Economy"),
+                  const Divider(
+                    color: Colors.lightBlue,
+                  ),
                   ...List.generate(model!.rowBreaks[index], (row) {
                     return Wrap(
                       children: List.generate(model!.cols, (col) {
@@ -32,7 +36,7 @@ class KasoaEconomySeatLayout extends StatelessWidget {
                             (row != model!.rowBreaks[index] - 1 &&
                                 model!.isLastFilled)) {
                           return Padding(
-                            padding: const EdgeInsets.all(13.5),
+                            padding: const EdgeInsets.all(12.0),
                             child: Container(
                               height: seatSize,
                               width: seatSize,
@@ -93,7 +97,8 @@ class KasoaEconomySeatLayout extends StatelessWidget {
                                       seatNo,
                                       style: TextStyle(
                                           color: SeatSelectionController
-                                                  .instance.selectedKasoaEconomySeats
+                                                  .instance
+                                                  .selectedKasoaEconomySeats
                                                   .contains(seatNo)
                                               ? activeSeatNumberColor
                                               : inactiveSeatNumberColor),

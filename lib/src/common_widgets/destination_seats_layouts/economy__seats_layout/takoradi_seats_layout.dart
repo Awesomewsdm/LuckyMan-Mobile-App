@@ -19,10 +19,14 @@ class TakoradiEconomySeatLayout extends StatelessWidget {
         Expanded(
           child: ListView.builder(
             physics: const ClampingScrollPhysics(),
-            itemCount:1,
+            itemCount: 1,
             itemBuilder: ((context, index) {
               return Column(
                 children: [
+                  const Text("Bus Type: Takoradi - Economy"),
+                  const Divider(
+                    color: Colors.lightBlue,
+                  ),
                   ...List.generate(model!.rowBreaks[index], (row) {
                     return Wrap(
                       children: List.generate(model!.cols, (col) {
@@ -32,7 +36,7 @@ class TakoradiEconomySeatLayout extends StatelessWidget {
                             (row != model!.rowBreaks[index] - 1 &&
                                 model!.isLastFilled)) {
                           return Padding(
-                            padding: const EdgeInsets.all(13.5),
+                            padding: const EdgeInsets.all(12.0),
                             child: Container(
                               height: seatSize,
                               width: seatSize,
@@ -77,8 +81,8 @@ class TakoradiEconomySeatLayout extends StatelessWidget {
                                   height: seatSize,
                                   width: seatSize,
                                   decoration: BoxDecoration(
-                                    color: SeatSelectionController
-                                            .instance.selectedTakoradiEconomySeats
+                                    color: SeatSelectionController.instance
+                                            .selectedTakoradiEconomySeats
                                             .contains(seatNo)
                                         ? selectedSeatColor
                                         : emptySeatColor,
@@ -93,7 +97,8 @@ class TakoradiEconomySeatLayout extends StatelessWidget {
                                       seatNo,
                                       style: TextStyle(
                                           color: SeatSelectionController
-                                                  .instance.selectedTakoradiEconomySeats
+                                                  .instance
+                                                  .selectedTakoradiEconomySeats
                                                   .contains(seatNo)
                                               ? activeSeatNumberColor
                                               : inactiveSeatNumberColor),
