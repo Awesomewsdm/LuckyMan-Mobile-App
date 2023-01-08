@@ -3,6 +3,7 @@ import 'package:angie_notebook/src/common_widgets/buttons/bottom_button.dart';
 import 'package:angie_notebook/Components/text_styling.dart';
 import 'package:angie_notebook/Constants/constants.dart';
 import 'package:angie_notebook/Screens/payment_page.dart';
+import 'package:angie_notebook/src/common_widgets/destination_seats_layouts/economy__seats_layout/accra_seats_layout.dart';
 import 'package:angie_notebook/src/repository/authentification/user_booking.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ import 'package:get/get.dart';
 
 import '../Components/seat_status.dart';
 import '../Components/widgets.dart';
+import '../Models/utils/economy_seats.dart';
 import '../Models/utils/form_items.dart';
 
 class SeatSelectionScreen extends StatefulWidget {
@@ -147,7 +149,7 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
                       });
                     },
                     onSaved: (value) {
-                      // selectedValue = value.toString();  
+                      // selectedValue = value.toString();
                     },
                   ),
                 ),
@@ -162,8 +164,9 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
                       // color: const Color.fromRGBO(255, 255, 255, 1.0),
                       decoration: kBackgroundBoxDecoration,
                       child: selectedValue == busClasses[0]
-                          ? UserBooking(widget.selectedDestination)
-                              .changeEconomySeatsLayout()
+                          ? AccraEconomySeatLayout(
+                              model: economyseatLayout,
+                            )
                           : UserBooking(widget.selectedDestination)
                               .changeExecutiveSeatsLayout(),
                     ),
@@ -199,8 +202,17 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
                       children: [
                         const AshTextWidget(text: 'Selected Seat'),
                         selectedValue == busClasses[0]
-                            ? UserBooking(widget.selectedDestination)
-                                .changeEconomySeatList()
+                            ? Obx(
+                                () => Text(
+                                  seatSelectionController
+                                      .selectedAccraEconomySeats
+                                      .join(' , '),
+                                  style: const TextStyle(
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.w900,
+                                  ),
+                                ),
+                              )
                             : UserBooking(widget.selectedDestination)
                                 .changeExecutiveSeatList(),
                       ],

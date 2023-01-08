@@ -31,7 +31,7 @@ class LoginFormWidget extends StatelessWidget {
             ),
             TextFormField(
               validator: (value) {
-                if (value!.isEmpty ||!validator.email(value)) {
+                if (value!.isEmpty || !validator.email(value.trim())) {
                   return "Please enter a valid email address";
                 } else {
                   return null;
@@ -50,11 +50,11 @@ class LoginFormWidget extends StatelessWidget {
             const SizedBox(
               height: tFormHeight - 20,
             ),
-             Obx(
+            Obx(
               () => TextFormField(
                 obscureText: controller.passwordVisible.value,
                 validator: (value) {
-                  if (value!.isEmpty || value.isValidPassword) {
+                  if (value!.isEmpty || value.trim().isValidPassword) {
                     return "Please enter a valid password";
                   } else {
                     return null;
@@ -86,15 +86,13 @@ class LoginFormWidget extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
                   if (_formkey.currentState!.validate()) {
-                    LoginController.instance.signInUser(
+                    await LoginController.instance.signInUser(
                       controller.email.text.trim(),
                       controller.password.text.trim(),
                     );
-                    Get.to(
-                      () => const BottomNav(),
-                    );
+                  
                   }
                 },
                 child: Text(

@@ -30,10 +30,11 @@ class AuthenticationRepository extends GetxController {
   Future<void> createUserWithEmailAndPassword(
       String email, String password) async {
     try {
-      await _auth.createUserWithEmailAndPassword(email: email, password: password);
+      await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
       firebaseUser.value != null
-          ? Get.offAll(() =>const BottomNav() )
-          : Get.offAll(() =>  const SignUpScreen());
+          ? Get.offAll(() => const BottomNav())
+          : Get.offAll(() => const SignUpScreen());
     } on FirebaseAuthException catch (e) {
       final ex = SignUpWithEmailAndPasswordFailure.code(e.code);
       // print('FIREBASE AUTH EXCEPTION ${ex.message}');
@@ -47,18 +48,20 @@ class AuthenticationRepository extends GetxController {
 
   Future<void> loginUserWithEmailAndPassword(
       String email, String password) async {
-   try {
-   await FirebaseAuth.instance.signInWithEmailAndPassword(
-    email: email,
-    password: password
-  );
-} on FirebaseAuthException catch (e) {
-  if (e.code == 'user-not-found') {
-   Get.snackbar('Sorry', 'No user found for that email');
-  } else if (e.code == 'wrong-password') {
-     Get.snackbar('Sorry','You provided a wrong password.');
-  }
-}
+    try {
+      await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: password);
+      Get.snackbar('SUCCESS', 'You,ve been successfully logged in');
+      Get.to(
+        () => const BottomNav(),
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        Get.snackbar('Sorry', 'No user found for that email');
+      } else if (e.code == 'wrong-password') {
+        Get.snackbar('Sorry', 'You provided a wrong password.');
+      }
+    }
   }
 
   Future<void> logout() async => await _auth.signOut();

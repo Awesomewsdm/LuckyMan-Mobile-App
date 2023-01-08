@@ -74,9 +74,9 @@ class AccraEconomySeatLayout extends StatelessWidget {
                                       backgroundColor:
                                           Colors.blue.withOpacity(0.7),
                                       snackPosition: SnackPosition.BOTTOM);
-
+                                  amount = amount - price;
                                   seats.removeAt(4);
-                                  
+
                                   seats.add(seatNo);
                                 } else {
                                   // amount = amount + price;
@@ -84,7 +84,7 @@ class AccraEconomySeatLayout extends StatelessWidget {
                                 }
                               }
                               seatSelectionController.seatPrice = amount.obs;
-                              
+
                               print(seatSelectionController.seatPrice);
                             },
                             child: Obx(
