@@ -1,5 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class UserModel {
   final String? id;
   final String fullName;
@@ -24,5 +26,18 @@ class UserModel {
       'phoneNumber': phoneNumber,
       'password': password,
     };
+  }
+
+  factory UserModel.fromSnaphot(
+      DocumentSnapshot<Map<String, dynamic>> document) {
+    final data = document.data()!;
+    return UserModel(
+      id: document.id,
+      fullName: data["fullName"],
+      email: data["email"],
+      phoneNumber: data["studentID"],
+      password: data["password"],
+      studentID: data["studentID"],
+    );
   }
 }

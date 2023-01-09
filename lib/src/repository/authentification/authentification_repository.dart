@@ -33,8 +33,12 @@ class AuthenticationRepository extends GetxController {
       await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       firebaseUser.value != null
-          ? Get.offAll(() => const BottomNav())
-          : Get.offAll(() => const SignUpScreen());
+          ? Get.offAll(
+              () => const BottomNav(),
+            )
+          : Get.offAll(
+              () => const SignUpScreen(),
+            );
     } on FirebaseAuthException catch (e) {
       final ex = SignUpWithEmailAndPasswordFailure.code(e.code);
       // print('FIREBASE AUTH EXCEPTION ${ex.message}');

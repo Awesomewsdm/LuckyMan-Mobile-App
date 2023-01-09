@@ -80,7 +80,7 @@ class ProfileScreen extends StatelessWidget {
                             Icons.email_outlined,
                             color: Colors.lightBlue[500],
                           ),
-                          title: const Text('E-mail: awesomewsdm@gmail.com'),
+                          title: const Text(),
                         ),
                       ),
                       const SizedBox(
