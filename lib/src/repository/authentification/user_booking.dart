@@ -10,7 +10,7 @@ import 'package:angie_notebook/src/common_widgets/destination_seats_layouts/econ
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../controllers/seat_selection_controller.dart';
+import '../../features/authentification/controllers/seat_selection_controller.dart';
 import '../../common_widgets/destination_seats_layouts/executive_seats_layout/accra_seats_layout.dart';
 import '../../common_widgets/destination_seats_layouts/executive_seats_layout/cape_coast_seats_layout.dart';
 import '../../common_widgets/destination_seats_layouts/executive_seats_layout/kasoa_seats_layout.dart';
@@ -29,22 +29,22 @@ class UserBooking {
       Get.put(SeatSelectionController());
 
   UserBooking(this.selectedDestination);
-  final economySeatPrice = {
-    'Accra': 100,
-    'Tema': 110,
-    'Kasoa': 100,
-    'Cape Coast': 90,
-    'Koforidua': 80,
-    'Sunyani': 100,
-  };
-  final executiveSeatPrice = {
-    'Accra': 120,
-    'Tema': 130,
-    'Kasoa': 120,
-    'Cape Coast': 100,
-    'Koforidua': 100,
-    'Sunyani': 110,
-  };
+  // final economySeatPrice = {
+  //   'Accra': 100,
+  //   'Tema': 110,
+  //   'Kasoa': 100,
+  //   'Cape Coast': 90,
+  //   'Koforidua': 80,
+  //   'Sunyani': 100,
+  // };
+  // final executiveSeatPrice = {
+  //   'Accra': 120,
+  //   'Tema': 130,
+  //   'Kasoa': 120,
+  //   'Cape Coast': 100,
+  //   'Koforidua': 100,
+  //   'Sunyani': 110,
+  // };
 
   changeEconomySeatsLayout() {
     if (selectedDestination == 'Accra') {

@@ -22,7 +22,7 @@ class ProfileScreen extends StatelessWidget {
       child: SafeArea(
         child: FutureBuilder(
           future: profileController.getUserData(),
-          builder: (context, AsyncSnapshot<dynamic> snapshot) {
+          builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.done) {
               if (snapshot.hasData) {
                 UserModel userData = snapshot.data as UserModel;
@@ -34,11 +34,11 @@ class ProfileScreen extends StatelessWidget {
                         vertical: 15,
                       ),
                       child: Row(
-                        children: const [
-                          UserProfileImage(),
+                        children:  [
+                          const UserProfileImage(),
                           Text(
-                            'Awesome Wisdom',
-                            style: TextStyle(
+                            userData.fullName,
+                            style: const TextStyle(
                               fontSize: 20.0,
                               color: Colors.white,
                               fontWeight: FontWeight.w500,

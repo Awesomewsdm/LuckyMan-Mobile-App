@@ -1,5 +1,5 @@
 import 'package:angie_notebook/Constants/constants.dart';
-import 'package:angie_notebook/controllers/seat_selection_controller.dart';
+import 'package:angie_notebook/src/features/authentification/controllers/seat_selection_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
