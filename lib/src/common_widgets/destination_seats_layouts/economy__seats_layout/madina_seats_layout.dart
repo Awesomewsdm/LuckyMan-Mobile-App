@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../Models/seat_layout_mode.dart';
+import '../../../../Models/utils/economy_seats.dart';
 
 class KoforiduaEconomySeatLayout extends StatelessWidget {
   final SeatSelectionController seatSelectionController =
@@ -13,7 +14,7 @@ class KoforiduaEconomySeatLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int seatCounter = 0;
-
+double amount = 0.0;
     return Column(
       children: [
         Expanded(
@@ -54,11 +55,15 @@ class KoforiduaEconomySeatLayout extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap: () {
+                              double price =
+                                  economyseatLayout.seatTypes[5]['Madina']!;
                               RxList seats = SeatSelectionController
                                   .instance.selectedKoforiduaEconomySeats;
                               if (seats.contains(seatNo)) {
+                                amount = amount + price;
                                 seats.remove(seatNo);
                               } else {
+                                amount = amount - price;
                                 if (seats.length >
                                     SeatSelectionController
                                         .instance.noOfSeats) {
@@ -68,7 +73,7 @@ class KoforiduaEconomySeatLayout extends StatelessWidget {
                                       backgroundColor:
                                           Colors.blue.withOpacity(0.7),
                                       snackPosition: SnackPosition.BOTTOM);
-
+                                      amount = amount - price;
                                   seats.removeAt(4);
 
                                   seats.add(seatNo);
@@ -76,6 +81,10 @@ class KoforiduaEconomySeatLayout extends StatelessWidget {
                                   seats.add(seatNo);
                                 }
                               }
+                              seatSelectionController.pKoforiduaseatPrice =
+                                  amount.obs;
+
+                              print(seatSelectionController.pKoforiduaseatPrice.value);
                             },
                             child: Obx(() => Container(
                                   height: seatSize,

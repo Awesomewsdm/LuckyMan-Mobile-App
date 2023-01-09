@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../Models/seat_layout_mode.dart';
+import '../../../../Models/utils/economy_seats.dart';
 
 class TemaEconomySeatLayout extends StatelessWidget {
   final SeatSelectionController seatSelectionController =
@@ -13,7 +14,7 @@ class TemaEconomySeatLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int seatCounter = 0;
-
+    double amount = 0.0;
     return Column(
       children: [
         Expanded(
@@ -54,6 +55,8 @@ class TemaEconomySeatLayout extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap: () {
+                               double price =
+                                  economyseatLayout.seatTypes[1]['Tema']!;
                               RxList seats = SeatSelectionController
                                   .instance.selectedTemaEconomySeats;
                               if (seats.contains(seatNo)) {

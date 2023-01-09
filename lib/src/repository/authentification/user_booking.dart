@@ -3,7 +3,7 @@ import 'package:angie_notebook/Models/utils/executive_seat_layout_model.dart';
 import 'package:angie_notebook/src/common_widgets/destination_seats_layouts/economy__seats_layout/accra_seats_layout.dart';
 import 'package:angie_notebook/src/common_widgets/destination_seats_layouts/economy__seats_layout/cape_coast_seats_layout.dart';
 import 'package:angie_notebook/src/common_widgets/destination_seats_layouts/economy__seats_layout/kasoa_seats_layout.dart';
-import 'package:angie_notebook/src/common_widgets/destination_seats_layouts/economy__seats_layout/koforidua_seats_layout.dart';
+import 'package:angie_notebook/src/common_widgets/destination_seats_layouts/economy__seats_layout/madina_seats_layout.dart';
 import 'package:angie_notebook/src/common_widgets/destination_seats_layouts/economy__seats_layout/sunyani_seats_layout.dart';
 import 'package:angie_notebook/src/common_widgets/destination_seats_layouts/economy__seats_layout/takoradi_seats_layout.dart';
 import 'package:angie_notebook/src/common_widgets/destination_seats_layouts/economy__seats_layout/tema_seats_layout.dart';

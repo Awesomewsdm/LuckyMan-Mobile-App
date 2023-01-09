@@ -34,6 +34,7 @@ class SignUpFormWidget extends StatelessWidget {
               height: tFormHeight - 20,
             ),
             TextFormField(
+              autofillHints:const [ AutofillHints.name],
               validator: (value) {
                 if (value!.isEmpty || !validator.name(value.trim())) {
                   return "Please enter a valid name";
@@ -76,6 +77,8 @@ class SignUpFormWidget extends StatelessWidget {
               height: tFormHeight - 20,
             ),
             TextFormField(
+              autofillHints: const [AutofillHints.telephoneNumber],
+
               validator: (value) {
                 if (value!.isEmpty || value.isValidPhone) {
                   return "Enter a valid phone number";
@@ -97,6 +100,7 @@ class SignUpFormWidget extends StatelessWidget {
               height: tFormHeight - 20,
             ),
             TextFormField(
+              autofillHints: const [AutofillHints.email],
               validator: (value) {
                 if (value!.isEmpty || !validator.email(value.trim())) {
                   return "Please enter a valid email address";
@@ -119,6 +123,7 @@ class SignUpFormWidget extends StatelessWidget {
             ),
             Obx(
               () => TextFormField(
+                autofillHints: const [AutofillHints.newPassword],
                 obscureText: controller.passwordVisible.value,
                 validator: (value) {
                   if (value!.isEmpty || value.isValidPassword) {

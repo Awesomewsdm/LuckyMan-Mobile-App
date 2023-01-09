@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../Models/seat_layout_mode.dart';
+import '../../../../Models/utils/economy_seats.dart';
 
 class KasoaEconomySeatLayout extends StatelessWidget {
   final SeatSelectionController seatSelectionController =
@@ -13,7 +14,7 @@ class KasoaEconomySeatLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int seatCounter = 0;
-
+double amount = 0.0;
     return Column(
       children: [
         Expanded(
@@ -56,9 +57,13 @@ class KasoaEconomySeatLayout extends StatelessWidget {
                             onTap: () {
                               RxList seats = SeatSelectionController
                                   .instance.selectedKasoaEconomySeats;
+                                  double price =
+                                  economyseatLayout.seatTypes[3]['Kasoa']!;
                               if (seats.contains(seatNo)) {
+                                amount = amount - price;
                                 seats.remove(seatNo);
                               } else {
+                                amount = amount + price;
                                 if (seats.length >
                                     SeatSelectionController
                                         .instance.noOfSeats) {
@@ -68,13 +73,17 @@ class KasoaEconomySeatLayout extends StatelessWidget {
                                       backgroundColor:
                                           Colors.blue.withOpacity(0.7),
                                       snackPosition: SnackPosition.BOTTOM);
-
+                                    amount = amount - price;
                                   seats.removeAt(4);
 
                                   seats.add(seatNo);
                                 } else {
                                   seats.add(seatNo);
                                 }
+                                seatSelectionController.pKasoaseatPrice =
+                                  amount.obs;
+
+                              print(seatSelectionController.pKasoaseatPrice.value);
                               }
                             },
                             child: Obx(() => Container(

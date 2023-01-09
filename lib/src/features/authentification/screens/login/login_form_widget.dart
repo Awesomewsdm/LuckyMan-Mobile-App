@@ -36,6 +36,7 @@ class LoginFormWidget extends StatelessWidget {
                   return null;
                 }
               },
+              autofillHints:const [ AutofillHints.email],
               controller: controller.email,
               keyboardType: TextInputType.emailAddress,
               decoration: const InputDecoration(
@@ -51,6 +52,7 @@ class LoginFormWidget extends StatelessWidget {
             ),
             Obx(
               () => TextFormField(
+                autofillHints: const [AutofillHints.password],
                 obscureText: controller.passwordVisible.value,
                 validator: (value) {
                   if (value!.isEmpty || value.trim().isValidPassword) {
