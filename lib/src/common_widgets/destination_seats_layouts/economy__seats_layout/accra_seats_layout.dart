@@ -20,6 +20,7 @@ class AccraEconomySeatLayout extends StatelessWidget {
     // int seatLength = economyseatLayout.seatTypes.length;
     return Column(
       children: [
+        
         const Text("Bus Type: Accra - Economy"),
         const Divider(
           color: Colors.lightBlue,
@@ -87,7 +88,8 @@ class AccraEconomySeatLayout extends StatelessWidget {
                                   seats.add(seatNo);
                                 }
                               }
-                              seatSelectionController.pAcrraseatPrice = amount.obs;
+                              seatSelectionController.pAcrraseatPrice =
+                                  amount.obs;
 
                               print(seatSelectionController.pAcrraseatPrice);
                             },

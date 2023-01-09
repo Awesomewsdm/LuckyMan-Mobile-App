@@ -3,7 +3,6 @@ import 'package:angie_notebook/src/common_widgets/buttons/bottom_button.dart';
 import 'package:angie_notebook/Components/text_styling.dart';
 import 'package:angie_notebook/Constants/constants.dart';
 import 'package:angie_notebook/Screens/payment_page.dart';
-import 'package:angie_notebook/src/repository/authentification/user_booking.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -159,10 +158,10 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
                     // color: const Color.fromRGBO(255, 255, 255, 1.0),
                     decoration: kBackgroundBoxDecoration,
                     child: selectedValue == busClasses[0]
-                        ? UserBooking(widget.selectedDestination)
-                            .changeEconomySeatsLayout()
-                        : UserBooking(widget.selectedDestination)
-                            .changeExecutiveSeatsLayout(),
+                        ? seatSelectionController
+                            .changeEconomySeatsLayout(widget.selectedDestination)
+                        : seatSelectionController
+                            .changeExecutiveSeatsLayout(widget.selectedDestination),
                   ),
                 ),
               ),
@@ -195,10 +194,10 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
                       children: [
                         const AshTextWidget(text: 'Selected Seat'),
                         selectedValue == busClasses[0]
-                            ? UserBooking(widget.selectedDestination)
-                                .changeEconomySeatList()
-                            : UserBooking(widget.selectedDestination)
-                                .changeExecutiveSeatList(),
+                            ? seatSelectionController.changeEconomySeatList(
+                                widget.selectedDestination)
+                            : seatSelectionController.changeExecutiveSeatList(
+                                widget.selectedDestination),
                       ],
                     ),
                     Column(
