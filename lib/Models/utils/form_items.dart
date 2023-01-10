@@ -4,11 +4,27 @@ const List<String> busType = [
 ];
 
 const List<String> destinations = [
+  'KNUST',
   'Accra',
-  'Takoradi',
   'Tema',
-  'Cape Coast',
   'Kasoa',
+  'Madina',
+  'Takoradi',
+  'Cape Coast',
+  'Sunyani',
+  'Koforidua',
+];
+
+const List<String> from = [
+  'KNUST',
+  'Accra',
+  'Tema',
+  'Kasoa',
+  'Madina',
+  'Takoradi',    
+  'Cape Coast',
+  'Sunyani',
+  'Koforidua',
 ];
 
 const List<String> pickUpPoints = [

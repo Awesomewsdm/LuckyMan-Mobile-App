@@ -158,10 +158,10 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
                     // color: const Color.fromRGBO(255, 255, 255, 1.0),
                     decoration: kBackgroundBoxDecoration,
                     child: selectedValue == busClasses[0]
-                        ? seatSelectionController
-                            .changeEconomySeatsLayout(widget.selectedDestination)
-                        : seatSelectionController
-                            .changeExecutiveSeatsLayout(widget.selectedDestination),
+                        ? seatSelectionController.changeEconomySeatsLayout(
+                            widget.selectedDestination)
+                        : seatSelectionController.changeExecutiveSeatsLayout(
+                            widget.selectedDestination),
                   ),
                 ),
               ),
@@ -194,8 +194,16 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
                       children: [
                         const AshTextWidget(text: 'Selected Seat'),
                         selectedValue == busClasses[0]
-                            ? seatSelectionController.changeEconomySeatList(
-                                widget.selectedDestination)
+                            ? Obx(
+                                () => Text(
+                                  seatSelectionController.changeEconomySeatList(
+                                      widget.selectedDestination),
+                                  style: const TextStyle(
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.w900,
+                                  ),
+                                ),
+                              )
                             : seatSelectionController.changeExecutiveSeatList(
                                 widget.selectedDestination),
                       ],

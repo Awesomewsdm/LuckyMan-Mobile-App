@@ -47,8 +47,6 @@ class SeatSelectionController extends GetxController {
   RxDouble pKoforiduaseatPrice = 0.0.obs;
   RxDouble pTakoradiseatPrice = 0.0.obs;
 
-  
-
   @override
   void onReady() {
     super.onReady();
@@ -57,7 +55,6 @@ class SeatSelectionController extends GetxController {
     noOfSeats = 4;
   }
 
-  
   changeEconomySeatsLayout(String? selectedDestination) {
     if (selectedDestination == 'Accra') {
       return AccraEconomySeatLayout(
@@ -122,78 +119,23 @@ class SeatSelectionController extends GetxController {
     }
   }
 
-  changeEconomySeatList(String? selectedDestination) {
+  String changeEconomySeatList(String? selectedDestination) {
     if (selectedDestination == 'Accra') {
-      return Obx(
-        () => Text(
-          selectedAccraEconomySeats.join(' , '),
-          style: const TextStyle(
-            fontSize: 18.0,
-            fontWeight: FontWeight.w900,
-          ),
-        ),
-      );
+      return selectedAccraEconomySeats.join(' , ');
     } else if (selectedDestination == 'Tema') {
-      return Obx(
-        () => Text(
-          selectedTemaEconomySeats.join(' , '),
-          style: const TextStyle(
-            fontSize: 18.0,
-            fontWeight: FontWeight.w900,
-          ),
-        ),
-      );
+      selectedTemaEconomySeats.join(' , ');
     } else if (selectedDestination == 'Takoradi') {
-      return Obx(
-        () => Text(
-         selectedTakoradiEconomySeats.join(' , '),
-          style: const TextStyle(
-            fontSize: 18.0,
-            fontWeight: FontWeight.w900,
-          ),
-        ),
-      );
+      return selectedTakoradiEconomySeats.join(' , ');
     } else if (selectedDestination == 'Cape Coast') {
-      return Obx(
-        () => Text(
-          selectedCapeCoastEconomySeats.join(' , '),
-          style: const TextStyle(
-            fontSize: 18.0,
-            fontWeight: FontWeight.w900,
-          ),
-        ),
-      );
+      selectedCapeCoastEconomySeats.join(' , ');
     } else if (selectedDestination == 'Sunyani') {
-      return Obx(
-        () => Text(
-         selectedSunyaniEconomySeats.join(' , '),
-          style: const TextStyle(
-            fontSize: 18.0,
-            fontWeight: FontWeight.w900,
-          ),
-        ),
-      );
+      selectedSunyaniEconomySeats.join(' , ');
     } else if (selectedDestination == 'Kasoa') {
-      return Obx(
-        () => Text(
-          selectedKasoaEconomySeats.join(' , '),
-          style: const TextStyle(
-            fontSize: 18.0,
-            fontWeight: FontWeight.w900,
-          ),
-        ),
-      );
+      selectedKasoaEconomySeats.join(' , ');
     } else {
-      return Obx(
-        () => Text(
-          selectedKoforiduaEconomySeats.join(' , '),
-          style: const TextStyle(
-            fontSize: 18.0,
-            fontWeight: FontWeight.w900,
-          ),
-        ),
-      );
+      selectedKoforiduaEconomySeats.join(' , ');
     }
+    return 'NAtd';
   }
 
   changeExecutiveSeatList(String? selectedDestination) {
