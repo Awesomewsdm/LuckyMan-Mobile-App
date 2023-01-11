@@ -55,7 +55,7 @@ class SeatSelectionController extends GetxController {
     noOfSeats = 4;
   }
 
-  changeEconomySeatsLayout(String? selectedDestination) {
+Widget  changeEconomySeatsLayout(String? selectedDestination) {
     if (selectedDestination == 'Accra') {
       return AccraEconomySeatLayout(
         model: economyseatLayout,
@@ -85,9 +85,10 @@ class SeatSelectionController extends GetxController {
         model: economyseatLayout,
       );
     }
+    
   }
 
-  changeExecutiveSeatsLayout(String? selectedDestination) {
+Widget  changeExecutiveSeatsLayout(String? selectedDestination) {
     if (selectedDestination == 'Accra') {
       return AccraExecutiveSeatLayout(
         model: executiveseatLayout,

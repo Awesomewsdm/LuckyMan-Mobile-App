@@ -23,8 +23,8 @@ class AuthenticationRepository extends GetxController {
 
   _setInitialScreen(User? user) {
     user == null
-        ? Get.offAll(() => const SignUpScreen())
-        : Get.offAll(() => const BottomNav());
+        ? Get.offAll(() => const BottomNav())
+        : Get.offAll(() => const SignUpScreen());
   }
 
   Future<void> createUserWithEmailAndPassword(
@@ -41,7 +41,7 @@ class AuthenticationRepository extends GetxController {
             );
     } on FirebaseAuthException catch (e) {
       final ex = SignUpWithEmailAndPasswordFailure.code(e.code);
-      // print('FIREBASE AUTH EXCEPTION ${ex.message}');
+      Get.snackbar('SORRY', ex.message);
       throw ex;
     } catch (_) {
       const ex = SignUpWithEmailAndPasswordFailure();

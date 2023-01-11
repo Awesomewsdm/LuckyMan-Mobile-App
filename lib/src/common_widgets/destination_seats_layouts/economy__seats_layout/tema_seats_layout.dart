@@ -45,6 +45,7 @@ class TemaEconomySeatLayout extends StatelessWidget {
                             ),
                           );
                         }
+                        
                         // numbering the seats
                         seatCounter++;
                         String seatNo = '$seatCounter';
@@ -55,13 +56,16 @@ class TemaEconomySeatLayout extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap: () {
-                               double price =
+                              double price =
                                   economyseatLayout.seatTypes[1]['Tema']!;
                               RxList seats = SeatSelectionController
                                   .instance.selectedTemaEconomySeats;
                               if (seats.contains(seatNo)) {
+                                amount = amount - price;
                                 seats.remove(seatNo);
                               } else {
+                                amount = amount + price;
+
                                 if (seats.length >
                                     SeatSelectionController
                                         .instance.noOfSeats) {
@@ -71,6 +75,7 @@ class TemaEconomySeatLayout extends StatelessWidget {
                                       backgroundColor:
                                           Colors.blue.withOpacity(0.7),
                                       snackPosition: SnackPosition.BOTTOM);
+                                  amount = amount - price;
 
                                   seats.removeAt(4);
 

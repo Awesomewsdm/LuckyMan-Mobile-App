@@ -174,6 +174,7 @@ class SignUpFormWidget extends StatelessWidget {
                     );
                     _formkey.currentState!.save();
                     Get.to(() => const BottomNav());
+                    _formkey.currentState!.reset();
                   }
                 },
                 child: Text(
