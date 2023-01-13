@@ -7,7 +7,7 @@ class ScreenTemplate extends StatelessWidget {
     required this.decoration,
     required this.title,
     required this.bottomTextLabel,
-    required this.onPressed,
+    
     required this.subTitle,
   }) : super(key: key);
   final Widget child;
@@ -15,7 +15,7 @@ class ScreenTemplate extends StatelessWidget {
   final String title;
   final String subTitle;
   final String bottomTextLabel;
-  final void Function() onPressed;
+  
 
   @override
   Widget build(BuildContext context) {

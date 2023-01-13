@@ -16,9 +16,9 @@ class PaymentPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenTemplate(
       decoration: kBackgroundBoxDecoration,
-      onPressed: () {
+      // onPressed: () {
        
-      },
+      // },
       bottomTextLabel: 'Continue',
       title: 'Make Payment',
       subTitle: '',

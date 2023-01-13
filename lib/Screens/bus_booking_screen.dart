@@ -2,7 +2,6 @@ import 'package:angie_notebook/Models/utils/form_items.dart';
 import 'package:angie_notebook/Screens/seat_selection_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../Components/dropdown.dart';
 import '../Components/input_field.dart';
 import '../Components/screen_template.dart';
@@ -30,11 +29,7 @@ class _BusBookingScreenState extends State<BusBookingScreen> {
           children: [
             ScreenTemplate(
               decoration: kBackgroundBoxDecoration,
-              onPressed: () {
-                // if (_formKey.currentState!.validate()) {
-                //   _formKey.currentState!.save();
-                // }
-              },
+             
               bottomTextLabel: 'Continue to select a seat',
               title: 'Bus Selection',
               subTitle: '',
