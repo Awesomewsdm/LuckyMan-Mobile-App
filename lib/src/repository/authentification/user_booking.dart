@@ -72,7 +72,7 @@ class UserBooking {
         model: economyseatLayout,
       );
     } else {
-      return KoforiduaEconomySeatLayout(
+      return MadinaEconomySeatLayout(
         model: economyseatLayout,
       );
     }

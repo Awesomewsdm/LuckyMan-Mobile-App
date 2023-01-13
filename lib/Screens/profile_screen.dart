@@ -37,7 +37,7 @@ class ProfileScreen extends StatelessWidget {
                         children:  [
                           const UserProfileImage(),
                           Text(
-                            userData.fullName,
+                            userData.fullName.toString(),
                             style: const TextStyle(
                               fontSize: 20.0,
                               color: Colors.white,

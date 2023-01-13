@@ -84,11 +84,10 @@ class CapeCoastEconomySeatLayout extends StatelessWidget {
                                   seats.add(seatNo);
                                 }
                               }
-                              seatSelectionController.pCapeCoastseatPrice =
+                              seatSelectionController.pCapeCoastEconomyseatPrice =
                                   amount.obs;
 
-                              print(
-                                  seatSelectionController.pCapeCoastseatPrice.value);
+                            
                             },
                             child: Obx(() => Container(
                                   height: seatSize,

@@ -83,10 +83,10 @@ class TakoradiEconomySeatLayout extends StatelessWidget {
                                   seats.add(seatNo);
                                 }
                               }
-                              seatSelectionController.pTakoradiseatPrice =
+                              seatSelectionController.pTakoradiEconomyseatPrice =
                                   amount.obs;
 
-                              print(seatSelectionController.pTakoradiseatPrice.value);
+                              
                             },
                             child: Obx(() => Container(
                                   height: seatSize,

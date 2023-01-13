@@ -80,10 +80,10 @@ double amount = 0.0;
                                 } else {
                                   seats.add(seatNo);
                                 }
-                                seatSelectionController.pKasoaseatPrice =
+                                seatSelectionController.pKasoaEconomyseatPrice =
                                   amount.obs;
 
-                              print(seatSelectionController.pKasoaseatPrice.value);
+                             
                               }
                             },
                             child: Obx(() => Container(

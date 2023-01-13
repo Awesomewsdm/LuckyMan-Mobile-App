@@ -6,10 +6,10 @@ import 'package:get/get.dart';
 import '../../../../Models/seat_layout_mode.dart';
 import '../../../../Models/utils/economy_seats.dart';
 
-class KoforiduaEconomySeatLayout extends StatelessWidget {
+class MadinaEconomySeatLayout extends StatelessWidget {
   final SeatSelectionController seatSelectionController =
       Get.put(SeatSelectionController());
-  KoforiduaEconomySeatLayout({Key? key, this.model}) : super(key: key);
+  MadinaEconomySeatLayout({Key? key, this.model}) : super(key: key);
   final SeatLayoutModel? model;
   @override
   Widget build(BuildContext context) {
@@ -81,10 +81,10 @@ double amount = 0.0;
                                   seats.add(seatNo);
                                 }
                               }
-                              seatSelectionController.pKoforiduaseatPrice =
+                              seatSelectionController.pMadinaEconomyseatPrice =
                                   amount.obs;
 
-                              print(seatSelectionController.pKoforiduaseatPrice.value);
+                              
                             },
                             child: Obx(() => Container(
                                   height: seatSize,

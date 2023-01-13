@@ -41,21 +41,79 @@ class SeatSelectionController extends GetxController {
   // RxString selectedDropdownMenuItem = 'ECONOMY'.obs;
 
   int noOfSeats = 4;
-  RxDouble pAcrraseatPrice = 0.0.obs;
-  RxDouble pCapeCoastseatPrice = 0.0.obs;
-  RxDouble pKasoaseatPrice = 0.0.obs;
-  RxDouble pKoforiduaseatPrice = 0.0.obs;
-  RxDouble pTakoradiseatPrice = 0.0.obs;
+
+  // Economy seat prices
+  RxDouble pAccraEconomyEcoSeatPrice = 0.0.obs;
+  RxDouble pCapeCoastEconomyseatPrice = 0.0.obs;
+  RxDouble pKasoaEconomyseatPrice = 0.0.obs;
+  RxDouble pKoforiduaEconomyseatPrice = 0.0.obs;
+  RxDouble pTakoradiEconomyseatPrice = 0.0.obs;
+  RxDouble pMadinaEconomyseatPrice = 0.0.obs;
+  RxDouble pTemaEconomyseatPrice = 0.0.obs;
+  RxDouble pSunyaniEconomyseatPrice = 0.0.obs;
+
+  // Executive seat prices
+   RxDouble pAccraExecutiveEcoSeatPrice = 0.0.obs;
+  RxDouble pCapeCoastExecutiveseatPrice = 0.0.obs;
+  RxDouble pKasoaExecutiveseatPrice = 0.0.obs;
+  RxDouble pKoforiduaExecutiveseatPrice = 0.0.obs;
+  RxDouble pTakoradiExecutiveseatPrice = 0.0.obs;
+  RxDouble pMadinaExecutiveseatPrice = 0.0.obs;
+  RxDouble pTemaExecutiveseatPrice = 0.0.obs;
+  RxDouble pSunyaniExecutiveseatPrice = 0.0.obs;
+
 
   @override
   void onReady() {
     super.onReady();
-    pAcrraseatPrice = 0.0.obs;
-    pCapeCoastseatPrice = 0.0.obs;
+     pAccraEconomyEcoSeatPrice = 0.0.obs;
+  pCapeCoastEconomyseatPrice = 0.0.obs;
+   pKasoaEconomyseatPrice = 0.0.obs;
+  pKoforiduaEconomyseatPrice = 0.0.obs;
+   pTakoradiEconomyseatPrice = 0.0.obs;
+   pMadinaEconomyseatPrice = 0.0.obs;
+   pTemaEconomyseatPrice = 0.0.obs;
+   pSunyaniEconomyseatPrice = 0.0.obs;
     noOfSeats = 4;
   }
 
-Widget  changeEconomySeatsLayout(String? selectedDestination) {
+  String changeEconomySeatPrice(String? selectedDestination) {
+    if (selectedDestination == 'Accra') {
+      return pAccraEconomyEcoSeatPrice.value.toString();
+    } else if (selectedDestination == 'Tema') {
+      return pTemaEconomyseatPrice.value.toString();
+    } else if (selectedDestination == 'Takoradi') {
+      return pTakoradiEconomyseatPrice.value.toString();
+    } else if (selectedDestination == 'Cape Coast') {
+      return pCapeCoastEconomyseatPrice.value.toString();
+    } else if (selectedDestination == 'Sunyani') {
+      return pSunyaniEconomyseatPrice.value.toString();
+    } else if (selectedDestination == 'Kasoa') {
+      return pKasoaEconomyseatPrice.value.toString();
+    } else {
+      return pKoforiduaEconomyseatPrice.value.toString();
+    }
+  }
+
+   String changeExecutiveSeatPrice(String? selectedDestination) {
+    if (selectedDestination == 'Accra') {
+      return pAccraExecutiveEcoSeatPrice.value.toString();
+    } else if (selectedDestination == 'Tema') {
+      return pTemaExecutiveseatPrice.value.toString();
+    } else if (selectedDestination == 'Takoradi') {
+      return pTakoradiExecutiveseatPrice.value.toString();
+    } else if (selectedDestination == 'Cape Coast') {
+      return pCapeCoastExecutiveseatPrice.value.toString();
+    } else if (selectedDestination == 'Sunyani') {
+      return pSunyaniExecutiveseatPrice.value.toString();
+    } else if (selectedDestination == 'Kasoa') {
+      return pKasoaExecutiveseatPrice.value.toString();
+    } else {
+      return pMadinaExecutiveseatPrice.value.toString();
+    }
+  }
+
+  Widget changeEconomySeatsLayout(String? selectedDestination) {
     if (selectedDestination == 'Accra') {
       return AccraEconomySeatLayout(
         model: economyseatLayout,
@@ -81,14 +139,13 @@ Widget  changeEconomySeatsLayout(String? selectedDestination) {
         model: economyseatLayout,
       );
     } else {
-      return KoforiduaEconomySeatLayout(
+      return MadinaEconomySeatLayout(
         model: economyseatLayout,
       );
     }
-    
   }
 
-Widget  changeExecutiveSeatsLayout(String? selectedDestination) {
+  Widget changeExecutiveSeatsLayout(String? selectedDestination) {
     if (selectedDestination == 'Accra') {
       return AccraExecutiveSeatLayout(
         model: executiveseatLayout,

@@ -57,23 +57,27 @@ class _BusBookingScreenState extends State<BusBookingScreen> {
                         },
                       ),
                       DropdownMenu(
-                          onChanged: (value) {},
-                          items: departureDate,
-                          formLabel: 'Select Depature Date'),
+                        onChanged: (value) {},
+                        items: departureDate,
+                        formLabel: 'Select Depature Date',
+                      ),
                       DropdownMenu(
-                          onChanged: (value) {},
-                          items: departureTime,
-                          formLabel: 'Select Depature Time'),
+                        onChanged: (value) {},
+                        items: departureTime,
+                        formLabel: 'Select Depature Time',
+                      ),
                       DropdownMenu(
-                          onChanged: (value) {},
-                          items: pickUpPoints,
-                          formLabel: 'Select Pick Up Point'),
+                        onChanged: (value) {},
+                        items: pickUpPoints,
+                        formLabel: 'Select Pick Up Point',
+                      ),
                       const SizedBox(height: 10.0),
                       const Text(
                         'Leave blank if you don\'t have any agent',
                         style: TextStyle(
-                            color: Colors.redAccent,
-                            fontWeight: FontWeight.bold),
+                          color: Colors.redAccent,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       const SizedBox(height: 10.0),
                       const Card(

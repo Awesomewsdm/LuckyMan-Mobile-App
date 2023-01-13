@@ -1,9 +1,10 @@
+import 'package:angie_notebook/Components/dropdown.dart';
 import 'package:angie_notebook/src/features/authentification/controllers/seat_selection_controller.dart';
 import 'package:angie_notebook/src/common_widgets/buttons/bottom_button.dart';
 import 'package:angie_notebook/Components/text_styling.dart';
 import 'package:angie_notebook/Constants/constants.dart';
 import 'package:angie_notebook/Screens/payment_page.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -27,7 +28,7 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
   final SeatSelectionController seatSelectionController =
       Get.put(SeatSelectionController());
 
-  String selectedValue = 'ECONOMY';
+  String selectedValue = '';
   RxDouble amount = 0.0.obs;
   @override
   Widget build(BuildContext context) {
@@ -88,62 +89,12 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.white,
                 ),
-                child: DropdownButtonFormField2(
-                  decoration: InputDecoration(
-                    //Add isDense true and zero Padding.
-                    //Add Horizontal padding using buttonPadding and Vertical padding by increasing buttonHeight instead of add Padding here so that The whole TextField Button become clickable, and also the dropdown menu open under The whole TextField Button.
-                    isDense: true,
-                    contentPadding: EdgeInsets.zero,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(
-                        color: Colors.blue,
-                      ),
-                    ),
-                    //Add more decoration as you want here
-                    //Add label If you want but add hint outside the decoration to be aligned in the button perfectly.
-                  ),
-                  isExpanded: true,
-                  hint: const Text(
-                    'Select Bus Class',
-                    style: TextStyle(fontSize: 14),
-                  ),
-                  icon: const Icon(
-                    Icons.arrow_drop_down,
-                    color: Colors.black45,
-                  ),
-                  iconSize: 30,
-                  buttonHeight: 45,
-                  buttonPadding: const EdgeInsets.only(left: 10, right: 10),
-                  dropdownDecoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  items: busClasses
-                      .map((item) => DropdownMenuItem<String>(
-                            value: item,
-                            child: Text(
-                              item,
-                              style: const TextStyle(
-                                fontSize: 14,
-                              ),
-                            ),
-                          ))
-                      .toList(),
-                  validator: (value) {
-                    if (value == null) {}
-                    return null;
-                  },
+                child: DropdownMenu(
+                  items: busClasses,
+                  formLabel: 'Select destination',
                   onChanged: (value) {
-                    //Do something when changing the item if you want.
-
-                    // seatSelectionController
-                    //     .selectedDropdownMenuItem = value!;
-                    setState(() {
-                      selectedValue = value!;
-                    });
-                  },
-                  onSaved: (value) {
-                    // selectedValue = value.toString();
+                    selectedValue = value!;
+                    // print(selectedDestination);
                   },
                 ),
               ),
@@ -211,15 +162,21 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
                     Column(
                       children: [
                         const AshTextWidget(text: 'Total Price'),
-                        Obx(
-                          () => Text(
-                            'GH¢${seatSelectionController.pAcrraseatPrice.value}',
-                            style: const TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.w900,
-                            ),
-                          ),
-                        ),
+                        selectedValue == busClasses[0]
+                            ? Text(
+                                'GH¢${seatSelectionController.changeEconomySeatPrice(widget.selectedDestination)}',
+                                style: const TextStyle(
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                              )
+                            : Text(
+                                'GH¢${seatSelectionController.changeExecutiveSeatPrice(widget.selectedDestination)}',
+                                style: const TextStyle(
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                              ),
                       ],
                     ),
                   ],
@@ -229,6 +186,24 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
                 child: BottomButton(
                   bottomTextLabel: 'Proceed to make payment',
                   onPressed: () {
+                    // final UserModel user = UserModel(
+                    //   seatNo: selectedValue == busClasses[0]
+                    //       ? Obx(
+                    //           () => Text(
+                    //             seatSelectionController.changeEconomySeatList(
+                    //                 widget.selectedDestination),
+                    //             style: const TextStyle(
+                    //               fontSize: 18.0,
+                    //               fontWeight: FontWeight.w900,
+                    //             ),
+                    //           ),
+                    //         )
+                    //       : seatSelectionController.changeExecutiveSeatList(
+                    //           widget.selectedDestination),
+                    //   price: selectedValue == busClasses[0]
+                    //       ? seatSelectionController.changeEconomySeatPrice(widget.selectedDestination)
+                    //       : seatSelectionController.changeExecutiveSeatPrice(widget.selectedDestination)
+                    // );
                     Get.to(
                       () => const PaymentPage(),
                     );
