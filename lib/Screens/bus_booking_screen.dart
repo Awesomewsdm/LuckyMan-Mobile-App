@@ -45,10 +45,24 @@ class _BusBookingScreenState extends State<BusBookingScreen> {
                   child: Column(
                     children: [
                       DropdownMenu(
+                          validator: (value) {
+                            if (value == null) {
+                              return 'Please select one option';
+                            } else {
+                              return null;
+                            }
+                          },
                           onChanged: (value) {},
                           items: busType,
                           formLabel: 'Select Bus Type'),
                       DropdownMenu(
+                        validator: (value) {
+                          if (value == null) {
+                            return 'Please select one option';
+                          } else {
+                            return null;
+                          }
+                        },
                         items: destinations,
                         formLabel: 'Select destination',
                         onChanged: (value) {
@@ -57,16 +71,37 @@ class _BusBookingScreenState extends State<BusBookingScreen> {
                         },
                       ),
                       DropdownMenu(
+                        validator: (value) {
+                          if (value == null) {
+                            return 'Please select one option';
+                          } else {
+                            return null;
+                          }
+                        },
                         onChanged: (value) {},
                         items: departureDate,
                         formLabel: 'Select Depature Date',
                       ),
                       DropdownMenu(
+                        validator: (value) {
+                          if (value == null) {
+                            return 'Please select one option';
+                          } else {
+                            return null;
+                          }
+                        },
                         onChanged: (value) {},
                         items: departureTime,
                         formLabel: 'Select Depature Time',
                       ),
                       DropdownMenu(
+                        validator: (value) {
+                          if (value == null) {
+                            return 'Please select one option';
+                          } else {
+                            return null;
+                          }
+                        },
                         onChanged: (value) {},
                         items: pickUpPoints,
                         formLabel: 'Select Pick Up Point',
@@ -98,11 +133,14 @@ class _BusBookingScreenState extends State<BusBookingScreen> {
             ),
             BottomButton(
                 onPressed: () {
-                  Get.to(
-                    () => SeatSelectionScreen(
-                      selectedDestination: selectedDestination,
-                    ),
-                  );
+                  if (_formKey.currentState!.validate()) {
+                    _formKey.currentState!.save();
+                    Get.to(
+                      () => SeatSelectionScreen(
+                        selectedDestination: selectedDestination,
+                      ),
+                    );
+                  }
                 },
                 bottomTextLabel: 'Contine to select a seat'),
           ],
