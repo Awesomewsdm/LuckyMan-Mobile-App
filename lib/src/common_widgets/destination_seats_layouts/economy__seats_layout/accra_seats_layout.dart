@@ -20,7 +20,6 @@ class AccraEconomySeatLayout extends StatelessWidget {
     // int seatLength = economyseatLayout.seatTypes.length;
     return Column(
       children: [
-        
         const Text("Bus Type: Accra - Economy"),
         const Divider(
           color: Colors.lightBlue,
@@ -60,13 +59,16 @@ class AccraEconomySeatLayout extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap: () {
-                              RxList seats = SeatSelectionController
-                                  .instance.selectedAccraEconomySeats;
                               double price =
                                   economyseatLayout.seatTypes[0]["Accra"]!;
+                                  
+                              seatSelectionController.calcSeatPrice(price);
+                              
+                              RxList seats = SeatSelectionController
+                                  .instance.selectedAccraEconomySeats;
+
                               // print(price);
                               if (seats.contains(seatNo)) {
-                                amount = amount - price;
                                 seats.remove(seatNo);
                               } else {
                                 amount = amount + price;
@@ -88,10 +90,9 @@ class AccraEconomySeatLayout extends StatelessWidget {
                                   seats.add(seatNo);
                                 }
                               }
-                              seatSelectionController.pAccraEconomyEcoSeatPrice =
+                              seatSelectionController.pAccraEconomySeatPrice =
                                   amount.obs;
-
-                              
+                              print(seatSelectionController.seatPrice.value.toString());
                             },
                             child: Obx(
                               () => Container(

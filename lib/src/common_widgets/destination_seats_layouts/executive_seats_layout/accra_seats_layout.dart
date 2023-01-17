@@ -1,4 +1,5 @@
 import 'package:angie_notebook/Constants/constants.dart';
+import 'package:angie_notebook/Models/utils/executive_seat_layout_model.dart';
 import 'package:angie_notebook/src/features/authentification/controllers/seat_selection_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,7 +14,7 @@ class AccraExecutiveSeatLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int seatCounter = 0;
-
+    double amount = 0.0;
     return Column(
       children: [
         Expanded(
@@ -54,11 +55,17 @@ class AccraExecutiveSeatLayout extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap: () {
+                              double price =
+                                  executiveseatLayout.seatTypes[0]["Accra"]!;
+                              seatSelectionController.calcSeatPrice(price);
+                              
                               RxList seats = SeatSelectionController
                                   .instance.selectedAccraExecutiveSeats;
                               if (seats.contains(seatNo)) {
+                                amount = amount - price;
                                 seats.remove(seatNo);
                               } else {
+                                amount = amount + price;
                                 if (seats.length >
                                     SeatSelectionController
                                         .instance.noOfSeats) {
@@ -68,6 +75,7 @@ class AccraExecutiveSeatLayout extends StatelessWidget {
                                       backgroundColor:
                                           Colors.blue.withOpacity(0.7),
                                       snackPosition: SnackPosition.BOTTOM);
+                                  amount = amount - price;
 
                                   seats.removeAt(4);
 
@@ -76,6 +84,8 @@ class AccraExecutiveSeatLayout extends StatelessWidget {
                                   seats.add(seatNo);
                                 }
                               }
+                              seatSelectionController
+                                  .pAccraExecutiveEcoSeatPrice = amount.obs;
                             },
                             child: Obx(() => Container(
                                   height: seatSize,

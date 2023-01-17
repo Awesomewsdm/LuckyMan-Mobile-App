@@ -42,8 +42,13 @@ class SeatSelectionController extends GetxController {
 
   int noOfSeats = 4;
 
+ final RxDouble seatPrice = 0.0.obs;
+  calcSeatPrice(double amount) {
+    seatPrice.value += amount;
+  }
+
   // Economy seat prices
-  RxDouble pAccraEconomyEcoSeatPrice = 0.0.obs;
+  RxDouble pAccraEconomySeatPrice = 0.0.obs;
   RxDouble pCapeCoastEconomyseatPrice = 0.0.obs;
   RxDouble pKasoaEconomyseatPrice = 0.0.obs;
   RxDouble pKoforiduaEconomyseatPrice = 0.0.obs;
@@ -53,7 +58,7 @@ class SeatSelectionController extends GetxController {
   RxDouble pSunyaniEconomyseatPrice = 0.0.obs;
 
   // Executive seat prices
-   RxDouble pAccraExecutiveEcoSeatPrice = 0.0.obs;
+  RxDouble pAccraExecutiveEcoSeatPrice = 0.0.obs;
   RxDouble pCapeCoastExecutiveseatPrice = 0.0.obs;
   RxDouble pKasoaExecutiveseatPrice = 0.0.obs;
   RxDouble pKoforiduaExecutiveseatPrice = 0.0.obs;
@@ -62,24 +67,24 @@ class SeatSelectionController extends GetxController {
   RxDouble pTemaExecutiveseatPrice = 0.0.obs;
   RxDouble pSunyaniExecutiveseatPrice = 0.0.obs;
 
-
   @override
   void onReady() {
     super.onReady();
-     pAccraEconomyEcoSeatPrice = 0.0.obs;
-  pCapeCoastEconomyseatPrice = 0.0.obs;
-   pKasoaEconomyseatPrice = 0.0.obs;
-  pKoforiduaEconomyseatPrice = 0.0.obs;
-   pTakoradiEconomyseatPrice = 0.0.obs;
-   pMadinaEconomyseatPrice = 0.0.obs;
-   pTemaEconomyseatPrice = 0.0.obs;
-   pSunyaniEconomyseatPrice = 0.0.obs;
+    pAccraEconomySeatPrice = 0.0.obs;
+    pCapeCoastEconomyseatPrice = 0.0.obs;
+    pKasoaEconomyseatPrice = 0.0.obs;
+    pKoforiduaEconomyseatPrice = 0.0.obs;
+    pTakoradiEconomyseatPrice = 0.0.obs;
+    pMadinaEconomyseatPrice = 0.0.obs;
+    pTemaEconomyseatPrice = 0.0.obs;
+    pSunyaniEconomyseatPrice = 0.0.obs;
     noOfSeats = 4;
   }
 
   String changeEconomySeatPrice(String? selectedDestination) {
     if (selectedDestination == 'Accra') {
-      return pAccraEconomyEcoSeatPrice.value.toString();
+      
+      return pAccraEconomySeatPrice.value.toString();
     } else if (selectedDestination == 'Tema') {
       return pTemaEconomyseatPrice.value.toString();
     } else if (selectedDestination == 'Takoradi') {
@@ -95,7 +100,7 @@ class SeatSelectionController extends GetxController {
     }
   }
 
-   String changeExecutiveSeatPrice(String? selectedDestination) {
+  String changeExecutiveSeatPrice(String? selectedDestination) {
     if (selectedDestination == 'Accra') {
       return pAccraExecutiveEcoSeatPrice.value.toString();
     } else if (selectedDestination == 'Tema') {
