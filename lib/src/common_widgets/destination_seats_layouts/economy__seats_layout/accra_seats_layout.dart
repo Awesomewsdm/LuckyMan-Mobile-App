@@ -61,7 +61,7 @@ class AccraEconomySeatLayout extends StatelessWidget {
                             onTap: () {
                               double price =
                                   economyseatLayout.seatTypes[0]["Accra"]!;
-                                  
+
                               seatSelectionController.calcSeatPrice(price);
                               
                               RxList seats = SeatSelectionController
@@ -92,7 +92,6 @@ class AccraEconomySeatLayout extends StatelessWidget {
                               }
                               seatSelectionController.pAccraEconomySeatPrice =
                                   amount.obs;
-                              print(seatSelectionController.seatPrice.value.toString());
                             },
                             child: Obx(
                               () => Container(

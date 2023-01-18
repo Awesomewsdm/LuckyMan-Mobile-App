@@ -42,9 +42,15 @@ class SeatSelectionController extends GetxController {
 
   int noOfSeats = 4;
 
- final RxDouble seatPrice = 0.0.obs;
+  final RxDouble seatPrice = 0.0.obs;
   calcSeatPrice(double amount) {
     seatPrice.value += amount;
+  }
+
+  // Bus type controllers
+  RxString selectedBusType = 'ECONOMY'.obs;
+  void changeBusType(String? value) {
+    selectedBusType.value = value!;
   }
 
   // Economy seat prices
@@ -83,7 +89,6 @@ class SeatSelectionController extends GetxController {
 
   String changeEconomySeatPrice(String? selectedDestination) {
     if (selectedDestination == 'Accra') {
-      
       return pAccraEconomySeatPrice.value.toString();
     } else if (selectedDestination == 'Tema') {
       return pTemaEconomyseatPrice.value.toString();
