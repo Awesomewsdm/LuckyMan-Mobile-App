@@ -27,6 +27,7 @@ dependencies:
   cloud_firestore: ^4.3.0
   firebase_auth: ^4.2.3
   firebase_core: ^2.4.0
+  internet_connection_checker: ^1.0.0+1
   
 
 dev_dependencies:
