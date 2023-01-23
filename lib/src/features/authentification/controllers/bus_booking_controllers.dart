@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class BusBookingController extends GetxController {
@@ -28,8 +29,6 @@ class BusBookingController extends GetxController {
     selectedPickupPoint.value = value!;
   }
 
-  final agentName = ''.obs;
-  changeagentName(String? value) {
-    agentName.value = value!;
-  }
+  
+   final agentName = TextEditingController();
 }

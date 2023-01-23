@@ -48,7 +48,9 @@ class _BusBookingScreenState extends State<BusBookingScreen> {
                               return null;
                             }
                           },
-                          onChanged: (value) {},
+                          onChanged: (value) {
+                            busBookingController.changeSelectedBusType(value);
+                          },
                           items: busType,
                           formLabel: 'Select Bus Type'),
                       DropdownMenu(
@@ -62,8 +64,7 @@ class _BusBookingScreenState extends State<BusBookingScreen> {
                         items: destinations,
                         formLabel: 'Select destination',
                         onChanged: (value) {
-                          BusBookingController.instance
-                              .changeSelectedDestination(value);
+                          busBookingController.changeSelectedDestination(value);
                           // selectedDestination = value!;
                           // print(selectedDestination);
                         },
@@ -76,7 +77,10 @@ class _BusBookingScreenState extends State<BusBookingScreen> {
                             return null;
                           }
                         },
-                        onChanged: (value) {},
+                        onChanged: (value) {
+                          busBookingController
+                              .changeselectedDepatureDate(value);
+                        },
                         items: departureDate,
                         formLabel: 'Select Depature Date',
                       ),
@@ -88,7 +92,10 @@ class _BusBookingScreenState extends State<BusBookingScreen> {
                             return null;
                           }
                         },
-                        onChanged: (value) {},
+                        onChanged: (value) {
+                          busBookingController
+                              .changeselectedDepatureTime(value);
+                        },
                         items: departureTime,
                         formLabel: 'Select Depature Time',
                       ),
@@ -100,11 +107,16 @@ class _BusBookingScreenState extends State<BusBookingScreen> {
                             return null;
                           }
                         },
-                        onChanged: (value) {},
+                        onChanged: (value) {
+                          busBookingController
+                              .changeselectedselectedPickupPoint(value);
+                        },
                         items: pickUpPoints,
                         formLabel: 'Select Pick Up Point',
                       ),
-                      const SizedBox(height: 10.0),
+                      const SizedBox(
+                        height: 10.0,
+                      ),
                       const Text(
                         'Leave blank if you don\'t have any agent',
                         style: TextStyle(
@@ -113,12 +125,13 @@ class _BusBookingScreenState extends State<BusBookingScreen> {
                         ),
                       ),
                       const SizedBox(height: 10.0),
-                      const Card(
+                      Card(
                         child: Padding(
-                          padding: EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(8.0),
                           child: InputField(
+                            controller: busBookingController.agentName,
                             labelText: 'Enter Agent\'s Name',
-                            widget: BlackTextWidget(
+                            widget: const BlackTextWidget(
                               text: 'LTL - ',
                             ),
                           ),
