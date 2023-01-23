@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
         BusTicketScreen.id: (context) => const BusTicketScreen(),
         SeatSelectionScreen.id: (context) =>     SeatSelectionScreen(),
         PaymentPage.id: (context) => const PaymentPage(),
-        BusBookingScreen.id: (context) => const BusBookingScreen(),
+        BusBookingScreen.id: (context) =>  BusBookingScreen(),
       },
     );
   }

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../Components/divider_widget.dart';
@@ -17,10 +16,9 @@ class BusTicketScreen extends StatelessWidget {
         child: ScreenTemplate(
           decoration: kBackgroundBoxDecoration,
           // onPressed: () {
-            
-              
+
           //      Get.to(() => const BusBookingScreen());
-          
+
           // },
           bottomTextLabel: 'Download Ticket',
           title: 'Your Ticket',

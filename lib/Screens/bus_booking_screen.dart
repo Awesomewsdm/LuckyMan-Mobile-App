@@ -10,17 +10,13 @@ import '../Components/text_styling.dart';
 import '../Constants/constants.dart';
 import '../src/common_widgets/buttons/bottom_button.dart';
 
-class BusBookingScreen extends StatefulWidget {
-  const BusBookingScreen({Key? key}) : super(key: key);
+class BusBookingScreen extends StatelessWidget {
+  BusBookingScreen({Key? key}) : super(key: key);
   static const String id = '/BusBookingScreen';
 
-  @override
-  State<BusBookingScreen> createState() => _BusBookingScreenState();
-}
-
-class _BusBookingScreenState extends State<BusBookingScreen> {
-  String? selectedDestination;
-  BusBookingController busBookingController = Get.put(BusBookingController());
+  // String? selectedDestination;
+  final BusBookingController busBookingController =
+      Get.put(BusBookingController());
 
   final _formKey = GlobalKey<FormState>();
   @override
@@ -148,7 +144,8 @@ class _BusBookingScreenState extends State<BusBookingScreen> {
                     _formKey.currentState!.save();
                     Get.to(
                       () => SeatSelectionScreen(
-                        selectedDestination: selectedDestination,
+                        selectedDestination:
+                            busBookingController.selectedDestination.value,
                       ),
                     );
                   }

@@ -22,7 +22,7 @@ class SeatSelectionScreen extends StatelessWidget {
     Key? key,
   }) : super(key: key);
   static String id = '/SeatSelectionScreen';
-  final String? selectedDestination;
+  // final String? selectedDestination;
 
   final SeatSelectionController seatSelectionController =
       Get.put(SeatSelectionController());
