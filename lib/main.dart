@@ -3,7 +3,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'Screens/bus_booking_screen.dart';
-import 'Screens/bus_ticket_page.dart';
+
+import 'Screens/bus_ticket_screen.dart';
 import 'Screens/home_screen.dart';
 import 'Screens/payment_page.dart';
 import 'Screens/splash_screen.dart';

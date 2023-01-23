@@ -18,11 +18,11 @@ import '../src/common_widgets/dropdown_menu/bus_class_menu.dart';
 
 class SeatSelectionScreen extends StatelessWidget {
    SeatSelectionScreen({
-    this.selectedDestination,
-    Key? key,
+    
+    Key? key, this.selectedDestination,
   }) : super(key: key);
   static String id = '/SeatSelectionScreen';
-  // final String? selectedDestination;
+  final String? selectedDestination;
 
   final SeatSelectionController seatSelectionController =
       Get.put(SeatSelectionController());
