@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 
 class BusTicketScreen extends StatelessWidget {
   const BusTicketScreen({Key? key}) : super(key: key);
-  static const id = '/BusTicketScreen';
+  static const String id = '/BusTicketScreen';
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Container(),
+    );
   }
 }
