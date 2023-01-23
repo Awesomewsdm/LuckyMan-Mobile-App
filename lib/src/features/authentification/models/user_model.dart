@@ -15,11 +15,11 @@ class UserModel {
   final String? price;
   UserModel({
     this.id,
-     this.fullName,
-     this.email,
-     this.studentID,
-     this.phoneNumber,
-     this.password,
+    this.fullName,
+    this.email,
+    this.studentID,
+    this.phoneNumber,
+    this.password,
     this.seatNo,
     this.price,
   });
@@ -43,7 +43,7 @@ class UserModel {
       id: document.id,
       fullName: data["fullName"],
       email: data["email"],
-      phoneNumber: data["studentID"],
+      phoneNumber: data["phoneNumber"],
       password: data["password"],
       studentID: data["studentID"],
     );
