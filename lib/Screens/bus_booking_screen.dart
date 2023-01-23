@@ -1,5 +1,6 @@
 import 'package:angie_notebook/Models/utils/form_items.dart';
 import 'package:angie_notebook/Screens/seat_selection_screen.dart';
+import 'package:angie_notebook/src/features/authentification/controllers/bus_booking_controllers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../Components/dropdown.dart';
@@ -19,6 +20,7 @@ class BusBookingScreen extends StatefulWidget {
 
 class _BusBookingScreenState extends State<BusBookingScreen> {
   String? selectedDestination;
+  BusBookingController busBookingController = Get.put(BusBookingController());
 
   final _formKey = GlobalKey<FormState>();
   @override
@@ -29,7 +31,6 @@ class _BusBookingScreenState extends State<BusBookingScreen> {
           children: [
             ScreenTemplate(
               decoration: kBackgroundBoxDecoration,
-             
               bottomTextLabel: 'Continue to select a seat',
               title: 'Bus Selection',
               subTitle: '',
@@ -61,7 +62,9 @@ class _BusBookingScreenState extends State<BusBookingScreen> {
                         items: destinations,
                         formLabel: 'Select destination',
                         onChanged: (value) {
-                          selectedDestination = value!;
+                          BusBookingController.instance
+                              .changeSelectedDestination(value);
+                          // selectedDestination = value!;
                           // print(selectedDestination);
                         },
                       ),
