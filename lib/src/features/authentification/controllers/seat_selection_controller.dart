@@ -7,6 +7,7 @@ import 'package:angie_notebook/src/common_widgets/destination_seats_layouts/econ
 import 'package:angie_notebook/src/common_widgets/destination_seats_layouts/economy__seats_layout/sunyani_seats_layout.dart';
 import 'package:angie_notebook/src/common_widgets/destination_seats_layouts/economy__seats_layout/takoradi_seats_layout.dart';
 import 'package:angie_notebook/src/common_widgets/destination_seats_layouts/economy__seats_layout/tema_seats_layout.dart';
+import 'package:angie_notebook/src/features/authentification/controllers/bus_booking_controllers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -20,6 +21,11 @@ import '../../../common_widgets/destination_seats_layouts/executive_seats_layout
 
 class SeatSelectionController extends GetxController {
   static SeatSelectionController instance = Get.find();
+
+  BusBookingController busBookingController = Get.put(
+    BusBookingController(),
+  );
+
   RxList selectedKoforiduaEconomySeats = [].obs;
   RxList selectedKoforiduaExecutiveSeats = [].obs;
 
@@ -87,7 +93,9 @@ class SeatSelectionController extends GetxController {
     noOfSeats = 4;
   }
 
-  String changeEconomySeatPrice(String? selectedDestination) {
+  String selectedDestination = BusBookingController.instance.selectedDestination.toString();
+
+  String changeEconomySeatPrice() {
     if (selectedDestination == 'Accra') {
       return pAccraEconomySeatPrice.value.toString();
     } else if (selectedDestination == 'Tema') {
@@ -105,46 +113,46 @@ class SeatSelectionController extends GetxController {
     }
   }
 
-  String changeExecutiveSeatPrice(String? selectedDestination) {
-    if (selectedDestination == 'Accra') {
+  String changeExecutiveSeatPrice(RxString selectedDestination) {
+    if (selectedDestination.value == 'Accra') {
       return pAccraExecutiveEcoSeatPrice.value.toString();
-    } else if (selectedDestination == 'Tema') {
+    } else if (selectedDestination.value == 'Tema') {
       return pTemaExecutiveseatPrice.value.toString();
-    } else if (selectedDestination == 'Takoradi') {
+    } else if (selectedDestination.value == 'Takoradi') {
       return pTakoradiExecutiveseatPrice.value.toString();
-    } else if (selectedDestination == 'Cape Coast') {
+    } else if (selectedDestination.value == 'Cape Coast') {
       return pCapeCoastExecutiveseatPrice.value.toString();
-    } else if (selectedDestination == 'Sunyani') {
+    } else if (selectedDestination.value == 'Sunyani') {
       return pSunyaniExecutiveseatPrice.value.toString();
-    } else if (selectedDestination == 'Kasoa') {
+    } else if (selectedDestination.value == 'Kasoa') {
       return pKasoaExecutiveseatPrice.value.toString();
     } else {
       return pMadinaExecutiveseatPrice.value.toString();
     }
   }
 
-  Widget changeEconomySeatsLayout(String? selectedDestination) {
-    if (selectedDestination == 'Accra') {
+  Widget changeEconomySeatsLayout(RxString selectedDestination) {
+    if (selectedDestination.value == 'Accra') {
       return AccraEconomySeatLayout(
         model: economyseatLayout,
       );
-    } else if (selectedDestination == 'Tema') {
+    } else if (selectedDestination.value == 'Tema') {
       return TemaEconomySeatLayout(
         model: economyseatLayout,
       );
-    } else if (selectedDestination == 'Takoradi') {
+    } else if (selectedDestination.value == 'Takoradi') {
       return TakoradiEconomySeatLayout(
         model: economyseatLayout,
       );
-    } else if (selectedDestination == 'Cape Coast') {
+    } else if (selectedDestination.value == 'Cape Coast') {
       return CapeCoastEconomySeatLayout(
         model: economyseatLayout,
       );
-    } else if (selectedDestination == 'Sunyani') {
+    } else if (selectedDestination.value == 'Sunyani') {
       return SunyaniEconomySeatLayout(
         model: economyseatLayout,
       );
-    } else if (selectedDestination == 'Kasoa') {
+    } else if (selectedDestination.value == 'Kasoa') {
       return KasoaEconomySeatLayout(
         model: economyseatLayout,
       );
@@ -155,28 +163,28 @@ class SeatSelectionController extends GetxController {
     }
   }
 
-  Widget changeExecutiveSeatsLayout(String? selectedDestination) {
-    if (selectedDestination == 'Accra') {
+  Widget changeExecutiveSeatsLayout(RxString selectedDestination) {
+    if (selectedDestination.value == 'Accra') {
       return AccraExecutiveSeatLayout(
         model: executiveseatLayout,
       );
-    } else if (selectedDestination == 'Tema') {
+    } else if (selectedDestination.value == 'Tema') {
       return TemaExecutiveSeatLayout(
         model: executiveseatLayout,
       );
-    } else if (selectedDestination == 'Takoradi') {
+    } else if (selectedDestination.value == 'Takoradi') {
       return TakoradiExecutiveSeatLayout(
         model: executiveseatLayout,
       );
-    } else if (selectedDestination == 'Cape Coast') {
+    } else if (selectedDestination.value == 'Cape Coast') {
       return CapeCoastExecutiveSeatLayout(
         model: executiveseatLayout,
       );
-    } else if (selectedDestination == 'Sunyani') {
+    } else if (selectedDestination.value == 'Sunyani') {
       return SunyaniExecutiveSeatLayout(
         model: executiveseatLayout,
       );
-    } else if (selectedDestination == 'Kasoa') {
+    } else if (selectedDestination.value == 'Kasoa') {
       return KasoaExecutiveSeatLayout(
         model: executiveseatLayout,
       );
