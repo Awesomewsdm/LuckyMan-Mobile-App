@@ -93,7 +93,8 @@ class SeatSelectionController extends GetxController {
     noOfSeats = 4;
   }
 
-  String selectedDestination = BusBookingController.instance.selectedDestination.toString();
+  String selectedDestination =
+      BusBookingController.instance.selectedDestination.toString();
 
   String changeEconomySeatPrice() {
     if (selectedDestination == 'Accra') {
@@ -113,84 +114,98 @@ class SeatSelectionController extends GetxController {
     }
   }
 
-  String changeExecutiveSeatPrice(RxString selectedDestination) {
-    if (selectedDestination.value == 'Accra') {
+  String changeExecutiveSeatPrice() {
+    if (selectedDestination == 'Accra') {
       return pAccraExecutiveEcoSeatPrice.value.toString();
-    } else if (selectedDestination.value == 'Tema') {
+    } else if (selectedDestination == 'Tema') {
       return pTemaExecutiveseatPrice.value.toString();
-    } else if (selectedDestination.value == 'Takoradi') {
+    } else if (selectedDestination == 'Takoradi') {
       return pTakoradiExecutiveseatPrice.value.toString();
-    } else if (selectedDestination.value == 'Cape Coast') {
+    } else if (selectedDestination == 'Cape Coast') {
       return pCapeCoastExecutiveseatPrice.value.toString();
-    } else if (selectedDestination.value == 'Sunyani') {
+    } else if (selectedDestination == 'Sunyani') {
       return pSunyaniExecutiveseatPrice.value.toString();
-    } else if (selectedDestination.value == 'Kasoa') {
+    } else if (selectedDestination == 'Kasoa') {
       return pKasoaExecutiveseatPrice.value.toString();
     } else {
       return pMadinaExecutiveseatPrice.value.toString();
     }
   }
 
-  Widget changeEconomySeatsLayout(RxString selectedDestination) {
-    if (selectedDestination.value == 'Accra') {
+  Widget changeEconomySeatsLayout() {
+    if (selectedDestination == 'Accra') {
       return AccraEconomySeatLayout(
         model: economyseatLayout,
       );
-    } else if (selectedDestination.value == 'Tema') {
+    } else if (selectedDestination == 'Tema') {
       return TemaEconomySeatLayout(
         model: economyseatLayout,
       );
-    } else if (selectedDestination.value == 'Takoradi') {
+    } else if (selectedDestination == 'Takoradi') {
       return TakoradiEconomySeatLayout(
         model: economyseatLayout,
       );
-    } else if (selectedDestination.value == 'Cape Coast') {
+    } else if (selectedDestination == 'Cape Coast') {
       return CapeCoastEconomySeatLayout(
         model: economyseatLayout,
       );
-    } else if (selectedDestination.value == 'Sunyani') {
+    } else if (selectedDestination == 'Sunyani') {
       return SunyaniEconomySeatLayout(
         model: economyseatLayout,
       );
-    } else if (selectedDestination.value == 'Kasoa') {
+    } else if (selectedDestination == 'Kasoa') {
       return KasoaEconomySeatLayout(
         model: economyseatLayout,
       );
-    } else {
+    } else if(selectedDestination == 'Madina') {
       return MadinaEconomySeatLayout(
         model: economyseatLayout,
+      );
+    } else {
+      return const Center(
+        child: Text(
+          'Please select a bus class',
+          style: TextStyle(fontSize: 18.0),
+        ),
       );
     }
   }
 
-  Widget changeExecutiveSeatsLayout(RxString selectedDestination) {
-    if (selectedDestination.value == 'Accra') {
+  Widget changeExecutiveSeatsLayout() {
+    if (selectedDestination == 'Accra') {
       return AccraExecutiveSeatLayout(
         model: executiveseatLayout,
       );
-    } else if (selectedDestination.value == 'Tema') {
+    } else if (selectedDestination == 'Tema') {
       return TemaExecutiveSeatLayout(
         model: executiveseatLayout,
       );
-    } else if (selectedDestination.value == 'Takoradi') {
+    } else if (selectedDestination == 'Takoradi') {
       return TakoradiExecutiveSeatLayout(
         model: executiveseatLayout,
       );
-    } else if (selectedDestination.value == 'Cape Coast') {
+    } else if (selectedDestination == 'Cape Coast') {
       return CapeCoastExecutiveSeatLayout(
         model: executiveseatLayout,
       );
-    } else if (selectedDestination.value == 'Sunyani') {
+    } else if (selectedDestination == 'Sunyani') {
       return SunyaniExecutiveSeatLayout(
         model: executiveseatLayout,
       );
-    } else if (selectedDestination.value == 'Kasoa') {
+    } else if (selectedDestination == 'Kasoa') {
       return KasoaExecutiveSeatLayout(
         model: executiveseatLayout,
       );
-    } else {
+    } else if (selectedDestination == 'Koforidua') {
       return KoforiduaExecutiveSeatLayout(
         model: executiveseatLayout,
+      );
+    } else {
+      return const Center(
+        child: Text(
+          'Please select a bus class',
+          style: TextStyle(fontSize: 18.0),
+        ),
       );
     }
   }

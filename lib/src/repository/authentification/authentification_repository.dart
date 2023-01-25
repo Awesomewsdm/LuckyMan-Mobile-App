@@ -45,7 +45,7 @@ class AuthenticationRepository extends GetxController {
       throw ex;
     } catch (_) {
       const ex = SignUpWithEmailAndPasswordFailure();
-      // print('EXCEPTION - ${ex.message}');
+      
       throw ex;
     }
   }

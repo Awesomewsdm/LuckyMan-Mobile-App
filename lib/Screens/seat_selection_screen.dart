@@ -7,6 +7,7 @@ import 'package:angie_notebook/src/common_widgets/buttons/bottom_button.dart';
 import 'package:angie_notebook/Components/text_styling.dart';
 import 'package:angie_notebook/Constants/constants.dart';
 import 'package:angie_notebook/Screens/payment_page.dart';
+import 'package:angie_notebook/src/features/authentification/models/user_model.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -95,12 +96,8 @@ class SeatSelectionScreen extends StatelessWidget {
                       decoration: kBackgroundBoxDecoration,
                       child: seatSelectionController.selectedBusType.value ==
                               busClasses[0]
-                          ? AccraEconomySeatLayout(
-                              model: economyseatLayout,
-                            )
-                          : AccraExecutiveSeatLayout(
-                              model: executiveseatLayout,
-                            ),
+                          ? seatSelectionController.changeEconomySeatsLayout()
+                          : seatSelectionController.changeExecutiveSeatsLayout()
                     ),
                   ),
                 ),
@@ -139,8 +136,8 @@ class SeatSelectionScreen extends StatelessWidget {
                               ? Obx(
                                   () => Text(
                                     seatSelectionController
-                                        .selectedAccraEconomySeats
-                                        .join(' , '),
+                                        .changeEconomySeatList(selectedDestination)
+                                       ,
                                     style: const TextStyle(
                                       fontSize: 18.0,
                                       fontWeight: FontWeight.w900,
@@ -150,8 +147,8 @@ class SeatSelectionScreen extends StatelessWidget {
                               : Obx(
                                   () => Text(
                                     seatSelectionController
-                                        .selectedAccraExecutiveSeats
-                                        .join(' , '),
+                                        .changeExecutiveSeatList(selectedDestination)
+                                        ,
                                     style: const TextStyle(
                                       fontSize: 18.0,
                                       fontWeight: FontWeight.w900,
@@ -195,24 +192,24 @@ class SeatSelectionScreen extends StatelessWidget {
                 child: BottomButton(
                   bottomTextLabel: 'Proceed to make payment',
                   onPressed: () {
-                    // final UserModel user = UserModel(
-                    //   seatNo: selectedValue == busClasses[0]
-                    //       ? Obx(
-                    //           () => Text(
-                    //             seatSelectionController.changeEconomySeatList(
-                    //                 widget.selectedDestination),
-                    //             style: const TextStyle(
-                    //               fontSize: 18.0,
-                    //               fontWeight: FontWeight.w900,
-                    //             ),
-                    //           ),
-                    //         )
-                    //       : seatSelectionController.changeExecutiveSeatList(
-                    //           widget.selectedDestination),
-                    //   price: selectedValue == busClasses[0]
-                    //       ? seatSelectionController.changeEconomySeatPrice(widget.selectedDestination)
-                    //       : seatSelectionController.changeExecutiveSeatPrice(widget.selectedDestination)
-                    // );
+                    final UserModel user = UserModel(
+                      seatNo: selectedDestination == busClasses[0]
+                          ? Obx(
+                              () => Text(
+                                seatSelectionController.changeEconomySeatList(
+                                    selectedDestination),
+                                style: const TextStyle(
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                              ),
+                            )
+                          : seatSelectionController.changeExecutiveSeatList(
+                              selectedDestination),
+                      price: selectedDestination == busClasses[0]
+                          ? seatSelectionController.changeEconomySeatPrice()
+                          : seatSelectionController.changeExecutiveSeatPrice()
+                    );
                     Get.to(
                       () => const PaymentPage(),
                     );
