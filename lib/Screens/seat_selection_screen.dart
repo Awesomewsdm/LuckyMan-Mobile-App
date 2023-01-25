@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/Components/text_styling.dart';
@@ -15,9 +13,9 @@ import '../Models/utils/form_items.dart';
 import '../src/common_widgets/dropdown_menu/bus_class_menu.dart';
 
 class SeatSelectionScreen extends StatelessWidget {
-   SeatSelectionScreen({
-    
-    Key? key, this.selectedDestination,
+  SeatSelectionScreen({
+    Key? key,
+    this.selectedDestination,
   }) : super(key: key);
   static String id = '/SeatSelectionScreen';
   final String? selectedDestination;
@@ -87,15 +85,15 @@ class SeatSelectionScreen extends StatelessWidget {
                 child: SingleChildScrollView(
                   child: Obx(
                     () => Container(
-                      height: size.height,
-                      width: size.width - 50,
-                      // color: const Color.fromRGBO(255, 255, 255, 1.0),
-                      decoration: kBackgroundBoxDecoration,
-                      child: seatSelectionController.selectedBusType.value ==
-                              busClasses[0]
-                          ? seatSelectionController.changeEconomySeatsLayout()
-                          : seatSelectionController.changeExecutiveSeatsLayout()
-                    ),
+                        height: size.height,
+                        width: size.width - 50,
+                        // color: const Color.fromRGBO(255, 255, 255, 1.0),
+                        decoration: kBackgroundBoxDecoration,
+                        child: seatSelectionController.selectedBusType.value ==
+                                busClasses[0]
+                            ? seatSelectionController.changeEconomySeatsLayout()
+                            : seatSelectionController
+                                .changeExecutiveSeatsLayout()),
                   ),
                 ),
               ),
@@ -133,8 +131,7 @@ class SeatSelectionScreen extends StatelessWidget {
                               ? Obx(
                                   () => Text(
                                     seatSelectionController
-                                        .changeEconomySeatList(selectedDestination)
-                                       ,
+                                        .changeEconomySeatList(),
                                     style: const TextStyle(
                                       fontSize: 18.0,
                                       fontWeight: FontWeight.w900,
@@ -144,8 +141,7 @@ class SeatSelectionScreen extends StatelessWidget {
                               : Obx(
                                   () => Text(
                                     seatSelectionController
-                                        .changeExecutiveSeatList(selectedDestination)
-                                        ,
+                                        .changeExecutiveSeatList(),
                                     style: const TextStyle(
                                       fontSize: 18.0,
                                       fontWeight: FontWeight.w900,
@@ -178,7 +174,7 @@ class SeatSelectionScreen extends StatelessWidget {
                                       fontWeight: FontWeight.w900,
                                     ),
                                   ),
-                                )
+                                ),
                         ],
                       ),
                     ),
@@ -190,23 +186,22 @@ class SeatSelectionScreen extends StatelessWidget {
                   bottomTextLabel: 'Proceed to make payment',
                   onPressed: () {
                     final UserModel user = UserModel(
-                      seatNo: selectedDestination == busClasses[0]
-                          ? Obx(
-                              () => Text(
-                                seatSelectionController.changeEconomySeatList(
-                                    selectedDestination),
-                                style: const TextStyle(
-                                  fontSize: 18.0,
-                                  fontWeight: FontWeight.w900,
+                        seatNo: selectedDestination == busClasses[0]
+                            ? Obx(
+                                () => Text(
+                                  seatSelectionController
+                                      .changeEconomySeatList(),
+                                  style: const TextStyle(
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.w900,
+                                  ),
                                 ),
-                              ),
-                            )
-                          : seatSelectionController.changeExecutiveSeatList(
-                              selectedDestination),
-                      price: selectedDestination == busClasses[0]
-                          ? seatSelectionController.changeEconomySeatPrice()
-                          : seatSelectionController.changeExecutiveSeatPrice()
-                    );
+                              )
+                            : seatSelectionController.changeExecutiveSeatList(),
+                        price: selectedDestination == busClasses[0]
+                            ? seatSelectionController.changeEconomySeatPrice()
+                            : seatSelectionController
+                                .changeExecutiveSeatPrice());
                     Get.to(
                       () => const PaymentPage(),
                     );

@@ -211,7 +211,7 @@ class SeatSelectionController extends GetxController {
     }
   }
 
-  String changeEconomySeatList(String? selectedDestination) {
+  String changeEconomySeatList() {
     if (selectedDestination == 'Accra') {
       return selectedAccraEconomySeats.join(' , ');
     } else if (selectedDestination == 'Tema') {
@@ -230,7 +230,7 @@ class SeatSelectionController extends GetxController {
     return 'NAtd';
   }
 
-  changeExecutiveSeatList(String? selectedDestination) {
+  changeExecutiveSeatList() {
     if (selectedDestination == 'Accra') {
       return Obx(
         () => Text(
