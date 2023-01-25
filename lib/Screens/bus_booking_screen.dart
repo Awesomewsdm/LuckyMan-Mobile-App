@@ -1,8 +1,9 @@
-import 'package:angie_notebook/Models/utils/form_items.dart';
-import 'package:angie_notebook/Screens/seat_selection_screen.dart';
-import 'package:angie_notebook/src/features/authentification/controllers/bus_booking_controllers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:luckyman_app/Models/utils/form_items.dart';
+import 'package:luckyman_app/Screens/seat_selection_screen.dart';
+import 'package:luckyman_app/src/features/authentification/controllers/bus_booking_controllers.dart';
 import '../Components/dropdown.dart';
 import '../Components/input_field.dart';
 import '../Components/screen_template.dart';

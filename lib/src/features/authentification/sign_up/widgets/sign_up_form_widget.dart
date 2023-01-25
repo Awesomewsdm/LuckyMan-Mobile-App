@@ -1,6 +1,7 @@
-import 'package:angie_notebook/Models/utils/validators.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:luckyman_app/Models/utils/validators.dart';
 import 'package:regexed_validator/regexed_validator.dart';
 
 import '../../../../common_widgets/bottom_nav/bottom_nav.dart';

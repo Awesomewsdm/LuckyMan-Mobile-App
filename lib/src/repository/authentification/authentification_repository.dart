@@ -1,6 +1,7 @@
-import 'package:angie_notebook/src/features/authentification/sign_up/widgets/sign_up_screen.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:luckyman_app/src/features/authentification/sign_up/widgets/sign_up_screen.dart';
 
 import '../../common_widgets/bottom_nav/bottom_nav.dart';
 import '../exceptions/sign_up_exceptions.dart';

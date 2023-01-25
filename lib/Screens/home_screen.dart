@@ -1,9 +1,10 @@
-import 'package:angie_notebook/Components/text_styling.dart';
-import 'package:angie_notebook/Constants/constants.dart';
-import 'package:angie_notebook/Screens/bus_booking_screen.dart';
-import 'package:angie_notebook/src/common_widgets/user_info/user_profile_image.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:luckyman_app/Components/text_styling.dart';
+import 'package:luckyman_app/Constants/constants.dart';
+import 'package:luckyman_app/Screens/bus_booking_screen.dart';
+import 'package:luckyman_app/src/common_widgets/user_info/user_profile_image.dart';
 
 import '../src/constants/image_strings.dart';
 

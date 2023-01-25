@@ -1,4 +1,5 @@
-import 'package:angie_notebook/Models/seat_layout_mode.dart';
+
+import 'package:luckyman_app/Models/seat_layout_mode.dart';
 
 final economyseatLayout = SeatLayoutModel(
   rows: 12,

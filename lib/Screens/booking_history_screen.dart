@@ -1,5 +1,5 @@
-import 'package:angie_notebook/src/constants/text.dart';
 import 'package:flutter/material.dart';
+import 'package:luckyman_app/src/constants/text.dart';
 
 class BookingHitory extends StatelessWidget {
   const BookingHitory({Key? key}) : super(key: key);

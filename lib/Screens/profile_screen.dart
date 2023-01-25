@@ -1,13 +1,14 @@
-import 'package:angie_notebook/Components/widgets.dart';
-import 'package:angie_notebook/Constants/constants.dart';
-import 'package:angie_notebook/src/common_widgets/buttons/bottom_button.dart';
-import 'package:angie_notebook/src/constants/text.dart';
-import 'package:angie_notebook/src/features/authentification/controllers/profile_controller.dart';
-import 'package:angie_notebook/src/features/authentification/models/user_model.dart';
-import 'package:angie_notebook/src/features/authentification/screens/login/login_screen.dart';
-import 'package:angie_notebook/src/repository/authentification/authentification_repository.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:luckyman_app/Components/widgets.dart';
+import 'package:luckyman_app/Constants/constants.dart';
+import 'package:luckyman_app/src/common_widgets/buttons/bottom_button.dart';
+import 'package:luckyman_app/src/constants/text.dart';
+import 'package:luckyman_app/src/features/authentification/controllers/profile_controller.dart';
+import 'package:luckyman_app/src/features/authentification/models/user_model.dart';
+import 'package:luckyman_app/src/features/authentification/screens/login/login_screen.dart';
+import 'package:luckyman_app/src/repository/authentification/authentification_repository.dart';
 
 import '../src/common_widgets/user_info/user_profile_image.dart';
 

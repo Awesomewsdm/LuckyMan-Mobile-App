@@ -1,6 +1,7 @@
 
-import 'package:angie_notebook/Components/text_styling.dart';
+
 import 'package:flutter/material.dart';
+import 'package:luckyman_app/Components/text_styling.dart';
 
 class DividerWidget extends StatelessWidget {
   const DividerWidget({

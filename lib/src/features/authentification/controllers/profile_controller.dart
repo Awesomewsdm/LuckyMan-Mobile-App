@@ -1,6 +1,7 @@
-import 'package:angie_notebook/src/repository/authentification/authentification_repository.dart';
-import 'package:angie_notebook/src/repository/authentification/user_repository.dart';
+
 import 'package:get/get.dart';
+import 'package:luckyman_app/src/repository/authentification/authentification_repository.dart';
+import 'package:luckyman_app/src/repository/authentification/user_repository.dart';
 
 class ProfileController extends GetxController {
   static ProfileController get instance => Get.find();

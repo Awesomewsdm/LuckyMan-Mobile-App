@@ -1,5 +1,5 @@
-import 'package:angie_notebook/Components/text_styling.dart';
 import 'package:flutter/material.dart';
+import 'package:luckyman_app/Components/text_styling.dart';
 
 class SeatStatus extends StatelessWidget {
   const SeatStatus({

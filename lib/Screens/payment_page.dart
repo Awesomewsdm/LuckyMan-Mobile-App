@@ -1,9 +1,10 @@
-import 'package:angie_notebook/Components/divider_widget.dart';
-import 'package:angie_notebook/Components/input_field.dart';
-import 'package:angie_notebook/Components/screen_template.dart';
-import 'package:angie_notebook/Components/text_styling.dart';
-import 'package:angie_notebook/Constants/constants.dart';
+
 import 'package:flutter/material.dart';
+import 'package:luckyman_app/Components/divider_widget.dart';
+import 'package:luckyman_app/Components/input_field.dart';
+import 'package:luckyman_app/Components/screen_template.dart';
+import 'package:luckyman_app/Components/text_styling.dart';
+import 'package:luckyman_app/Constants/constants.dart';
 
 class PaymentPage extends StatelessWidget {
   static const String id = '/PaymentScreen';

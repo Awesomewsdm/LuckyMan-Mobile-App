@@ -1,7 +1,8 @@
-import 'package:angie_notebook/src/repository/authentification/authentification_repository.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:luckyman_app/src/repository/authentification/authentification_repository.dart';
 
 class LoginController extends GetxController {
   static LoginController get instance => Get.find();

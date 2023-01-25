@@ -1,7 +1,8 @@
-import 'package:angie_notebook/Constants/constants.dart';
-import 'package:angie_notebook/src/features/authentification/controllers/seat_selection_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:luckyman_app/Constants/constants.dart';
+import 'package:luckyman_app/src/features/authentification/controllers/seat_selection_controller.dart';
+
 
 import '../../../../Models/seat_layout_mode.dart';
 import '../../../../Models/utils/economy_seats.dart';

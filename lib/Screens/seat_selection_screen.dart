@@ -1,16 +1,13 @@
-import 'package:angie_notebook/Models/utils/economy_seats.dart';
-import 'package:angie_notebook/Models/utils/executive_seat_layout_model.dart';
-import 'package:angie_notebook/src/common_widgets/destination_seats_layouts/economy__seats_layout/accra_seats_layout.dart';
-import 'package:angie_notebook/src/common_widgets/destination_seats_layouts/executive_seats_layout/accra_seats_layout.dart';
-import 'package:angie_notebook/src/features/authentification/controllers/seat_selection_controller.dart';
-import 'package:angie_notebook/src/common_widgets/buttons/bottom_button.dart';
-import 'package:angie_notebook/Components/text_styling.dart';
-import 'package:angie_notebook/Constants/constants.dart';
-import 'package:angie_notebook/Screens/payment_page.dart';
-import 'package:angie_notebook/src/features/authentification/models/user_model.dart';
+
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:luckyman_app/Components/text_styling.dart';
+import 'package:luckyman_app/Constants/constants.dart';
+import 'package:luckyman_app/Screens/payment_page.dart';
+import 'package:luckyman_app/src/common_widgets/buttons/bottom_button.dart';
+import 'package:luckyman_app/src/features/authentification/controllers/seat_selection_controller.dart';
+import 'package:luckyman_app/src/features/authentification/models/user_model.dart';
 
 import '../Components/seat_status.dart';
 import '../Components/widgets.dart';

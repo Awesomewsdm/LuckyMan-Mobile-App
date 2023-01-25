@@ -1,7 +1,8 @@
-import 'package:angie_notebook/Models/utils/validators.dart';
-import 'package:angie_notebook/src/features/authentification/controllers/login_controller.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:luckyman_app/Models/utils/validators.dart';
+import 'package:luckyman_app/src/features/authentification/controllers/login_controller.dart';
 import 'package:regexed_validator/regexed_validator.dart';
 
 import '../../../../constants/input_decoration.dart';
