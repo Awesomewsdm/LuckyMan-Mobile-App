@@ -186,18 +186,10 @@ class SeatSelectionScreen extends StatelessWidget {
                   bottomTextLabel: 'Proceed to make payment',
                   onPressed: () {
                     final UserModel user = UserModel(
-                        seatNo: selectedDestination == busClasses[0]
-                            ? Obx(
-                                () => Text(
-                                  seatSelectionController
-                                      .changeEconomySeatList(),
-                                  style: const TextStyle(
-                                    fontSize: 18.0,
-                                    fontWeight: FontWeight.w900,
-                                  ),
-                                ),
-                              )
-                            : seatSelectionController.changeExecutiveSeatList(),
+                        // seatNo: selectedDestination == busClasses[0]
+                        //     ? seatSelectionController.changeEconomySeatList()
+                        //     : seatSelectionController
+                        //         .selectedAccraExecutiveSeats,
                         price: selectedDestination == busClasses[0]
                             ? seatSelectionController.changeEconomySeatPrice()
                             : seatSelectionController
