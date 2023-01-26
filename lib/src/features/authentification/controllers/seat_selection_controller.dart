@@ -26,8 +26,8 @@ class SeatSelectionController extends GetxController {
     BusBookingController(),
   );
 
-  RxList selectedKoforiduaEconomySeats = [].obs;
-  RxList selectedKoforiduaExecutiveSeats = [].obs;
+  RxList selectedMadinaEconomySeats = [].obs;
+  RxList selectedMadinaExecutiveSeats = [].obs;
 
   RxList selectedAccraEconomySeats = [].obs;
   RxList selectedCapeCoastEconomySeats = [].obs;
@@ -48,10 +48,10 @@ class SeatSelectionController extends GetxController {
 
   int noOfSeats = 4;
 
-  RxDouble seatPrice = 0.0.obs;
-  calcSeatPrice(double amount) {
-    seatPrice.value += amount;
-  }
+  // RxDouble seatPrice = 0.0.obs;
+  // calcSeatPrice(double amount) {
+  //   seatPrice.value += amount;
+  // }
 
   // Bus type controllers
   RxString selectedBusType = 'ECONOMY'.obs;
@@ -224,7 +224,7 @@ class SeatSelectionController extends GetxController {
     } else if (selectedDestination == 'Kasoa') {
       selectedKasoaEconomySeats.join(' , ');
     } else {
-      selectedKoforiduaEconomySeats.join(' , ');
+      selectedMadinaEconomySeats.join(' , ');
     }
     return 'NAtd';
   }
@@ -243,7 +243,7 @@ class SeatSelectionController extends GetxController {
     } else if (selectedDestination == 'Kasoa') {
       return selectedKasoaExecutiveSeats.join(' , ');
     } else {
-      return selectedKoforiduaExecutiveSeats.join(' , ');
+      return selectedMadinaExecutiveSeats.join(' , ');
     }
   }
 }

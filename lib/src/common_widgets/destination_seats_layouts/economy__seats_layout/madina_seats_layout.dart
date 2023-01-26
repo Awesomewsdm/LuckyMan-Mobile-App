@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/Constants/constants.dart';
@@ -15,7 +14,7 @@ class MadinaEconomySeatLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int seatCounter = 0;
-double amount = 0.0;
+
     return Column(
       children: [
         Expanded(
@@ -59,12 +58,15 @@ double amount = 0.0;
                               double price =
                                   economyseatLayout.seatTypes[5]['Madina']!;
                               RxList seats = SeatSelectionController
-                                  .instance.selectedKoforiduaEconomySeats;
+                                  .instance.selectedMadinaEconomySeats;
+                              double seatPrice = seatSelectionController
+                                  .pMadinaEconomyseatPrice.value;
+
                               if (seats.contains(seatNo)) {
-                                amount = amount + price;
+                                seatPrice = seatPrice - price;
                                 seats.remove(seatNo);
                               } else {
-                                amount = amount - price;
+                                seatPrice = seatPrice + price;
                                 if (seats.length >
                                     SeatSelectionController
                                         .instance.noOfSeats) {
@@ -74,7 +76,7 @@ double amount = 0.0;
                                       backgroundColor:
                                           Colors.blue.withOpacity(0.7),
                                       snackPosition: SnackPosition.BOTTOM);
-                                      amount = amount - price;
+                                  seatPrice = seatPrice - price;
                                   seats.removeAt(4);
 
                                   seats.add(seatNo);
@@ -82,17 +84,14 @@ double amount = 0.0;
                                   seats.add(seatNo);
                                 }
                               }
-                              seatSelectionController.pMadinaEconomyseatPrice =
-                                  amount.obs;
 
-                              
                             },
                             child: Obx(() => Container(
                                   height: seatSize,
                                   width: seatSize,
                                   decoration: BoxDecoration(
                                     color: SeatSelectionController.instance
-                                            .selectedKoforiduaEconomySeats
+                                            .selectedMadinaEconomySeats
                                             .contains(seatNo)
                                         ? selectedSeatColor
                                         : emptySeatColor,
@@ -108,7 +107,7 @@ double amount = 0.0;
                                       style: TextStyle(
                                           color: SeatSelectionController
                                                   .instance
-                                                  .selectedKoforiduaEconomySeats
+                                                  .selectedMadinaEconomySeats
                                                   .contains(seatNo)
                                               ? activeSeatNumberColor
                                               : inactiveSeatNumberColor),

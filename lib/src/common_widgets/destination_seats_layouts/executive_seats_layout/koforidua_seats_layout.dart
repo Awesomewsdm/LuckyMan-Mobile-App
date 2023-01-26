@@ -24,7 +24,7 @@ class KoforiduaExecutiveSeatLayout extends StatelessWidget {
             itemBuilder: ((context, index) {
               return Column(
                 children: [
-                  const Text("Bus Type: Koforidua - Executive"),
+                  const Text("Bus Type: Madina - Executive"),
                   const Divider(
                     color: Colors.lightBlue,
                   ),
@@ -56,7 +56,7 @@ class KoforiduaExecutiveSeatLayout extends StatelessWidget {
                           child: GestureDetector(
                             onTap: () {
                               RxList seats = SeatSelectionController
-                                  .instance.selectedKoforiduaExecutiveSeats;
+                                  .instance.selectedMadinaExecutiveSeats;
                               if (seats.contains(seatNo)) {
                                 seats.remove(seatNo);
                               } else {
@@ -83,7 +83,7 @@ class KoforiduaExecutiveSeatLayout extends StatelessWidget {
                                   width: seatSize,
                                   decoration: BoxDecoration(
                                     color: SeatSelectionController
-                                            .instance.selectedKoforiduaExecutiveSeats
+                                            .instance.selectedMadinaExecutiveSeats
                                             .contains(seatNo)
                                         ? selectedSeatColor
                                         : emptySeatColor,
@@ -98,7 +98,7 @@ class KoforiduaExecutiveSeatLayout extends StatelessWidget {
                                       seatNo,
                                       style: TextStyle(
                                           color: SeatSelectionController
-                                                  .instance.selectedKoforiduaExecutiveSeats
+                                                  .instance.selectedMadinaExecutiveSeats
                                                   .contains(seatNo)
                                               ? activeSeatNumberColor
                                               : inactiveSeatNumberColor),

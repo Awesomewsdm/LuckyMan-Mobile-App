@@ -175,7 +175,7 @@ class UserBooking {
     } else {
       return Obx(
         () => Text(
-          seatSelectionController.selectedKoforiduaEconomySeats.join(' , '),
+          seatSelectionController.selectedMadinaEconomySeats.join(' , '),
           style: const TextStyle(
             fontSize: 18.0,
             fontWeight: FontWeight.w900,
@@ -249,7 +249,7 @@ class UserBooking {
     } else {
       return Obx(
         () => Text(
-          seatSelectionController.selectedKoforiduaExecutiveSeats.join(' , '),
+          seatSelectionController.selectedMadinaExecutiveSeats.join(' , '),
           style: const TextStyle(
             fontSize: 18.0,
             fontWeight: FontWeight.w900,

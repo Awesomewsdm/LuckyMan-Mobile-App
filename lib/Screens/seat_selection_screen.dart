@@ -8,7 +8,7 @@ import 'package:luckyman_app/src/features/authentification/controllers/seat_sele
 import 'package:luckyman_app/src/features/authentification/models/user_model.dart';
 
 import '../Components/seat_status.dart';
-import '../Components/widgets.dart';
+
 import '../Models/utils/form_items.dart';
 import '../src/common_widgets/dropdown_menu/bus_class_menu.dart';
 
@@ -157,7 +157,7 @@ class SeatSelectionScreen extends StatelessWidget {
                                   busClasses[0]
                               ? Obx(
                                   () => Text(
-                                    'GH¢${seatSelectionController.seatPrice.value.toString()}',
+                                    'GH¢${seatSelectionController.changeExecutiveSeatPrice()}',
                                     style: const TextStyle(
                                       fontSize: 18.0,
                                       fontWeight: FontWeight.w900,
@@ -166,7 +166,7 @@ class SeatSelectionScreen extends StatelessWidget {
                                 )
                               : Obx(
                                   () => Text(
-                                    'GH¢${seatSelectionController.seatPrice.value.toString()}',
+                                    'GH¢${seatSelectionController.changeEconomySeatPrice()}',
                                     style: const TextStyle(
                                       fontSize: 18.0,
                                       fontWeight: FontWeight.w900,

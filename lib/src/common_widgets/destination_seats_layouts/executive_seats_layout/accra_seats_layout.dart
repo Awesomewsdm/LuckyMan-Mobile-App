@@ -57,7 +57,8 @@ class AccraExecutiveSeatLayout extends StatelessWidget {
                             onTap: () {
                               double price =
                                   executiveseatLayout.seatTypes[0]["Accra"]!;
-                              seatSelectionController.calcSeatPrice(price);
+                                  
+                              // seatSelectionController.calcSeatPrice(price);
                               double seatPrice = seatSelectionController
                                   .pAccraExecutiveEcoSeatPrice.value;
 
