@@ -67,7 +67,7 @@ class AccraEconomySeatLayout extends StatelessWidget {
                               RxList seats = SeatSelectionController
                                   .instance.selectedAccraEconomySeats;
 
-                                double   seatPrice = seatSelectionController.seatPrice.value;
+                                double   seatPrice = seatSelectionController.pAccraEconomySeatPrice.value;
 
                               // print(price);
                               if (seats.contains(seatNo)) {
