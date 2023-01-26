@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/Constants/constants.dart';
@@ -15,7 +14,7 @@ class CapeCoastEconomySeatLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int seatCounter = 0;
-    double amount = 0.0;
+
     return Column(
       children: [
         Expanded(
@@ -58,13 +57,15 @@ class CapeCoastEconomySeatLayout extends StatelessWidget {
                             onTap: () {
                               double price =
                                   economyseatLayout.seatTypes[4]['Cape Coast']!;
+                              double seatPrice = seatSelectionController
+                                  .pCapeCoastEconomyseatPrice.value;
                               RxList seats = SeatSelectionController
                                   .instance.selectedCapeCoastEconomySeats;
                               if (seats.contains(seatNo)) {
-                                amount = amount - price;
+                                seatPrice = seatPrice - price;
                                 seats.remove(seatNo);
                               } else {
-                                amount = amount + price;
+                                seatPrice = seatPrice + price;
 
                                 if (seats.length >
                                     SeatSelectionController
@@ -77,7 +78,7 @@ class CapeCoastEconomySeatLayout extends StatelessWidget {
                                         Colors.blue.withOpacity(0.7),
                                     snackPosition: SnackPosition.BOTTOM,
                                   );
-                                  amount = amount - price;
+                                  seatPrice = seatPrice - price;
                                   seats.removeAt(4);
 
                                   seats.add(seatNo);
@@ -85,10 +86,7 @@ class CapeCoastEconomySeatLayout extends StatelessWidget {
                                   seats.add(seatNo);
                                 }
                               }
-                              seatSelectionController.pCapeCoastEconomyseatPrice =
-                                  amount.obs;
-
-                            
+                              
                             },
                             child: Obx(() => Container(
                                   height: seatSize,
