@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/Models/utils/economy_seats.dart';
@@ -49,7 +48,7 @@ class SeatSelectionController extends GetxController {
 
   int noOfSeats = 4;
 
-  final RxDouble seatPrice = 0.0.obs;
+  RxDouble seatPrice = 0.0.obs;
   calcSeatPrice(double amount) {
     seatPrice.value += amount;
   }
@@ -158,7 +157,7 @@ class SeatSelectionController extends GetxController {
       return KasoaEconomySeatLayout(
         model: economyseatLayout,
       );
-    } else if(selectedDestination == 'Madina') {
+    } else if (selectedDestination == 'Madina') {
       return MadinaEconomySeatLayout(
         model: economyseatLayout,
       );
@@ -213,7 +212,6 @@ class SeatSelectionController extends GetxController {
 
   String changeEconomySeatList() {
     if (selectedDestination == 'Accra') {
-      
       return selectedAccraEconomySeats.join(' , ');
     } else if (selectedDestination == 'Tema') {
       selectedTemaEconomySeats.join(' , ');
@@ -231,36 +229,21 @@ class SeatSelectionController extends GetxController {
     return 'NAtd';
   }
 
-String  changeExecutiveSeatList() {
+  String changeExecutiveSeatList() {
     if (selectedDestination == 'Accra') {
-      return 
-          selectedAccraExecutiveSeats.join(' , ')
-       
-      ;
+      return selectedAccraExecutiveSeats.join(' , ');
     } else if (selectedDestination == 'Tema') {
-      return 
-          selectedTemaExecutiveSeats.join(' , '
-      );
+      return selectedTemaExecutiveSeats.join(' , ');
     } else if (selectedDestination == 'Takoradi') {
-      return 
-       
-          selectedTakoradiExecutiveSeats.join(' , ');
+      return selectedTakoradiExecutiveSeats.join(' , ');
     } else if (selectedDestination == 'Cape Coast') {
-      return 
-          selectedCapeCoastExecutiveSeats.join(' , '
-      );
+      return selectedCapeCoastExecutiveSeats.join(' , ');
     } else if (selectedDestination == 'Sunyani') {
-      return
-          selectedSunyaniExecutiveSeats.join(' , '
-      );
+      return selectedSunyaniExecutiveSeats.join(' , ');
     } else if (selectedDestination == 'Kasoa') {
-      return 
-          selectedKasoaExecutiveSeats.join(' , '
-      );
+      return selectedKasoaExecutiveSeats.join(' , ');
     } else {
-      return 
-          selectedKoforiduaExecutiveSeats.join(' , '
-      );
+      return selectedKoforiduaExecutiveSeats.join(' , ');
     }
   }
 }

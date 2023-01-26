@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/Constants/constants.dart';
@@ -16,7 +15,7 @@ class AccraEconomySeatLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double amount = 0.00;
+
     int seatCounter = 0;
     // int seatLength = economyseatLayout.seatTypes.length;
     return Column(
@@ -63,16 +62,21 @@ class AccraEconomySeatLayout extends StatelessWidget {
                               double price =
                                   economyseatLayout.seatTypes[0]["Accra"]!;
 
-                              seatSelectionController.calcSeatPrice(price);
-                              
+                              // seatSelectionController.calcSeatPrice(price);
+
                               RxList seats = SeatSelectionController
                                   .instance.selectedAccraEconomySeats;
 
+                                double   seatPrice = seatSelectionController.seatPrice.value;
+
                               // print(price);
                               if (seats.contains(seatNo)) {
+                              seatPrice  =  seatPrice - price;
                                 seats.remove(seatNo);
                               } else {
-                                amount = amount + price;
+                                 seatPrice =
+                                      seatPrice +
+                                          price;
                                 if (seats.length >
                                     SeatSelectionController
                                         .instance.noOfSeats) {
@@ -82,7 +86,9 @@ class AccraEconomySeatLayout extends StatelessWidget {
                                       backgroundColor:
                                           Colors.blue.withOpacity(0.7),
                                       snackPosition: SnackPosition.BOTTOM);
-                                  amount = amount - price;
+                                  seatPrice =
+                                      seatPrice -
+                                          price;
                                   seats.removeAt(4);
 
                                   seats.add(seatNo);
@@ -91,8 +97,8 @@ class AccraEconomySeatLayout extends StatelessWidget {
                                   seats.add(seatNo);
                                 }
                               }
-                              seatSelectionController.pAccraEconomySeatPrice =
-                                  amount.obs;
+                              
+                                 
                             },
                             child: Obx(
                               () => Container(
