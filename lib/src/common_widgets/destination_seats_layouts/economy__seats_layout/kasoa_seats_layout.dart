@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/Constants/constants.dart';
@@ -15,7 +14,7 @@ class KasoaEconomySeatLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int seatCounter = 0;
-double amount = 0.0;
+    double amount = 0.0;
     return Column(
       children: [
         Expanded(
@@ -58,13 +57,17 @@ double amount = 0.0;
                             onTap: () {
                               RxList seats = SeatSelectionController
                                   .instance.selectedKasoaEconomySeats;
-                                  double price =
+                              double price =
                                   economyseatLayout.seatTypes[3]['Kasoa']!;
+
+                              double seatPrice = seatSelectionController
+                                  .pKasoaEconomyseatPrice.value;
+
                               if (seats.contains(seatNo)) {
-                                amount = amount - price;
+                                seatPrice = seatPrice - price;
                                 seats.remove(seatNo);
                               } else {
-                                amount = amount + price;
+                                seatPrice = seatPrice + price;
                                 if (seats.length >
                                     SeatSelectionController
                                         .instance.noOfSeats) {
@@ -74,17 +77,13 @@ double amount = 0.0;
                                       backgroundColor:
                                           Colors.blue.withOpacity(0.7),
                                       snackPosition: SnackPosition.BOTTOM);
-                                    amount = amount - price;
+                                  seatPrice = seatPrice - price;
                                   seats.removeAt(4);
 
                                   seats.add(seatNo);
                                 } else {
                                   seats.add(seatNo);
                                 }
-                                seatSelectionController.pKasoaEconomyseatPrice =
-                                  amount.obs;
-
-                             
                               }
                             },
                             child: Obx(() => Container(
