@@ -49,54 +49,56 @@ class SeatSelectionScreen extends StatelessWidget {
       ),
       backgroundColor: const Color.fromARGB(251, 243, 240, 255),
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            const SizedBox(
-              height: 10.0,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                SeatStatus(
-                  boxColor: emptySeatColor,
-                  iconLabel: 'Available',
-                ),
-                SeatStatus(
-                  iconLabel: 'Selected',
-                  boxColor: selectedSeatColor,
-                ),
-                SeatStatus(
-                  boxColor: bookedSeatColor,
-                  iconLabel: 'Booked',
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 2.0,
-            ),
-            BusClassDropDownMenu(
-                size: size, seatSelectionController: seatSelectionController),
-            const SizedBox(
-              height: 10.0,
-            ),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Obx(
-                  () => Container(
-                      height: size.height,
-                      width: size.width - 50,
-                      // color: const Color.fromRGBO(255, 255, 255, 1.0),
-                      decoration: kBackgroundBoxDecoration,
-                      child: seatSelectionController.selectedBusType.value ==
-                              busClasses[0]
-                          ? seatSelectionController.changeEconomySeatsLayout()
-                          : seatSelectionController
-                              .changeExecutiveSeatsLayout()),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              const SizedBox(
+                height: 10.0,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  SeatStatus(
+                    boxColor: emptySeatColor,
+                    iconLabel: 'Available',
+                  ),
+                  SeatStatus(
+                    iconLabel: 'Selected',
+                    boxColor: selectedSeatColor,
+                  ),
+                  SeatStatus(
+                    boxColor: bookedSeatColor,
+                    iconLabel: 'Booked',
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 2.0,
+              ),
+              BusClassDropDownMenu(
+                  size: size, seatSelectionController: seatSelectionController),
+              const SizedBox(
+                height: 10.0,
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Obx(
+                    () => Container(
+                        height: size.height,
+                        width: size.width - 50,
+                        // color: const Color.fromRGBO(255, 255, 255, 1.0),
+                        decoration: kBackgroundBoxDecoration,
+                        child: seatSelectionController.selectedBusType.value ==
+                                busClasses[0]
+                            ? seatSelectionController.changeEconomySeatsLayout()
+                            : seatSelectionController
+                                .changeExecutiveSeatsLayout()),
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       bottomSheet: Container(
