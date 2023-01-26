@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/Constants/constants.dart';
@@ -59,14 +58,17 @@ class AccraExecutiveSeatLayout extends StatelessWidget {
                               double price =
                                   executiveseatLayout.seatTypes[0]["Accra"]!;
                               seatSelectionController.calcSeatPrice(price);
-                              
+                              double seatPrice = seatSelectionController
+                                  .pAccraExecutiveEcoSeatPrice.value;
+
                               RxList seats = SeatSelectionController
                                   .instance.selectedAccraExecutiveSeats;
+
                               if (seats.contains(seatNo)) {
-                                amount = amount - price;
+                                seatPrice = seatPrice - price;
                                 seats.remove(seatNo);
                               } else {
-                                amount = amount + price;
+                                seatPrice = seatPrice + price;
                                 if (seats.length >
                                     SeatSelectionController
                                         .instance.noOfSeats) {
@@ -76,7 +78,7 @@ class AccraExecutiveSeatLayout extends StatelessWidget {
                                       backgroundColor:
                                           Colors.blue.withOpacity(0.7),
                                       snackPosition: SnackPosition.BOTTOM);
-                                  amount = amount - price;
+                                  seatPrice = seatPrice - price;
 
                                   seats.removeAt(4);
 
