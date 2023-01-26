@@ -8,7 +8,7 @@ class UserRepository extends GetxController {
   static UserRepository get instance => Get.find();
   final _db = FirebaseFirestore.instance;
 
-      createUser(UserModel user) async {
+  createUser(UserModel user) async {
     await _db
         .collection('Users')
         .add(user.toJson())
@@ -21,6 +21,7 @@ class UserRepository extends GetxController {
             backgroundColor: Colors.blue.withOpacity(0.7),
           ),
         )
+        // ignore: body_might_complete_normally_catch_error
         .catchError((error, stackTrace) {
       Get.snackbar(
         "Error",
@@ -29,7 +30,7 @@ class UserRepository extends GetxController {
         colorText: Colors.red,
         backgroundColor: Colors.blue.withOpacity(0.7),
       );
-      // print(error.toString());
+      
     });
   }
 
@@ -40,10 +41,11 @@ class UserRepository extends GetxController {
 
     return userData;
   }
+
   Future<List<UserModel>> allUser() async {
-    final snapshot =
-        await _db.collection("Users").get();
-    final userData = snapshot.docs.map((e) => UserModel.fromSnaphot(e)).toList();
+    final snapshot = await _db.collection("Users").get();
+    final userData =
+        snapshot.docs.map((e) => UserModel.fromSnaphot(e)).toList();
 
     return userData;
   }

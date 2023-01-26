@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/Models/utils/form_items.dart';
@@ -37,7 +36,42 @@ class BusBookingScreen extends StatelessWidget {
                   key: _formKey,
                   child: Column(
                     children: [
-                      DropdownMenu(
+                      Expanded(
+                        child: BookingDropdownMenu(
+                            validator: (value) {
+                              if (value == null) {
+                                return 'Please select one option';
+                              } else {
+                                return null;
+                              }
+                            },
+                            onChanged: (value) {
+                              busBookingController.changeSelectedBusType(value);
+                            },
+                            items: busType,
+                            formLabel: 'Select Bus Type'),
+                      ),
+                      Expanded(
+                        child: BookingDropdownMenu(
+                          validator: (value) {
+                            if (value == null) {
+                              return 'Please select one option';
+                            } else {
+                              return null;
+                            }
+                          },
+                          items: destinations,
+                          formLabel: 'Select destination',
+                          onChanged: (value) {
+                            busBookingController
+                                .changeSelectedDestination(value);
+                            // selectedDestination = value!;
+                            // print(selectedDestination);
+                          },
+                        ),
+                      ),
+                      Expanded(
+                        child: BookingDropdownMenu(
                           validator: (value) {
                             if (value == null) {
                               return 'Please select one option';
@@ -46,70 +80,46 @@ class BusBookingScreen extends StatelessWidget {
                             }
                           },
                           onChanged: (value) {
-                            busBookingController.changeSelectedBusType(value);
+                            busBookingController
+                                .changeselectedDepatureDate(value);
                           },
-                          items: busType,
-                          formLabel: 'Select Bus Type'),
-                      DropdownMenu(
-                        validator: (value) {
-                          if (value == null) {
-                            return 'Please select one option';
-                          } else {
-                            return null;
-                          }
-                        },
-                        items: destinations,
-                        formLabel: 'Select destination',
-                        onChanged: (value) {
-                          busBookingController.changeSelectedDestination(value);
-                          // selectedDestination = value!;
-                          // print(selectedDestination);
-                        },
+                          items: departureDate,
+                          formLabel: 'Select Depature Date',
+                        ),
                       ),
-                      DropdownMenu(
-                        validator: (value) {
-                          if (value == null) {
-                            return 'Please select one option';
-                          } else {
-                            return null;
-                          }
-                        },
-                        onChanged: (value) {
-                          busBookingController
-                              .changeselectedDepatureDate(value);
-                        },
-                        items: departureDate,
-                        formLabel: 'Select Depature Date',
+                      Expanded(
+                        child: BookingDropdownMenu(
+                          validator: (value) {
+                            if (value == null) {
+                              return 'Please select one option';
+                            } else {
+                              return null;
+                            }
+                          },
+                          onChanged: (value) {
+                            busBookingController
+                                .changeselectedDepatureTime(value);
+                          },
+                          items: departureTime,
+                          formLabel: 'Select Depature Time',
+                        ),
                       ),
-                      DropdownMenu(
-                        validator: (value) {
-                          if (value == null) {
-                            return 'Please select one option';
-                          } else {
-                            return null;
-                          }
-                        },
-                        onChanged: (value) {
-                          busBookingController
-                              .changeselectedDepatureTime(value);
-                        },
-                        items: departureTime,
-                        formLabel: 'Select Depature Time',
-                      ),
-                      DropdownMenu(
-                        validator: (value) {
-                          if (value == null) {
-                            return 'Please select one option';
-                          } else {
-                            return null;
-                          }
-                        },
-                        onChanged: (value) {
-                          busBookingController
-                              .changeselectedselectedPickupPoint(value);
-                        },
-                        items: pickUpPoints,
-                        formLabel: 'Select Pick Up Point',
+                      Expanded(
+                        child: BookingDropdownMenu(
+                          validator: (value) {
+                            if (value == null) {
+                              return 'Please select one option';
+                            } else {
+                              return null;
+                            }
+                          },
+                          onChanged: (value) {
+                            busBookingController
+                                .changeselectedselectedPickupPoint(value);
+                          },
+                          items: pickUpPoints,
+                          formLabel: 'Select Pick Up Point',
+                        ),
                       ),
                       const SizedBox(
                         height: 10.0,
@@ -122,18 +132,21 @@ class BusBookingScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 10.0),
-                      Card(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: InputField(
-                            controller: busBookingController.agentName,
-                            labelText: 'Enter Agent\'s Name',
-                            widget: const BlackTextWidget(
-                              text: 'LTL - ',
+                      Expanded(
+                        child: Card(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: InputField(
+                              controller: busBookingController.agentName,
+                              labelText: 'Enter Agent\'s Name',
+                              widget: const BlackTextWidget(
+                                text: 'LTL - ',
+                              ),
                             ),
                           ),
                         ),
                       ),
+                      const SizedBox(height: 10.0),
                     ],
                   ),
                 ),
