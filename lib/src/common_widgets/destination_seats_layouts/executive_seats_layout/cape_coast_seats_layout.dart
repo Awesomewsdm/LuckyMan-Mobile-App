@@ -1,7 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/Constants/constants.dart';
+import 'package:luckyman_app/Models/utils/executive_seat_layout_model.dart';
 import 'package:luckyman_app/src/features/authentification/controllers/seat_selection_controller.dart';
 
 import '../../../../Models/seat_layout_mode.dart';
@@ -55,11 +55,24 @@ class CapeCoastExecutiveSeatLayout extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap: () {
+                              double price = executiveseatLayout.seatTypes[4]
+                                  ["Cape Coast"]!;
+
                               RxList seats = SeatSelectionController
                                   .instance.selectedCapeCoastExecutiveSeats;
                               if (seats.contains(seatNo)) {
+                                seatSelectionController
+                                    .pCapeCoastExecutiveseatPrice
+                                    .value = seatSelectionController
+                                        .pCapeCoastExecutiveseatPrice.value -
+                                    price;
                                 seats.remove(seatNo);
                               } else {
+                                seatSelectionController
+                                    .pCapeCoastExecutiveseatPrice
+                                    .value = seatSelectionController
+                                        .pCapeCoastExecutiveseatPrice.value +
+                                    price;
                                 if (seats.length >
                                     SeatSelectionController
                                         .instance.noOfSeats) {
@@ -69,7 +82,11 @@ class CapeCoastExecutiveSeatLayout extends StatelessWidget {
                                       backgroundColor:
                                           Colors.blue.withOpacity(0.7),
                                       snackPosition: SnackPosition.BOTTOM);
-
+                                  seatSelectionController
+                                      .pCapeCoastExecutiveseatPrice
+                                      .value = seatSelectionController
+                                          .pCapeCoastExecutiveseatPrice.value +
+                                      price;
                                   seats.removeAt(4);
 
                                   seats.add(seatNo);

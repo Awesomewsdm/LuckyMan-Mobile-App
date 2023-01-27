@@ -1,7 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/Constants/constants.dart';
+import 'package:luckyman_app/Models/utils/executive_seat_layout_model.dart';
 import 'package:luckyman_app/src/features/authentification/controllers/seat_selection_controller.dart';
 
 import '../../../../Models/seat_layout_mode.dart';
@@ -57,9 +57,20 @@ class KasoaExecutiveSeatLayout extends StatelessWidget {
                             onTap: () {
                               RxList seats = SeatSelectionController
                                   .instance.selectedKasoaExecutiveSeats;
+
+                              double price =
+                                  executiveseatLayout.seatTypes[3]["Kasoa"]!;
                               if (seats.contains(seatNo)) {
+                                seatSelectionController.pKasoaExecutiveseatPrice
+                                    .value = seatSelectionController
+                                        .pKasoaExecutiveseatPrice.value -
+                                    price;
                                 seats.remove(seatNo);
                               } else {
+                                seatSelectionController.pKasoaExecutiveseatPrice
+                                    .value = seatSelectionController
+                                        .pKasoaExecutiveseatPrice.value +
+                                    price;
                                 if (seats.length >
                                     SeatSelectionController
                                         .instance.noOfSeats) {
@@ -69,6 +80,11 @@ class KasoaExecutiveSeatLayout extends StatelessWidget {
                                       backgroundColor:
                                           Colors.blue.withOpacity(0.7),
                                       snackPosition: SnackPosition.BOTTOM);
+                                  seatSelectionController
+                                      .pKasoaExecutiveseatPrice
+                                      .value = seatSelectionController
+                                          .pKasoaExecutiveseatPrice.value -
+                                      price;
 
                                   seats.removeAt(4);
 
@@ -82,8 +98,8 @@ class KasoaExecutiveSeatLayout extends StatelessWidget {
                                   height: seatSize,
                                   width: seatSize,
                                   decoration: BoxDecoration(
-                                    color: SeatSelectionController
-                                            .instance.selectedKasoaExecutiveSeats
+                                    color: SeatSelectionController.instance
+                                            .selectedKasoaExecutiveSeats
                                             .contains(seatNo)
                                         ? selectedSeatColor
                                         : emptySeatColor,
@@ -98,7 +114,8 @@ class KasoaExecutiveSeatLayout extends StatelessWidget {
                                       seatNo,
                                       style: TextStyle(
                                           color: SeatSelectionController
-                                                  .instance.selectedKasoaExecutiveSeats
+                                                  .instance
+                                                  .selectedKasoaExecutiveSeats
                                                   .contains(seatNo)
                                               ? activeSeatNumberColor
                                               : inactiveSeatNumberColor),

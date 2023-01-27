@@ -15,7 +15,7 @@ class TemaEconomySeatLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int seatCounter = 0;
-    double amount = 0.0;
+    
     return Column(
       children: [
         Expanded(

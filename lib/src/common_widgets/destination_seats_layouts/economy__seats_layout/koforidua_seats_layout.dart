@@ -1,16 +1,15 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/Constants/constants.dart';
-import 'package:luckyman_app/Models/utils/executive_seat_layout_model.dart';
+import 'package:luckyman_app/Models/utils/economy_seats.dart';
 import 'package:luckyman_app/src/features/authentification/controllers/seat_selection_controller.dart';
 
 import '../../../../Models/seat_layout_mode.dart';
 
-class KoforiduaExecutiveSeatLayout extends StatelessWidget {
+class KoforiduaEconomySeatLayout extends StatelessWidget {
   final SeatSelectionController seatSelectionController =
       Get.put(SeatSelectionController());
-  KoforiduaExecutiveSeatLayout({Key? key, this.model}) : super(key: key);
+  KoforiduaEconomySeatLayout({Key? key, this.model}) : super(key: key);
   final SeatLayoutModel? model;
   @override
   Widget build(BuildContext context) {
@@ -21,11 +20,11 @@ class KoforiduaExecutiveSeatLayout extends StatelessWidget {
         Expanded(
           child: ListView.builder(
             physics: const ClampingScrollPhysics(),
-            itemCount:1,
+            itemCount: 1,
             itemBuilder: ((context, index) {
               return Column(
                 children: [
-                  const Text("Bus Type: Madina - Executive"),
+                  const Text("Bus Type: Sunyani - Economy"),
                   const Divider(
                     color: Colors.lightBlue,
                   ),
@@ -38,7 +37,7 @@ class KoforiduaExecutiveSeatLayout extends StatelessWidget {
                             (row != model!.rowBreaks[index] - 1 &&
                                 model!.isLastFilled)) {
                           return Padding(
-                            padding: const EdgeInsets.all(13.5),
+                            padding: const EdgeInsets.all(12.0),
                             child: Container(
                               height: seatSize,
                               width: seatSize,
@@ -51,27 +50,28 @@ class KoforiduaExecutiveSeatLayout extends StatelessWidget {
                         String seatNo = '$seatCounter';
                         return Padding(
                           padding: const EdgeInsets.symmetric(
-                            horizontal: 15.0,
-                            vertical: 15.0,
+                            horizontal: 10.0,
+                            vertical: 10.0,
                           ),
                           child: GestureDetector(
                             onTap: () {
-                              double price = executiveseatLayout.seatTypes[5]["Koforidua"]!;
                               RxList seats = SeatSelectionController
-                                  .instance.selectedMadinaExecutiveSeats;
+                                  .instance.selectedSunyaniEconomySeats;
+
+                              double price =
+                                  economyseatLayout.seatTypes[7]['Koforidua']!;
+
                               if (seats.contains(seatNo)) {
-                                seatSelectionController
-                                    .pKoforiduaExecutiveseatPrice
+                                seatSelectionController.pKoforiduaEconomyseatPrice
                                     .value = seatSelectionController
-                                        .pKoforiduaExecutiveseatPrice.value -
-                                    price;  
+                                        .pKoforiduaEconomyseatPrice.value -
+                                    price;
                                 seats.remove(seatNo);
                               } else {
-                                seatSelectionController
-                                    .pKoforiduaExecutiveseatPrice
+                                seatSelectionController.pKoforiduaEconomyseatPrice
                                     .value = seatSelectionController
-                                        .pKoforiduaExecutiveseatPrice.value +
-                                    price;  
+                                        .pKoforiduaEconomyseatPrice.value +
+                                    price;
                                 if (seats.length >
                                     SeatSelectionController
                                         .instance.noOfSeats) {
@@ -81,11 +81,12 @@ class KoforiduaExecutiveSeatLayout extends StatelessWidget {
                                       backgroundColor:
                                           Colors.blue.withOpacity(0.7),
                                       snackPosition: SnackPosition.BOTTOM);
-                                      seatSelectionController
-                                    .pKoforiduaExecutiveseatPrice
-                                    .value = seatSelectionController
-                                        .pKoforiduaExecutiveseatPrice.value -
-                                    price;  
+
+                                  seatSelectionController
+                                      .pKoforiduaEconomyseatPrice
+                                      .value = seatSelectionController
+                                          .pKoforiduaEconomyseatPrice.value -
+                                      price;
 
                                   seats.removeAt(4);
 
@@ -99,8 +100,8 @@ class KoforiduaExecutiveSeatLayout extends StatelessWidget {
                                   height: seatSize,
                                   width: seatSize,
                                   decoration: BoxDecoration(
-                                    color: SeatSelectionController
-                                            .instance.selectedMadinaExecutiveSeats
+                                    color: SeatSelectionController.instance
+                                            .selectedSunyaniEconomySeats
                                             .contains(seatNo)
                                         ? selectedSeatColor
                                         : emptySeatColor,
@@ -115,13 +116,14 @@ class KoforiduaExecutiveSeatLayout extends StatelessWidget {
                                       seatNo,
                                       style: TextStyle(
                                           color: SeatSelectionController
-                                                  .instance.selectedMadinaExecutiveSeats
+                                                  .instance
+                                                  .selectedSunyaniEconomySeats
                                                   .contains(seatNo)
                                               ? activeSeatNumberColor
                                               : inactiveSeatNumberColor),
                                     ),
                                   ),
-                                ),),
+                                )),
                           ),
                         );
                       }),

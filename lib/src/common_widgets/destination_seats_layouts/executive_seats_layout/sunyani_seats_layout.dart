@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/Constants/constants.dart';
+import 'package:luckyman_app/Models/utils/executive_seat_layout_model.dart';
 import 'package:luckyman_app/src/features/authentification/controllers/seat_selection_controller.dart';
 
 import '../../../../Models/seat_layout_mode.dart';
@@ -55,6 +56,10 @@ class SunyaniExecutiveSeatLayout extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap: () {
+                              
+                              double price =
+                                  executiveseatLayout.seatTypes[5]['Sunyani']!;
+
                               RxList seats = SeatSelectionController
                                   .instance.selectedSunyaniExecutiveSeats;
                               if (seats.contains(seatNo)) {
