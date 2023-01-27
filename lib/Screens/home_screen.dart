@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:luckyman_app/Components/text_styling.dart';
 import 'package:luckyman_app/Constants/constants.dart';
 import 'package:luckyman_app/Screens/bus_booking_screen.dart';
+import 'package:luckyman_app/Screens/bus_ticket_screen.dart';
 import 'package:luckyman_app/src/common_widgets/user_info/user_profile_image.dart';
 
 import '../src/constants/image_strings.dart';
@@ -107,7 +108,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           HomeWidget(
                             imageLink: tTourIcon,
                             label: 'Go On Tour',
-                            onTap: () {},
+                            onTap: () {Get.to(
+                                () =>const BusTicketScreen(),
+                              );},
                           ),
                           HomeWidget(
                             imageLink: tLuggagesIcon,
