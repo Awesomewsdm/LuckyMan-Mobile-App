@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/Constants/constants.dart';
-import 'package:luckyman_app/Models/utils/economy_seats.dart';
+import 'package:luckyman_app/Models/utils/executive_seat_layout_model.dart';
 import 'package:luckyman_app/src/features/authentification/controllers/seat_selection_controller.dart';
 
 import '../../../../Models/seat_layout_mode.dart';
 
-class KoforiduaEconomySeatLayout extends StatelessWidget {
+class MadinaExecutiveSeatLayout extends StatelessWidget {
   final SeatSelectionController seatSelectionController =
       Get.put(SeatSelectionController());
-  KoforiduaEconomySeatLayout({Key? key, this.model}) : super(key: key);
+  MadinaExecutiveSeatLayout({Key? key, this.model}) : super(key: key);
   final SeatLayoutModel? model;
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class KoforiduaEconomySeatLayout extends StatelessWidget {
             itemBuilder: ((context, index) {
               return Column(
                 children: [
-                  const Text("Bus Type: Koforidua - Economy"),
+                  const Text("Bus Type: Madina - Executive"),
                   const Divider(
                     color: Colors.lightBlue,
                   ),
@@ -37,7 +37,7 @@ class KoforiduaEconomySeatLayout extends StatelessWidget {
                             (row != model!.rowBreaks[index] - 1 &&
                                 model!.isLastFilled)) {
                           return Padding(
-                            padding: const EdgeInsets.all(12.0),
+                            padding: const EdgeInsets.all(13.5),
                             child: Container(
                               height: seatSize,
                               width: seatSize,
@@ -50,27 +50,28 @@ class KoforiduaEconomySeatLayout extends StatelessWidget {
                         String seatNo = '$seatCounter';
                         return Padding(
                           padding: const EdgeInsets.symmetric(
-                            horizontal: 10.0,
-                            vertical: 10.0,
+                            horizontal: 15.0,
+                            vertical: 15.0,
                           ),
                           child: GestureDetector(
                             onTap: () {
-                              RxList seats = SeatSelectionController
-                                  .instance.selectedSunyaniEconomySeats;
-
                               double price =
-                                  economyseatLayout.seatTypes[7]['Koforidua']!;
+                                  executiveseatLayout.seatTypes[6]['Madina']!;
 
+                              RxList seats = SeatSelectionController
+                                  .instance.selectedSunyaniExecutiveSeats;
                               if (seats.contains(seatNo)) {
-                                seatSelectionController.pKoforiduaEconomyseatPrice
+                                seatSelectionController
+                                    .pMadinaExecutiveseatPrice
                                     .value = seatSelectionController
-                                        .pKoforiduaEconomyseatPrice.value -
+                                        .pMadinaExecutiveseatPrice.value -
                                     price;
                                 seats.remove(seatNo);
                               } else {
-                                seatSelectionController.pKoforiduaEconomyseatPrice
+                                seatSelectionController
+                                    .pMadinaExecutiveseatPrice
                                     .value = seatSelectionController
-                                        .pKoforiduaEconomyseatPrice.value +
+                                        .pMadinaExecutiveseatPrice.value +
                                     price;
                                 if (seats.length >
                                     SeatSelectionController
@@ -81,11 +82,10 @@ class KoforiduaEconomySeatLayout extends StatelessWidget {
                                       backgroundColor:
                                           Colors.blue.withOpacity(0.7),
                                       snackPosition: SnackPosition.BOTTOM);
-
                                   seatSelectionController
-                                      .pKoforiduaEconomyseatPrice
+                                      .pMadinaExecutiveseatPrice
                                       .value = seatSelectionController
-                                          .pKoforiduaEconomyseatPrice.value -
+                                          .pMadinaExecutiveseatPrice.value -
                                       price;
 
                                   seats.removeAt(4);
@@ -101,7 +101,7 @@ class KoforiduaEconomySeatLayout extends StatelessWidget {
                                   width: seatSize,
                                   decoration: BoxDecoration(
                                     color: SeatSelectionController.instance
-                                            .selectedSunyaniEconomySeats
+                                            .selectedSunyaniExecutiveSeats
                                             .contains(seatNo)
                                         ? selectedSeatColor
                                         : emptySeatColor,
@@ -117,7 +117,7 @@ class KoforiduaEconomySeatLayout extends StatelessWidget {
                                       style: TextStyle(
                                           color: SeatSelectionController
                                                   .instance
-                                                  .selectedSunyaniEconomySeats
+                                                  .selectedSunyaniExecutiveSeats
                                                   .contains(seatNo)
                                               ? activeSeatNumberColor
                                               : inactiveSeatNumberColor),
