@@ -64,7 +64,7 @@ class _HomePageState extends State<BottomNav> {
           ),
         ),
       ),
-      body: buildScreens.elementAt(selectedIndex),
+      body: Center(child: buildScreens.elementAt(selectedIndex),),
     );
   }
 }
