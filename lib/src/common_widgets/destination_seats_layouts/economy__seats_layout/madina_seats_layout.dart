@@ -59,14 +59,20 @@ class MadinaEconomySeatLayout extends StatelessWidget {
                                   economyseatLayout.seatTypes[5]['Madina']!;
                               RxList seats = SeatSelectionController
                                   .instance.selectedMadinaEconomySeats;
-                              double seatPrice = seatSelectionController
-                                  .pMadinaEconomyseatPrice.value;
+                              // double seatSelectionController
+                              //     .pMadinaEconomyseatPrice.value = seatSelectionController
+                              //     .pMadinaEconomyseatSelectionController
+                              //     .pMadinaEconomyseatPrice.value.value;
 
                               if (seats.contains(seatNo)) {
-                                seatPrice = seatPrice - price;
+                                seatSelectionController
+                                  .pMadinaEconomyseatPrice.value = seatSelectionController
+                                  .pMadinaEconomyseatPrice.value - price;
                                 seats.remove(seatNo);
                               } else {
-                                seatPrice = seatPrice + price;
+                                seatSelectionController
+                                  .pMadinaEconomyseatPrice.value = seatSelectionController
+                                  .pMadinaEconomyseatPrice.value + price;
                                 if (seats.length >
                                     SeatSelectionController
                                         .instance.noOfSeats) {
@@ -76,7 +82,9 @@ class MadinaEconomySeatLayout extends StatelessWidget {
                                       backgroundColor:
                                           Colors.blue.withOpacity(0.7),
                                       snackPosition: SnackPosition.BOTTOM);
-                                  seatPrice = seatPrice - price;
+                                  seatSelectionController
+                                  .pMadinaEconomyseatPrice.value = seatSelectionController
+                                  .pMadinaEconomyseatPrice.value - price;
                                   seats.removeAt(4);
 
                                   seats.add(seatNo);

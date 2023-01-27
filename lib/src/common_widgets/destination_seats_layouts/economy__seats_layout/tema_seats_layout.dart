@@ -62,10 +62,18 @@ class TemaEconomySeatLayout extends StatelessWidget {
                               RxList seats = SeatSelectionController
                                   .instance.selectedTemaEconomySeats;
                               if (seats.contains(seatNo)) {
-                                amount = amount - price;
+                                 seatSelectionController
+                                    .pTemaEconomyseatPrice
+                                    .value = seatSelectionController
+                                        .pTemaEconomyseatPrice.value -
+                                    price;
                                 seats.remove(seatNo);
                               } else {
-                                amount = amount + price;
+                                seatSelectionController
+                                    .pTemaEconomyseatPrice
+                                    .value = seatSelectionController
+                                        .pTemaEconomyseatPrice.value +
+                                    price;
 
                                 if (seats.length >
                                     SeatSelectionController
@@ -76,7 +84,11 @@ class TemaEconomySeatLayout extends StatelessWidget {
                                       backgroundColor:
                                           Colors.blue.withOpacity(0.7),
                                       snackPosition: SnackPosition.BOTTOM);
-                                  amount = amount - price;
+                                  seatSelectionController
+                                    .pTemaEconomyseatPrice
+                                    .value = seatSelectionController
+                                        .pTemaEconomyseatPrice.value -
+                                    price;
 
                                   seats.removeAt(4);
 

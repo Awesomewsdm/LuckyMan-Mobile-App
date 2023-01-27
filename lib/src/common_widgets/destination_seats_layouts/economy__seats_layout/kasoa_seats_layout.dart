@@ -60,14 +60,17 @@ class KasoaEconomySeatLayout extends StatelessWidget {
                               double price =
                                   economyseatLayout.seatTypes[3]['Kasoa']!;
 
-                              double seatPrice = seatSelectionController
-                                  .pKasoaEconomyseatPrice.value;
+                              // 
 
                               if (seats.contains(seatNo)) {
-                                seatPrice = seatPrice - price;
+                                seatSelectionController
+                                  .pKasoaEconomyseatPrice.value = seatSelectionController
+                                  .pKasoaEconomyseatPrice.value - price;
                                 seats.remove(seatNo);
                               } else {
-                                seatPrice = seatPrice + price;
+                                seatSelectionController
+                                  .pKasoaEconomyseatPrice.value = seatSelectionController
+                                  .pKasoaEconomyseatPrice.value + price;
                                 if (seats.length >
                                     SeatSelectionController
                                         .instance.noOfSeats) {
@@ -77,7 +80,9 @@ class KasoaEconomySeatLayout extends StatelessWidget {
                                       backgroundColor:
                                           Colors.blue.withOpacity(0.7),
                                       snackPosition: SnackPosition.BOTTOM);
-                                  seatPrice = seatPrice - price;
+                                  seatSelectionController
+                                  .pKasoaEconomyseatPrice.value = seatSelectionController
+                                  .pKasoaEconomyseatPrice.value - price;
                                   seats.removeAt(4);
 
                                   seats.add(seatNo);

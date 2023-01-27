@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/Constants/constants.dart';
@@ -15,7 +14,7 @@ class TakoradiEconomySeatLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int seatCounter = 0;
-    double amount = 0.0;
+
     return Column(
       children: [
         Expanded(
@@ -56,15 +55,23 @@ class TakoradiEconomySeatLayout extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap: () {
-                               double price =
+                              double price =
                                   economyseatLayout.seatTypes[2]['Takoradi']!;
                               RxList seats = SeatSelectionController
                                   .instance.selectedTakoradiEconomySeats;
                               if (seats.contains(seatNo)) {
-                                amount = amount + price;
+                                seatSelectionController
+                                    .pTakoradiEconomyseatPrice
+                                    .value = seatSelectionController
+                                        .pTakoradiEconomyseatPrice.value -
+                                    price;
                                 seats.remove(seatNo);
                               } else {
-                                amount = amount - price;
+                                 seatSelectionController
+                                    .pTakoradiEconomyseatPrice
+                                    .value = seatSelectionController
+                                        .pTakoradiEconomyseatPrice.value +
+                                    price;
                                 if (seats.length >
                                     SeatSelectionController
                                         .instance.noOfSeats) {
@@ -75,7 +82,11 @@ class TakoradiEconomySeatLayout extends StatelessWidget {
                                           Colors.blue.withOpacity(0.7),
                                       snackPosition: SnackPosition.BOTTOM);
 
-                                      amount = amount - price;
+                                   seatSelectionController
+                                    .pTakoradiEconomyseatPrice
+                                    .value = seatSelectionController
+                                        .pTakoradiEconomyseatPrice.value -
+                                    price;
 
                                   seats.removeAt(4);
 
@@ -84,10 +95,6 @@ class TakoradiEconomySeatLayout extends StatelessWidget {
                                   seats.add(seatNo);
                                 }
                               }
-                              seatSelectionController.pTakoradiEconomyseatPrice =
-                                  amount.obs;
-
-                              
                             },
                             child: Obx(() => Container(
                                   height: seatSize,

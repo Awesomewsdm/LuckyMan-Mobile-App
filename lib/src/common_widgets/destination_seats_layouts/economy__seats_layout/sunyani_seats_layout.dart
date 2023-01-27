@@ -1,7 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/Constants/constants.dart';
+import 'package:luckyman_app/Models/utils/economy_seats.dart';
 import 'package:luckyman_app/src/features/authentification/controllers/seat_selection_controller.dart';
 
 import '../../../../Models/seat_layout_mode.dart';
@@ -57,9 +57,21 @@ class SunyaniEconomySeatLayout extends StatelessWidget {
                             onTap: () {
                               RxList seats = SeatSelectionController
                                   .instance.selectedSunyaniEconomySeats;
+
+                              double price =
+                                  economyseatLayout.seatTypes[5]['Sunyani']!;
+
                               if (seats.contains(seatNo)) {
+                                seatSelectionController.pSunyaniEconomyseatPrice
+                                    .value = seatSelectionController
+                                        .pSunyaniEconomyseatPrice.value -
+                                    price;
                                 seats.remove(seatNo);
                               } else {
+                                seatSelectionController.pSunyaniEconomyseatPrice
+                                    .value = seatSelectionController
+                                        .pSunyaniEconomyseatPrice.value +
+                                    price;
                                 if (seats.length >
                                     SeatSelectionController
                                         .instance.noOfSeats) {
@@ -69,6 +81,12 @@ class SunyaniEconomySeatLayout extends StatelessWidget {
                                       backgroundColor:
                                           Colors.blue.withOpacity(0.7),
                                       snackPosition: SnackPosition.BOTTOM);
+
+                                  seatSelectionController
+                                      .pSunyaniEconomyseatPrice
+                                      .value = seatSelectionController
+                                          .pSunyaniEconomyseatPrice.value -
+                                      price;
 
                                   seats.removeAt(4);
 

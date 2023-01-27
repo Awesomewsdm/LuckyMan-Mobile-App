@@ -43,8 +43,7 @@ class SeatSelectionController extends GetxController {
   RxList selectedSunyaniExecutiveSeats = [].obs;
   RxList selectedTemaExecutiveSeats = [].obs;
 
-  //  RxString selectedValue = 'ECONOMY'.obs;
-  // RxString selectedDropdownMenuItem = 'ECONOMY'.obs;
+
 
   int noOfSeats = 4;
 
@@ -226,7 +225,7 @@ class SeatSelectionController extends GetxController {
     } else {
       selectedMadinaEconomySeats.join(' , ');
     }
-    return 'NAtd';
+    return 'Please select a bus class';
   }
 
   String changeExecutiveSeatList() {

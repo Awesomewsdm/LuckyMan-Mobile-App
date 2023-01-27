@@ -164,7 +164,7 @@ class BusBookingScreen extends StatelessWidget {
                     );
                   }
                 },
-                bottomTextLabel: 'Contine to select a seat'),
+                bottomTextLabel: 'Contine to select a seat',),
           ],
         ),
       ),

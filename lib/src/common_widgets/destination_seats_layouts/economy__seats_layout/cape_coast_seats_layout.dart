@@ -57,15 +57,20 @@ class CapeCoastEconomySeatLayout extends StatelessWidget {
                             onTap: () {
                               double price =
                                   economyseatLayout.seatTypes[4]['Cape Coast']!;
-                              double seatPrice = seatSelectionController
-                                  .pCapeCoastEconomyseatPrice.value;
+                              // double seatSelectionController
+                              //     .pCapeCoastEconomyseatPrice.value = seatSelectionController
+                              //     .pCapeCoastEconomyseatPrice.value;
                               RxList seats = SeatSelectionController
                                   .instance.selectedCapeCoastEconomySeats;
                               if (seats.contains(seatNo)) {
-                                seatPrice = seatPrice - price;
+                                seatSelectionController
+                                  .pCapeCoastEconomyseatPrice.value = seatSelectionController
+                                  .pCapeCoastEconomyseatPrice.value - price;
                                 seats.remove(seatNo);
                               } else {
-                                seatPrice = seatPrice + price;
+                                seatSelectionController
+                                  .pCapeCoastEconomyseatPrice.value = seatSelectionController
+                                  .pCapeCoastEconomyseatPrice.value + price;
 
                                 if (seats.length >
                                     SeatSelectionController
@@ -78,7 +83,9 @@ class CapeCoastEconomySeatLayout extends StatelessWidget {
                                         Colors.blue.withOpacity(0.7),
                                     snackPosition: SnackPosition.BOTTOM,
                                   );
-                                  seatPrice = seatPrice - price;
+                                  seatSelectionController
+                                  .pCapeCoastEconomyseatPrice.value = seatSelectionController
+                                  .pCapeCoastEconomyseatPrice.value - price;
                                   seats.removeAt(4);
 
                                   seats.add(seatNo);
