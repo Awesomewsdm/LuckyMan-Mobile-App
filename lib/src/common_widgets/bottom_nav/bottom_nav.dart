@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:luckyman_app/Screens/booking_history_screen.dart';
@@ -7,15 +6,15 @@ import 'package:luckyman_app/Screens/profile_screen.dart';
 import '../../constants/text.dart';
 import '../../../Screens/home_screen.dart';
 
-class BottomNav extends StatefulWidget {
-  const BottomNav({Key? key}) : super(key: key);
-  static const String id = '/BottomNav';
+class Home extends StatefulWidget {
+  const Home({Key? key}) : super(key: key);
+  static const String id = '/Home';
 
   @override
-  State<BottomNav> createState() => _HomePageState();
+  State<Home> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<BottomNav> {
+class _HomePageState extends State<Home> {
   List<Widget> buildScreens = [
     const HomeScreen(),
     const BookingHitory(),
@@ -32,10 +31,12 @@ class _HomePageState extends State<BottomNav> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue,
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-            color: Colors.lightBlue[100],
-            borderRadius: BorderRadius.circular(20.0)),
+          color: Colors.lightBlue[100],
+          borderRadius: BorderRadius.circular(20.0),
+        ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
           child: GNav(
@@ -64,7 +65,9 @@ class _HomePageState extends State<BottomNav> {
           ),
         ),
       ),
-      body: Center(child: buildScreens.elementAt(selectedIndex),),
+      body: Center(
+        child: buildScreens.elementAt(selectedIndex),
+      ),
     );
   }
 }

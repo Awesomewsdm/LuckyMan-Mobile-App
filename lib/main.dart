@@ -23,9 +23,7 @@ void main() {
       AuthenticationRepository(),
     ),
   );
-  // Get.put(
-  //   SignUpController(),
-  // );
+  
   runApp(
     const MyApp(),
   );

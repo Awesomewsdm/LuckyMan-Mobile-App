@@ -24,7 +24,7 @@ class AuthenticationRepository extends GetxController {
 
   _setInitialScreen(User? user) {
     user == null
-        ? Get.offAll(() => const BottomNav())
+        ? Get.offAll(() => const Home())
         : Get.offAll(() => const SignUpScreen());
   }
 
@@ -35,7 +35,7 @@ class AuthenticationRepository extends GetxController {
           email: email, password: password);
       firebaseUser.value != null
           ? Get.offAll(
-              () => const BottomNav(),
+              () => const Home(),
             )
           : Get.offAll(
               () => const SignUpScreen(),
@@ -58,7 +58,7 @@ class AuthenticationRepository extends GetxController {
           .signInWithEmailAndPassword(email: email, password: password);
       Get.snackbar('SUCCESS', 'You,ve been successfully logged in');
       Get.to(
-        () => const BottomNav(),
+        () => const Home(),
       );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
