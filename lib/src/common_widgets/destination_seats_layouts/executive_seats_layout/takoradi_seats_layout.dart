@@ -1,7 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/Constants/constants.dart';
+import 'package:luckyman_app/Models/utils/executive_seat_layout_model.dart';
 import 'package:luckyman_app/src/features/authentification/controllers/seat_selection_controller.dart';
 
 import '../../../../Models/seat_layout_mode.dart';
@@ -55,11 +55,24 @@ class TakoradiExecutiveSeatLayout extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap: () {
+                              double price =
+                                  executiveseatLayout.seatTypes[2]['Takoradi']!;
+
                               RxList seats = SeatSelectionController
                                   .instance.selectedTakoradiExecutiveSeats;
                               if (seats.contains(seatNo)) {
+                                seatSelectionController
+                                    .pTakoradiExecutiveseatPrice
+                                    .value = seatSelectionController
+                                        .pTakoradiExecutiveseatPrice.value -
+                                    price;
                                 seats.remove(seatNo);
                               } else {
+                                seatSelectionController
+                                    .pTakoradiExecutiveseatPrice
+                                    .value = seatSelectionController
+                                        .pTakoradiExecutiveseatPrice.value +
+                                    price;
                                 if (seats.length >
                                     SeatSelectionController
                                         .instance.noOfSeats) {
@@ -69,6 +82,11 @@ class TakoradiExecutiveSeatLayout extends StatelessWidget {
                                       backgroundColor:
                                           Colors.blue.withOpacity(0.7),
                                       snackPosition: SnackPosition.BOTTOM);
+                                  seatSelectionController
+                                      .pTakoradiExecutiveseatPrice
+                                      .value = seatSelectionController
+                                          .pTakoradiExecutiveseatPrice.value -
+                                      price;
 
                                   seats.removeAt(4);
 
@@ -82,8 +100,8 @@ class TakoradiExecutiveSeatLayout extends StatelessWidget {
                                   height: seatSize,
                                   width: seatSize,
                                   decoration: BoxDecoration(
-                                    color: SeatSelectionController
-                                            .instance.selectedTakoradiExecutiveSeats
+                                    color: SeatSelectionController.instance
+                                            .selectedTakoradiExecutiveSeats
                                             .contains(seatNo)
                                         ? selectedSeatColor
                                         : emptySeatColor,
@@ -98,7 +116,8 @@ class TakoradiExecutiveSeatLayout extends StatelessWidget {
                                       seatNo,
                                       style: TextStyle(
                                           color: SeatSelectionController
-                                                  .instance.selectedTakoradiExecutiveSeats
+                                                  .instance
+                                                  .selectedTakoradiExecutiveSeats
                                                   .contains(seatNo)
                                               ? activeSeatNumberColor
                                               : inactiveSeatNumberColor),

@@ -56,7 +56,7 @@ class CapeCoastEconomySeatLayout extends StatelessWidget {
                           child: GestureDetector(
                             onTap: () {
                               double price =
-                                  economyseatLayout.seatTypes[4]['Cape Coast']!;
+                                  economyseatLayout.seatTypes[5]['Cape Coast']!;
                               // double seatSelectionController
                               //     .pCapeCoastEconomyseatPrice.value = seatSelectionController
                               //     .pCapeCoastEconomyseatPrice.value;

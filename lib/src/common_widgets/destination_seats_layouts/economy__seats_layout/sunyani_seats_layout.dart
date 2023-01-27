@@ -59,7 +59,7 @@ class SunyaniEconomySeatLayout extends StatelessWidget {
                                   .instance.selectedSunyaniEconomySeats;
 
                               double price =
-                                  economyseatLayout.seatTypes[5]['Sunyani']!;
+                                  economyseatLayout.seatTypes[4]['Sunyani']!;
 
                               if (seats.contains(seatNo)) {
                                 seatSelectionController.pSunyaniEconomyseatPrice

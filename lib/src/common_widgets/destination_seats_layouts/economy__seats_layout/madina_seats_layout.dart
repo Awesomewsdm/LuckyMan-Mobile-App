@@ -56,7 +56,7 @@ class MadinaEconomySeatLayout extends StatelessWidget {
                           child: GestureDetector(
                             onTap: () {
                               double price =
-                                  economyseatLayout.seatTypes[5]['Madina']!;
+                                  economyseatLayout.seatTypes[6]['Madina']!;
                               RxList seats = SeatSelectionController
                                   .instance.selectedMadinaEconomySeats;
                               // double seatSelectionController

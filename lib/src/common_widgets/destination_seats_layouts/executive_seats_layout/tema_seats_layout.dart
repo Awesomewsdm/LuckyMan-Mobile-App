@@ -1,7 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/Constants/constants.dart';
+import 'package:luckyman_app/Models/utils/executive_seat_layout_model.dart';
 import 'package:luckyman_app/src/features/authentification/controllers/seat_selection_controller.dart';
 
 import '../../../../Models/seat_layout_mode.dart';
@@ -57,9 +57,20 @@ class TemaExecutiveSeatLayout extends StatelessWidget {
                             onTap: () {
                               RxList seats = SeatSelectionController
                                   .instance.selectedTemaExecutiveSeats;
+
+                              double price =
+                                  executiveseatLayout.seatTypes[1]['Tema']!;
                               if (seats.contains(seatNo)) {
+                                seatSelectionController.pTemaExecutiveseatPrice
+                                    .value = seatSelectionController
+                                        .pTemaExecutiveseatPrice.value -
+                                    price;
                                 seats.remove(seatNo);
                               } else {
+                                seatSelectionController.pTemaExecutiveseatPrice
+                                    .value = seatSelectionController
+                                        .pTemaExecutiveseatPrice.value +
+                                    price;
                                 if (seats.length >
                                     SeatSelectionController
                                         .instance.noOfSeats) {
@@ -69,6 +80,11 @@ class TemaExecutiveSeatLayout extends StatelessWidget {
                                       backgroundColor:
                                           Colors.blue.withOpacity(0.7),
                                       snackPosition: SnackPosition.BOTTOM);
+                                  seatSelectionController
+                                      .pTemaExecutiveseatPrice
+                                      .value = seatSelectionController
+                                          .pTemaExecutiveseatPrice.value -
+                                      price;
 
                                   seats.removeAt(4);
 
@@ -98,7 +114,8 @@ class TemaExecutiveSeatLayout extends StatelessWidget {
                                       seatNo,
                                       style: TextStyle(
                                           color: SeatSelectionController
-                                                  .instance.selectedTemaExecutiveSeats
+                                                  .instance
+                                                  .selectedTemaExecutiveSeats
                                                   .contains(seatNo)
                                               ? activeSeatNumberColor
                                               : inactiveSeatNumberColor),

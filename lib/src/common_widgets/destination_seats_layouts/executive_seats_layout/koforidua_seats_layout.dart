@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/Constants/constants.dart';
@@ -21,7 +20,7 @@ class KoforiduaExecutiveSeatLayout extends StatelessWidget {
         Expanded(
           child: ListView.builder(
             physics: const ClampingScrollPhysics(),
-            itemCount:1,
+            itemCount: 1,
             itemBuilder: ((context, index) {
               return Column(
                 children: [
@@ -56,7 +55,8 @@ class KoforiduaExecutiveSeatLayout extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap: () {
-                              double price = executiveseatLayout.seatTypes[5]["Koforidua"]!;
+                              double price = executiveseatLayout.seatTypes[7]
+                                  ["Koforidua"]!;
                               RxList seats = SeatSelectionController
                                   .instance.selectedMadinaExecutiveSeats;
                               if (seats.contains(seatNo)) {
@@ -64,14 +64,14 @@ class KoforiduaExecutiveSeatLayout extends StatelessWidget {
                                     .pKoforiduaExecutiveseatPrice
                                     .value = seatSelectionController
                                         .pKoforiduaExecutiveseatPrice.value -
-                                    price;  
+                                    price;
                                 seats.remove(seatNo);
                               } else {
                                 seatSelectionController
                                     .pKoforiduaExecutiveseatPrice
                                     .value = seatSelectionController
                                         .pKoforiduaExecutiveseatPrice.value +
-                                    price;  
+                                    price;
                                 if (seats.length >
                                     SeatSelectionController
                                         .instance.noOfSeats) {
@@ -81,11 +81,11 @@ class KoforiduaExecutiveSeatLayout extends StatelessWidget {
                                       backgroundColor:
                                           Colors.blue.withOpacity(0.7),
                                       snackPosition: SnackPosition.BOTTOM);
-                                      seatSelectionController
-                                    .pKoforiduaExecutiveseatPrice
-                                    .value = seatSelectionController
-                                        .pKoforiduaExecutiveseatPrice.value -
-                                    price;  
+                                  seatSelectionController
+                                      .pKoforiduaExecutiveseatPrice
+                                      .value = seatSelectionController
+                                          .pKoforiduaExecutiveseatPrice.value -
+                                      price;
 
                                   seats.removeAt(4);
 
@@ -95,33 +95,35 @@ class KoforiduaExecutiveSeatLayout extends StatelessWidget {
                                 }
                               }
                             },
-                            child: Obx(() => Container(
-                                  height: seatSize,
-                                  width: seatSize,
-                                  decoration: BoxDecoration(
-                                    color: SeatSelectionController
-                                            .instance.selectedMadinaExecutiveSeats
-                                            .contains(seatNo)
-                                        ? selectedSeatColor
-                                        : emptySeatColor,
-                                    shape: BoxShape.rectangle,
-                                    borderRadius: const BorderRadius.all(
-                                      Radius.circular(7.0),
-                                    ),
+                            child: Obx(
+                              () => Container(
+                                height: seatSize,
+                                width: seatSize,
+                                decoration: BoxDecoration(
+                                  color: SeatSelectionController
+                                          .instance.selectedMadinaExecutiveSeats
+                                          .contains(seatNo)
+                                      ? selectedSeatColor
+                                      : emptySeatColor,
+                                  shape: BoxShape.rectangle,
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(7.0),
                                   ),
-                                  alignment: Alignment.center,
-                                  child: Center(
-                                    child: Text(
-                                      seatNo,
-                                      style: TextStyle(
-                                          color: SeatSelectionController
-                                                  .instance.selectedMadinaExecutiveSeats
-                                                  .contains(seatNo)
-                                              ? activeSeatNumberColor
-                                              : inactiveSeatNumberColor),
-                                    ),
+                                ),
+                                alignment: Alignment.center,
+                                child: Center(
+                                  child: Text(
+                                    seatNo,
+                                    style: TextStyle(
+                                        color: SeatSelectionController.instance
+                                                .selectedMadinaExecutiveSeats
+                                                .contains(seatNo)
+                                            ? activeSeatNumberColor
+                                            : inactiveSeatNumberColor),
                                   ),
-                                ),),
+                                ),
+                              ),
+                            ),
                           ),
                         );
                       }),

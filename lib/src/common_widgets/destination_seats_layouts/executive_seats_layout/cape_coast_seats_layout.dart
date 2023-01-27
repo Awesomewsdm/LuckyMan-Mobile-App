@@ -55,7 +55,7 @@ class CapeCoastExecutiveSeatLayout extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap: () {
-                              double price = executiveseatLayout.seatTypes[4]
+                              double price = executiveseatLayout.seatTypes[5]
                                   ["Cape Coast"]!;
 
                               RxList seats = SeatSelectionController

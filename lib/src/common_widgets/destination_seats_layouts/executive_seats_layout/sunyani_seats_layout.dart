@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/Constants/constants.dart';
@@ -56,15 +55,24 @@ class SunyaniExecutiveSeatLayout extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap: () {
-                              
                               double price =
-                                  executiveseatLayout.seatTypes[5]['Sunyani']!;
+                                  executiveseatLayout.seatTypes[4]['Sunyani']!;
 
                               RxList seats = SeatSelectionController
                                   .instance.selectedSunyaniExecutiveSeats;
                               if (seats.contains(seatNo)) {
+                                seatSelectionController
+                                    .pSunyaniExecutiveseatPrice
+                                    .value = seatSelectionController
+                                        .pSunyaniExecutiveseatPrice.value -
+                                    price;
                                 seats.remove(seatNo);
                               } else {
+                                seatSelectionController
+                                    .pSunyaniExecutiveseatPrice
+                                    .value = seatSelectionController
+                                        .pSunyaniExecutiveseatPrice.value +
+                                    price;
                                 if (seats.length >
                                     SeatSelectionController
                                         .instance.noOfSeats) {
@@ -74,6 +82,11 @@ class SunyaniExecutiveSeatLayout extends StatelessWidget {
                                       backgroundColor:
                                           Colors.blue.withOpacity(0.7),
                                       snackPosition: SnackPosition.BOTTOM);
+                                  seatSelectionController
+                                      .pSunyaniExecutiveseatPrice
+                                      .value = seatSelectionController
+                                          .pSunyaniExecutiveseatPrice.value -
+                                      price;
 
                                   seats.removeAt(4);
 
@@ -87,8 +100,8 @@ class SunyaniExecutiveSeatLayout extends StatelessWidget {
                                   height: seatSize,
                                   width: seatSize,
                                   decoration: BoxDecoration(
-                                    color: SeatSelectionController
-                                            .instance.selectedSunyaniExecutiveSeats
+                                    color: SeatSelectionController.instance
+                                            .selectedSunyaniExecutiveSeats
                                             .contains(seatNo)
                                         ? selectedSeatColor
                                         : emptySeatColor,
@@ -103,7 +116,8 @@ class SunyaniExecutiveSeatLayout extends StatelessWidget {
                                       seatNo,
                                       style: TextStyle(
                                           color: SeatSelectionController
-                                                  .instance.selectedSunyaniExecutiveSeats
+                                                  .instance
+                                                  .selectedSunyaniExecutiveSeats
                                                   .contains(seatNo)
                                               ? activeSeatNumberColor
                                               : inactiveSeatNumberColor),
