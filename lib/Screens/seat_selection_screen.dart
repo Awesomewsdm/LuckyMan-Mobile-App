@@ -11,13 +11,13 @@ import '../Components/seat_status.dart';
 
 import '../Models/utils/form_items.dart';
 import '../src/common_widgets/dropdown_menu/bus_class_menu.dart';
-
+ 
 class SeatSelectionScreen extends StatelessWidget {
   SeatSelectionScreen({
     Key? key,
     this.selectedDestination,
   }) : super(key: key);
-  static String id = '/SeatSelectionScreen';
+   static String id = '/SeatSelectionScreen';
   final String? selectedDestination;
 
   final SeatSelectionController seatSelectionController =
@@ -179,24 +179,22 @@ class SeatSelectionScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              Expanded(
-                child: BottomButton(
-                  bottomTextLabel: 'Proceed to make payment',
-                  onPressed: () {
-                    final UserModel user = UserModel(
-                        // seatNo: selectedDestination == busClasses[0]
-                        //     ? seatSelectionController.changeEconomySeatList()
-                        //     : seatSelectionController
-                        //         .selectedAccraExecutiveSeats,
-                        price: selectedDestination == busClasses[0]
-                            ? seatSelectionController.changeEconomySeatPrice()
-                            : seatSelectionController
-                                .changeExecutiveSeatPrice());
-                    Get.to(
-                      () => const PaymentPage(),
-                    );
-                  },
-                ),
+              BottomButton(
+                bottomTextLabel: 'Proceed to make payment',
+                onPressed: () {
+                  final UserModel user = UserModel(
+                      // seatNo: selectedDestination == busClasses[0]
+                      //     ? seatSelectionController.changeEconomySeatList()
+                      //     : seatSelectionController
+                      //         .selectedAccraExecutiveSeats,
+                      price: selectedDestination == busClasses[0]
+                          ? seatSelectionController.changeEconomySeatPrice()
+                          : seatSelectionController
+                              .changeExecutiveSeatPrice());
+                  Get.to(
+                    () => const PaymentPage(),
+                  );
+                },
               ),
             ],
           ),

@@ -14,6 +14,7 @@ class BottomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
+      height: MediaQuery.of(context).size.width * 0.12,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ButtonStyle(

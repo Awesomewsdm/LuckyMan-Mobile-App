@@ -1,9 +1,9 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:luckyman_app/Screens/home.dart';
 import 'package:luckyman_app/src/features/authentification/sign_up/widgets/sign_up_screen.dart';
 
-import '../../common_widgets/bottom_nav/bottom_nav.dart';
 import '../exceptions/sign_up_exceptions.dart';
 
 class AuthenticationRepository extends GetxController {
@@ -24,7 +24,7 @@ class AuthenticationRepository extends GetxController {
 
   _setInitialScreen(User? user) {
     user == null
-        ? Get.offAll(() => const Home())
+        ? Get.offAll(() =>  Home())
         : Get.offAll(() => const SignUpScreen());
   }
 
@@ -35,7 +35,7 @@ class AuthenticationRepository extends GetxController {
           email: email, password: password);
       firebaseUser.value != null
           ? Get.offAll(
-              () => const Home(),
+              () =>  Home(),
             )
           : Get.offAll(
               () => const SignUpScreen(),
@@ -58,7 +58,7 @@ class AuthenticationRepository extends GetxController {
           .signInWithEmailAndPassword(email: email, password: password);
       Get.snackbar('SUCCESS', 'You,ve been successfully logged in');
       Get.to(
-        () => const Home(),
+        () =>  Home(),
       );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {

@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:luckyman_app/Constants/constants.dart';
 import 'package:luckyman_app/src/features/authentification/controllers/seat_selection_controller.dart';
 
-
 import '../../../../Models/seat_layout_mode.dart';
 import '../../../../Models/utils/economy_seats.dart';
 
@@ -15,7 +14,7 @@ class TemaEconomySeatLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int seatCounter = 0;
-    
+
     return Column(
       children: [
         Expanded(
@@ -46,7 +45,7 @@ class TemaEconomySeatLayout extends StatelessWidget {
                             ),
                           );
                         }
-                        
+
                         // numbering the seats
                         seatCounter++;
                         String seatNo = '$seatCounter';
@@ -62,15 +61,13 @@ class TemaEconomySeatLayout extends StatelessWidget {
                               RxList seats = SeatSelectionController
                                   .instance.selectedTemaEconomySeats;
                               if (seats.contains(seatNo)) {
-                                 seatSelectionController
-                                    .pTemaEconomyseatPrice
+                                seatSelectionController.pTemaEconomyseatPrice
                                     .value = seatSelectionController
                                         .pTemaEconomyseatPrice.value -
                                     price;
                                 seats.remove(seatNo);
                               } else {
-                                seatSelectionController
-                                    .pTemaEconomyseatPrice
+                                seatSelectionController.pTemaEconomyseatPrice
                                     .value = seatSelectionController
                                         .pTemaEconomyseatPrice.value +
                                     price;
@@ -84,11 +81,10 @@ class TemaEconomySeatLayout extends StatelessWidget {
                                       backgroundColor:
                                           Colors.blue.withOpacity(0.7),
                                       snackPosition: SnackPosition.BOTTOM);
-                                  seatSelectionController
-                                    .pTemaEconomyseatPrice
-                                    .value = seatSelectionController
-                                        .pTemaEconomyseatPrice.value -
-                                    price;
+                                  seatSelectionController.pTemaEconomyseatPrice
+                                      .value = seatSelectionController
+                                          .pTemaEconomyseatPrice.value -
+                                      price;
 
                                   seats.removeAt(4);
 
@@ -102,6 +98,8 @@ class TemaEconomySeatLayout extends StatelessWidget {
                                   height: seatSize,
                                   width: seatSize,
                                   decoration: BoxDecoration(
+                                    border:
+                                        Border.all(color: selectedSeatColor),
                                     color: SeatSelectionController
                                             .instance.selectedTemaEconomySeats
                                             .contains(seatNo)

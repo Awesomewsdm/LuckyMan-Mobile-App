@@ -58,8 +58,6 @@ class TemaExecutiveSeatLayout extends StatelessWidget {
                               double price =
                                   executiveseatLayout.seatTypes[1]["Tema"]!;
 
-                              // seatSelectionController.calcSeatPrice(price);
-
                               RxList seats = SeatSelectionController
                                   .instance.selectedTemaExecutiveSeats;
 
@@ -102,6 +100,7 @@ class TemaExecutiveSeatLayout extends StatelessWidget {
                                   height: seatSize,
                                   width: seatSize,
                                   decoration: BoxDecoration(
+                                    border: Border.all(color: selectedSeatColor),
                                     color: SeatSelectionController
                                             .instance.selectedTemaExecutiveSeats
                                             .contains(seatNo)

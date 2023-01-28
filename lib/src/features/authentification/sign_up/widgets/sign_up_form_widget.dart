@@ -2,9 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/Models/utils/validators.dart';
+import 'package:luckyman_app/Screens/home.dart';
 import 'package:regexed_validator/regexed_validator.dart';
 
-import '../../../../common_widgets/bottom_nav/bottom_nav.dart';
 import '../../../../constants/input_decoration.dart';
 import '../../../../constants/sizes.dart';
 import '../../../../constants/text.dart';
@@ -174,7 +174,7 @@ class SignUpFormWidget extends StatelessWidget {
                     );
 
                     _formkey.currentState!.save();
-                    Get.to(() => const Home());
+                    Get.to(() =>  Home());
                     _formkey.currentState!.reset();
                   }
                 },

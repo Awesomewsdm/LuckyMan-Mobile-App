@@ -78,7 +78,7 @@ class BusClassDropDownMenu extends StatelessWidget {
             // setState(() {
             //   selectedValue = value!;
             // });
-            seatSelectionController.changeBusType(value);
+            seatSelectionController.changeBusType(value!);
           },
           onSaved: (value) {
             // selectedValue = value.toString();
