@@ -24,7 +24,7 @@ class KoforiduaExecutiveSeatLayout extends StatelessWidget {
             itemBuilder: ((context, index) {
               return Column(
                 children: [
-                  const Text("Bus Type: Madina - Executive"),
+                  const Text("Bus Type: Koforidua - Executive"),
                   const Divider(
                     color: Colors.lightBlue,
                   ),
@@ -101,7 +101,7 @@ class KoforiduaExecutiveSeatLayout extends StatelessWidget {
                                 width: seatSize,
                                 decoration: BoxDecoration(
                                   color: SeatSelectionController
-                                          .instance.selectedMadinaExecutiveSeats
+                                          .instance.selectedKoforiduaExecutiveSeats
                                           .contains(seatNo)
                                       ? selectedSeatColor
                                       : emptySeatColor,
@@ -116,7 +116,7 @@ class KoforiduaExecutiveSeatLayout extends StatelessWidget {
                                     seatNo,
                                     style: TextStyle(
                                         color: SeatSelectionController.instance
-                                                .selectedMadinaExecutiveSeats
+                                                .selectedKoforiduaExecutiveSeats
                                                 .contains(seatNo)
                                             ? activeSeatNumberColor
                                             : inactiveSeatNumberColor),

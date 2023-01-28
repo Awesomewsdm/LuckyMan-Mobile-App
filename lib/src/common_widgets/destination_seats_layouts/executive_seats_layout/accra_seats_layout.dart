@@ -14,7 +14,7 @@ class AccraExecutiveSeatLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int seatCounter = 0;
-    double amount = 0.0;
+   
     return Column(
       children: [
         Expanded(
@@ -57,20 +57,24 @@ class AccraExecutiveSeatLayout extends StatelessWidget {
                             onTap: () {
                               double price =
                                   executiveseatLayout.seatTypes[0]["Accra"]!;
-                                  
+
                               // seatSelectionController.calcSeatPrice(price);
-                             
 
                               RxList seats = SeatSelectionController
                                   .instance.selectedAccraExecutiveSeats;
 
                               if (seats.contains(seatNo)) {
-                                
+                                seatSelectionController.pAccraExecutiveSeatPrice
+                                    .value = seatSelectionController
+                                        .pAccraExecutiveSeatPrice.value -
+                                    price;
+
                                 seats.remove(seatNo);
                               } else {
-                                seatSelectionController
-                                  .pAccraExecutiveEcoSeatPrice.value = seatSelectionController
-                                  .pAccraExecutiveEcoSeatPrice.value + price;
+                                seatSelectionController.pAccraExecutiveSeatPrice
+                                    .value = seatSelectionController
+                                        .pAccraExecutiveSeatPrice.value +
+                                    price;
                                 if (seats.length >
                                     SeatSelectionController
                                         .instance.noOfSeats) {
@@ -81,8 +85,10 @@ class AccraExecutiveSeatLayout extends StatelessWidget {
                                           Colors.blue.withOpacity(0.7),
                                       snackPosition: SnackPosition.BOTTOM);
                                   seatSelectionController
-                                  .pAccraExecutiveEcoSeatPrice.value = seatSelectionController
-                                  .pAccraExecutiveEcoSeatPrice.value - price;
+                                      .pAccraExecutiveSeatPrice
+                                      .value = seatSelectionController
+                                          .pAccraExecutiveSeatPrice.value -
+                                      price;
 
                                   seats.removeAt(4);
 
@@ -91,8 +97,6 @@ class AccraExecutiveSeatLayout extends StatelessWidget {
                                   seats.add(seatNo);
                                 }
                               }
-                              seatSelectionController
-                                  .pAccraExecutiveEcoSeatPrice = amount.obs;
                             },
                             child: Obx(() => Container(
                                   height: seatSize,

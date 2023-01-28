@@ -85,7 +85,7 @@ class CapeCoastExecutiveSeatLayout extends StatelessWidget {
                                   seatSelectionController
                                       .pCapeCoastExecutiveseatPrice
                                       .value = seatSelectionController
-                                          .pCapeCoastExecutiveseatPrice.value +
+                                          .pCapeCoastExecutiveseatPrice.value -
                                       price;
                                   seats.removeAt(4);
 

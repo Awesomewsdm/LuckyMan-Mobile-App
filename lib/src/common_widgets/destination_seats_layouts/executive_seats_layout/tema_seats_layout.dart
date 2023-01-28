@@ -55,16 +55,20 @@ class TemaExecutiveSeatLayout extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap: () {
+                              double price =
+                                  executiveseatLayout.seatTypes[1]["Tema"]!;
+
+                              // seatSelectionController.calcSeatPrice(price);
+
                               RxList seats = SeatSelectionController
                                   .instance.selectedTemaExecutiveSeats;
 
-                              double price =
-                                  executiveseatLayout.seatTypes[1]['Tema']!;
                               if (seats.contains(seatNo)) {
                                 seatSelectionController.pTemaExecutiveseatPrice
                                     .value = seatSelectionController
                                         .pTemaExecutiveseatPrice.value -
                                     price;
+
                                 seats.remove(seatNo);
                               } else {
                                 seatSelectionController.pTemaExecutiveseatPrice

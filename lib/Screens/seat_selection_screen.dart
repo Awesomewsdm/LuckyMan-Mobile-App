@@ -157,7 +157,7 @@ class SeatSelectionScreen extends StatelessWidget {
                                   busClasses[0]
                               ? Obx(
                                   () => Text(
-                                    'GH¢${seatSelectionController.changeExecutiveSeatPrice()}',
+                                    'GH¢${seatSelectionController.changeEconomySeatPrice()}',
                                     style: const TextStyle(
                                       fontSize: 18.0,
                                       fontWeight: FontWeight.w900,
@@ -166,7 +166,7 @@ class SeatSelectionScreen extends StatelessWidget {
                                 )
                               : Obx(
                                   () => Text(
-                                    'GH¢${seatSelectionController.changeEconomySeatPrice()}',
+                                    'GH¢${seatSelectionController.changeExecutiveSeatPrice()}',
                                     style: const TextStyle(
                                       fontSize: 18.0,
                                       fontWeight: FontWeight.w900,

@@ -5,7 +5,7 @@ final executiveseatLayout = SeatLayoutModel(
   cols: 4,
   seatTypes: [
     {"Accra": 125},
-    {"Tema: ": 135},
+    {"Tema": 135},
     {"Takoradi": 150},
     {"Kasoa": 125},
     {"Sunyani": 110},

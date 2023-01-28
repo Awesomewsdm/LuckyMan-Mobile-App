@@ -24,7 +24,7 @@ class MadinaEconomySeatLayout extends StatelessWidget {
             itemBuilder: ((context, index) {
               return Column(
                 children: [
-                  const Text("Bus Type: Koforidua - Economy"),
+                  const Text("Bus Type: Madina - Economy"),
                   const Divider(
                     color: Colors.lightBlue,
                   ),
