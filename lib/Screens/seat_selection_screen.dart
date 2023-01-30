@@ -92,7 +92,7 @@ class SeatSelectionScreen extends StatelessWidget {
                     width: size.width - 50,
                     // color: const Color.fromRGBO(255, 255, 255, 1.0),
                     decoration: kBackgroundBoxDecoration,
-                    child: seatSelectionController.selectedBusType.value ==
+                    child: seatSelectionController.selectedBusClass.value ==
                             busClasses[0]
                         ? seatSelectionController.changeEconomySeatsLayout()
                         : seatSelectionController.changeExecutiveSeatsLayout(),
@@ -127,7 +127,7 @@ class SeatSelectionScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const AshTextWidget(text: 'Selected Seat'),
-                        seatSelectionController.selectedBusType.value ==
+                        seatSelectionController.selectedBusClass.value ==
                                 busClasses[0]
                             ? Obx(
                                 () => Text(
@@ -156,7 +156,7 @@ class SeatSelectionScreen extends StatelessWidget {
                     () => Column(
                       children: [
                         const AshTextWidget(text: 'Total Price'),
-                        seatSelectionController.selectedBusType.value ==
+                        seatSelectionController.selectedBusClass.value ==
                                 busClasses[0]
                             ? Obx(
                                 () => Text(

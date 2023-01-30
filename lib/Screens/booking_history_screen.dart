@@ -35,13 +35,14 @@ class BookingHitory extends StatelessWidget {
                 width: 340,
                 height: 490,
                 decoration: BoxDecoration(
+                    color: Colors.blue,
                     borderRadius: BorderRadius.circular(20.0),
                     boxShadow: [primaryBoxShadow]),
-                child: const TicketWidget(
+                child: TicketWidget(
                   width: 350,
                   height: 500,
                   isCornerRounded: true,
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   child: TicketData(),
                 ),
               ),

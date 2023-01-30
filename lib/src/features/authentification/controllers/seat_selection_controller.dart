@@ -56,9 +56,9 @@ class SeatSelectionController extends GetxController {
   // }
 
   // Bus type controllers
-  RxString selectedBusType = ''.obs;
+  RxString selectedBusClass = ''.obs;
   void changeBusType(String? value) {
-    selectedBusType.value = value!;
+    selectedBusClass.value = value!;
   }
 
   // Economy seat prices
