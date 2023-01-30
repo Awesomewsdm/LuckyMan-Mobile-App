@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:luckyman_app/Screens/bus_booking_screen.dart';
+import 'package:luckyman_app/Constants/constants.dart';
 import 'package:luckyman_app/Screens/bus_ticket_screen.dart';
 import 'package:luckyman_app/src/constants/text.dart';
 import 'package:ticket_widget/ticket_widget.dart';
@@ -26,26 +26,24 @@ class BookingHitory extends StatelessWidget {
                 style: TextStyle(color: Colors.blue)),
           ),
           const SizedBox(
-            height: 15,
+            height: 10,
           ),
-          const Padding(
-            padding: EdgeInsets.all(12.0),
+          Padding(
+            padding: const EdgeInsets.all(30.0),
             child: Center(
-              child: TicketWidget(
-                shadow: [
-                  BoxShadow(
-                    color: Colors.blue,
-                    blurStyle: BlurStyle.outer,
-                    offset: Offset(0, 3),
-                    blurRadius: 5.0,
-                    spreadRadius: 10.0,
-                  ),
-                ],
-                width: 350,
-                height: 500,
-                isCornerRounded: true,
-                padding: EdgeInsets.all(20),
-                child: TicketData(),
+              child: Container(
+                width: 340,
+                height: 490,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20.0),
+                    boxShadow: [primaryBoxShadow]),
+                child: const TicketWidget(
+                  width: 350,
+                  height: 500,
+                  isCornerRounded: true,
+                  padding: EdgeInsets.all(20),
+                  child: TicketData(),
+                ),
               ),
             ),
           )

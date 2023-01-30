@@ -34,11 +34,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
-          statusBarColor: Colors.blue,
-          systemNavigationBarColor: Colors.lightBlue[100]),
-    );
+    // SystemChrome.setSystemUIOverlayStyle(
+    //   SystemUiOverlayStyle(
+    //       statusBarColor: Colors.blue,
+    //       systemNavigationBarColor: Colors.lightBlue[100]),
+    // );
     return GetMaterialApp(
       theme: ThemeData(
         dividerColor: const Color.fromRGBO(

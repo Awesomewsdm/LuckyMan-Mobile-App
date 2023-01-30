@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:luckyman_app/Components/text_styling.dart';
+import 'package:luckyman_app/Constants/constants.dart';
 
 class SeatStatus extends StatelessWidget {
   const SeatStatus({
@@ -20,6 +21,15 @@ class SeatStatus extends StatelessWidget {
           height: 25,
           width: 25,
           decoration: BoxDecoration(
+            boxShadow: const [
+              BoxShadow(
+                color: Colors.black26,
+                blurStyle: BlurStyle.outer,
+                offset: Offset(0, 1),
+                blurRadius: 2.0,
+                spreadRadius: 0.0,
+              )
+            ],
             shape: BoxShape.rectangle,
             color: boxColor,
             borderRadius: const BorderRadius.all(

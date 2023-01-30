@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class BusBookingController extends GetxController {
-  static BusBookingController instance = Get.find();
+  
+   static BusBookingController get instance => Get.find();
 
   final selectedDestination = ''.obs;
   void changeSelectedDestination(String? value) {

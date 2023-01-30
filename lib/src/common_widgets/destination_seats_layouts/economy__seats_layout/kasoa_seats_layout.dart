@@ -14,7 +14,7 @@ class KasoaEconomySeatLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int seatCounter = 0;
-   
+
     return Column(
       children: [
         Expanded(
@@ -60,17 +60,19 @@ class KasoaEconomySeatLayout extends StatelessWidget {
                               double price =
                                   economyseatLayout.seatTypes[3]['Kasoa']!;
 
-                              // 
+                              //
 
                               if (seats.contains(seatNo)) {
-                                seatSelectionController
-                                  .pKasoaEconomyseatPrice.value = seatSelectionController
-                                  .pKasoaEconomyseatPrice.value - price;
+                                seatSelectionController.pKasoaEconomyseatPrice
+                                    .value = seatSelectionController
+                                        .pKasoaEconomyseatPrice.value -
+                                    price;
                                 seats.remove(seatNo);
                               } else {
-                                seatSelectionController
-                                  .pKasoaEconomyseatPrice.value = seatSelectionController
-                                  .pKasoaEconomyseatPrice.value + price;
+                                seatSelectionController.pKasoaEconomyseatPrice
+                                    .value = seatSelectionController
+                                        .pKasoaEconomyseatPrice.value +
+                                    price;
                                 if (seats.length >
                                     SeatSelectionController
                                         .instance.noOfSeats) {
@@ -80,9 +82,10 @@ class KasoaEconomySeatLayout extends StatelessWidget {
                                       backgroundColor:
                                           Colors.blue.withOpacity(0.7),
                                       snackPosition: SnackPosition.BOTTOM);
-                                  seatSelectionController
-                                  .pKasoaEconomyseatPrice.value = seatSelectionController
-                                  .pKasoaEconomyseatPrice.value - price;
+                                  seatSelectionController.pKasoaEconomyseatPrice
+                                      .value = seatSelectionController
+                                          .pKasoaEconomyseatPrice.value -
+                                      price;
                                   seats.removeAt(4);
 
                                   seats.add(seatNo);
@@ -95,16 +98,22 @@ class KasoaEconomySeatLayout extends StatelessWidget {
                                   height: seatSize,
                                   width: seatSize,
                                   decoration: BoxDecoration(
-                                    color: SeatSelectionController
-                                            .instance.selectedKasoaEconomySeats
-                                            .contains(seatNo)
-                                        ? selectedSeatColor
-                                        : emptySeatColor,
-                                    shape: BoxShape.rectangle,
-                                    borderRadius: const BorderRadius.all(
-                                      Radius.circular(7.0),
-                                    ),
-                                  ),
+                                      color: SeatSelectionController.instance
+                                              .selectedKasoaEconomySeats
+                                              .contains(seatNo)
+                                          ? selectedSeatColor
+                                          : emptySeatColor,
+                                      shape: BoxShape.rectangle,
+                                      borderRadius: const BorderRadius.all(
+                                        Radius.circular(7.0),
+                                      ),
+                                      border: Border.all(
+                                        color: SeatSelectionController.instance
+                                                .selectedKasoaEconomySeats
+                                                .contains(seatNo)
+                                            ? emptySeatColor
+                                            : selectedSeatColor,
+                                      )),
                                   alignment: Alignment.center,
                                   child: Center(
                                     child: Text(

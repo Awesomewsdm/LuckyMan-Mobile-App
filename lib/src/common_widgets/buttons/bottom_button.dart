@@ -20,7 +20,7 @@ class BottomButton extends StatelessWidget {
         style: ButtonStyle(
           shape: MaterialStatePropertyAll(
             RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
+              borderRadius: BorderRadius.circular(0.0),
             ),
           ),
 //           backgroundColor: const MaterialStatePropertyAll(

@@ -95,7 +95,8 @@ class TicketData extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ticketDetailsWidget('Name', '', 'Date Purchased', '28-08-2022'),
+              ticketDetailsWidget(
+                  'Name', 'Kordah Wisdom', 'Date Purchased', '28-08-2022'),
               Padding(
                 padding: const EdgeInsets.only(top: 12.0, right: 52.0),
                 child:

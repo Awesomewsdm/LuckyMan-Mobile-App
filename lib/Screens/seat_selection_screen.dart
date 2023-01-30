@@ -11,13 +11,13 @@ import '../Components/seat_status.dart';
 import '../Models/utils/form_items.dart';
 import '../src/common_widgets/dropdown_menu/bus_class_menu.dart';
 import 'bus_ticket_screen.dart';
- 
+
 class SeatSelectionScreen extends StatelessWidget {
   SeatSelectionScreen({
     Key? key,
     this.selectedDestination,
   }) : super(key: key);
-   static String id = '/SeatSelectionScreen';
+  static String id = '/SeatSelectionScreen';
   final String? selectedDestination;
 
   final SeatSelectionController seatSelectionController =
@@ -28,7 +28,13 @@ class SeatSelectionScreen extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        elevation: 20.0,
+        backgroundColor: Colors.white,
+        toolbarHeight: 60,
         centerTitle: true,
+        toolbarOpacity: 0.2,
+        bottomOpacity: 0.2,
+        shadowColor: Colors.white24,
         leadingWidth: 90,
         leading: IconButton(
           onPressed: () {
@@ -44,10 +50,8 @@ class SeatSelectionScreen extends StatelessWidget {
           text: 'Select Your Seat',
           fontSize: 20.0,
         ),
-        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-        elevation: 0.0,
       ),
-      backgroundColor: const Color.fromARGB(251, 243, 240, 255),
+      backgroundColor: backgroundColor5,
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -84,15 +88,15 @@ class SeatSelectionScreen extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Obx(
                   () => Container(
-                      height: size.height,
-                      width: size.width - 50,
-                      // color: const Color.fromRGBO(255, 255, 255, 1.0),
-                      decoration: kBackgroundBoxDecoration,
-                      child: seatSelectionController.selectedBusType.value ==
-                              busClasses[0]
-                          ? seatSelectionController.changeEconomySeatsLayout()
-                          : seatSelectionController
-                              .changeExecutiveSeatsLayout()),
+                    height: size.height,
+                    width: size.width - 50,
+                    // color: const Color.fromRGBO(255, 255, 255, 1.0),
+                    decoration: kBackgroundBoxDecoration,
+                    child: seatSelectionController.selectedBusType.value ==
+                            busClasses[0]
+                        ? seatSelectionController.changeEconomySeatsLayout()
+                        : seatSelectionController.changeExecutiveSeatsLayout(),
+                  ),
                 ),
               ),
             ),
@@ -101,7 +105,7 @@ class SeatSelectionScreen extends StatelessWidget {
       ),
       bottomSheet: Container(
         height: size.height * 0.15,
-        padding: const EdgeInsets.fromLTRB(0, 0, 0, 15.0),
+        // padding: const EdgeInsets.fromLTRB(0, 0, 0, 15.0),
         decoration: const BoxDecoration(
           color: Color.fromARGB(255, 255, 255, 255),
           borderRadius: BorderRadius.only(
@@ -110,76 +114,76 @@ class SeatSelectionScreen extends StatelessWidget {
           ),
         ),
         alignment: Alignment.bottomCenter,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Column(
-            children: [
-              Container(
-                padding: const EdgeInsets.only(top: 10, bottom: 8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Obx(
-                      () => Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const AshTextWidget(text: 'Selected Seat'),
-                          seatSelectionController.selectedBusType.value ==
-                                  busClasses[0]
-                              ? Obx(
-                                  () => Text(
-                                    seatSelectionController
-                                        .changeEconomySeatList(),
-                                    style: const TextStyle(
-                                      fontSize: 18.0,
-                                      fontWeight: FontWeight.w900,
-                                    ),
-                                  ),
-                                )
-                              : Obx(
-                                  () => Text(
-                                    seatSelectionController
-                                        .changeExecutiveSeatList(),
-                                    style: const TextStyle(
-                                      fontSize: 18.0,
-                                      fontWeight: FontWeight.w900,
-                                    ),
+        child: Column(
+          children: [
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Obx(
+                    () => Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const AshTextWidget(text: 'Selected Seat'),
+                        seatSelectionController.selectedBusType.value ==
+                                busClasses[0]
+                            ? Obx(
+                                () => Text(
+                                  seatSelectionController
+                                      .changeEconomySeatList(),
+                                  style: const TextStyle(
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.w900,
                                   ),
                                 ),
-                        ],
-                      ),
-                    ),
-                    Obx(
-                      () => Column(
-                        children: [
-                          const AshTextWidget(text: 'Total Price'),
-                          seatSelectionController.selectedBusType.value ==
-                                  busClasses[0]
-                              ? Obx(
-                                  () => Text(
-                                    'GH¢${seatSelectionController.changeEconomySeatPrice()}',
-                                    style: const TextStyle(
-                                      fontSize: 18.0,
-                                      fontWeight: FontWeight.w900,
-                                    ),
-                                  ),
-                                )
-                              : Obx(
-                                  () => Text(
-                                    'GH¢${seatSelectionController.changeExecutiveSeatPrice()}',
-                                    style: const TextStyle(
-                                      fontSize: 18.0,
-                                      fontWeight: FontWeight.w900,
-                                    ),
+                              )
+                            : Obx(
+                                () => Text(
+                                  seatSelectionController
+                                      .changeExecutiveSeatList(),
+                                  style: const TextStyle(
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.w900,
                                   ),
                                 ),
-                        ],
-                      ),
+                              ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                  Obx(
+                    () => Column(
+                      children: [
+                        const AshTextWidget(text: 'Total Price'),
+                        seatSelectionController.selectedBusType.value ==
+                                busClasses[0]
+                            ? Obx(
+                                () => Text(
+                                  'GH¢${seatSelectionController.changeEconomySeatPrice()}',
+                                  style: const TextStyle(
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.w900,
+                                  ),
+                                ),
+                              )
+                            : Obx(
+                                () => Text(
+                                  'GH¢${seatSelectionController.changeExecutiveSeatPrice()}',
+                                  style: const TextStyle(
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.w900,
+                                  ),
+                                ),
+                              ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-              BottomButton(
+            ),
+            Expanded(
+              child: BottomButton(
                 bottomTextLabel: 'Proceed to make payment',
                 onPressed: () {
                   final UserModel user = UserModel(
@@ -189,15 +193,14 @@ class SeatSelectionScreen extends StatelessWidget {
                       //         .selectedAccraExecutiveSeats,
                       price: selectedDestination == busClasses[0]
                           ? seatSelectionController.changeEconomySeatPrice()
-                          : seatSelectionController
-                              .changeExecutiveSeatPrice());
+                          : seatSelectionController.changeExecutiveSeatPrice());
                   Get.to(
-                    () =>  BusTicketScreen(),
+                    () => BusTicketScreen(),
                   );
                 },
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
