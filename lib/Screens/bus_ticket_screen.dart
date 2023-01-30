@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:luckyman_app/src/features/authentification/controllers/bus_booking_controllers.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 import 'package:ticket_widget/ticket_widget.dart';
 
 class BusTicketScreen extends StatelessWidget {
-  const BusTicketScreen({Key? key}) : super(key: key);
+  BusTicketScreen({Key? key}) : super(key: key);
   static const String id = '/BusTicketScreen';
+
+  final BusBookingController busBookingController =
+      Get.put(BusBookingController());
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body:  Center(
+      backgroundColor: Colors.lightBlue,
+      body: Center(
         child: TicketWidget(
           width: 350,
           height: 500,
@@ -19,9 +26,6 @@ class BusTicketScreen extends StatelessWidget {
     );
   }
 }
-
-
-
 
 class TicketData extends StatelessWidget {
   const TicketData({
@@ -60,7 +64,7 @@ class TicketData extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(left: 8.0),
                   child: Icon(
-                    Icons.flight_takeoff,
+                    Icons.bus_alert_outlined,
                     color: Colors.pink,
                   ),
                 ),
@@ -79,7 +83,7 @@ class TicketData extends StatelessWidget {
         const Padding(
           padding: EdgeInsets.only(top: 20.0),
           child: Text(
-            'Flight Ticket',
+            'Bus Ticket',
             style: TextStyle(
                 color: Colors.black,
                 fontSize: 20.0,
@@ -91,41 +95,32 @@ class TicketData extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ticketDetailsWidget(
-                  'Passengers', 'Hafiz M Mujahid', 'Date', '28-08-2022'),
+              ticketDetailsWidget('Name', '', 'Date Purchased', '28-08-2022'),
               Padding(
                 padding: const EdgeInsets.only(top: 12.0, right: 52.0),
-                child: ticketDetailsWidget('Flight', '76836A45', 'Gate', '66B'),
+                child:
+                    ticketDetailsWidget('Destination', 'Accra', 'Gate', '66B'),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 12.0, right: 53.0),
-                child: ticketDetailsWidget('Class', 'Business', 'Seat', '21B'),
+                child: ticketDetailsWidget('Bus Type', 'VIP', 'Seat No', '21B'),
               ),
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 80.0, left: 30.0, right: 30.0),
-          child: Container(
-            width: 250.0,
-            height: 60.0,
-            decoration: const BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('assets/barcode.png'),
-                    fit: BoxFit.cover)),
-          ),
-        ),
-        const Padding(
-          padding: EdgeInsets.only(top: 10.0, left: 75.0, right: 75.0),
-          child: Text(
-            '0000 +9230 2884 5163',
-            style: TextStyle(
-              color: Colors.black,
+          padding: const EdgeInsets.all(15.0),
+          child: Center(
+            child: SizedBox(
+              width: 180.0,
+              height: 180.0,
+              child: QrImage(
+                data: 'How are you?',
+                size: 80,
+              ),
             ),
           ),
         ),
-        const SizedBox(height: 30),
-        const Text('         Developer: instagram.com/DholaSain')
       ],
     );
   }

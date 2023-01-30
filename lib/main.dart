@@ -1,6 +1,6 @@
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:luckyman_app/Screens/seat_selection_screen.dart';
 
 import 'Screens/bus_booking_screen.dart';
@@ -23,7 +23,7 @@ void main() {
       AuthenticationRepository(),
     ),
   );
-  
+
   runApp(
     const MyApp(),
   );
@@ -34,6 +34,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+          statusBarColor: Colors.blue,
+          systemNavigationBarColor: Colors.lightBlue[100]),
+    );
     return GetMaterialApp(
       theme: ThemeData(
         dividerColor: const Color.fromRGBO(
@@ -53,10 +58,10 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         SplashScreen.id: (context) => const SplashScreen(),
         HomeScreen.id: (context) => const HomeScreen(),
-        BusTicketScreen.id: (context) => const BusTicketScreen(),
-        SeatSelectionScreen.id: (context) =>     SeatSelectionScreen(),
+        BusTicketScreen.id: (context) =>  BusTicketScreen(),
+        SeatSelectionScreen.id: (context) => SeatSelectionScreen(),
         PaymentPage.id: (context) => const PaymentPage(),
-        BusBookingScreen.id: (context) =>  BusBookingScreen(),
+        BusBookingScreen.id: (context) => BusBookingScreen(),
       },
     );
   }

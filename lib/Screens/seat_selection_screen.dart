@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/Components/text_styling.dart';
 import 'package:luckyman_app/Constants/constants.dart';
-import 'package:luckyman_app/Screens/payment_page.dart';
 import 'package:luckyman_app/src/common_widgets/buttons/bottom_button.dart';
 import 'package:luckyman_app/src/features/authentification/controllers/seat_selection_controller.dart';
 import 'package:luckyman_app/src/features/authentification/models/user_model.dart';
@@ -11,6 +10,7 @@ import '../Components/seat_status.dart';
 
 import '../Models/utils/form_items.dart';
 import '../src/common_widgets/dropdown_menu/bus_class_menu.dart';
+import 'bus_ticket_screen.dart';
  
 class SeatSelectionScreen extends StatelessWidget {
   SeatSelectionScreen({
@@ -192,7 +192,7 @@ class SeatSelectionScreen extends StatelessWidget {
                           : seatSelectionController
                               .changeExecutiveSeatPrice());
                   Get.to(
-                    () => const PaymentPage(),
+                    () =>  BusTicketScreen(),
                   );
                 },
               ),

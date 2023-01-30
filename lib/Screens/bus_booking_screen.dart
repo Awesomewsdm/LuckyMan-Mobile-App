@@ -152,7 +152,9 @@ class BusBookingScreen extends StatelessWidget {
                 ),
               ),
             ),
-            BottomButton(
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: BottomButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
@@ -164,7 +166,9 @@ class BusBookingScreen extends StatelessWidget {
                     );
                   }
                 },
-                bottomTextLabel: 'Contine to select a seat',),
+                bottomTextLabel: 'Contine to select a seat',
+              ),
+            ),
           ],
         ),
       ),

@@ -8,15 +8,10 @@ import 'package:luckyman_app/src/common_widgets/user_info/user_profile_image.dar
 
 import '../src/constants/image_strings.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
   static const String id = '/HomeScreen';
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return 
@@ -108,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             imageLink: tTourIcon,
                             label: 'Go On Tour',
                             onTap: () {Get.to(
-                                () =>const BusTicketScreen(),
+                                () => BusTicketScreen(),
                               );},
                           ),
                           HomeWidget(
