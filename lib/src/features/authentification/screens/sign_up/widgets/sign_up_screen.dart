@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../common_widgets/form/form_footer.dart';
-import '../../../../common_widgets/form/form_header.dart';
-import '../../../../constants/sizes.dart';
-import '../../../../constants/text.dart';
+import '../../../../../common_widgets/form/form_footer.dart';
+import '../../../../../common_widgets/form/form_header.dart';
+import '../../../../../constants/sizes.dart';
+import '../../../../../constants/text.dart';
 import 'sign_up_form_widget.dart';
-import '../../screens/login/login_screen.dart';
+import '../../login/login_screen.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({Key? key}) : super(key: key);

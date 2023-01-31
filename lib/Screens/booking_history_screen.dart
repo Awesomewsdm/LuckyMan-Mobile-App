@@ -37,7 +37,15 @@ class BookingHitory extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Colors.blue,
                     borderRadius: BorderRadius.circular(20.0),
-                    boxShadow: [primaryBoxShadow]),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.black26,
+                        blurStyle: BlurStyle.outer,
+                        offset: Offset(0, 3),
+                        blurRadius: 2.0,
+                        spreadRadius: 1.0,
+                      )
+                    ]),
                 child: TicketWidget(
                   width: 350,
                   height: 500,

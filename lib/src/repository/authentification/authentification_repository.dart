@@ -2,7 +2,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/src/common_widgets/bottom_nav/bottom_nav.dart';
-import 'package:luckyman_app/src/features/authentification/sign_up/widgets/sign_up_screen.dart';
+import 'package:luckyman_app/src/features/authentification/screens/sign_up/widgets/sign_up_screen.dart';
 
 import '../exceptions/sign_up_exceptions.dart';
 

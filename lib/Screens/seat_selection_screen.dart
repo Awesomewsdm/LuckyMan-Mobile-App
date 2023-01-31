@@ -105,7 +105,6 @@ class SeatSelectionScreen extends StatelessWidget {
       ),
       bottomSheet: Container(
         height: size.height * 0.15,
-        // padding: const EdgeInsets.fromLTRB(0, 0, 0, 15.0),
         decoration: const BoxDecoration(
           color: Color.fromARGB(255, 255, 255, 255),
           borderRadius: BorderRadius.only(

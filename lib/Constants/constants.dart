@@ -84,4 +84,4 @@ Color inactiveSeatNumberColor = const Color(0xFF929292);
 
 double seatSize = 35.0;
 
-BoxShadow primaryBoxShadow = 
+// BoxShadow primaryBoxShadow = const 

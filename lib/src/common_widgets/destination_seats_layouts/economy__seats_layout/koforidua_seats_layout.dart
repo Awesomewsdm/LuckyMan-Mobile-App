@@ -59,7 +59,7 @@ class KoforiduaEconomySeatLayout extends StatelessWidget {
                                   .instance.selectedSunyaniEconomySeats;
 
                               double price =
-                                  economyseatLayout.seatTypes[7]['Koforidua']!;
+                                  economyseatLayout.seatTypes[7]["Koforidua"]!;
 
                               if (seats.contains(seatNo)) {
                                 seatSelectionController.pKoforiduaEconomyseatPrice

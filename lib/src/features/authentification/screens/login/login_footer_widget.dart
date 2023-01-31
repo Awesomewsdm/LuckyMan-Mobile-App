@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 import '../../../../common_widgets/form/form_footer.dart';
 import '../../../../constants/text.dart';
-import '../../sign_up/widgets/sign_up_screen.dart';
+import '../sign_up/widgets/sign_up_screen.dart';
 
 class LoginFooterWidget extends StatelessWidget {
   const LoginFooterWidget({

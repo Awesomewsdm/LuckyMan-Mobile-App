@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:luckyman_app/src/constants/image_strings.dart';
 import 'package:luckyman_app/src/constants/text.dart';
 
-import '../src/features/authentification/sign_up/widgets/sign_up_screen.dart';
+import '../src/features/authentification/screens/sign_up/widgets/sign_up_screen.dart';
 
 
 class SplashScreen extends StatefulWidget {

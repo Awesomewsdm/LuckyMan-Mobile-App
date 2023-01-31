@@ -5,11 +5,11 @@ import 'package:luckyman_app/Models/utils/validators.dart';
 import 'package:luckyman_app/src/common_widgets/bottom_nav/bottom_nav.dart';
 import 'package:regexed_validator/regexed_validator.dart';
 
-import '../../../../constants/input_decoration.dart';
-import '../../../../constants/sizes.dart';
-import '../../../../constants/text.dart';
-import '../../controllers/sign_up_controller.dart';
-import '../../models/user_model.dart';
+import '../../../../../constants/input_decoration.dart';
+import '../../../../../constants/sizes.dart';
+import '../../../../../constants/text.dart';
+import '../../../controllers/sign_up_controller.dart';
+import '../../../models/user_model.dart';
 
 class SignUpFormWidget extends StatelessWidget {
   SignUpFormWidget({
