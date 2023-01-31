@@ -13,6 +13,7 @@ import 'package:get/get.dart';
 
 import 'src/repository/authentification/authentification_repository.dart';
 
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   Firebase.initializeApp(
