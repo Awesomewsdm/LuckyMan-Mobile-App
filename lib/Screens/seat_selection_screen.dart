@@ -4,6 +4,7 @@ import 'package:luckyman_app/Components/text_styling.dart';
 import 'package:luckyman_app/Constants/constants.dart';
 import 'package:luckyman_app/src/common_widgets/buttons/bottom_button.dart';
 import 'package:luckyman_app/src/features/authentification/controllers/seat_selection_controller.dart';
+import 'package:luckyman_app/src/features/authentification/models/user_model.dart';
 
 import '../Components/seat_status.dart';
 
@@ -87,15 +88,15 @@ class SeatSelectionScreen extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Obx(
                   () => Container(
-                      height: size.height,
-                      width: size.width - 50,
-                      // color: const Color.fromRGBO(255, 255, 255, 1.0),
-                      decoration: kBackgroundBoxDecoration,
-                      child: seatSelectionController.selectedBusClass.value ==
-                              busClasses[0]
-                          ? seatSelectionController.changeEconomySeatsLayout()
-                          : seatSelectionController
-                              .changeExecutiveSeatsLayout()),
+                    height: size.height,
+                    width: size.width - 50,
+                    // color: const Color.fromRGBO(255, 255, 255, 1.0),
+                    decoration: kBackgroundBoxDecoration,
+                    child: seatSelectionController.selectedBusClass.value ==
+                            busClasses[0]
+                        ? seatSelectionController.changeEconomySeatsLayout()
+                        : seatSelectionController.changeExecutiveSeatsLayout(),
+                  ),
                 ),
               ),
             ),
@@ -126,23 +127,22 @@ class SeatSelectionScreen extends StatelessWidget {
                       children: [
                         const AshTextWidget(text: 'Selected Seat'),
                         if (seatSelectionController.selectedBusClass.value ==
-                                busClasses[0])  Text(
-                                  seatSelectionController
-                                      .changeEconomySeatList(),
-                                  style: const TextStyle(
-                                    fontSize: 18.0,
-                                    fontWeight: FontWeight.w900,
-                                  ),
-                                
-                              ) else  Text(
-                                  seatSelectionController
-                                      .changeExecutiveSeatList(),
-                                  style: const TextStyle(
-                                    fontSize: 18.0,
-                                    fontWeight: FontWeight.w900,
-                                  ),
-                                ),
-
+                            busClasses[0])
+                          Text(
+                            seatSelectionController.changeEconomySeatList(),
+                            style: const TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.w900,
+                            ),
+                          )
+                        else
+                          Text(
+                            seatSelectionController.changeExecutiveSeatList(),
+                            style: const TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.w900,
+                            ),
+                          ),
                       ],
                     ),
                   ),
@@ -152,21 +152,20 @@ class SeatSelectionScreen extends StatelessWidget {
                         const AshTextWidget(text: 'Total Price'),
                         seatSelectionController.selectedBusClass.value ==
                                 busClasses[0]
-                            ?  Text(
-                                  'GH¢${seatSelectionController.changeEconomySeatPrice()}',
-                                  style: const TextStyle(
-                                    fontSize: 18.0,
-                                    fontWeight: FontWeight.w900,
-                                  ),
-                                )
-                            :  Text(
-                                  'GH¢${seatSelectionController.changeExecutiveSeatPrice()}',
-                                  style: const TextStyle(
-                                    fontSize: 18.0,
-                                    fontWeight: FontWeight.w900,
-                                  ),
+                            ? Text(
+                                'GH¢${seatSelectionController.changeEconomySeatPrice()}',
+                                style: const TextStyle(
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.w900,
                                 ),
-
+                              )
+                            : Text(
+                                'GH¢${seatSelectionController.changeExecutiveSeatPrice()}',
+                                style: const TextStyle(
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                              ),
                       ],
                     ),
                   ),
@@ -177,14 +176,6 @@ class SeatSelectionScreen extends StatelessWidget {
               child: BottomButton(
                 bottomTextLabel: 'Proceed to make payment',
                 onPressed: () {
-                  // final UserModel user = UserModel(
-                  //     // seatNo: selectedDestination == busClasses[0]
-                  //     //     ? seatSelectionController.changeEconomySeatList()
-                  //     //     : seatSelectionController
-                  //     //         .selectedAccraExecutiveSeats,
-                  //     price: selectedDestination == busClasses[0]
-                  //         ? seatSelectionController.changeEconomySeatPrice()
-                  //         : seatSelectionController.changeExecutiveSeatPrice());
                   Get.to(
                     () => BusTicketScreen(),
                   );

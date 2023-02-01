@@ -11,7 +11,9 @@ class UserRepository extends GetxController {
   createUser(UserModel user) async {
     await _db
         .collection('Users')
-        .add(user.toJson())
+        .add(
+          user.toJson(),
+        )
         .whenComplete(
           () => Get.snackbar(
             "Success",
@@ -30,7 +32,6 @@ class UserRepository extends GetxController {
         colorText: Colors.red,
         backgroundColor: Colors.blue.withOpacity(0.7),
       );
-      
     });
   }
 

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/Models/utils/form_items.dart';
@@ -106,9 +105,9 @@ class TicketData extends StatelessWidget {
                               const EdgeInsets.only(top: 12.0, right: 52.0),
                           child: ticketDetailsWidget(
                             'Destination',
-                            Obx(() => Text(
-                                  seatSelectionController.selectedDestination,
-                                )),
+                            Text(
+                              seatSelectionController.selectedDestination,
+                            ),
                             'Gate',
                             const Text('66B'),
                           ),

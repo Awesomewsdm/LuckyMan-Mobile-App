@@ -11,8 +11,7 @@ class UserModel {
   final String? studentID;
   final String? phoneNumber;
   final String? password;
-  final List? seatNo;
-  final String? price;
+
   UserModel({
     this.id,
     this.fullName,
@@ -20,8 +19,6 @@ class UserModel {
     this.studentID,
     this.phoneNumber,
     this.password,
-    this.seatNo,
-    this.price,
   });
 
   toJson() {
@@ -31,8 +28,6 @@ class UserModel {
       'email': email,
       'phoneNumber': phoneNumber,
       'password': password,
-      'seatNo': seatNo,
-      'price': price,
     };
   }
 
@@ -56,8 +51,6 @@ class UserModel {
     String? studentID,
     String? phoneNumber,
     String? password,
-    List? seatNo,
-    String? price,
   }) {
     return UserModel(
       id: id ?? this.id,
@@ -66,8 +59,6 @@ class UserModel {
       studentID: studentID ?? this.studentID,
       phoneNumber: phoneNumber ?? this.phoneNumber,
       password: password ?? this.password,
-      seatNo: seatNo ?? this.seatNo,
-      price: price ?? this.price,
     );
   }
 
@@ -79,8 +70,6 @@ class UserModel {
       'studentID': studentID,
       'phoneNumber': phoneNumber,
       'password': password,
-      'seatNo': seatNo?.asMap(),
-      'price': price,
     };
   }
 
@@ -92,7 +81,6 @@ class UserModel {
       studentID: map['studentID'] as String,
       phoneNumber: map['phoneNumber'] as String,
       password: map['password'] as String,
-      price: map['price'] != null ? map['price'] as String : null,
     );
   }
 
@@ -101,7 +89,7 @@ class UserModel {
 
   @override
   String toString() {
-    return 'UserModel(id: $id, fullName: $fullName, email: $email, studentID: $studentID, phoneNumber: $phoneNumber, password: $password, seatNo: $seatNo, price: $price,)';
+    return 'UserModel(id: $id, fullName: $fullName, email: $email, studentID: $studentID, phoneNumber: $phoneNumber, password: $password,)';
   }
 
   @override
@@ -113,9 +101,7 @@ class UserModel {
         other.email == email &&
         other.studentID == studentID &&
         other.phoneNumber == phoneNumber &&
-        other.password == password &&
-        other.seatNo == seatNo &&
-        other.price == price;
+        other.password == password;
   }
 
   @override
@@ -125,8 +111,6 @@ class UserModel {
         email.hashCode ^
         studentID.hashCode ^
         phoneNumber.hashCode ^
-        password.hashCode ^
-        seatNo.hashCode ^
-        price.hashCode;
+        password.hashCode;
   }
 }
