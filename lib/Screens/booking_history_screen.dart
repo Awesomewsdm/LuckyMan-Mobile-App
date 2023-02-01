@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:luckyman_app/Constants/constants.dart';
-import 'package:luckyman_app/Screens/bus_ticket_screen.dart';
+import 'package:luckyman_app/src/common_widgets/booking/ticket_data_widget.dart';
 import 'package:luckyman_app/src/constants/text.dart';
 import 'package:ticket_widget/ticket_widget.dart';
 

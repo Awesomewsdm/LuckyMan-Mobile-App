@@ -7,7 +7,7 @@ import 'package:luckyman_app/src/common_widgets/buttons/bottom_button.dart';
 import 'package:luckyman_app/src/constants/text.dart';
 import 'package:luckyman_app/src/features/authentification/controllers/profile_controller.dart';
 import 'package:luckyman_app/src/features/authentification/models/user_model.dart';
-import 'package:luckyman_app/src/features/authentification/screens/login/login_screen.dart';
+import 'package:luckyman_app/src/features/authentification/screens/sign_up/widgets/sign_up_screen.dart';
 import 'package:luckyman_app/src/repository/authentification/authentification_repository.dart';
 
 import '../src/common_widgets/user_info/user_profile_image.dart';
@@ -144,7 +144,7 @@ class ProfileScreen extends StatelessWidget {
                                 bottomTextLabel: 'Logout',
                                 onPressed: () {
                                   AuthenticationRepository.instance.logout();
-                                  Get.to(() => const LoginScreen());
+                                  Get.offAll(() => const SignUpScreen(),);
                                 },
                               ),
                             ],

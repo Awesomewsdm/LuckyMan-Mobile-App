@@ -57,7 +57,7 @@ class SeatSelectionController extends GetxController {
 
   // Bus type controllers
   RxString selectedBusClass = ''.obs;
-  void changeBusType(String? value) {
+  void changeBusClass(String? value) {
     selectedBusClass.value = value!;
   }
 
@@ -81,19 +81,19 @@ class SeatSelectionController extends GetxController {
   RxDouble pTemaExecutiveseatPrice = 0.0.obs;
   RxDouble pSunyaniExecutiveseatPrice = 0.0.obs;
 
-  @override
-  void onReady() {
-    super.onReady();
-    pAccraEconomySeatPrice = 0.0.obs;
-    pCapeCoastEconomyseatPrice = 0.0.obs;
-    pKasoaEconomyseatPrice = 0.0.obs;
-    pKoforiduaEconomyseatPrice = 0.0.obs;
-    pTakoradiEconomyseatPrice = 0.0.obs;
-    pMadinaEconomyseatPrice = 0.0.obs;
-    pTemaEconomyseatPrice = 0.0.obs;
-    pSunyaniEconomyseatPrice = 0.0.obs;
-    noOfSeats = 4;
-  }
+  // @override
+  // void onReady() {
+  //   super.onReady();
+  //   pAccraEconomySeatPrice = 0.0.obs;
+  //   pCapeCoastEconomyseatPrice = 0.0.obs;
+  //   pKasoaEconomyseatPrice = 0.0.obs;
+  //   pKoforiduaEconomyseatPrice = 0.0.obs;
+  //   pTakoradiEconomyseatPrice = 0.0.obs;
+  //   pMadinaEconomyseatPrice = 0.0.obs;
+  //   pTemaEconomyseatPrice = 0.0.obs;
+  //   pSunyaniEconomyseatPrice = 0.0.obs;
+  //   noOfSeats = 4;
+  // }
 
   String selectedDestination =
       BusBookingController.instance.selectedDestination.toString();
@@ -176,12 +176,15 @@ class SeatSelectionController extends GetxController {
         model: economyseatLayout,
       );
     } else {
-      return const Center(
+      return  Center(
         child: Text(
-          'Please select a bus class',
-          style: TextStyle(fontSize: 18.0),
+          selectedDestination,
+          style: const TextStyle(fontSize: 18.0),
+          
         ),
+
       );
+      
     }
   }
 
@@ -219,10 +222,10 @@ class SeatSelectionController extends GetxController {
         model: executiveseatLayout,
       );
     } else {
-      return const Center(
+      return  Center(
         child: Text(
-          'Please select a bus class',
-          style: TextStyle(fontSize: 18.0),
+          selectedDestination,
+          style: const TextStyle(fontSize: 18.0),
         ),
       );
     }

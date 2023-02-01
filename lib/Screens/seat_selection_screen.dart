@@ -4,7 +4,6 @@ import 'package:luckyman_app/Components/text_styling.dart';
 import 'package:luckyman_app/Constants/constants.dart';
 import 'package:luckyman_app/src/common_widgets/buttons/bottom_button.dart';
 import 'package:luckyman_app/src/features/authentification/controllers/seat_selection_controller.dart';
-import 'package:luckyman_app/src/features/authentification/models/user_model.dart';
 
 import '../Components/seat_status.dart';
 
@@ -53,56 +52,54 @@ class SeatSelectionScreen extends StatelessWidget {
       ),
       backgroundColor: backgroundColor5,
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              const SizedBox(
-                height: 10.0,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  SeatStatus(
-                    boxColor: emptySeatColor,
-                    iconLabel: 'Available',
-                  ),
-                  SeatStatus(
-                    iconLabel: 'Selected',
-                    boxColor: selectedSeatColor,
-                  ),
-                  SeatStatus(
-                    boxColor: bookedSeatColor,
-                    iconLabel: 'Booked',
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 2.0,
-              ),
-              BusClassDropDownMenu(
-                  size: size, seatSelectionController: seatSelectionController),
-              const SizedBox(
-                height: 10.0,
-              ),
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Obx(
-                    () => Container(
-                        height: size.height,
-                        width: size.width - 50,
-                        // color: const Color.fromRGBO(255, 255, 255, 1.0),
-                        decoration: kBackgroundBoxDecoration,
-                        child: seatSelectionController.selectedBusClass.value ==
-                                busClasses[0]
-                            ? seatSelectionController.changeEconomySeatsLayout()
-                            : seatSelectionController
-                                .changeExecutiveSeatsLayout()),
-                  ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            const SizedBox(
+              height: 10.0,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                SeatStatus(
+                  boxColor: emptySeatColor,
+                  iconLabel: 'Available',
+                ),
+                SeatStatus(
+                  iconLabel: 'Selected',
+                  boxColor: selectedSeatColor,
+                ),
+                SeatStatus(
+                  boxColor: bookedSeatColor,
+                  iconLabel: 'Booked',
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 2.0,
+            ),
+            BusClassDropDownMenu(
+                size: size, seatSelectionController: seatSelectionController),
+            const SizedBox(
+              height: 10.0,
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Obx(
+                  () => Container(
+                      height: size.height,
+                      width: size.width - 50,
+                      // color: const Color.fromRGBO(255, 255, 255, 1.0),
+                      decoration: kBackgroundBoxDecoration,
+                      child: seatSelectionController.selectedBusClass.value ==
+                              busClasses[0]
+                          ? seatSelectionController.changeEconomySeatsLayout()
+                          : seatSelectionController
+                              .changeExecutiveSeatsLayout()),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
       bottomSheet: Container(
@@ -128,20 +125,16 @@ class SeatSelectionScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const AshTextWidget(text: 'Selected Seat'),
-                        seatSelectionController.selectedBusClass.value ==
-                                busClasses[0]
-                            ? Obx(
-                                () => Text(
+                        if (seatSelectionController.selectedBusClass.value ==
+                                busClasses[0])  Text(
                                   seatSelectionController
                                       .changeEconomySeatList(),
                                   style: const TextStyle(
                                     fontSize: 18.0,
                                     fontWeight: FontWeight.w900,
                                   ),
-                                ),
-                              )
-                            : Obx(
-                                () => Text(
+                                
+                              ) else  Text(
                                   seatSelectionController
                                       .changeExecutiveSeatList(),
                                   style: const TextStyle(
@@ -149,7 +142,7 @@ class SeatSelectionScreen extends StatelessWidget {
                                     fontWeight: FontWeight.w900,
                                   ),
                                 ),
-                              ),
+
                       ],
                     ),
                   ),
@@ -159,24 +152,21 @@ class SeatSelectionScreen extends StatelessWidget {
                         const AshTextWidget(text: 'Total Price'),
                         seatSelectionController.selectedBusClass.value ==
                                 busClasses[0]
-                            ? Obx(
-                                () => Text(
+                            ?  Text(
                                   'GH¢${seatSelectionController.changeEconomySeatPrice()}',
                                   style: const TextStyle(
                                     fontSize: 18.0,
                                     fontWeight: FontWeight.w900,
                                   ),
-                                ),
-                              )
-                            : Obx(
-                                () => Text(
+                                )
+                            :  Text(
                                   'GH¢${seatSelectionController.changeExecutiveSeatPrice()}',
                                   style: const TextStyle(
                                     fontSize: 18.0,
                                     fontWeight: FontWeight.w900,
                                   ),
                                 ),
-                              ),
+
                       ],
                     ),
                   ),
@@ -187,14 +177,14 @@ class SeatSelectionScreen extends StatelessWidget {
               child: BottomButton(
                 bottomTextLabel: 'Proceed to make payment',
                 onPressed: () {
-                  final UserModel user = UserModel(
-                      // seatNo: selectedDestination == busClasses[0]
-                      //     ? seatSelectionController.changeEconomySeatList()
-                      //     : seatSelectionController
-                      //         .selectedAccraExecutiveSeats,
-                      price: selectedDestination == busClasses[0]
-                          ? seatSelectionController.changeEconomySeatPrice()
-                          : seatSelectionController.changeExecutiveSeatPrice());
+                  // final UserModel user = UserModel(
+                  //     // seatNo: selectedDestination == busClasses[0]
+                  //     //     ? seatSelectionController.changeEconomySeatList()
+                  //     //     : seatSelectionController
+                  //     //         .selectedAccraExecutiveSeats,
+                  //     price: selectedDestination == busClasses[0]
+                  //         ? seatSelectionController.changeEconomySeatPrice()
+                  //         : seatSelectionController.changeExecutiveSeatPrice());
                   Get.to(
                     () => BusTicketScreen(),
                   );
