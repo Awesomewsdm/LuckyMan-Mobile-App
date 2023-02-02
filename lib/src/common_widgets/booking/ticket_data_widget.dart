@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/Models/utils/form_items.dart';
 import 'package:luckyman_app/src/features/authentification/controllers/bus_booking_controllers.dart';
@@ -60,7 +61,7 @@ class TicketData extends StatelessWidget {
                           const Padding(
                             padding: EdgeInsets.only(left: 8.0),
                             child: Icon(
-                              Icons.bus_alert_outlined,
+                              FontAwesomeIcons.caravan,
                               color: Colors.pink,
                             ),
                           ),

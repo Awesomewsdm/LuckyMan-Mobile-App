@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 class BlackTextWidget extends StatelessWidget {
-  const BlackTextWidget( {
+  const BlackTextWidget({
     Key? key,
     required this.text,
-    this.fontSize, this.color =  const Color(0xFF000000) ,
+    this.fontSize,
+    this.color = const Color(0xFF000000),
   }) : super(key: key);
   final String text;
   final double? fontSize;
@@ -15,7 +16,7 @@ class BlackTextWidget extends StatelessWidget {
       text,
       textDirection: TextDirection.ltr,
       style: TextStyle(
-        color: color ,
+        color: color,
         fontSize: fontSize,
         fontFamily: 'Roboto',
         fontWeight: FontWeight.w500,
@@ -27,18 +28,21 @@ class BlackTextWidget extends StatelessWidget {
 class AshTextWidget extends StatelessWidget {
   const AshTextWidget({
     Key? key,
-    required this.text, this.fontSize =  14.0,
+    required this.text,
+    this.fontSize = 14.0, this.fontWeight,
   }) : super(key: key);
   final String text;
   final double? fontSize;
+  final FontWeight? fontWeight;
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
-      style:  TextStyle(
-        color:const Color.fromARGB(255, 77, 69, 69),
+      style: TextStyle(
+        color: const Color.fromARGB(255, 77, 69, 69),
         fontSize: fontSize,
+        fontWeight: fontWeight,
       ),
     );
   }

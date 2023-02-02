@@ -1,8 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/Models/utils/validators.dart';
 import 'package:luckyman_app/src/common_widgets/bottom_nav/bottom_nav.dart';
+
 import 'package:regexed_validator/regexed_validator.dart';
 
 import '../../../../../constants/input_decoration.dart';
@@ -155,6 +155,7 @@ class SignUpFormWidget extends StatelessWidget {
             const SizedBox(
               height: 20.0,
             ),
+            // 
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
@@ -172,9 +173,8 @@ class SignUpFormWidget extends StatelessWidget {
                       controller.email.text.trim(),
                       controller.password.text.trim(),
                     );
-
                     _formkey.currentState!.save();
-                    Get.to(() =>  const Home());
+                    Get.to(() => const Home());
                     _formkey.currentState!.reset();
                   }
                 },

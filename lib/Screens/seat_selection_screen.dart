@@ -155,7 +155,16 @@ class SeatSelectionScreen extends StatelessWidget {
                     () => Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const AshTextWidget(text: 'Selected Seat'),
+                        Row(
+                          children: const [
+                            Icon(FontAwesomeIcons.personBurst,
+                                size: 18.0, color: Colors.blue),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            AshTextWidget(text: 'Selected Seat'),
+                          ],
+                        ),
                         if (seatSelectionController.selectedBusClass.value ==
                             busClasses[0])
                           Text(
@@ -181,7 +190,16 @@ class SeatSelectionScreen extends StatelessWidget {
                   Obx(
                     () => Column(
                       children: [
-                        const AshTextWidget(text: 'Total Price'),
+                        Row(
+                          children: const [
+                            Icon(FontAwesomeIcons.moneyBill,
+                                size: 18.0, color: Colors.blue),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            AshTextWidget(text: 'Total Price'),
+                          ],
+                        ),
                         seatSelectionController.selectedBusClass.value ==
                                 busClasses[0]
                             ? Text(

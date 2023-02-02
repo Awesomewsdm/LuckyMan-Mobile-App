@@ -38,18 +38,20 @@ class BusBookingScreen extends StatelessWidget {
                     children: [
                       Expanded(
                         child: BookingDropdownMenu(
-                            validator: (value) {
-                              if (value == null) {
-                                return 'Please select one option';
-                              } else {
-                                return null;
-                              }
-                            },
-                            onChanged: (value) {
-                              busBookingController.changeSelectedBusType(value);
-                            },
-                            items: busType,
-                            formLabel: 'Select Bus Type'),
+                          validator: (value) {
+                            if (value == null) {
+                              return 'Please select one option';
+                            } else {
+                              return null;
+                            }
+                          },
+                          onChanged: (value) {
+                            busBookingController.changeSelectedBusType(value);
+                          },
+                          items: busType,
+                          formLabel: 'Select Bus Type',
+                          dropdownTitle: 'Bus Type',
+                        ),
                       ),
                       Expanded(
                         child: BookingDropdownMenu(
@@ -68,6 +70,7 @@ class BusBookingScreen extends StatelessWidget {
                             // selectedDestination = value!;
                             // print(selectedDestination);
                           },
+                          dropdownTitle: 'Destination',
                         ),
                       ),
                       Expanded(
@@ -85,6 +88,7 @@ class BusBookingScreen extends StatelessWidget {
                           },
                           items: departureDate,
                           formLabel: 'Select Depature Date',
+                          dropdownTitle: 'Depature Date',
                         ),
                       ),
                       Expanded(
@@ -102,6 +106,7 @@ class BusBookingScreen extends StatelessWidget {
                           },
                           items: departureTime,
                           formLabel: 'Select Depature Time',
+                          dropdownTitle: 'Depature Time',
                         ),
                       ),
                       Expanded(
@@ -119,6 +124,7 @@ class BusBookingScreen extends StatelessWidget {
                           },
                           items: pickUpPoints,
                           formLabel: 'Select Pick Up Point',
+                          dropdownTitle: 'Pickup Points',
                         ),
                       ),
                       const SizedBox(
