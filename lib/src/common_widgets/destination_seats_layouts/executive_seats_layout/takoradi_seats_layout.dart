@@ -55,6 +55,8 @@ class TakoradiExecutiveSeatLayout extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap: () {
+                              seatSelectionController.isSeatSelected.value =
+                                  true;
                               double price =
                                   executiveseatLayout.seatTypes[2]['Takoradi']!;
 
@@ -67,6 +69,10 @@ class TakoradiExecutiveSeatLayout extends StatelessWidget {
                                         .pTakoradiExecutiveseatPrice.value -
                                     price;
                                 seats.remove(seatNo);
+                                 if (seats.isEmpty) {
+                                  seatSelectionController.isSeatSelected.value =
+                                      false;
+                                }
                               } else {
                                 seatSelectionController
                                     .pTakoradiExecutiveseatPrice

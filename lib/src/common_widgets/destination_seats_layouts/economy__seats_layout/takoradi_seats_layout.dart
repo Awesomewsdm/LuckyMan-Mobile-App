@@ -55,6 +55,8 @@ class TakoradiEconomySeatLayout extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap: () {
+                              seatSelectionController.isSeatSelected.value =
+                                  true;
                               double price =
                                   economyseatLayout.seatTypes[2]['Takoradi']!;
                               RxList seats = SeatSelectionController
@@ -66,6 +68,10 @@ class TakoradiEconomySeatLayout extends StatelessWidget {
                                         .pTakoradiEconomyseatPrice.value -
                                     price;
                                 seats.remove(seatNo);
+                                 if (seats.isEmpty) {
+                                  seatSelectionController.isSeatSelected.value =
+                                      false;
+                                }
                               } else {
                                 seatSelectionController
                                     .pTakoradiEconomyseatPrice

@@ -55,6 +55,8 @@ class KoforiduaExecutiveSeatLayout extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap: () {
+                              seatSelectionController.isSeatSelected.value =
+                                  true;
                               double price = executiveseatLayout.seatTypes[7]
                                   ["Koforidua"]!;
                               RxList seats = SeatSelectionController
@@ -66,6 +68,10 @@ class KoforiduaExecutiveSeatLayout extends StatelessWidget {
                                         .pKoforiduaExecutiveseatPrice.value -
                                     price;
                                 seats.remove(seatNo);
+                                 if (seats.isEmpty) {
+                                  seatSelectionController.isSeatSelected.value =
+                                      false;
+                                }
                               } else {
                                 seatSelectionController
                                     .pKoforiduaExecutiveseatPrice

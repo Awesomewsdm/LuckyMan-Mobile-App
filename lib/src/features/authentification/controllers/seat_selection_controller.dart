@@ -22,7 +22,7 @@ import '../../../common_widgets/destination_seats_layouts/executive_seats_layout
 import '../../../common_widgets/destination_seats_layouts/executive_seats_layout/tema_seats_layout.dart';
 
 class SeatSelectionController extends GetxController {
-   static SeatSelectionController get instance => Get.find();
+  static SeatSelectionController get instance => Get.find();
 
   BusBookingController busBookingController = Get.put(
     BusBookingController(),
@@ -50,7 +50,10 @@ class SeatSelectionController extends GetxController {
 
   int noOfSeats = 4;
 
-  RxBool isSeatSelected = false.obs;
+  final isSeatSelected = Rxn<bool>();
+  // changeSeatStatus() {
+  //   isSeatSelected.value = true;
+  // }
   // calcSeatPrice(double amount) {
   //   seatPrice.value += amount;
   // }
@@ -99,21 +102,21 @@ class SeatSelectionController extends GetxController {
       BusBookingController.instance.selectedDestination.toString();
 
   String changeEconomySeatPrice() {
-    if (selectedDestination == 'Accra' ) {
+    if (selectedDestination == 'Accra') {
       return pAccraEconomySeatPrice.value.toString();
-    } else if (selectedDestination == 'Tema' ) {
+    } else if (selectedDestination == 'Tema') {
       return pTemaEconomyseatPrice.value.toString();
     } else if (selectedDestination == 'Takoradi') {
       return pTakoradiEconomyseatPrice.value.toString();
-    } else if (selectedDestination == 'Cape Coast' ) {
+    } else if (selectedDestination == 'Cape Coast') {
       return pCapeCoastEconomyseatPrice.value.toString();
-    } else if (selectedDestination == 'Sunyani' ) {
+    } else if (selectedDestination == 'Sunyani') {
       return pSunyaniEconomyseatPrice.value.toString();
-    } else if (selectedDestination == 'Kasoa' ) {
+    } else if (selectedDestination == 'Kasoa') {
       return pKasoaEconomyseatPrice.value.toString();
-    } else if (selectedDestination == 'Madina' ) {
+    } else if (selectedDestination == 'Madina') {
       return pMadinaEconomyseatPrice.value.toString();
-    } else if (selectedDestination == 'Koforidua' ) {
+    } else if (selectedDestination == 'Koforidua') {
       return pKoforiduaEconomyseatPrice.value.toString();
     } else {
       return '0.00';
@@ -121,21 +124,21 @@ class SeatSelectionController extends GetxController {
   }
 
   String changeExecutiveSeatPrice() {
-    if (selectedDestination == 'Accra' ) {
+    if (selectedDestination == 'Accra') {
       return pAccraExecutiveSeatPrice.value.toString();
-    } else if (selectedDestination == 'Tema' ) {
+    } else if (selectedDestination == 'Tema') {
       return pTemaExecutiveseatPrice.value.toString();
-    } else if (selectedDestination == 'Takoradi' ) {
+    } else if (selectedDestination == 'Takoradi') {
       return pTakoradiExecutiveseatPrice.value.toString();
     } else if (selectedDestination == 'Cape Coast') {
       return pCapeCoastExecutiveseatPrice.value.toString();
-    } else if (selectedDestination == 'Sunyani' ) {
+    } else if (selectedDestination == 'Sunyani') {
       return pSunyaniExecutiveseatPrice.value.toString();
-    } else if (selectedDestination == 'Koforidua' ) {
+    } else if (selectedDestination == 'Koforidua') {
       return pKoforiduaExecutiveseatPrice.value.toString();
-    } else if (selectedDestination == 'Kasoa' ) {
+    } else if (selectedDestination == 'Kasoa') {
       return pKasoaExecutiveseatPrice.value.toString();
-    } else if (selectedDestination == 'Madina' ) {
+    } else if (selectedDestination == 'Madina') {
       return pMadinaExecutiveseatPrice.value.toString();
     } else {
       return '0.00';
@@ -143,48 +146,45 @@ class SeatSelectionController extends GetxController {
   }
 
   Widget changeEconomySeatsLayout() {
-    if (selectedDestination == 'Accra' ) {
+    if (selectedDestination == 'Accra') {
       return AccraEconomySeatLayout(
         model: economyseatLayout,
       );
-    } else if (selectedDestination == 'Tema' ) {
+    } else if (selectedDestination == 'Tema') {
       return TemaEconomySeatLayout(
         model: economyseatLayout,
       );
-    } else if (selectedDestination == 'Takoradi' ) {
+    } else if (selectedDestination == 'Takoradi') {
       return TakoradiEconomySeatLayout(
         model: economyseatLayout,
       );
-    } else if (selectedDestination == 'Cape Coast' ) {
+    } else if (selectedDestination == 'Cape Coast') {
       return CapeCoastEconomySeatLayout(
         model: economyseatLayout,
       );
-    } else if (selectedDestination == 'Sunyani' ) {
+    } else if (selectedDestination == 'Sunyani') {
       return SunyaniEconomySeatLayout(
         model: economyseatLayout,
       );
-    } else if (selectedDestination == 'Kasoa' ) {
+    } else if (selectedDestination == 'Kasoa') {
       return KasoaEconomySeatLayout(
         model: economyseatLayout,
       );
-    } else if (selectedDestination == 'Madina' ) {
+    } else if (selectedDestination == 'Madina') {
       return MadinaEconomySeatLayout(
         model: economyseatLayout,
       );
-    } else if (selectedDestination == 'Koforidua' ) {
+    } else if (selectedDestination == 'Koforidua') {
       return KoforiduaEconomySeatLayout(
         model: economyseatLayout,
       );
     } else {
-      return  Center(
+      return Center(
         child: Text(
           selectedDestination,
           style: const TextStyle(fontSize: 18.0),
-          
         ),
-
       );
-      
     }
   }
 
@@ -193,15 +193,15 @@ class SeatSelectionController extends GetxController {
       return AccraExecutiveSeatLayout(
         model: executiveseatLayout,
       );
-    } else if (selectedDestination == 'Tema' ) {
+    } else if (selectedDestination == 'Tema') {
       return TemaExecutiveSeatLayout(
         model: executiveseatLayout,
       );
-    } else if (selectedDestination == 'Takoradi' ) {
+    } else if (selectedDestination == 'Takoradi') {
       return TakoradiExecutiveSeatLayout(
         model: executiveseatLayout,
       );
-    } else if (selectedDestination == 'Cape Coast' ) {
+    } else if (selectedDestination == 'Cape Coast') {
       return CapeCoastExecutiveSeatLayout(
         model: executiveseatLayout,
       );
@@ -209,20 +209,20 @@ class SeatSelectionController extends GetxController {
       return SunyaniExecutiveSeatLayout(
         model: executiveseatLayout,
       );
-    } else if (selectedDestination == 'Kasoa' ) {
+    } else if (selectedDestination == 'Kasoa') {
       return KasoaExecutiveSeatLayout(
         model: executiveseatLayout,
       );
-    } else if (selectedDestination == 'Koforidua' ) {
+    } else if (selectedDestination == 'Koforidua') {
       return KoforiduaExecutiveSeatLayout(
         model: executiveseatLayout,
       );
-    } else if (selectedDestination == 'Madina' ) {
+    } else if (selectedDestination == 'Madina') {
       return MadinaExecutiveSeatLayout(
         model: executiveseatLayout,
       );
     } else {
-      return  Center(
+      return Center(
         child: Text(
           selectedDestination,
           style: const TextStyle(fontSize: 18.0),
@@ -232,21 +232,21 @@ class SeatSelectionController extends GetxController {
   }
 
   String changeEconomySeatList() {
-    if (selectedDestination == 'Accra' ) {
+    if (selectedDestination == 'Accra') {
       return selectedAccraEconomySeats.join(' , ');
-    } else if (selectedDestination == 'Tema' ) {
+    } else if (selectedDestination == 'Tema') {
       return selectedTemaEconomySeats.join(' , ');
     } else if (selectedDestination == 'Takoradi') {
       return selectedTakoradiEconomySeats.join(' , ');
-    } else if (selectedDestination == 'Cape Coast' ) {
+    } else if (selectedDestination == 'Cape Coast') {
       return selectedCapeCoastEconomySeats.join(' , ');
-    } else if (selectedDestination == 'Sunyani' ) {
+    } else if (selectedDestination == 'Sunyani') {
       return selectedSunyaniEconomySeats.join(' , ');
-    } else if (selectedDestination == 'Kasoa' ) {
+    } else if (selectedDestination == 'Kasoa') {
       return selectedKasoaEconomySeats.join(' , ');
-    } else if (selectedDestination == 'Madina' ) {
+    } else if (selectedDestination == 'Madina') {
       return selectedMadinaEconomySeats.join(' , ');
-    } else if (selectedDestination == 'Koforidua' ) {
+    } else if (selectedDestination == 'Koforidua') {
       return selectedKoforiduaEconomySeats.join(' , ');
     } else {
       return '';
@@ -254,21 +254,21 @@ class SeatSelectionController extends GetxController {
   }
 
   String changeExecutiveSeatList() {
-    if (selectedDestination == 'Accra' ) {
+    if (selectedDestination == 'Accra') {
       return selectedAccraExecutiveSeats.join(' , ');
     } else if (selectedDestination == 'Tema') {
       return selectedTemaExecutiveSeats.join(' , ');
-    } else if (selectedDestination == 'Takoradi' ) {
+    } else if (selectedDestination == 'Takoradi') {
       return selectedTakoradiExecutiveSeats.join(' , ');
-    } else if (selectedDestination == 'Cape Coast' ) {
+    } else if (selectedDestination == 'Cape Coast') {
       return selectedCapeCoastExecutiveSeats.join(' , ');
-    } else if (selectedDestination == 'Sunyani' ) {
+    } else if (selectedDestination == 'Sunyani') {
       return selectedSunyaniExecutiveSeats.join(' , ');
-    } else if (selectedDestination == 'Kasoa' ) {
+    } else if (selectedDestination == 'Kasoa') {
       return selectedKasoaExecutiveSeats.join(' , ');
-    } else if (selectedDestination == 'Madina' ) {
+    } else if (selectedDestination == 'Madina') {
       return selectedMadinaExecutiveSeats.join(' , ');
-    } else if (selectedDestination == 'Koforidua' ) {
+    } else if (selectedDestination == 'Koforidua') {
       return selectedKoforiduaExecutiveSeats.join(' , ');
     } else {
       return '';

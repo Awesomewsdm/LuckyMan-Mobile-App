@@ -55,6 +55,8 @@ class MadinaExecutiveSeatLayout extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap: () {
+                              seatSelectionController.isSeatSelected.value =
+                                  true;
                               double price =
                                   executiveseatLayout.seatTypes[6]['Madina']!;
 
@@ -67,6 +69,10 @@ class MadinaExecutiveSeatLayout extends StatelessWidget {
                                         .pMadinaExecutiveseatPrice.value -
                                     price;
                                 seats.remove(seatNo);
+                                 if (seats.isEmpty) {
+                                  seatSelectionController.isSeatSelected.value =
+                                      false;
+                                }
                               } else {
                                 seatSelectionController
                                     .pMadinaExecutiveseatPrice

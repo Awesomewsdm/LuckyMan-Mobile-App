@@ -55,10 +55,12 @@ class AccraExecutiveSeatLayout extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap: () {
+
+                              seatSelectionController.isSeatSelected.value =
+                                  true;
                               double price =
                                   executiveseatLayout.seatTypes[0]["Accra"]!;
 
-                              // seatSelectionController.calcSeatPrice(price);
 
                               RxList seats = SeatSelectionController
                                   .instance.selectedAccraExecutiveSeats;
@@ -70,6 +72,10 @@ class AccraExecutiveSeatLayout extends StatelessWidget {
                                     price;
 
                                 seats.remove(seatNo);
+                                 if (seats.isEmpty) {
+                                  seatSelectionController.isSeatSelected.value =
+                                      false;
+                                }
                               } else {
                                 seatSelectionController.pAccraExecutiveSeatPrice
                                     .value = seatSelectionController

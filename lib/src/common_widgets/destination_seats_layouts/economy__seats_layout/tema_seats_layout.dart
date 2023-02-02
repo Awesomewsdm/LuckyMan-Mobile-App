@@ -56,6 +56,8 @@ class TemaEconomySeatLayout extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap: () {
+                              seatSelectionController.isSeatSelected.value =
+                                  true;
                               double price =
                                   economyseatLayout.seatTypes[1]['Tema']!;
                               RxList seats = SeatSelectionController
@@ -66,6 +68,10 @@ class TemaEconomySeatLayout extends StatelessWidget {
                                         .pTemaEconomyseatPrice.value -
                                     price;
                                 seats.remove(seatNo);
+                                 if (seats.isEmpty) {
+                                  seatSelectionController.isSeatSelected.value =
+                                      false;
+                                }
                               } else {
                                 seatSelectionController.pTemaEconomyseatPrice
                                     .value = seatSelectionController

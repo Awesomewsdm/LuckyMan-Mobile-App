@@ -55,6 +55,8 @@ class CapeCoastExecutiveSeatLayout extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap: () {
+                              seatSelectionController.isSeatSelected.value =
+                                  true;
                               double price = executiveseatLayout.seatTypes[5]
                                   ["Cape Coast"]!;
 
@@ -67,6 +69,10 @@ class CapeCoastExecutiveSeatLayout extends StatelessWidget {
                                         .pCapeCoastExecutiveseatPrice.value -
                                     price;
                                 seats.remove(seatNo);
+                                 if (seats.isEmpty) {
+                                  seatSelectionController.isSeatSelected.value =
+                                      false;
+                                }
                               } else {
                                 seatSelectionController
                                     .pCapeCoastExecutiveseatPrice

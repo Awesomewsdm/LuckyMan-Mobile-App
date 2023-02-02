@@ -58,27 +58,24 @@ class AccraEconomySeatLayout extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap: () {
+                              seatSelectionController.isSeatSelected.value =
+                                  true;
                               double price =
                                   economyseatLayout.seatTypes[0]["Accra"]!;
-
-                              // seatSelectionController.calcseatSelectionController
-                              // .pAccraEconomySeatPrice.value(price);
 
                               RxList seats = SeatSelectionController
                                   .instance.selectedAccraEconomySeats;
 
-                              // double seatSelectionController
-                              //     .pAccraEconomySeatPrice.value = seatSelectionController
-                              //     .pAccraEconomyseatSelectionController
-                              //     .pAccraEconomySeatPrice.value.value;
-
-                              // print(price);
                               if (seats.contains(seatNo)) {
                                 seatSelectionController.pAccraEconomySeatPrice
                                     .value = seatSelectionController
                                         .pAccraEconomySeatPrice.value -
                                     price;
                                 seats.remove(seatNo);
+                                if (seats.isEmpty) {
+                                  seatSelectionController.isSeatSelected.value =
+                                      false;
+                                }
                               } else {
                                 seatSelectionController.pAccraEconomySeatPrice
                                     .value = seatSelectionController
@@ -101,7 +98,6 @@ class AccraEconomySeatLayout extends StatelessWidget {
 
                                   seats.add(seatNo);
                                 } else {
-                                  // amount = amount + price;
                                   seats.add(seatNo);
                                 }
                               }

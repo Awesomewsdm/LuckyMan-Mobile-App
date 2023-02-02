@@ -55,6 +55,8 @@ class KasoaExecutiveSeatLayout extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap: () {
+                              seatSelectionController.isSeatSelected.value =
+                                  true;
                               RxList seats = SeatSelectionController
                                   .instance.selectedKasoaExecutiveSeats;
 
@@ -66,6 +68,10 @@ class KasoaExecutiveSeatLayout extends StatelessWidget {
                                         .pKasoaExecutiveseatPrice.value -
                                     price;
                                 seats.remove(seatNo);
+                                 if (seats.isEmpty) {
+                                  seatSelectionController.isSeatSelected.value =
+                                      false;
+                                }
                               } else {
                                 seatSelectionController.pKasoaExecutiveseatPrice
                                     .value = seatSelectionController

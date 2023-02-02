@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/Components/text_styling.dart';
 import 'package:luckyman_app/Constants/constants.dart';
@@ -27,21 +28,20 @@ class SeatSelectionScreen extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        elevation: 20.0,
+        elevation: 50.0,
         backgroundColor: Colors.white,
-        toolbarHeight: 60,
         centerTitle: true,
         toolbarOpacity: 0.2,
-        bottomOpacity: 0.2,
+        bottomOpacity: 0.7,
         shadowColor: Colors.white24,
-        leadingWidth: 90,
+        // leadingWidth: 90,
         leading: IconButton(
           onPressed: () {
-            Get.back();
+            Navigator.pop(context);
           },
           icon: const Icon(
-            Icons.chevron_left_rounded,
-            size: 40.0,
+            FontAwesomeIcons.arrowLeftLong,
+            size: 50.0,
             color: Colors.black,
           ),
         ),
@@ -64,6 +64,9 @@ class SeatSelectionScreen extends StatelessWidget {
                 SeatStatus(
                   boxColor: emptySeatColor,
                   iconLabel: 'Available',
+                  border: Border.all(
+                    color: selectedSeatColor,
+                  ),
                 ),
                 SeatStatus(
                   iconLabel: 'Selected',
@@ -93,7 +96,31 @@ class SeatSelectionScreen extends StatelessWidget {
                     decoration: kBackgroundBoxDecoration,
                     child: seatSelectionController.selectedBusClass.value ==
                             null
-                        ? const Center(child: Text('Please select a bus class', style: TextStyle(fontSize: 18),), )
+                        ? Container(
+                            width: 120.0,
+                            height: 25.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30.0),
+                              border: Border.all(
+                                  width: 1.0, color: Colors.redAccent),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const [
+                                Icon(
+                                  FontAwesomeIcons.triangleExclamation,
+                                  color: Colors.red,
+                                ),
+                                SizedBox(
+                                  width: 10.0,
+                                ),
+                                Text(
+                                  ' Please select a bus class to continue',
+                                  style: TextStyle(color: Colors.red),
+                                ),
+                              ],
+                            ),
+                          )
                         : seatSelectionController.selectedBusClass.value ==
                                 busClasses[0]
                             ? seatSelectionController.changeEconomySeatsLayout()
@@ -133,7 +160,8 @@ class SeatSelectionScreen extends StatelessWidget {
                             busClasses[0])
                           Text(
                             seatSelectionController.changeEconomySeatList(),
-                            style: const TextStyle(
+                            style: TextStyle(
+                              color: selectedSeatColor,
                               fontSize: 18.0,
                               fontWeight: FontWeight.w900,
                             ),
@@ -141,7 +169,8 @@ class SeatSelectionScreen extends StatelessWidget {
                         else
                           Text(
                             seatSelectionController.changeExecutiveSeatList(),
-                            style: const TextStyle(
+                            style: TextStyle(
+                              color: selectedSeatColor,
                               fontSize: 18.0,
                               fontWeight: FontWeight.w900,
                             ),
@@ -157,14 +186,16 @@ class SeatSelectionScreen extends StatelessWidget {
                                 busClasses[0]
                             ? Text(
                                 'GH¢${seatSelectionController.changeEconomySeatPrice()}',
-                                style: const TextStyle(
+                                style: TextStyle(
+                                  color: selectedSeatColor,
                                   fontSize: 18.0,
                                   fontWeight: FontWeight.w900,
                                 ),
                               )
                             : Text(
                                 'GH¢${seatSelectionController.changeExecutiveSeatPrice()}',
-                                style: const TextStyle(
+                                style: TextStyle(
+                                  color: selectedSeatColor,
                                   fontSize: 18.0,
                                   fontWeight: FontWeight.w900,
                                 ),
@@ -177,11 +208,17 @@ class SeatSelectionScreen extends StatelessWidget {
             ),
             Expanded(
               child: BottomButton(
-                bottomTextLabel: 'PROCEED TO MAKE PAYMENT',
+                bottomTextLabel: 'PROCEED TO PAYMENT',
                 onPressed: () {
-                  Get.to(
-                    () => BusTicketScreen(),
-                  );
+                  if (seatSelectionController.isSeatSelected.value == true) {
+                    Get.to(
+                      () => BusTicketScreen(),
+                    );
+                  } else {
+                    Get.snackbar(
+                        'Please', 'Select at least one seat to continue',
+                        colorText: Colors.red, backgroundColor: Colors.white);
+                  }
                 },
               ),
             ),

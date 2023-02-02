@@ -55,6 +55,8 @@ class KasoaEconomySeatLayout extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap: () {
+                              seatSelectionController.isSeatSelected.value =
+                                  true;
                               RxList seats = SeatSelectionController
                                   .instance.selectedKasoaEconomySeats;
                               double price =
@@ -68,6 +70,10 @@ class KasoaEconomySeatLayout extends StatelessWidget {
                                         .pKasoaEconomyseatPrice.value -
                                     price;
                                 seats.remove(seatNo);
+                                 if (seats.isEmpty) {
+                                  seatSelectionController.isSeatSelected.value =
+                                      false;
+                                }
                               } else {
                                 seatSelectionController.pKasoaEconomyseatPrice
                                     .value = seatSelectionController

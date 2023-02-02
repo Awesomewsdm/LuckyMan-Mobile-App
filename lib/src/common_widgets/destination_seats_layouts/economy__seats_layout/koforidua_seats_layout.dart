@@ -55,6 +55,8 @@ class KoforiduaEconomySeatLayout extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap: () {
+                              seatSelectionController.isSeatSelected.value =
+                                  true;
                               RxList seats = SeatSelectionController
                                   .instance.selectedKoforiduaEconomySeats;
 
@@ -68,6 +70,10 @@ class KoforiduaEconomySeatLayout extends StatelessWidget {
                                         .pKoforiduaEconomyseatPrice.value -
                                     price;
                                 seats.remove(seatNo);
+                                 if (seats.isEmpty) {
+                                  seatSelectionController.isSeatSelected.value =
+                                      false;
+                                }
                               } else {
                                 seatSelectionController
                                     .pKoforiduaEconomyseatPrice

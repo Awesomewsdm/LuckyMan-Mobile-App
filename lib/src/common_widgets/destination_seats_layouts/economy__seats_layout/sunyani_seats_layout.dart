@@ -55,6 +55,8 @@ class SunyaniEconomySeatLayout extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap: () {
+                              seatSelectionController.isSeatSelected.value =
+                                  true;
                               RxList seats = SeatSelectionController
                                   .instance.selectedSunyaniEconomySeats;
 
@@ -67,6 +69,10 @@ class SunyaniEconomySeatLayout extends StatelessWidget {
                                         .pSunyaniEconomyseatPrice.value -
                                     price;
                                 seats.remove(seatNo);
+                                 if (seats.isEmpty) {
+                                  seatSelectionController.isSeatSelected.value =
+                                      false;
+                                }
                               } else {
                                 seatSelectionController.pSunyaniEconomyseatPrice
                                     .value = seatSelectionController

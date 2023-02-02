@@ -55,21 +55,23 @@ class MadinaEconomySeatLayout extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap: () {
+                              seatSelectionController.isSeatSelected.value =
+                                  true;
                               double price =
                                   economyseatLayout.seatTypes[6]['Madina']!;
                               RxList seats = SeatSelectionController
                                   .instance.selectedMadinaEconomySeats;
-                              // double seatSelectionController
-                              //     .pMadinaEconomyseatPrice.value = seatSelectionController
-                              //     .pMadinaEconomyseatSelectionController
-                              //     .pMadinaEconomyseatPrice.value.value;
-
+                             
                               if (seats.contains(seatNo)) {
                                 seatSelectionController.pMadinaEconomyseatPrice
                                     .value = seatSelectionController
                                         .pMadinaEconomyseatPrice.value -
                                     price;
                                 seats.remove(seatNo);
+                                 if (seats.isEmpty) {
+                                  seatSelectionController.isSeatSelected.value =
+                                      false;
+                                }
                               } else {
                                 seatSelectionController.pMadinaEconomyseatPrice
                                     .value = seatSelectionController

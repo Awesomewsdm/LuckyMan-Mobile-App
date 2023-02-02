@@ -55,6 +55,8 @@ class SunyaniExecutiveSeatLayout extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap: () {
+                              seatSelectionController.isSeatSelected.value =
+                                  true;
                               double price =
                                   executiveseatLayout.seatTypes[4]['Sunyani']!;
 
@@ -67,6 +69,10 @@ class SunyaniExecutiveSeatLayout extends StatelessWidget {
                                         .pSunyaniExecutiveseatPrice.value -
                                     price;
                                 seats.remove(seatNo);
+                                 if (seats.isEmpty) {
+                                  seatSelectionController.isSeatSelected.value =
+                                      false;
+                                }
                               } else {
                                 seatSelectionController
                                     .pSunyaniExecutiveseatPrice

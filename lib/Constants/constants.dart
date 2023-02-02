@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 var kBackgroundBoxDecoration = const BoxDecoration(
   boxShadow: [
     BoxShadow(
-      blurStyle: BlurStyle.outer,
-      blurRadius: 1.0,
-    ),
+        blurStyle: BlurStyle.outer,
+        offset: Offset(0, 3),
+        blurRadius: 2.0,
+        spreadRadius: 5.0,
+        color: Colors.black),
   ],
-  color: Color.fromARGB(255, 255, 255, 255),
+  color: Colors.white,
   borderRadius: BorderRadius.only(
     topLeft: Radius.circular(15.0),
     topRight: Radius.circular(15.0),

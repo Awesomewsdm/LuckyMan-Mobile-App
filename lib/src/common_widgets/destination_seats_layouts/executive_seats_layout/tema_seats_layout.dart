@@ -55,6 +55,8 @@ class TemaExecutiveSeatLayout extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap: () {
+                              seatSelectionController.isSeatSelected.value =
+                                  true;
                               double price =
                                   executiveseatLayout.seatTypes[1]["Tema"]!;
 
@@ -68,6 +70,10 @@ class TemaExecutiveSeatLayout extends StatelessWidget {
                                     price;
 
                                 seats.remove(seatNo);
+                                if (seats.isEmpty) {
+                                  seatSelectionController.isSeatSelected.value =
+                                      false;
+                                }
                               } else {
                                 seatSelectionController.pTemaExecutiveseatPrice
                                     .value = seatSelectionController
@@ -101,12 +107,12 @@ class TemaExecutiveSeatLayout extends StatelessWidget {
                                   width: seatSize,
                                   decoration: BoxDecoration(
                                     border: Border.all(
-                                        color: SeatSelectionController.instance
-                                                .selectedTemaExecutiveSeats
-                                                .contains(seatNo)
-                                            ? emptySeatColor
-                                            : selectedSeatColor,
-                                      ),
+                                      color: SeatSelectionController.instance
+                                              .selectedTemaExecutiveSeats
+                                              .contains(seatNo)
+                                          ? emptySeatColor
+                                          : selectedSeatColor,
+                                    ),
                                     color: SeatSelectionController
                                             .instance.selectedTemaExecutiveSeats
                                             .contains(seatNo)

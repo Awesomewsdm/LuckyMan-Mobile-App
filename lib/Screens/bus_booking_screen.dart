@@ -67,7 +67,6 @@ class BusBookingScreen extends StatelessWidget {
                                 .changeSelectedDestination(value);
                             // selectedDestination = value!;
                             // print(selectedDestination);
-                            
                           },
                         ),
                       ),
@@ -153,22 +152,19 @@ class BusBookingScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: BottomButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    _formKey.currentState!.save();
-                    Get.to(
-                      () => SeatSelectionScreen(
-                        selectedDestination:
-                            busBookingController.selectedDestination.value,
-                      ),
-                    );
-                  }
-                },
-                bottomTextLabel: 'Contine to select a seat',
-              ),
+            BottomButton(
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  _formKey.currentState!.save();
+                  Get.to(
+                    () => SeatSelectionScreen(
+                      selectedDestination:
+                          busBookingController.selectedDestination.value,
+                    ),
+                  );
+                }
+              },
+              bottomTextLabel: 'SELECT YOUR SEAT(S)',
             ),
           ],
         ),
