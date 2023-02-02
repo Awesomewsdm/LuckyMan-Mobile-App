@@ -98,6 +98,7 @@ class KasoaEconomySeatLayout extends StatelessWidget {
                                   height: seatSize,
                                   width: seatSize,
                                   decoration: BoxDecoration(
+                                    
                                       color: SeatSelectionController.instance
                                               .selectedKasoaEconomySeats
                                               .contains(seatNo)
@@ -113,7 +114,7 @@ class KasoaEconomySeatLayout extends StatelessWidget {
                                                 .contains(seatNo)
                                             ? emptySeatColor
                                             : selectedSeatColor,
-                                      )),
+                                      ),),
                                   alignment: Alignment.center,
                                   child: Center(
                                     child: Text(

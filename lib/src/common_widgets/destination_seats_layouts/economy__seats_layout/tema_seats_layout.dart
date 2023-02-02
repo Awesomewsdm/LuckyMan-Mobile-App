@@ -98,8 +98,13 @@ class TemaEconomySeatLayout extends StatelessWidget {
                                   height: seatSize,
                                   width: seatSize,
                                   decoration: BoxDecoration(
-                                    border:
-                                        Border.all(color: selectedSeatColor),
+                                    border: Border.all(
+                                      color: SeatSelectionController
+                                              .instance.selectedTemaEconomySeats
+                                              .contains(seatNo)
+                                          ? emptySeatColor
+                                          : selectedSeatColor,
+                                    ),
                                     color: SeatSelectionController
                                             .instance.selectedTemaEconomySeats
                                             .contains(seatNo)

@@ -25,6 +25,8 @@ dependencies:
   qr_flutter: ^4.0.0
   internet_connection_checker: ^1.0.0+1
   ticket_widget: ^0.0.1
+  progress_state_button: ^1.0.4
+  font_awesome_flutter: ^10.3.0
 
   
   

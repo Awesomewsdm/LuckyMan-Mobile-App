@@ -4,7 +4,6 @@ import 'package:luckyman_app/Components/text_styling.dart';
 import 'package:luckyman_app/Constants/constants.dart';
 import 'package:luckyman_app/src/common_widgets/buttons/bottom_button.dart';
 import 'package:luckyman_app/src/features/authentification/controllers/seat_selection_controller.dart';
-import 'package:luckyman_app/src/features/authentification/models/user_model.dart';
 
 import '../Components/seat_status.dart';
 
@@ -93,9 +92,13 @@ class SeatSelectionScreen extends StatelessWidget {
                     // color: const Color.fromRGBO(255, 255, 255, 1.0),
                     decoration: kBackgroundBoxDecoration,
                     child: seatSelectionController.selectedBusClass.value ==
-                            busClasses[0]
-                        ? seatSelectionController.changeEconomySeatsLayout()
-                        : seatSelectionController.changeExecutiveSeatsLayout(),
+                            null
+                        ? const Center(child: Text('Please select a bus class', style: TextStyle(fontSize: 18),), )
+                        : seatSelectionController.selectedBusClass.value ==
+                                busClasses[0]
+                            ? seatSelectionController.changeEconomySeatsLayout()
+                            : seatSelectionController
+                                .changeExecutiveSeatsLayout(),
                   ),
                 ),
               ),
@@ -174,7 +177,7 @@ class SeatSelectionScreen extends StatelessWidget {
             ),
             Expanded(
               child: BottomButton(
-                bottomTextLabel: 'Proceed to make payment',
+                bottomTextLabel: 'PROCEED TO MAKE PAYMENT',
                 onPressed: () {
                   Get.to(
                     () => BusTicketScreen(),

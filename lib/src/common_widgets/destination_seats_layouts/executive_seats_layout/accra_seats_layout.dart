@@ -14,7 +14,7 @@ class AccraExecutiveSeatLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int seatCounter = 0;
-   
+
     return Column(
       children: [
         Expanded(
@@ -102,6 +102,13 @@ class AccraExecutiveSeatLayout extends StatelessWidget {
                                   height: seatSize,
                                   width: seatSize,
                                   decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: SeatSelectionController.instance
+                                              .selectedAccraExecutiveSeats
+                                              .contains(seatNo)
+                                          ? emptySeatColor
+                                          : selectedSeatColor,
+                                    ),
                                     color: SeatSelectionController.instance
                                             .selectedAccraExecutiveSeats
                                             .contains(seatNo)

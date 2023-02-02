@@ -59,7 +59,7 @@ class MadinaExecutiveSeatLayout extends StatelessWidget {
                                   executiveseatLayout.seatTypes[6]['Madina']!;
 
                               RxList seats = SeatSelectionController
-                                  .instance.selectedSunyaniExecutiveSeats;
+                                  .instance.selectedMadinaExecutiveSeats;
                               if (seats.contains(seatNo)) {
                                 seatSelectionController
                                     .pMadinaExecutiveseatPrice
@@ -100,8 +100,15 @@ class MadinaExecutiveSeatLayout extends StatelessWidget {
                                   height: seatSize,
                                   width: seatSize,
                                   decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: SeatSelectionController.instance
+                                              .selectedMadinaExecutiveSeats
+                                              .contains(seatNo)
+                                          ? emptySeatColor
+                                          : selectedSeatColor,
+                                    ),
                                     color: SeatSelectionController.instance
-                                            .selectedSunyaniExecutiveSeats
+                                            .selectedMadinaExecutiveSeats
                                             .contains(seatNo)
                                         ? selectedSeatColor
                                         : emptySeatColor,
@@ -117,7 +124,7 @@ class MadinaExecutiveSeatLayout extends StatelessWidget {
                                       style: TextStyle(
                                           color: SeatSelectionController
                                                   .instance
-                                                  .selectedSunyaniExecutiveSeats
+                                                  .selectedMadinaExecutiveSeats
                                                   .contains(seatNo)
                                               ? activeSeatNumberColor
                                               : inactiveSeatNumberColor),

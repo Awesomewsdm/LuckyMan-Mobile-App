@@ -62,7 +62,7 @@ class AccraEconomySeatLayout extends StatelessWidget {
                                   economyseatLayout.seatTypes[0]["Accra"]!;
 
                               // seatSelectionController.calcseatSelectionController
-                                  // .pAccraEconomySeatPrice.value(price);
+                              // .pAccraEconomySeatPrice.value(price);
 
                               RxList seats = SeatSelectionController
                                   .instance.selectedAccraEconomySeats;
@@ -74,14 +74,16 @@ class AccraEconomySeatLayout extends StatelessWidget {
 
                               // print(price);
                               if (seats.contains(seatNo)) {
-                                seatSelectionController
-                                  .pAccraEconomySeatPrice.value = seatSelectionController
-                                  .pAccraEconomySeatPrice.value - price;
+                                seatSelectionController.pAccraEconomySeatPrice
+                                    .value = seatSelectionController
+                                        .pAccraEconomySeatPrice.value -
+                                    price;
                                 seats.remove(seatNo);
                               } else {
-                                seatSelectionController
-                                  .pAccraEconomySeatPrice.value = seatSelectionController
-                                  .pAccraEconomySeatPrice.value + price;
+                                seatSelectionController.pAccraEconomySeatPrice
+                                    .value = seatSelectionController
+                                        .pAccraEconomySeatPrice.value +
+                                    price;
                                 if (seats.length >
                                     SeatSelectionController
                                         .instance.noOfSeats) {
@@ -91,9 +93,10 @@ class AccraEconomySeatLayout extends StatelessWidget {
                                       backgroundColor:
                                           Colors.blue.withOpacity(0.7),
                                       snackPosition: SnackPosition.BOTTOM);
-                                  seatSelectionController
-                                  .pAccraEconomySeatPrice.value = seatSelectionController
-                                  .pAccraEconomySeatPrice.value - price;
+                                  seatSelectionController.pAccraEconomySeatPrice
+                                      .value = seatSelectionController
+                                          .pAccraEconomySeatPrice.value -
+                                      price;
                                   seats.removeAt(4);
 
                                   seats.add(seatNo);
@@ -101,7 +104,6 @@ class AccraEconomySeatLayout extends StatelessWidget {
                                   // amount = amount + price;
                                   seats.add(seatNo);
                                 }
-                               
                               }
                             },
                             child: Obx(
@@ -109,6 +111,13 @@ class AccraEconomySeatLayout extends StatelessWidget {
                                 height: seatSize,
                                 width: seatSize,
                                 decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: SeatSelectionController
+                                            .instance.selectedAccraEconomySeats
+                                            .contains(seatNo)
+                                        ? emptySeatColor
+                                        : selectedSeatColor,
+                                  ),
                                   color: SeatSelectionController
                                           .instance.selectedAccraEconomySeats
                                           .contains(seatNo)

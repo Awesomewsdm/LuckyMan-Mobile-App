@@ -99,6 +99,13 @@ class CapeCoastExecutiveSeatLayout extends StatelessWidget {
                                   height: seatSize,
                                   width: seatSize,
                                   decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: SeatSelectionController.instance
+                                              .selectedCapeCoastExecutiveSeats
+                                              .contains(seatNo)
+                                          ? emptySeatColor
+                                          : selectedSeatColor,
+                                    ),
                                     color: SeatSelectionController.instance
                                             .selectedCapeCoastExecutiveSeats
                                             .contains(seatNo)

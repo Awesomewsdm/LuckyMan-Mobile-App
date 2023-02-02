@@ -56,7 +56,7 @@ class SeatSelectionController extends GetxController {
   // }
 
   // Bus type controllers
-  RxString selectedBusClass = ''.obs;
+  final selectedBusClass = Rxn<String>();
   void changeBusClass(String? value) {
     selectedBusClass.value = value!;
   }

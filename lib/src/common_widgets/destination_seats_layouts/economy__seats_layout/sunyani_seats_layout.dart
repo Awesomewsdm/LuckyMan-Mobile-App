@@ -100,6 +100,13 @@ class SunyaniEconomySeatLayout extends StatelessWidget {
                                   height: seatSize,
                                   width: seatSize,
                                   decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: SeatSelectionController.instance
+                                              .selectedSunyaniEconomySeats
+                                              .contains(seatNo)
+                                          ? emptySeatColor
+                                          : selectedSeatColor,
+                                    ),
                                     color: SeatSelectionController.instance
                                             .selectedSunyaniEconomySeats
                                             .contains(seatNo)

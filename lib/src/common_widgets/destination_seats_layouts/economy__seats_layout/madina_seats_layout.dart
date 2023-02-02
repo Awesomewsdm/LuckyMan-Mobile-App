@@ -65,14 +65,16 @@ class MadinaEconomySeatLayout extends StatelessWidget {
                               //     .pMadinaEconomyseatPrice.value.value;
 
                               if (seats.contains(seatNo)) {
-                                seatSelectionController
-                                  .pMadinaEconomyseatPrice.value = seatSelectionController
-                                  .pMadinaEconomyseatPrice.value - price;
+                                seatSelectionController.pMadinaEconomyseatPrice
+                                    .value = seatSelectionController
+                                        .pMadinaEconomyseatPrice.value -
+                                    price;
                                 seats.remove(seatNo);
                               } else {
-                                seatSelectionController
-                                  .pMadinaEconomyseatPrice.value = seatSelectionController
-                                  .pMadinaEconomyseatPrice.value + price;
+                                seatSelectionController.pMadinaEconomyseatPrice
+                                    .value = seatSelectionController
+                                        .pMadinaEconomyseatPrice.value +
+                                    price;
                                 if (seats.length >
                                     SeatSelectionController
                                         .instance.noOfSeats) {
@@ -83,8 +85,10 @@ class MadinaEconomySeatLayout extends StatelessWidget {
                                           Colors.blue.withOpacity(0.7),
                                       snackPosition: SnackPosition.BOTTOM);
                                   seatSelectionController
-                                  .pMadinaEconomyseatPrice.value = seatSelectionController
-                                  .pMadinaEconomyseatPrice.value - price;
+                                      .pMadinaEconomyseatPrice
+                                      .value = seatSelectionController
+                                          .pMadinaEconomyseatPrice.value -
+                                      price;
                                   seats.removeAt(4);
 
                                   seats.add(seatNo);
@@ -92,14 +96,20 @@ class MadinaEconomySeatLayout extends StatelessWidget {
                                   seats.add(seatNo);
                                 }
                               }
-
                             },
                             child: Obx(() => Container(
                                   height: seatSize,
                                   width: seatSize,
                                   decoration: BoxDecoration(
-                                    color: SeatSelectionController.instance
-                                            .selectedMadinaEconomySeats
+                                    border: Border.all(
+                                      color: SeatSelectionController.instance
+                                              .selectedMadinaEconomySeats
+                                              .contains(seatNo)
+                                          ? emptySeatColor
+                                          : selectedSeatColor,
+                                    ),
+                                    color: SeatSelectionController
+                                            .instance.selectedMadinaEconomySeats
                                             .contains(seatNo)
                                         ? selectedSeatColor
                                         : emptySeatColor,

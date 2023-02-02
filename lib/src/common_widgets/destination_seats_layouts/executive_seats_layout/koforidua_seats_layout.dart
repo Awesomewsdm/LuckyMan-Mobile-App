@@ -58,7 +58,7 @@ class KoforiduaExecutiveSeatLayout extends StatelessWidget {
                               double price = executiveseatLayout.seatTypes[7]
                                   ["Koforidua"]!;
                               RxList seats = SeatSelectionController
-                                  .instance.selectedMadinaExecutiveSeats;
+                                  .instance.selectedKoforiduaExecutiveSeats;
                               if (seats.contains(seatNo)) {
                                 seatSelectionController
                                     .pKoforiduaExecutiveseatPrice
@@ -100,8 +100,15 @@ class KoforiduaExecutiveSeatLayout extends StatelessWidget {
                                 height: seatSize,
                                 width: seatSize,
                                 decoration: BoxDecoration(
-                                  color: SeatSelectionController
-                                          .instance.selectedKoforiduaExecutiveSeats
+                                  border: Border.all(
+                                    color: SeatSelectionController.instance
+                                            .selectedKoforiduaExecutiveSeats
+                                            .contains(seatNo)
+                                        ? emptySeatColor
+                                        : selectedSeatColor,
+                                  ),
+                                  color: SeatSelectionController.instance
+                                          .selectedKoforiduaExecutiveSeats
                                           .contains(seatNo)
                                       ? selectedSeatColor
                                       : emptySeatColor,

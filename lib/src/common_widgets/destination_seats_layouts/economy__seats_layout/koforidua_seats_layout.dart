@@ -56,19 +56,21 @@ class KoforiduaEconomySeatLayout extends StatelessWidget {
                           child: GestureDetector(
                             onTap: () {
                               RxList seats = SeatSelectionController
-                                  .instance.selectedSunyaniEconomySeats;
+                                  .instance.selectedKoforiduaEconomySeats;
 
                               double price =
                                   economyseatLayout.seatTypes[7]["Koforidua"]!;
 
                               if (seats.contains(seatNo)) {
-                                seatSelectionController.pKoforiduaEconomyseatPrice
+                                seatSelectionController
+                                    .pKoforiduaEconomyseatPrice
                                     .value = seatSelectionController
                                         .pKoforiduaEconomyseatPrice.value -
                                     price;
                                 seats.remove(seatNo);
                               } else {
-                                seatSelectionController.pKoforiduaEconomyseatPrice
+                                seatSelectionController
+                                    .pKoforiduaEconomyseatPrice
                                     .value = seatSelectionController
                                         .pKoforiduaEconomyseatPrice.value +
                                     price;
@@ -100,8 +102,15 @@ class KoforiduaEconomySeatLayout extends StatelessWidget {
                                   height: seatSize,
                                   width: seatSize,
                                   decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: SeatSelectionController.instance
+                                              .selectedKoforiduaEconomySeats
+                                              .contains(seatNo)
+                                          ? emptySeatColor
+                                          : selectedSeatColor,
+                                    ),
                                     color: SeatSelectionController.instance
-                                            .selectedSunyaniEconomySeats
+                                            .selectedKoforiduaEconomySeats
                                             .contains(seatNo)
                                         ? selectedSeatColor
                                         : emptySeatColor,
@@ -117,7 +126,7 @@ class KoforiduaEconomySeatLayout extends StatelessWidget {
                                       style: TextStyle(
                                           color: SeatSelectionController
                                                   .instance
-                                                  .selectedSunyaniEconomySeats
+                                                  .selectedKoforiduaEconomySeats
                                                   .contains(seatNo)
                                               ? activeSeatNumberColor
                                               : inactiveSeatNumberColor),

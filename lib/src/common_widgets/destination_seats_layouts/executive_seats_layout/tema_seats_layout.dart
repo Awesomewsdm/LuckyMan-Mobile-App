@@ -100,7 +100,13 @@ class TemaExecutiveSeatLayout extends StatelessWidget {
                                   height: seatSize,
                                   width: seatSize,
                                   decoration: BoxDecoration(
-                                    border: Border.all(color: selectedSeatColor),
+                                    border: Border.all(
+                                        color: SeatSelectionController.instance
+                                                .selectedTemaExecutiveSeats
+                                                .contains(seatNo)
+                                            ? emptySeatColor
+                                            : selectedSeatColor,
+                                      ),
                                     color: SeatSelectionController
                                             .instance.selectedTemaExecutiveSeats
                                             .contains(seatNo)

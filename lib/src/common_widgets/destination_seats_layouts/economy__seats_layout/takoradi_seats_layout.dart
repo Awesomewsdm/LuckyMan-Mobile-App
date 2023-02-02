@@ -67,7 +67,7 @@ class TakoradiEconomySeatLayout extends StatelessWidget {
                                     price;
                                 seats.remove(seatNo);
                               } else {
-                                 seatSelectionController
+                                seatSelectionController
                                     .pTakoradiEconomyseatPrice
                                     .value = seatSelectionController
                                         .pTakoradiEconomyseatPrice.value +
@@ -82,11 +82,11 @@ class TakoradiEconomySeatLayout extends StatelessWidget {
                                           Colors.blue.withOpacity(0.7),
                                       snackPosition: SnackPosition.BOTTOM);
 
-                                   seatSelectionController
-                                    .pTakoradiEconomyseatPrice
-                                    .value = seatSelectionController
-                                        .pTakoradiEconomyseatPrice.value -
-                                    price;
+                                  seatSelectionController
+                                      .pTakoradiEconomyseatPrice
+                                      .value = seatSelectionController
+                                          .pTakoradiEconomyseatPrice.value -
+                                      price;
 
                                   seats.removeAt(4);
 
@@ -100,6 +100,13 @@ class TakoradiEconomySeatLayout extends StatelessWidget {
                                   height: seatSize,
                                   width: seatSize,
                                   decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: SeatSelectionController.instance
+                                              .selectedTakoradiEconomySeats
+                                              .contains(seatNo)
+                                          ? emptySeatColor
+                                          : selectedSeatColor,
+                                    ),
                                     color: SeatSelectionController.instance
                                             .selectedTakoradiEconomySeats
                                             .contains(seatNo)

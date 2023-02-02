@@ -64,13 +64,17 @@ class CapeCoastEconomySeatLayout extends StatelessWidget {
                                   .instance.selectedCapeCoastEconomySeats;
                               if (seats.contains(seatNo)) {
                                 seatSelectionController
-                                  .pCapeCoastEconomyseatPrice.value = seatSelectionController
-                                  .pCapeCoastEconomyseatPrice.value - price;
+                                    .pCapeCoastEconomyseatPrice
+                                    .value = seatSelectionController
+                                        .pCapeCoastEconomyseatPrice.value -
+                                    price;
                                 seats.remove(seatNo);
                               } else {
                                 seatSelectionController
-                                  .pCapeCoastEconomyseatPrice.value = seatSelectionController
-                                  .pCapeCoastEconomyseatPrice.value + price;
+                                    .pCapeCoastEconomyseatPrice
+                                    .value = seatSelectionController
+                                        .pCapeCoastEconomyseatPrice.value +
+                                    price;
 
                                 if (seats.length >
                                     SeatSelectionController
@@ -84,8 +88,10 @@ class CapeCoastEconomySeatLayout extends StatelessWidget {
                                     snackPosition: SnackPosition.BOTTOM,
                                   );
                                   seatSelectionController
-                                  .pCapeCoastEconomyseatPrice.value = seatSelectionController
-                                  .pCapeCoastEconomyseatPrice.value - price;
+                                      .pCapeCoastEconomyseatPrice
+                                      .value = seatSelectionController
+                                          .pCapeCoastEconomyseatPrice.value -
+                                      price;
                                   seats.removeAt(4);
 
                                   seats.add(seatNo);
@@ -93,12 +99,18 @@ class CapeCoastEconomySeatLayout extends StatelessWidget {
                                   seats.add(seatNo);
                                 }
                               }
-                              
                             },
                             child: Obx(() => Container(
                                   height: seatSize,
                                   width: seatSize,
                                   decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: SeatSelectionController.instance
+                                              .selectedCapeCoastEconomySeats
+                                              .contains(seatNo)
+                                          ? emptySeatColor
+                                          : selectedSeatColor,
+                                    ),
                                     color: SeatSelectionController.instance
                                             .selectedCapeCoastEconomySeats
                                             .contains(seatNo)
