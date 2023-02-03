@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -17,18 +16,18 @@ class SignUpController extends GetxController {
   final studentID = TextEditingController();
 
   RxBool passwordVisible = false.obs;
-  
+  RxBool showSpinner = false.obs;
+
   final userRepo = Get.put(UserRepository());
 
   Future<void> registerUser(String? email, String? password) async {
-  await  AuthenticationRepository.instance
+    await AuthenticationRepository.instance
         .createUserWithEmailAndPassword(email!, password!);
-
   }
 
   Future<void> createUser(UserModel user) async {
     await userRepo.createUser(user);
-   await registerUser(user.email, user.password);
-    Get.to(() =>  const Home());
+    await registerUser(user.email, user.password);
+    Get.to(() => const Home());
   }
 }

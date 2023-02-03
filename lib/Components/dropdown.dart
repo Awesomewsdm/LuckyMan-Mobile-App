@@ -3,7 +3,7 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:luckyman_app/Components/text_styling.dart';
-import 'package:luckyman_app/Constants/constants.dart';
+import 'package:luckyman_app/src/constants/colors.dart';
 
 class BookingDropdownMenu extends StatelessWidget {
   const BookingDropdownMenu({

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:luckyman_app/src/common_widgets/app_bar/primary_app_bar.dart';
 import 'package:luckyman_app/src/common_widgets/booking/ticket_data_widget.dart';
 import 'package:luckyman_app/src/constants/text.dart';
 import 'package:ticket_widget/ticket_widget.dart';
@@ -12,18 +13,7 @@ class BookingHitory extends StatelessWidget {
       color: const Color(0xFFF5F6FA),
       child: Column(
         children: [
-          AppBar(
-            iconTheme: const IconThemeData(color: Colors.blue),
-            elevation: 20.0,
-            backgroundColor: Colors.white,
-            toolbarHeight: 60,
-            centerTitle: true,
-            toolbarOpacity: 0.7,
-            bottomOpacity: 0.8,
-            shadowColor: Colors.white10,
-            title: const Text(tBookingHistoryScreenTittle,
-                style: TextStyle(color: Colors.blue)),
-          ),
+         getPrimaryAppBar(tBookingHistoryScreenTittle),
           const SizedBox(
             height: 10,
           ),

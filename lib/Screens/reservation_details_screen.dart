@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/src/common_widgets/app_bar/primary_app_bar.dart';
 import 'package:luckyman_app/src/common_widgets/booking/ticket_data_widget.dart';
+import 'package:luckyman_app/src/constants/text.dart';
 import 'package:luckyman_app/src/features/authentification/controllers/bus_booking_controllers.dart';
 import 'package:luckyman_app/src/features/authentification/controllers/seat_selection_controller.dart';
 
@@ -20,7 +21,7 @@ class BusTicketScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: getPrimaryAppBar(),
+      appBar: getPrimaryAppBar(tReservationDetailsScreenTitle),
       backgroundColor: Colors.lightBlue,
       body: Center(
         child: TicketWidget(

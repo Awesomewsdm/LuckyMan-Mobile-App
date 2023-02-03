@@ -75,3 +75,4 @@ const String tContact3 = "0548504172 - Miss Gifty";
 // -- Screen Titles - Text
 const String tBookingHistoryScreenTittle = 'Booking History';
 const String tSeatSelectionScreenTitle = 'Select Your Seat';
+const String tReservationDetailsScreenTitle = 'Reservation Details';

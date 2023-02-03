@@ -5,6 +5,7 @@ import 'package:luckyman_app/Components/text_styling.dart';
 import 'package:luckyman_app/Constants/constants.dart';
 import 'package:luckyman_app/src/common_widgets/app_bar/primary_app_bar.dart';
 import 'package:luckyman_app/src/common_widgets/buttons/bottom_button.dart';
+import 'package:luckyman_app/src/constants/colors.dart';
 import 'package:luckyman_app/src/constants/text.dart';
 import 'package:luckyman_app/src/features/authentification/controllers/seat_selection_controller.dart';
 
@@ -12,7 +13,7 @@ import '../Components/seat_status.dart';
 
 import '../Models/utils/form_items.dart';
 import '../src/common_widgets/dropdown_menu/bus_class_menu.dart';
-import 'bus_ticket_screen.dart';
+import 'reservation_details_screen.dart';
 
 class SeatSelectionScreen extends StatelessWidget {
   SeatSelectionScreen({
@@ -29,7 +30,7 @@ class SeatSelectionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: getPrimaryAppBar(),
+      appBar: getPrimaryAppBar(tSeatSelectionScreenTitle),
       backgroundColor: backgroundColor5,
       body: SafeArea(
         child: Column(

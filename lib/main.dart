@@ -4,7 +4,7 @@ import 'package:luckyman_app/Screens/seat_selection_screen.dart';
 
 import 'Screens/bus_booking_screen.dart';
 
-import 'Screens/bus_ticket_screen.dart';
+import 'Screens/reservation_details_screen.dart';
 import 'Screens/home_screen.dart';
 import 'Screens/payment_page.dart';
 import 'Screens/splash_screen.dart';

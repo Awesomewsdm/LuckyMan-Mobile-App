@@ -1,8 +1,8 @@
 
   import 'package:flutter/material.dart';
-import 'package:luckyman_app/src/constants/text.dart';
 
-AppBar getPrimaryAppBar() {
+AppBar getPrimaryAppBar(String title) {
+    
     return AppBar(
       iconTheme: const IconThemeData(color: Colors.blue),
       elevation: 20.0,
@@ -12,7 +12,7 @@ AppBar getPrimaryAppBar() {
       toolbarOpacity: 0.7,
       bottomOpacity: 0.8,
       shadowColor: Colors.white10,
-      title: const Text(tSeatSelectionScreenTitle,
-          style: TextStyle(color: Colors.blue)),
+      title:  Text(title,
+          style: const TextStyle(color: Colors.blue)),
     );
   }
