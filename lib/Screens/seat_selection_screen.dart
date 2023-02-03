@@ -138,11 +138,11 @@ class SeatSelectionScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
-                          children:  const [
+                          children: const [
                             Icon(CustomIcons.airlineSeatReclineExtra,
-                                size: 18.0, color: Colors.blue),
+                                size: 25.0, color: Colors.blue),
                             SizedBox(
-                              width: 10.0,
+                              width: 6.0,
                             ),
                             AshTextWidget(text: 'Selected Seat'),
                           ],
