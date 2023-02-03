@@ -41,11 +41,11 @@ class CustomIcons {
   static const _kFontFam = 'CustomIcons';
   static const String? _kFontPkg = null;
 
-  static const IconData airline_seat_recline_normal = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData airline_seat_recline_extra = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData location_1 = IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData location_2 = IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData location_arrow = IconData(0xf124, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData airlineSeatReclineNormal = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData airlineSeatReclineExtra = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData location1 = IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData location2 = IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData locationArrow = IconData(0xf124, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData location = IconData(0xf353, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData shuttle_van = IconData(0xf5b6, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData shuttleVan = IconData(0xf5b6, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }
