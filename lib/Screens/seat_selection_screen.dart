@@ -3,7 +3,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/Components/text_styling.dart';
 import 'package:luckyman_app/Constants/constants.dart';
+import 'package:luckyman_app/src/common_widgets/app_bar/primary_app_bar.dart';
 import 'package:luckyman_app/src/common_widgets/buttons/bottom_button.dart';
+import 'package:luckyman_app/src/constants/text.dart';
 import 'package:luckyman_app/src/features/authentification/controllers/seat_selection_controller.dart';
 
 import '../Components/seat_status.dart';
@@ -27,29 +29,7 @@ class SeatSelectionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        elevation: 50.0,
-        backgroundColor: Colors.white,
-        centerTitle: true,
-        toolbarOpacity: 0.2,
-        bottomOpacity: 0.7,
-        shadowColor: Colors.white24,
-        // leadingWidth: 90,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(
-            FontAwesomeIcons.arrowLeftLong,
-            size: 50.0,
-            color: Colors.black,
-          ),
-        ),
-        title: const BlackTextWidget(
-          text: 'Select Your Seat',
-          fontSize: 20.0,
-        ),
-      ),
+      appBar: getPrimaryAppBar(),
       backgroundColor: backgroundColor5,
       body: SafeArea(
         child: Column(

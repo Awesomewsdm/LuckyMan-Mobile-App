@@ -72,5 +72,6 @@ const String tContact1 = "0544627962 - Mr. Kassim";
 const String tContact2 = "0242581363 - Smart";
 const String tContact3 = "0548504172 - Miss Gifty";
 
-// -- Booking History Screen - Text
+// -- Screen Titles - Text
 const String tBookingHistoryScreenTittle = 'Booking History';
+const String tSeatSelectionScreenTitle = 'Select Your Seat';
