@@ -6,6 +6,7 @@ import 'package:luckyman_app/Constants/constants.dart';
 import 'package:luckyman_app/src/common_widgets/app_bar/primary_app_bar.dart';
 import 'package:luckyman_app/src/common_widgets/buttons/bottom_button.dart';
 import 'package:luckyman_app/src/constants/colors.dart';
+import 'package:luckyman_app/src/constants/custom_icons_icons.dart';
 import 'package:luckyman_app/src/constants/text.dart';
 import 'package:luckyman_app/src/features/authentification/controllers/seat_selection_controller.dart';
 
@@ -137,8 +138,8 @@ class SeatSelectionScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
-                          children: const [
-                            Icon(FontAwesomeIcons.personBurst,
+                          children:  const [
+                            Icon(CustomIcons.airlineSeatReclineExtra,
                                 size: 18.0, color: Colors.blue),
                             SizedBox(
                               width: 10.0,
