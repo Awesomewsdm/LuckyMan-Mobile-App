@@ -15,6 +15,7 @@ import '../src/common_widgets/user_info/user_profile_image.dart';
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
   static const String id = '/HomeScreen';
+  
 
   @override
   Widget build(BuildContext context) {

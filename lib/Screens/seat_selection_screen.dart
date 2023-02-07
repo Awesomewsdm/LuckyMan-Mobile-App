@@ -1,14 +1,18 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/Components/text_styling.dart';
 import 'package:luckyman_app/Constants/constants.dart';
+import 'package:luckyman_app/Models/seat_selection_model.dart';
 import 'package:luckyman_app/src/common_widgets/app_bar/primary_app_bar.dart';
 import 'package:luckyman_app/src/common_widgets/buttons/bottom_button.dart';
 import 'package:luckyman_app/src/constants/colors.dart';
 import 'package:luckyman_app/src/constants/custom_icons_icons.dart';
 import 'package:luckyman_app/src/constants/text.dart';
+import 'package:luckyman_app/src/features/authentification/controllers/bus_booking_controllers.dart';
 import 'package:luckyman_app/src/features/authentification/controllers/seat_selection_controller.dart';
+import 'package:luckyman_app/src/features/authentification/models/user_model.dart';
 
 import '../Components/seat_status.dart';
 
@@ -26,6 +30,8 @@ class SeatSelectionScreen extends StatelessWidget {
 
   final SeatSelectionController seatSelectionController =
       Get.put(SeatSelectionController());
+  final BusBookingController busBookingController =
+      Get.put(BusBookingController());
 
   @override
   Widget build(BuildContext context) {
@@ -211,6 +217,18 @@ class SeatSelectionScreen extends StatelessWidget {
                 bottomTextLabel: 'PROCEED TO PAYMENT',
                 onPressed: () {
                   if (seatSelectionController.isSeatSelected.value == true) {
+                    SeatSelectionModel seatSelectionModel = SeatSelectionModel(
+                        selectedBusClass:
+                            seatSelectionController.selectedBusClass.toString(),
+                        selectedSeatNo: seatSelectionController
+                                    .selectedBusClass.value ==
+                                busClasses[0]
+                            ? seatSelectionController.changeEconomySeatList()
+                            : seatSelectionController
+                                .changeExecutiveSeatList());
+                    UserModel userData = UserModel();
+                    busBookingController.addSeatSelectionInfo(
+                        userData, seatSelectionModel);
                     Get.to(
                       () => BusTicketScreen(),
                     );

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:luckyman_app/Models/user_booking_model.dart';
 import 'package:luckyman_app/Models/utils/form_items.dart';
 import 'package:luckyman_app/Screens/seat_selection_screen.dart';
 import 'package:luckyman_app/src/features/authentification/controllers/bus_booking_controllers.dart';
+import 'package:luckyman_app/src/features/authentification/controllers/sign_up_controller.dart';
 import '../Components/dropdown.dart';
 import '../Components/input_field.dart';
 import '../Components/screen_template.dart';
@@ -17,6 +19,7 @@ class BusBookingScreen extends StatelessWidget {
   // String? selectedDestination;
   final BusBookingController busBookingController =
       Get.put(BusBookingController());
+  final SignUpController signUpController = Get.put(SignUpController());
 
   final _formKey = GlobalKey<FormState>();
   @override
@@ -45,7 +48,7 @@ class BusBookingScreen extends StatelessWidget {
                           }
                         },
                         onChanged: (value) {
-                          busBookingController.changeSelectedBusType(value);
+                          busBookingController.selectedBusType.value = value!;
                         },
                         items: busType,
                         formLabel: 'Select Bus Type',
@@ -62,7 +65,8 @@ class BusBookingScreen extends StatelessWidget {
                         items: destinations,
                         formLabel: 'Select destination',
                         onChanged: (value) {
-                          busBookingController.changeSelectedDestination(value);
+                          busBookingController.selectedDestination.value =
+                              value!;
                           // selectedDestination = value!;
                           // print(selectedDestination);
                         },
@@ -77,8 +81,8 @@ class BusBookingScreen extends StatelessWidget {
                           }
                         },
                         onChanged: (value) {
-                          busBookingController
-                              .changeselectedDepatureDate(value);
+                          busBookingController.selectedDepatureDate.value =
+                              value!;
                         },
                         items: departureDate,
                         formLabel: 'Select Depature Date',
@@ -93,8 +97,8 @@ class BusBookingScreen extends StatelessWidget {
                           }
                         },
                         onChanged: (value) {
-                          busBookingController
-                              .changeselectedDepatureTime(value);
+                          busBookingController.selectedDepatureTime.value =
+                              value!;
                         },
                         items: departureTime,
                         formLabel: 'Select Depature Time',
@@ -109,8 +113,8 @@ class BusBookingScreen extends StatelessWidget {
                           }
                         },
                         onChanged: (value) {
-                          busBookingController
-                              .changeselectedselectedPickupPoint(value);
+                          busBookingController.selectedPickupPoint.value =
+                              value!;
                         },
                         items: pickUpPoints,
                         formLabel: 'Select Pick Up Point',
@@ -149,6 +153,18 @@ class BusBookingScreen extends StatelessWidget {
             BottomButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
+                  final UserBookingModel userBookingModel = UserBookingModel(
+                      selectedDestination:
+                          busBookingController.selectedDestination.value,
+                      selectedPickupPoint:
+                          busBookingController.selectedPickupPoint.value,
+                      selectedBusType:
+                          busBookingController.selectedBusType.value,
+                      selectedDepatureTime:
+                          busBookingController.selectedDepatureTime.value);
+                 
+                  busBookingController.addBusBookingInfo(
+                      userBookingModel);
                   _formKey.currentState!.save();
                   Get.to(
                     () => SeatSelectionScreen(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/Models/utils/form_items.dart';
+import 'package:luckyman_app/src/constants/custom_icons1_icons.dart';
 import 'package:luckyman_app/src/features/authentification/controllers/bus_booking_controllers.dart';
 import 'package:luckyman_app/src/features/authentification/controllers/seat_selection_controller.dart';
 import 'package:luckyman_app/src/features/authentification/controllers/ticket_controllers.dart';
@@ -50,42 +51,40 @@ class TicketData extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Row(
-                        children: [
-                          const Text(
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 18.0),
+                    child: Row(
+                      children: [
+                        const Expanded(
+                          child: Text(
                             'KNUST',
                             style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold),
                           ),
-                          const Padding(
-                            padding: EdgeInsets.only(left: 8.0),
-                            child: Icon(
-                              FontAwesomeIcons.caravan,
-                              color: Colors.pink,
-                            ),
+                        ),
+                        const Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 10.0),
+                            child: Icon(CustomIcons1.busSideIconSideView,
+                                size: 15.0, color: Colors.pink),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 8.0),
+                        ),
+                        const SizedBox(width: 20),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 20.0),
                             child: Text(
                               busBookingController.selectedDestination.value,
                               style: const TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold),
                             ),
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 20.0),
-                    child: Text(
-                      'Bus Ticket',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold),
+                          ),
+                        )
+                      ],
                     ),
                   ),
                   Padding(
@@ -94,20 +93,20 @@ class TicketData extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         ticketDetailsWidget(
-                          'Name',
+                          'Time',
                           Text(
-                            userData.fullName.toString(),
+                            busBookingController.selectedDepatureTime.value,
                           ),
-                          'Date Purchased',
+                          'Date',
                           const Text('28-08-2022'),
                         ),
                         Padding(
                           padding:
                               const EdgeInsets.only(top: 12.0, right: 52.0),
                           child: ticketDetailsWidget(
-                            'Destination',
+                            'Pickup Point',
                             Text(
-                              seatSelectionController.selectedDestination,
+                              busBookingController.selectedPickupPoint.value,
                             ),
                             'Gate',
                             const Text('66B'),
@@ -117,9 +116,6 @@ class TicketData extends StatelessWidget {
                           padding:
                               const EdgeInsets.only(top: 12.0, right: 53.0),
                           child: ticketDetailsWidget(
-                            'Bus Type',
-                            Obx(() => Text(
-                                busBookingController.selectedBusType.value)),
                             'Seat No',
                             Obx(
                               () => Text(
@@ -132,6 +128,9 @@ class TicketData extends StatelessWidget {
                                         .changeExecutiveSeatList(),
                               ),
                             ),
+                            'Bus Type',
+                            Obx(() => Text(
+                                busBookingController.selectedBusType.value)),
                           ),
                         ),
                       ],
@@ -143,11 +142,13 @@ class TicketData extends StatelessWidget {
                       child: SizedBox(
                         width: 180.0,
                         height: 180.0,
-                        child: Obx(() => QrImage(
-                              data:
-                                  '${userData.fullName.toString()} - ${seatSelectionController.selectedBusClass.value == busClasses[0] ? seatSelectionController.changeEconomySeatList() : seatSelectionController.changeExecutiveSeatList()}',
-                              size: 80,
-                            )),
+                        child: Obx(
+                          () => QrImage(
+                            data:
+                                '${userData.fullName.toString()} - ${seatSelectionController.selectedBusClass.value == busClasses[0] ? seatSelectionController.changeEconomySeatList() : seatSelectionController.changeExecutiveSeatList()}',
+                            size: 80,
+                          ),
+                        ),
                       ),
                     ),
                   ),

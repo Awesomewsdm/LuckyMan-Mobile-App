@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 class ConnectionCheckerDemo extends StatefulWidget {
@@ -20,7 +21,7 @@ class _ConnectionCheckerDemoState extends State<ConnectionCheckerDemo> {
       print('source $_source');
       // 1.
       switch (_source.keys.toList()[0]) {
-        case ConnectivityResult.mobile:
+        case  ConnectivityResult.mobile:
           string =
               _source.values.toList()[0] ? 'Mobile: Online' : 'Mobile: Offline';
           break;
@@ -57,7 +58,7 @@ class _ConnectionCheckerDemoState extends State<ConnectionCheckerDemo> {
           child: Text(
         string,
         style: const TextStyle(fontSize: 54),
-      )),
+      ),),
     );
   }
   @override

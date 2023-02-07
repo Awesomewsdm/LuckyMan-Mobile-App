@@ -47,6 +47,7 @@ class BusClassDropDownMenu extends StatelessWidget {
             Icons.arrow_drop_down,
             color: Colors.black45,
           ),
+          
           iconSize: 30,
           buttonHeight: 45,
           buttonPadding: const EdgeInsets.only(left: 10, right: 10),

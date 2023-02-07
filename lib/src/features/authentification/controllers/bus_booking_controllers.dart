@@ -1,35 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:luckyman_app/Models/seat_selection_model.dart';
+import 'package:luckyman_app/src/features/authentification/models/user_model.dart';
+import 'package:luckyman_app/src/repository/authentification/booking_repository.dart';
+import 'package:luckyman_app/Models/user_booking_model.dart';
+
+
+
 
 class BusBookingController extends GetxController {
-  
-   static BusBookingController get instance => Get.find();
+  static BusBookingController get instance => Get.find();
+  final _bookingRepo = Get.put(BookingRepository());
 
   final selectedDestination = ''.obs;
-  void changeSelectedDestination(String? value) {
-    selectedDestination.value = value!;
-  }
-
   final selectedBusType = ''.obs;
-  changeSelectedBusType(String? value) {
-    selectedBusType.value = value!;
-  }
-
   final selectedDepatureTime = ''.obs;
-  changeselectedDepatureTime(String? value) {
-    selectedDepatureTime.value = value!;
-  }
-
   final selectedDepatureDate = ''.obs;
-  changeselectedDepatureDate(String? value) {
-    selectedDepatureDate.value = value!;
-  }
-
-   final selectedPickupPoint = ''.obs;
-  changeselectedselectedPickupPoint(String? value) {
-    selectedPickupPoint.value = value!;
-  }
-
+  final selectedPickupPoint = ''.obs;
   
-   final agentName = TextEditingController();
+
+  final agentName = TextEditingController();
+
+  addBusBookingInfo(UserBookingModel userBookingModel) async {
+    await _bookingRepo.addBooking(userBookingModel);
+  }
+
+  addSeatSelectionInfo(
+      UserModel user, SeatSelectionModel seatSelectionModel) async {
+    await _bookingRepo.addSeatSelectionInfo(seatSelectionModel, user);
+  }
 }

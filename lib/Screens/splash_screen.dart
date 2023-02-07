@@ -1,11 +1,11 @@
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:luckyman_app/src/common_widgets/bottom_nav/bottom_nav.dart';
 import 'package:luckyman_app/src/constants/image_strings.dart';
 import 'package:luckyman_app/src/constants/text.dart';
-
-import '../src/features/authentification/screens/sign_up/widgets/sign_up_screen.dart';
-
+import 'package:luckyman_app/src/features/authentification/screens/login/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -29,8 +29,10 @@ class _MyCustomSplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
 
-    _controller =
-        AnimationController(vsync: this, duration: const Duration(seconds: 3),);
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 3),
+    );
 
     animation1 = Tween<double>(begin: 40, end: 20).animate(CurvedAnimation(
         parent: _controller!, curve: Curves.fastLinearToSlowEaseIn))
@@ -48,16 +50,20 @@ class _MyCustomSplashScreenState extends State<SplashScreen>
       });
     });
 
-    Timer(const Duration(seconds: 2), () {
+    Timer(const Duration(seconds: 3), () {
       setState(() {
         _containerSize = 2;
         _containerOpacity = 1;
       });
     });
 
-    Timer(const Duration(seconds: 4), () {
+    Timer(const Duration(seconds: 5), () {
       setState(() {
-        Navigator.pushReplacement(context, PageTransition(   const SignUpScreen()));
+        Navigator.pushReplacement(
+            context,
+            PageTransition(FirebaseAuth.instance.currentUser != null
+                ? const Home()
+                : const LoginScreen()));
       });
     });
   }
