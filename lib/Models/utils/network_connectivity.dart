@@ -61,6 +61,7 @@ class _ConnectionCheckerDemoState extends State<ConnectionCheckerDemo> {
     super.dispose();
   }
 }
+
 class NetworkConnectivity {
   NetworkConnectivity._();
   static final _instance = NetworkConnectivity._();

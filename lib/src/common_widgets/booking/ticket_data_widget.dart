@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/Models/utils/form_items.dart';
 import 'package:luckyman_app/src/constants/custom_icons1_icons.dart';

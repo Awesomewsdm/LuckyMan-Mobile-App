@@ -5,6 +5,7 @@ import 'package:luckyman_app/Constants/constants.dart';
 import 'package:luckyman_app/Screens/bus_booking_screen.dart';
 import 'package:luckyman_app/Screens/reservation_details_screen.dart';
 import 'package:luckyman_app/src/common_widgets/user_info/user_profile_image.dart';
+import 'package:luckyman_app/src/features/authentification/controllers/profile_controller.dart';
 import 'package:luckyman_app/src/features/authentification/models/user_model.dart';
 
 import '../src/constants/image_strings.dart';
@@ -15,6 +16,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ProfileController profileController = Get.put(ProfileController());
     return SizedBox(
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
@@ -58,11 +60,13 @@ class HomeScreen extends StatelessWidget {
                               fontSize: 18,
                             ),
                             FutureBuilder(
+                              future: profileController.getUserData(),
                               builder: (context, snapshot) {
                                 if (snapshot.connectionState ==
                                     ConnectionState.done) {
                                   if (snapshot.hasData) {
-                                    UserModel userData = snapshot as UserModel;
+                                    UserModel userData =
+                                        snapshot.data as UserModel;
                                     return BlackTextWidget(
                                       text: userData.fullName.toString(),
                                       fontSize: 25,

@@ -16,7 +16,7 @@ class Home extends StatefulWidget {
 
 class _HomePageState extends State<Home> {
   List<Widget> buildScreens = [
-    const HomeScreen(),
+     const HomeScreen(),
     const BookingHitory(),
     const ProfileScreen(),
   ];
