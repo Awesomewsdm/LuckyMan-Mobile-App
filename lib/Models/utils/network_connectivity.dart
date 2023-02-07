@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 class ConnectionCheckerDemo extends StatefulWidget {
   const ConnectionCheckerDemo({Key? key}) : super(key: key);
   @override
@@ -36,14 +37,7 @@ class _ConnectionCheckerDemoState extends State<ConnectionCheckerDemo> {
       // 2.
       setState(() {});
       // 3.
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            string,
-            style: const TextStyle(fontSize: 30),
-          ),
-        ),
-      );
+      Get.snackbar('Hey', 'Your\'e $string');
     });
   }
   @override
