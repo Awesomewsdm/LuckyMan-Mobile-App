@@ -216,27 +216,28 @@ class SeatSelectionScreen extends StatelessWidget {
               child: BottomButton(
                 bottomTextLabel: 'PROCEED TO PAYMENT',
                 onPressed: () {
-                  if (seatSelectionController.isSeatSelected.value == true) {
-                    SeatSelectionModel seatSelectionModel = SeatSelectionModel(
-                        selectedBusClass:
-                            seatSelectionController.selectedBusClass.toString(),
-                        selectedSeatNo: seatSelectionController
-                                    .selectedBusClass.value ==
-                                busClasses[0]
-                            ? seatSelectionController.changeEconomySeatList()
-                            : seatSelectionController
-                                .changeExecutiveSeatList());
-                    UserModel userData = UserModel();
-                    busBookingController.addSeatSelectionInfo(
-                        userData, seatSelectionModel);
-                    Get.to(
-                      () => BusTicketScreen(),
-                    );
-                  } else {
-                    Get.snackbar(
-                        'Please', 'Select at least one seat to continue',
-                        colorText: Colors.red, backgroundColor: Colors.white);
-                  }
+                  // if (seatSelectionController.isSeatSelected.value == true) {
+                  //   SeatSelectionModel seatSelectionModel = SeatSelectionModel(
+                  //       selectedBusClass:
+                  //           seatSelectionController.selectedBusClass.toString(),
+                  //       selectedSeatNo: seatSelectionController
+                  //                   .selectedBusClass.value ==
+                  //               busClasses[0]
+                  //           ? seatSelectionController.changeEconomySeatList()
+                  //           : seatSelectionController
+                  //               .changeExecutiveSeatList());
+                  // UserModel userData = UserModel();
+                  // busBookingController.addSeatSelectionInfo(
+                  //     userData, seatSelectionModel);
+                  Get.to(
+                    () => BusTicketScreen(),
+                  );
+                  //   );
+                  // } else {
+                  //   Get.snackbar(
+                  //       'Please', 'Select at least one seat to continue',
+                  //       colorText: Colors.red, backgroundColor: Colors.white);
+                  // }
                 },
               ),
             ),

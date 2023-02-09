@@ -11,10 +11,8 @@ class UserRepository extends GetxController {
 
   createUser(UserModel user) async {
     await _db
-        .collection('Users').doc(FirebaseAuth.instance.currentUser!.uid).
-        set(
-          user.toJson(),
-        )
+        .collection('Users')
+        .add(user.toJson())
         .whenComplete(
           () => Get.snackbar(
             "Success",
@@ -48,7 +46,37 @@ class UserRepository extends GetxController {
     final snapshot = await _db.collection("Users").get();
     final userData =
         snapshot.docs.map((e) => UserModel.fromSnaphot(e)).toList();
-        
+
     return userData;
   }
+
+  Future<void> addBooking(UserModel user) async {
+    await _db.collection("Users").doc(user.id).update(user.toJson());
+  }
 }
+
+// Future<void> addBooking(UserBookingModel userBookingModel) async {
+//   await _db
+//       .collection("Users")
+//       .doc()
+//       .update(userBookingModel.toJson())
+//       .whenComplete(
+//         () => Get.snackbar(
+//           "Success",
+//           'You\'ve successfully booked your seats',
+//           snackPosition: SnackPosition.BOTTOM,
+//           colorText: Colors.blue[100],
+//           backgroundColor: Colors.blue.withOpacity(0.7),
+//         ),
+//       )
+//       // ignore: body_might_complete_normally_catch_error
+//       .catchError((error, stackTrace) {
+//     Get.snackbar(
+//       "Error",
+//       'Sorry, something went wrong',
+//       snackPosition: SnackPosition.BOTTOM,
+//       colorText: Colors.red,
+//       backgroundColor: Colors.blue.withOpacity(0.7),
+//     );
+//   });
+// }

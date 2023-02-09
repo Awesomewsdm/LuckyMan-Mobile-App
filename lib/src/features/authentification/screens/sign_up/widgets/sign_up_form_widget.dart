@@ -162,7 +162,7 @@ class SignUpFormWidget extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     if (_formkey.currentState!.validate()) {
                       controller.showSpinner.value = true;
                       final UserModel user = UserModel(
@@ -172,8 +172,8 @@ class SignUpFormWidget extends StatelessWidget {
                         password: controller.password.text.trim(),
                         studentID: controller.studentID.text.trim(),
                       );
-                      SignUpController.instance.createUser(user);
-                      SignUpController.instance.registerUser(
+                      await SignUpController.instance.createUser(user);
+                      await SignUpController.instance.registerUser(
                         controller.email.text.trim(),
                         controller.password.text.trim(),
                       );
