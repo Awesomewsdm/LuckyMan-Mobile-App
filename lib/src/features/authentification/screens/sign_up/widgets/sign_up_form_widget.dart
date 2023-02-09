@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/Models/utils/validators.dart';
-import 'package:luckyman_app/src/common_widgets/bottom_nav/bottom_nav.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-
 import 'package:regexed_validator/regexed_validator.dart';
-
 import '../../../../../constants/input_decoration.dart';
 import '../../../../../constants/sizes.dart';
 import '../../../../../constants/text.dart';
@@ -157,12 +154,11 @@ class SignUpFormWidget extends StatelessWidget {
               ),
               const SizedBox(
                 height: 20.0,
-              ),
-              //
+              ), //
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     if (_formkey.currentState!.validate()) {
                       controller.showSpinner.value = true;
                       final UserModel user = UserModel(
@@ -170,15 +166,17 @@ class SignUpFormWidget extends StatelessWidget {
                         email: controller.email.text.trim(),
                         phoneNumber: controller.phoneNo.text.trim(),
                         password: controller.password.text.trim(),
-                        studentID: controller.studentID.text.trim(),
+                        studentID: controller.studentID.text.trim(), 
                       );
-                      SignUpController.instance.createUser(user);
-                      SignUpController.instance.registerUser(
+                     await controller.registerUser(
                         controller.email.text.trim(),
                         controller.password.text.trim(),
                       );
+                      
+                      await controller.createUser(user);
+
                       _formkey.currentState!.save();
-                      Get.to(() => const Home());
+                      
                       _formkey.currentState!.reset();
                       controller.showSpinner.value = false;
                     }

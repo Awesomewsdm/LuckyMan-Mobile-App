@@ -26,8 +26,8 @@ class SignUpController extends GetxController {
   }
 
   Future<void> createUser(UserModel user) async {
-    await userRepo.createUser(user);
     await registerUser(user.email, user.password);
+    await userRepo.createUser(user);
     Get.to(() => const Home());
   }
 }

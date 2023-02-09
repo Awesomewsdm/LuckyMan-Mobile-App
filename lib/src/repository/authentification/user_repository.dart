@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,8 +10,8 @@ class UserRepository extends GetxController {
 
   createUser(UserModel user) async {
     await _db
-        .collection('Users').doc(FirebaseAuth.instance.currentUser!.uid).
-        set(
+        .collection('Users')
+        .add(
           user.toJson(),
         )
         .whenComplete(
@@ -48,7 +47,7 @@ class UserRepository extends GetxController {
     final snapshot = await _db.collection("Users").get();
     final userData =
         snapshot.docs.map((e) => UserModel.fromSnaphot(e)).toList();
-        
+
     return userData;
   }
 }
