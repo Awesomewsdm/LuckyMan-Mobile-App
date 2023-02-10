@@ -5,7 +5,6 @@ import 'package:luckyman_app/Models/utils/form_items.dart';
 import 'package:luckyman_app/Screens/seat_selection_screen.dart';
 import 'package:luckyman_app/src/features/authentification/controllers/bus_booking_controllers.dart';
 import 'package:luckyman_app/src/features/authentification/controllers/sign_up_controller.dart';
-import 'package:luckyman_app/src/features/authentification/models/user_model.dart';
 import '../Components/dropdown.dart';
 import '../Components/input_field.dart';
 import '../Components/screen_template.dart';
@@ -152,9 +151,9 @@ class BusBookingScreen extends StatelessWidget {
               ),
             ),
             BottomButton(
-              onPressed: () {
+              onPressed: () async {
                 if (_formKey.currentState!.validate()) {
-                  final UserModel userData = UserModel(
+                  final UserBookingModel userBookingModel = UserBookingModel(
                       selectedDestination:
                           busBookingController.selectedDestination.value,
                       selectedPickupPoint:
@@ -164,7 +163,7 @@ class BusBookingScreen extends StatelessWidget {
                       selectedDepatureTime:
                           busBookingController.selectedDepatureTime.value);
 
-                  busBookingController.addBusBookingInfo(userData);
+                  busBookingController.addBusBookingInfo(userBookingModel);
                   _formKey.currentState!.save();
                   Get.to(
                     () => SeatSelectionScreen(

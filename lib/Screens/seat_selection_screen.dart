@@ -1,4 +1,4 @@
-import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -12,10 +12,7 @@ import 'package:luckyman_app/src/constants/custom_icons_icons.dart';
 import 'package:luckyman_app/src/constants/text.dart';
 import 'package:luckyman_app/src/features/authentification/controllers/bus_booking_controllers.dart';
 import 'package:luckyman_app/src/features/authentification/controllers/seat_selection_controller.dart';
-import 'package:luckyman_app/src/features/authentification/models/user_model.dart';
-
 import '../Components/seat_status.dart';
-
 import '../Models/utils/form_items.dart';
 import '../src/common_widgets/dropdown_menu/bus_class_menu.dart';
 import 'reservation_details_screen.dart';
@@ -216,28 +213,27 @@ class SeatSelectionScreen extends StatelessWidget {
               child: BottomButton(
                 bottomTextLabel: 'PROCEED TO PAYMENT',
                 onPressed: () {
-                  // if (seatSelectionController.isSeatSelected.value == true) {
-                  //   SeatSelectionModel seatSelectionModel = SeatSelectionModel(
-                  //       selectedBusClass:
-                  //           seatSelectionController.selectedBusClass.toString(),
-                  //       selectedSeatNo: seatSelectionController
-                  //                   .selectedBusClass.value ==
-                  //               busClasses[0]
-                  //           ? seatSelectionController.changeEconomySeatList()
-                  //           : seatSelectionController
-                  //               .changeExecutiveSeatList());
-                  // UserModel userData = UserModel();
-                  // busBookingController.addSeatSelectionInfo(
-                  //     userData, seatSelectionModel);
-                  Get.to(
-                    () => BusTicketScreen(),
-                  );
-                  //   );
-                  // } else {
-                  //   Get.snackbar(
-                  //       'Please', 'Select at least one seat to continue',
-                  //       colorText: Colors.red, backgroundColor: Colors.white);
-                  // }
+                  if (seatSelectionController.isSeatSelected.value == true) {
+                    // SeatSelectionModel seatSelectionModel = SeatSelectionModel(
+                    //     selectedBusClass:
+                    //         seatSelectionController.selectedBusClass.toString(),
+                    //     selectedSeatNo: seatSelectionController
+                    //                 .selectedBusClass.value ==
+                    //             busClasses[0]
+                    //         ? seatSelectionController.changeEconomySeatList()
+                    //         : seatSelectionController
+                    //             .changeExecutiveSeatList());
+
+                    // busBookingController.addSeatSelectionInfo(
+                    //     userData, seatSelectionModel);
+                    Get.to(
+                      () => BusTicketScreen(),
+                    );
+                  } else {
+                    Get.snackbar(
+                        'Please', 'Select at least one seat to continue',
+                        colorText: Colors.red, backgroundColor: Colors.white);
+                  }
                 },
               ),
             ),

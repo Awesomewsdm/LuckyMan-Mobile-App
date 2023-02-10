@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/Models/seat_selection_model.dart';
 import 'package:luckyman_app/src/features/authentification/models/user_model.dart';
+import 'package:luckyman_app/src/repository/authentification/booking_repository.dart';
 import 'package:luckyman_app/Models/user_booking_model.dart';
-import 'package:luckyman_app/src/repository/authentification/user_repository.dart';
 
 class BusBookingController extends GetxController {
   static BusBookingController get instance => Get.find();
-  final userRepo = Get.put(UserRepository());
+  final _bookingRepo = Get.put(BookingRepository());
 
   final selectedDestination = ''.obs;
   final selectedBusType = ''.obs;
@@ -17,12 +17,12 @@ class BusBookingController extends GetxController {
 
   final agentName = TextEditingController();
 
-  addBusBookingInfo(UserModel user) async {
-    await userRepo.addBooking(user);
+  addBusBookingInfo(UserBookingModel userBookingModel) async {
+    await _bookingRepo.addBooking(userBookingModel);
   }
 
-  // addSeatSelectionInfo(
-  //     UserModel user, SeatSelectionModel seatSelectionModel) async {
-  //   await _bookingRepo.addSeatSelectionInfo(seatSelectionModel, user);
-  // }
+  addSeatSelectionInfo(
+      UserModel user, SeatSelectionModel seatSelectionModel) async {
+    await _bookingRepo.addSeatSelectionInfo(seatSelectionModel, user);
+  }
 }

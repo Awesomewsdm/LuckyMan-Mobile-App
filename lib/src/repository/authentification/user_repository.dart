@@ -12,7 +12,10 @@ class UserRepository extends GetxController {
   createUser(UserModel user) async {
     await _db
         .collection('Users')
-        .add(user.toJson())
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .set(
+          user.toJson(),
+        )
         .whenComplete(
           () => Get.snackbar(
             "Success",
