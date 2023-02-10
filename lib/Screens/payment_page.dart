@@ -1,25 +1,30 @@
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:luckyman_app/Components/divider_widget.dart';
-import 'package:luckyman_app/Components/input_field.dart';
 import 'package:luckyman_app/Components/screen_template.dart';
 import 'package:luckyman_app/Components/text_styling.dart';
 import 'package:luckyman_app/Constants/constants.dart';
+import 'package:luckyman_app/Models/utils/validators.dart';
+import 'package:luckyman_app/src/constants/input_decoration.dart';
+import 'package:luckyman_app/src/constants/text.dart';
+import 'package:luckyman_app/src/features/authentification/controllers/payment_screen_controller.dart';
 
 class PaymentPage extends StatelessWidget {
   static const String id = '/PaymentScreen';
 
-  const PaymentPage({
+
+   PaymentPage({
     super.key,
   }) : super();
-
+final PaymentController controller = Get.put(PaymentController());
+  
+final _formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return ScreenTemplate(
       decoration: kBackgroundBoxDecoration,
-      // onPressed: () {
-       
-      // },
+     
       bottomTextLabel: 'Continue',
       title: 'Make Payment',
       subTitle: '',
@@ -28,15 +33,15 @@ class PaymentPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.max,
-          children: const [
-            SizedBox(
+          children:  [
+            const SizedBox(
               height: 20.0,
             ),
-            DividerWidget(title: 'STEPS TO MAKE PAYMENT'),
-            SizedBox(
+            const DividerWidget(title: 'STEPS TO MAKE PAYMENT'),
+            const SizedBox(
               height: 15.0,
             ),
-            BlackTextWidget(
+            const BlackTextWidget(
               text: '''
 1. Enter an active Mobile Money Number and tap "Continue"
 
@@ -48,11 +53,26 @@ class PaymentPage extends StatelessWidget {
               fontSize: 12.0,
             ),
             Material(
-              child: InputField(
-                labelText: 'Enter your phone number',
-                widget: Icon(Icons.search),
-                enabledBorderColor: kEnableBorderSideColor,
-                focusedBorderColor: kFocusedBorderColor,
+              child: Form(
+                key: _formkey,
+                child:  TextFormField(
+                validator: (value) {
+                  if (value!.isEmpty || value.isValidPhone) {
+                    return "Enter a valid $tMomoNumber";
+                  } else {
+                    return null;
+                  }
+                },
+                controller: controller.momoNumber,
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(
+                  contentPadding: EdgeInsets.all(8.0),
+                  prefixIcon: Icon(Icons.credit_card_outlined),
+                  labelText: tMomoNumber,
+                  hintText: tMomoNumber,
+                  border: kOutlineInputBorder,
+                ),
+              ),
               ),
             ),
           ],

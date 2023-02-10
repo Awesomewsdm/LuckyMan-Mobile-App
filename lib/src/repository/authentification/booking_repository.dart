@@ -35,6 +35,33 @@ class BookingRepository extends GetxController {
     });
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   addSeatSelectionInfo(
       SeatSelectionModel seatSelectionModel, UserModel user) async {
     await _db
