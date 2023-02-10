@@ -34,6 +34,33 @@ class BookingRepository extends GetxController {
     });
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   addSeatSelectionInfo(
       SeatSelectionModel seatSelectionModel, String uid) async {
     await _db.collection('Users').doc(uid).update(seatSelectionModel.toMap());

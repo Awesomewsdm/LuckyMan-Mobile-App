@@ -6,12 +6,14 @@ const String tLogin = "Login";
 const String tEmail = "E-mail";
 const String tSignup = "Sign-up";
 const String tPhoneNo = "Phone Number";
+const String tMomoNumber = "Momo Number";
 const String tStudentID = "Student ID";
 const String tPassword = "Password";
 const String tConfirmPassword = "Confirm Password";
 const String tFullName = "Full Name";
 const String tForgetPassword = "Forgot password ?";
 const String tSignInWithGoogle = "Sign-In with Google";
+
 
 // -- Bottom App Bar
 const String tHomeIconName = "Home";

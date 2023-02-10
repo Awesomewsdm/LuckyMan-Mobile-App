@@ -92,7 +92,7 @@ class _MyAppState extends State<MyApp> {
         HomeScreen.id: (context) =>  const HomeScreen(),
         BusTicketScreen.id: (context) => BusTicketScreen(),
         SeatSelectionScreen.id: (context) => SeatSelectionScreen(),
-        PaymentPage.id: (context) => const PaymentPage(),
+        PaymentPage.id: (context) =>  PaymentPage(),
         BusBookingScreen.id: (context) => BusBookingScreen(),
       },
     );
