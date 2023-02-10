@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:luckyman_app/Components/text_styling.dart';
 import 'package:luckyman_app/Constants/constants.dart';
 import 'package:luckyman_app/Models/seat_selection_model.dart';
+import 'package:luckyman_app/Screens/payment_page.dart';
 import 'package:luckyman_app/src/common_widgets/app_bar/primary_app_bar.dart';
 import 'package:luckyman_app/src/common_widgets/buttons/bottom_button.dart';
 import 'package:luckyman_app/src/constants/colors.dart';
@@ -226,9 +227,7 @@ class SeatSelectionScreen extends StatelessWidget {
 
                     // busBookingController.addSeatSelectionInfo(
                     //     userData, seatSelectionModel);
-                    Get.to(
-                      () => BusTicketScreen(),
-                    );
+                    Get.to(PaymentPage());
                   } else {
                     Get.snackbar(
                         'Please', 'Select at least one seat to continue',

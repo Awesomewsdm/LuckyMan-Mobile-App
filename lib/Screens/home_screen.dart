@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:luckyman_app/Components/text_styling.dart';
 import 'package:luckyman_app/Constants/constants.dart';
 import 'package:luckyman_app/Screens/bus_booking_screen.dart';
+import 'package:luckyman_app/Screens/payment_page.dart';
 import 'package:luckyman_app/Screens/reservation_details_screen.dart';
 import 'package:luckyman_app/src/common_widgets/user_info/user_profile_image.dart';
 import 'package:luckyman_app/src/features/authentification/controllers/profile_controller.dart';
@@ -137,9 +138,7 @@ class HomeScreen extends StatelessWidget {
                         HomeWidget(
                           imageLink: tLuggagesIcon,
                           label: 'Luggage Storage',
-                          onTap: () {
-                            // Get.to(const MyCustomWidget());
-                          },
+                          onTap: () {},
                         ),
                         HomeWidget(
                           imageLink: tLuggageTransport,
