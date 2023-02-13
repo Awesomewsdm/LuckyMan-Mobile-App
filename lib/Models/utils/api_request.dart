@@ -1,51 +1,51 @@
-// import 'dart:convert';
+import 'dart:convert';
+import 'dart:math';
+import 'package:http/http.dart' as http;
 
-// import 'api_constants.dart';
-// import 'api_response_model.dart';
-// import 'package:http/http.dart' as http;
+class APIResponseData{
+  
+  getResponseData(double amount, String returnUrl ) async {
+    var headers = {
+      'Authorization':
+          'Basic NVc0ejB3WDo0YjVlZWE4YTNjNGE0M2ViODU2MTQ5NjFkZGNhMTllNw==',
+      'Content-Type': 'application/json',
+    };
 
-// Future<TransactionData> fetchTransactionData() async {
-//   // final response = await http
-//   //     .post(Uri.parse(ApiConstants.webCheckoutBaseUrl));
+    String generateRandomRef(int refLength) {
+      final random = Random();
+      const allChars =
+          "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789";
+      final randomString = List.generate(
+              refLength, (index) => allChars[random.nextInt(allChars.length)])
+          .join();
+      return randomString;
+    }
 
-//   // if (response.statusCode == 200) {
-//   //   // If the server did return a 200 OK response,
-//   //   // then parse the JSON.
-//   //   return TransactionData.fromJson(jsonDecode(response.body));
-//   // } else {
-//   //   // If the server did not return a 200 OK response,
-//   //   // then throw an exception.
-//   //   throw Exception('Failed to load album');
+    var data = {
+      "title": "Checkout",
+      "totalAmount": 0.5,
+      "description": "Payment For Bus Ticket",
+      "callbackUrl":
+          "https://webhook.site/9e4b4f89-0e18-46fc-b808-8a529033480c",
+      "returnUrl": returnUrl,
+      "merchantAccountNumber": "2017272",
+      "cancellationUrl": "http://hubtel.com/",
+      "clientReference": generateRandomRef(32),
+    };
 
-//   // }
+    var url = Uri.parse('https://payproxyapi.hubtel.com/items/initiate');
+    var res = await http.post(url, headers: headers, body: jsonEncode(data));
+    if (res.statusCode == 200) {
+      String data = res.body;
+      var decodedData = jsonDecode(data);
+      var checkoutUrl = decodedData["data"]["checkoutUrl"];
+      return checkoutUrl;
+      // print(res.body);
+      // return APIResponseData.fromJson(jsonDecode(res.body));
+    } else {
+      throw Exception('Failed to load album - ${res.statusCode}');
+    }
+  }
+}
 
-  // final 
-//   final responseBody = {
-//     "totalAmount": 2,
-//   "title": "Payment",
-//     "description": "Test with Joseph",
-//     "callbackUrl": "https://webhook.site/73db4705-d87a-4177-913b-ec42533f51c2",
-//     "returnUrl": "http://google.com/",
-//     "merchantAccountNumber": "11684",
-//     "cancellationUrl": "http://hubtel.com/",
-//     "clientReference": "001TestwithAbrantie171kkb07z1921319"
-// }
-//   final request = http.Request(
-//       'POST', Uri.parse(ApiConstants.webCheckoutBaseUrl));
-//   request.body = jsonEncode(responseBody) ;
-//   request.headers.addAll(headers);
 
-//   http.StreamedResponse response = await request.send();
-
-//   if (response.statusCode == 200) {
-//     return TransactionData.fromJson(jsonDecode(response.body));
-//     print(await response.stream.bytesToString());
-//   } else {
-//     print(response.reasonPhrase);
-//   }
-// }
-
-// // API ID(username): 5R5VV9Y
-// // API Key(password): 5303dad6ae324e9c872e63845475e032
-// // Web Checkout Base URL: https://payproxyapi.hubtel.com/items/initiate0
-// // Account Numbers: https://bo.hubtel.com/money

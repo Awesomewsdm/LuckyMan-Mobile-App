@@ -8,6 +8,8 @@ class HomeScreenController extends GetxController {
     selectedIndex = index;
     
   }
+
+  
 }
 
 //  int selectedIndex = 0;

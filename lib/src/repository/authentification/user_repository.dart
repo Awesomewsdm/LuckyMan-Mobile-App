@@ -1,22 +1,22 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import '../../features/authentification/models/user_model.dart';
 
 class UserRepository extends GetxController {
   static UserRepository get instance => Get.find();
   final _db = FirebaseFirestore.instance;
 
+  final FirebaseAuth auth = FirebaseAuth.instance;
+
   createUser(UserModel user) async {
     await _db
         .collection('Users')
-        .doc(FirebaseAuth.instance.currentUser!.uid)
-        .set(
+        .add(
           user.toJson(),
         )
-        .whenComplete(
+    .whenComplete(
           () => Get.snackbar(
             "Success",
             'Your account has been created',
@@ -36,6 +36,9 @@ class UserRepository extends GetxController {
       );
     });
   }
+
+  // .then((documentSnapshot) =>
+  //           print("Added Data with ID: ${documentSnapshot.id}"));
 
   Future<UserModel> getUserDetails(String email) async {
     final snapshot =

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:luckyman_app/Models/user_booking_model.dart';
 import 'package:luckyman_app/Models/utils/form_items.dart';
 import 'package:luckyman_app/Screens/seat_selection_screen.dart';
 import 'package:luckyman_app/src/features/authentification/controllers/bus_booking_controllers.dart';
@@ -153,17 +152,18 @@ class BusBookingScreen extends StatelessWidget {
             BottomButton(
               onPressed: () async {
                 if (_formKey.currentState!.validate()) {
-                  final UserBookingModel userBookingModel = UserBookingModel(
-                      selectedDestination:
-                          busBookingController.selectedDestination.value,
-                      selectedPickupPoint:
-                          busBookingController.selectedPickupPoint.value,
-                      selectedBusType:
-                          busBookingController.selectedBusType.value,
-                      selectedDepatureTime:
-                          busBookingController.selectedDepatureTime.value);
+                  // final UserBookingModel userBookingModel = UserBookingModel(
+                  //     selectedDestination:
+                  //         busBookingController.selectedDestination.value,
+                  //     selectedPickupPoint:
+                  //         busBookingController.selectedPickupPoint.value,
+                  //     selectedBusType:
+                  //         busBookingController.selectedBusType.value,
+                  //     selectedDepatureTime:
+                  //         busBookingController.selectedDepatureTime.value);
 
-                  busBookingController.addBusBookingInfo(userBookingModel);
+                  // busBookingController.addBusBookingInfo(userBookingModel
+                  // );
                   _formKey.currentState!.save();
                   Get.to(
                     () => SeatSelectionScreen(

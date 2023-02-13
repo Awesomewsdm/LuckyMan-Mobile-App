@@ -1,11 +1,10 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/Components/text_styling.dart';
 import 'package:luckyman_app/Constants/constants.dart';
-import 'package:luckyman_app/Models/seat_selection_model.dart';
-import 'package:luckyman_app/Screens/payment_page.dart';
+import 'package:luckyman_app/Models/utils/api_request.dart';
+import 'package:luckyman_app/Models/utils/dynamic_links.dart';
 import 'package:luckyman_app/src/common_widgets/app_bar/primary_app_bar.dart';
 import 'package:luckyman_app/src/common_widgets/buttons/bottom_button.dart';
 import 'package:luckyman_app/src/constants/colors.dart';
@@ -13,23 +12,36 @@ import 'package:luckyman_app/src/constants/custom_icons_icons.dart';
 import 'package:luckyman_app/src/constants/text.dart';
 import 'package:luckyman_app/src/features/authentification/controllers/bus_booking_controllers.dart';
 import 'package:luckyman_app/src/features/authentification/controllers/seat_selection_controller.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../Components/seat_status.dart';
 import '../Models/utils/form_items.dart';
 import '../src/common_widgets/dropdown_menu/bus_class_menu.dart';
-import 'reservation_details_screen.dart';
 
-class SeatSelectionScreen extends StatelessWidget {
-  SeatSelectionScreen({
+class SeatSelectionScreen extends StatefulWidget {
+  const SeatSelectionScreen({
     Key? key,
     this.selectedDestination,
   }) : super(key: key);
   static String id = '/SeatSelectionScreen';
   final String? selectedDestination;
 
+  @override
+  State<SeatSelectionScreen> createState() => _SeatSelectionScreenState();
+}
+
+class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
   final SeatSelectionController seatSelectionController =
       Get.put(SeatSelectionController());
+
   final BusBookingController busBookingController =
       Get.put(BusBookingController());
+
+  // late Future<APIResponseData> apiResponseData;
+  @override
+  void initState() {
+    super.initState();
+    DynamicLinkProvider().initDynamicLink();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +90,6 @@ class SeatSelectionScreen extends StatelessWidget {
                   () => Container(
                     height: size.height,
                     width: size.width - 50,
-                    // color: const Color.fromRGBO(255, 255, 255, 1.0),
                     decoration: kBackgroundBoxDecoration,
                     child: seatSelectionController.selectedBusClass.value ==
                             null
@@ -213,25 +224,31 @@ class SeatSelectionScreen extends StatelessWidget {
             Expanded(
               child: BottomButton(
                 bottomTextLabel: 'PROCEED TO PAYMENT',
-                onPressed: () {
+                onPressed: () async {
                   if (seatSelectionController.isSeatSelected.value == true) {
-                    // SeatSelectionModel seatSelectionModel = SeatSelectionModel(
-                    //     selectedBusClass:
-                    //         seatSelectionController.selectedBusClass.toString(),
-                    //     selectedSeatNo: seatSelectionController
-                    //                 .selectedBusClass.value ==
-                    //             busClasses[0]
-                    //         ? seatSelectionController.changeEconomySeatList()
-                    //         : seatSelectionController
-                    //             .changeExecutiveSeatList());
-
-                    // busBookingController.addSeatSelectionInfo(
-                    //     userData, seatSelectionModel);
-                    Get.to(PaymentPage());
+                    String returnUrl =
+                        await DynamicLinkProvider().createDynamicLink();
+                    var checkoutUrl = await APIResponseData().getResponseData(
+                        seatSelectionController.selectedBusClass.value ==
+                                busClasses[0]
+                            ? seatSelectionController.changeEconomySeatPrice()
+                            : seatSelectionController
+                                .changeExecutiveSeatPrice(),
+                        returnUrl);
+                    var url = Uri.parse(checkoutUrl);
+                    if (await launchUrl(url)) {
+                      await launchUrl(url, mode: LaunchMode.inAppWebView);
+                    } else {
+                      Get.snackbar("Sorry,", "something went wrong");
+                    }
                   } else {
-                    Get.snackbar(
-                        'Please', 'Select at least one seat to continue',
-                        colorText: Colors.red, backgroundColor: Colors.white);
+                    Get.defaultDialog(
+                        title: "Hey",
+                        middleText: "Select at least one seat to continue!",
+                        backgroundColor: Colors.lightBlue,
+                        titleStyle: const TextStyle(color: Colors.white),
+                        middleTextStyle: const TextStyle(color: Colors.white),
+                        radius: 10);
                   }
                 },
               ),

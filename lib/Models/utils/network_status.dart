@@ -15,7 +15,6 @@ class NetworkConnectivity {
     ConnectivityResult result = await _networkConnectivity.checkConnectivity();
     _checkStatus(result);
     _networkConnectivity.onConnectivityChanged.listen((result) {
-      print(result);
       _checkStatus(result);
     });
   }

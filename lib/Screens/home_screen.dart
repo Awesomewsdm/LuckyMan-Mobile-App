@@ -1,9 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/Components/text_styling.dart';
 import 'package:luckyman_app/Constants/constants.dart';
 import 'package:luckyman_app/Screens/bus_booking_screen.dart';
-import 'package:luckyman_app/Screens/payment_page.dart';
 import 'package:luckyman_app/Screens/reservation_details_screen.dart';
 import 'package:luckyman_app/src/common_widgets/user_info/user_profile_image.dart';
 import 'package:luckyman_app/src/features/authentification/controllers/profile_controller.dart';
@@ -14,6 +14,12 @@ import '../src/constants/image_strings.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
   static const String id = '/HomeScreen';
+  getCurrentUserID() {
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    final User? user = auth.currentUser;
+    final myUid = user!.uid;
+    return myUid;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +63,7 @@ class HomeScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const AshTextWidget(
-                              text: 'Welcome, ',
+                              text: 'Welcome',
                               fontSize: 18,
                             ),
                             FutureBuilder(

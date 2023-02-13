@@ -64,6 +64,8 @@ class SeatSelectionController extends GetxController {
     selectedBusClass.value = value!;
   }
 
+  RxBool isPaymentButtonClicked = false.obs;
+
   // Economy seat prices
   RxDouble pAccraEconomySeatPrice = 0.0.obs;
   RxDouble pCapeCoastEconomyseatPrice = 0.0.obs;
@@ -101,47 +103,47 @@ class SeatSelectionController extends GetxController {
   String selectedDestination =
       BusBookingController.instance.selectedDestination.toString();
 
-  String changeEconomySeatPrice() {
+  double changeEconomySeatPrice() {
     if (selectedDestination == 'Accra') {
-      return pAccraEconomySeatPrice.value.toString();
+      return pAccraEconomySeatPrice.value;
     } else if (selectedDestination == 'Tema') {
-      return pTemaEconomyseatPrice.value.toString();
+      return pTemaEconomyseatPrice.value;
     } else if (selectedDestination == 'Takoradi') {
-      return pTakoradiEconomyseatPrice.value.toString();
+      return pTakoradiEconomyseatPrice.value;
     } else if (selectedDestination == 'Cape Coast') {
-      return pCapeCoastEconomyseatPrice.value.toString();
+      return pCapeCoastEconomyseatPrice.value;
     } else if (selectedDestination == 'Sunyani') {
-      return pSunyaniEconomyseatPrice.value.toString();
+      return pSunyaniEconomyseatPrice.value;
     } else if (selectedDestination == 'Kasoa') {
-      return pKasoaEconomyseatPrice.value.toString();
+      return pKasoaEconomyseatPrice.value;
     } else if (selectedDestination == 'Madina') {
-      return pMadinaEconomyseatPrice.value.toString();
+      return pMadinaEconomyseatPrice.value;
     } else if (selectedDestination == 'Koforidua') {
-      return pKoforiduaEconomyseatPrice.value.toString();
+      return pKoforiduaEconomyseatPrice.value;
     } else {
-      return '0.00';
+      return 0.00;
     }
   }
 
-  String changeExecutiveSeatPrice() {
+  double changeExecutiveSeatPrice() {
     if (selectedDestination == 'Accra') {
-      return pAccraExecutiveSeatPrice.value.toString();
+      return pAccraExecutiveSeatPrice.value;
     } else if (selectedDestination == 'Tema') {
-      return pTemaExecutiveseatPrice.value.toString();
+      return pTemaExecutiveseatPrice.value;
     } else if (selectedDestination == 'Takoradi') {
-      return pTakoradiExecutiveseatPrice.value.toString();
+      return pTakoradiExecutiveseatPrice.value;
     } else if (selectedDestination == 'Cape Coast') {
-      return pCapeCoastExecutiveseatPrice.value.toString();
+      return pCapeCoastExecutiveseatPrice.value;
     } else if (selectedDestination == 'Sunyani') {
-      return pSunyaniExecutiveseatPrice.value.toString();
+      return pSunyaniExecutiveseatPrice.value;
     } else if (selectedDestination == 'Koforidua') {
-      return pKoforiduaExecutiveseatPrice.value.toString();
+      return pKoforiduaExecutiveseatPrice.value;
     } else if (selectedDestination == 'Kasoa') {
-      return pKasoaExecutiveseatPrice.value.toString();
+      return pKasoaExecutiveseatPrice.value;
     } else if (selectedDestination == 'Madina') {
-      return pMadinaExecutiveseatPrice.value.toString();
+      return pMadinaExecutiveseatPrice.value;
     } else {
-      return '0.00';
+      return 0.00;
     }
   }
 

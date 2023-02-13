@@ -26,7 +26,7 @@ class SignUpScreen extends StatelessWidget {
               subtitle: tSignUpSubTitle,
               title: tSignUpTitle,
             ),
-            SignUpFormWidget(),
+            const SignUpFormWidget(),
             FormFooter(
               text: tAlreadyHaveAnAccount,
               onTap: (() {

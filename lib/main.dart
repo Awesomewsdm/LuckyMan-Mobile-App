@@ -1,6 +1,7 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:luckyman_app/Models/utils/dynamic_links.dart';
 import 'package:luckyman_app/Screens/seat_selection_screen.dart';
 import 'Models/utils/network_status.dart';
 import 'Screens/bus_booking_screen.dart';
@@ -21,7 +22,7 @@ void main() {
       AuthenticationRepository(),
     ),
   );
-
+  DynamicLinkProvider().initDynamicLink();
   runApp(
     const MyApp(),
   );
@@ -47,12 +48,13 @@ class _MyAppState extends State<MyApp> {
     _networkConnectivity.initialise();
     _networkConnectivity.myStream.listen((source) {
       _source = source;
-      
+
       // 1.
       switch (_source.keys.toList()[0]) {
         case ConnectivityResult.mobile:
-          string =
-              _source.values.toList()[0] ? 'Mobile: Online' : 'Mobile Data is Off';
+          string = _source.values.toList()[0]
+              ? 'Mobile: Online'
+              : 'Mobile Data is Off';
           break;
         case ConnectivityResult.wifi:
           string =
@@ -76,9 +78,9 @@ class _MyAppState extends State<MyApp> {
     //       statusBarColor: Colors.blue,
     //       systemNavigationBarColor: Colors.lightBlue[100]),
     // );
+
     return GetMaterialApp(
       theme: ThemeData(
-       
         scaffoldBackgroundColor: const Color.fromRGBO(
           250,
           250,
@@ -89,10 +91,10 @@ class _MyAppState extends State<MyApp> {
       initialRoute: SplashScreen.id,
       routes: <String, WidgetBuilder>{
         SplashScreen.id: (context) => const SplashScreen(),
-        HomeScreen.id: (context) =>  const HomeScreen(),
+        HomeScreen.id: (context) => const HomeScreen(),
         BusTicketScreen.id: (context) => BusTicketScreen(),
-        SeatSelectionScreen.id: (context) => SeatSelectionScreen(),
-        PaymentPage.id: (context) =>  PaymentPage(),
+        SeatSelectionScreen.id: (context) => const SeatSelectionScreen(),
+        PaymentPage.id: (context) => PaymentPage(),
         BusBookingScreen.id: (context) => BusBookingScreen(),
       },
     );

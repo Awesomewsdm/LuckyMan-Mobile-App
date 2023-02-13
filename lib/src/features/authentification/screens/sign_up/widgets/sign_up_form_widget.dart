@@ -9,15 +9,23 @@ import '../../../../../constants/text.dart';
 import '../../../controllers/sign_up_controller.dart';
 import '../../../models/user_model.dart';
 
-class SignUpFormWidget extends StatelessWidget {
-  SignUpFormWidget({
+class SignUpFormWidget extends StatefulWidget {
+  const SignUpFormWidget({
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<SignUpFormWidget> createState() => _SignUpFormWidgetState();
+}
+
+class _SignUpFormWidgetState extends State<SignUpFormWidget> {
   final controller = Get.put(
     SignUpController(),
   );
+ 
 
   final _formkey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return ModalProgressHUD(
@@ -161,22 +169,19 @@ class SignUpFormWidget extends StatelessWidget {
                   onPressed: () async {
                     if (_formkey.currentState!.validate()) {
                       controller.showSpinner.value = true;
-                      final UserModel user = UserModel(
+                      final UserModel userData = UserModel(
                         fullName: controller.fullName.text.trim(),
                         email: controller.email.text.trim(),
                         phoneNumber: controller.phoneNo.text.trim(),
                         password: controller.password.text.trim(),
                         studentID: controller.studentID.text.trim(),
                       );
-                      SignUpController.instance.createUser(user);
+                       controller.createUser(userData);
+                      SignUpController.instance.createUser(userData);
                       SignUpController.instance.registerUser(
                         controller.email.text.trim(),
                         controller.password.text.trim(),
                       );
-
-                      await controller.createUser(user);
-
-                      _formkey.currentState!.save();
 
                       _formkey.currentState!.reset();
                       controller.showSpinner.value = false;
