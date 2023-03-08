@@ -17,12 +17,7 @@ var kBackgroundBoxDecoration = const BoxDecoration(
 );
 
 var kHomeBackgroundBoxDecoration = const BoxDecoration(
-  // boxShadow: [
-  //   BoxShadow(
-  //       // blurStyle: BlurStyle.outer,
-  //       // blurRadius: 1.0
-  //       ),
-  // ],
+  
   color: Color.fromARGB(253, 253, 253, 253),
   borderRadius: BorderRadius.only(
     topLeft: Radius.circular(20.0),
@@ -72,4 +67,3 @@ const kFocusedBorderColor = OutlineInputBorder(
 
 double seatSize = 35.0;
 
-// BoxShadow primaryBoxShadow = const 

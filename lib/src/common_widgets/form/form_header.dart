@@ -6,10 +6,10 @@ import '../../constants/image_strings.dart';
 class FormHeader extends StatelessWidget {
   const FormHeader({
     Key? key,
-     required this.title, required this.subtitle,
+    required this.title,
+    required this.subtitle,
   }) : super(key: key);
 
- 
   final String title;
   final String subtitle;
 
@@ -27,11 +27,14 @@ class FormHeader extends StatelessWidget {
             height: size.height * 0.25,
           ),
         ),
-         BlackTextWidget(
+        BlackTextWidget(
           text: title,
           fontSize: 30.0,
         ),
-         Text(subtitle),
+        const SizedBox(
+          height: 10,
+        ),
+        Text(subtitle),
       ],
     );
   }

@@ -23,7 +23,7 @@ class CustomIcons1 {
 
   static const IconData blueBusSvg = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData busSideIconSideView = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData pinkBusSvg = IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData purpleBusSvg = IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData redBusSvg = IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  // static const IconData pinkBusSvg = IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  // static const IconData purpleBusSvg = IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  // static const IconData redBusSvg = IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

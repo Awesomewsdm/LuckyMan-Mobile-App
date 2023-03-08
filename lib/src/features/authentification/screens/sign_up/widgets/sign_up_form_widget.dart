@@ -1,12 +1,16 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:luckyman_app/Models/utils/validators.dart';
+import 'package:luckyman_app/src/common_widgets/buttons/bottom_button.dart';
+import 'package:luckyman_app/src/features/core/controllers/controllers/bus_booking_controllers.dart';
+import 'package:luckyman_app/src/features/core/controllers/controllers/buttons_controller.dart';
+import 'package:luckyman_app/src/features/core/models/utils/validators.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:regexed_validator/regexed_validator.dart';
 import '../../../../../constants/input_decoration.dart';
 import '../../../../../constants/sizes.dart';
 import '../../../../../constants/text.dart';
-import '../../../controllers/sign_up_controller.dart';
+import '../../../../core/controllers/controllers/sign_up_controller.dart';
 import '../../../models/user_model.dart';
 
 class SignUpFormWidget extends StatefulWidget {
@@ -19,17 +23,22 @@ class SignUpFormWidget extends StatefulWidget {
 }
 
 class _SignUpFormWidgetState extends State<SignUpFormWidget> {
-  final controller = Get.put(
+  final SignUpController signUpController = Get.put(
     SignUpController(),
   );
- 
+
+  final BusBookingController busBookingController =
+      Get.put(BusBookingController());
+  final ButtonController buttonController = Get.put(ButtonController());
 
   final _formkey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+
     return ModalProgressHUD(
-      inAsyncCall: controller.showSpinner.value,
+      inAsyncCall: signUpController.showSpinner.value,
       child: Container(
         padding: const EdgeInsets.symmetric(
           vertical: tFormHeight - 10,
@@ -51,7 +60,7 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
                     return null;
                   }
                 },
-                controller: controller.fullName,
+                controller: signUpController.fullName,
                 keyboardType: TextInputType.name,
                 decoration: const InputDecoration(
                   contentPadding: EdgeInsets.all(8.0),
@@ -72,7 +81,7 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
                     return null;
                   }
                 },
-                controller: controller.studentID,
+                controller: signUpController.studentID,
                 keyboardType: TextInputType.number,
                 decoration: const InputDecoration(
                   contentPadding: EdgeInsets.all(8.0),
@@ -94,7 +103,7 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
                     return null;
                   }
                 },
-                controller: controller.phoneNo,
+                controller: signUpController.phoneNo,
                 keyboardType: TextInputType.phone,
                 decoration: const InputDecoration(
                   contentPadding: EdgeInsets.all(8.0),
@@ -116,7 +125,7 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
                     return null;
                   }
                 },
-                controller: controller.email,
+                controller: signUpController.email,
                 keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
                   contentPadding: EdgeInsets.all(8.0),
@@ -132,7 +141,7 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
               Obx(
                 () => TextFormField(
                   autofillHints: const [AutofillHints.newPassword],
-                  obscureText: controller.passwordVisible.value,
+                  obscureText: signUpController.passwordVisible.value,
                   validator: (value) {
                     if (value!.isEmpty || value.isValidPassword) {
                       return "Please enter a valid password";
@@ -140,18 +149,18 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
                       return null;
                     }
                   },
-                  controller: controller.password,
+                  controller: signUpController.password,
                   keyboardType: TextInputType.visiblePassword,
                   decoration: InputDecoration(
                     contentPadding: const EdgeInsets.all(8.0),
                     prefixIcon: const Icon(Icons.lock_outline_rounded),
                     suffixIcon: IconButton(
-                      icon: Icon(controller.passwordVisible.value
+                      icon: Icon(signUpController.passwordVisible.value
                           ? Icons.visibility_outlined
                           : Icons.visibility_off_outlined),
                       onPressed: () {
-                        controller.passwordVisible.value =
-                            !controller.passwordVisible.value;
+                        signUpController.passwordVisible.value =
+                            !signUpController.passwordVisible.value;
                       },
                     ),
                     labelText: tPassword,
@@ -165,33 +174,49 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
               ), //
               SizedBox(
                 width: double.infinity,
-                child: ElevatedButton(
+                child: BottomButton(
+                  loadingIcon: Obx(
+                    () => SizedBox(
+                      child: buttonController.isButtonClicked.value == true
+                          ? const CircularProgressIndicator(color: Colors.white)
+                          : const Text(""),
+                    ),
+                  ),
                   onPressed: () async {
                     if (_formkey.currentState!.validate()) {
-                      controller.showSpinner.value = true;
+                      buttonController.isButtonClicked.value == true;
+                      _formkey.currentState!.save();
                       final UserModel userData = UserModel(
-                        fullName: controller.fullName.text.trim(),
-                        email: controller.email.text.trim(),
-                        phoneNumber: controller.phoneNo.text.trim(),
-                        password: controller.password.text.trim(),
-                        studentID: controller.studentID.text.trim(),
-                      );
-                       controller.createUser(userData);
-                      SignUpController.instance.createUser(userData);
-                      SignUpController.instance.registerUser(
-                        controller.email.text.trim(),
-                        controller.password.text.trim(),
+                        fullName: signUpController.fullName.text.trim(),
+                        email: signUpController.email.text.trim(),
+                        phoneNumber: signUpController.phoneNo.text.trim(),
+                        password: signUpController.password.text.trim(),
+                        studentID: signUpController.studentID.text.trim(), 
+                        isUserBooked: false,
+                        selectedSeatNo: "",
                       );
 
-                      _formkey.currentState!.reset();
-                      controller.showSpinner.value = false;
+                      await signUpController.registerUser(
+                        signUpController.email.text.trim(),
+                        signUpController.password.text.trim(),
+                      );
+
+                      final FirebaseAuth auth = FirebaseAuth.instance;
+                      var user = auth.currentUser!;
+                      var userID = user.uid;
+
+                      signUpController
+                          .createUser(userData, userID)
+                          .whenComplete(() =>
+                              buttonController.isButtonClicked.value == false);
+
+                      // _formkey.currentState!.reset();
                     }
                   },
-                  child: Text(
-                    tSignup.toUpperCase(),
-                  ),
+                  bottomTextLabel: tSignup.toUpperCase(),
+                  height: size.width * 0.1,
                 ),
-              )
+              ),
             ],
           ),
         ),

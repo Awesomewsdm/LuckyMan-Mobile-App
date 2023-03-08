@@ -6,10 +6,14 @@ class BottomButton extends StatelessWidget {
     Key? key,
     required this.onPressed,
     required this.bottomTextLabel,
+    this.loadingIcon,
+    required this.height,
   }) : super(key: key);
 
   final void Function() onPressed;
   final String bottomTextLabel;
+  final Widget? loadingIcon;
+  final double height;
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +22,16 @@ class BottomButton extends StatelessWidget {
       child: Container(
         color: Colors.lightBlue,
         width: double.infinity,
-        height: MediaQuery.of(context).size.width * 0.15,
+        height: height,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Padding(
+                padding: const EdgeInsets.only(
+                  right: 10.0,
+                ),
+                child: loadingIcon,
+                ),
             Text(
               bottomTextLabel,
               style: const TextStyle(
@@ -44,16 +54,3 @@ class BottomButton extends StatelessWidget {
     );
   }
 }
-
-// /         style: ButtonStyle(
-      //           shape: MaterialStatePropertyAll(
-      //             RoundedRectangleBorder(
-      //               borderRadius: BorderRadius.circular(0.0),
-      //             ),
-      //           ),
-      // //           backgroundColor: const MaterialStatePropertyAll(
-      // // // 0xFFFFCA28
-      
-      // //             Colors.lightBlue,
-      // //           ),
-      //         ),

@@ -1,8 +1,7 @@
-
 import 'package:flutter/material.dart';
 
 Widget ticketDetailsWidget(String firstTitle, Widget firstDesc,
-    String secondTitle, Widget secondDesc) {
+    String secondTitle, Widget secondDesc, String thirdTitle, Widget thirdDesc) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -28,12 +27,12 @@ Widget ticketDetailsWidget(String firstTitle, Widget firstDesc,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              secondTitle,
+              thirdTitle,
               style: const TextStyle(color: Colors.grey),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 4.0),
-              child: secondDesc,
+              child: thirdDesc,
             )
           ],
         ),

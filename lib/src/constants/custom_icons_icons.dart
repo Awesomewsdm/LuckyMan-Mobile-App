@@ -47,5 +47,4 @@ class CustomIcons {
   static const IconData location2 = IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData locationArrow = IconData(0xf124, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData location = IconData(0xf353, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData shuttleVan = IconData(0xf5b6, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

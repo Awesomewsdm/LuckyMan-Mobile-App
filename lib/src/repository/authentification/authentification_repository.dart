@@ -1,8 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/src/common_widgets/bottom_nav/bottom_nav.dart';
-import 'package:luckyman_app/src/features/authentification/screens/sign_up/widgets/sign_up_screen.dart';
-
 import '../exceptions/sign_up_exceptions.dart';
 
 class AuthenticationRepository extends GetxController {
@@ -17,28 +15,22 @@ class AuthenticationRepository extends GetxController {
     Future.delayed(const Duration(seconds: 6));
     firebaseUser = Rx<User?>(_auth.currentUser);
     firebaseUser.bindStream(_auth.userChanges());
-    ever(firebaseUser, _setInitialScreen);
+    // ever(firebaseUser, _setInitialScreen);
     super.onReady();
   }
 
-  _setInitialScreen(User? user) {
-    user == null
-        ? Get.offAll(() => const SignUpScreen())
-        : Get.offAll(() => const Home());
-  }
+  // _setInitialScreen(User? user) {
+  //   user == null
+  //       ? Get.offAll(() => const SignUpScreen())
+  //       : Get.offAll(() => const Home());
+  // }
 
   Future<void> createUserWithEmailAndPassword(
       String email, String password) async {
     try {
       await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
-      firebaseUser.value != null
-          ? Get.offAll(
-              () => const Home(),
-            )
-          : Get.offAll(
-              () => const SignUpScreen(),
-            );
+      
     } on FirebaseAuthException catch (e) {
       final ex = SignUpWithEmailAndPasswordFailure.code(e.code);
       Get.snackbar('SORRY', ex.message);
@@ -66,6 +58,11 @@ class AuthenticationRepository extends GetxController {
         Get.snackbar('Sorry', 'You provided a wrong password.');
       }
     }
+  }
+
+  
+  Future<void> resetUserPassword (String email) async{
+    await _auth.sendPasswordResetEmail(email: email);
   }
 
   Future<void> logout() async => await _auth.signOut();

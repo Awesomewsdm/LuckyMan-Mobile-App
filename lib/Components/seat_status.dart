@@ -21,15 +21,6 @@ class SeatStatus extends StatelessWidget {
           height: 25,
           width: 25,
           decoration: BoxDecoration(
-            // boxShadow: const [
-            //   BoxShadow(
-            //     color: Colors.black26,
-            //     blurStyle: BlurStyle.outer,
-            //     offset: Offset(0, 1),
-            //     blurRadius: 2.0,
-            //     spreadRadius: 0.0,
-            //   )
-            // ],
             border: border,
             shape: BoxShape.rectangle,
             color: boxColor,

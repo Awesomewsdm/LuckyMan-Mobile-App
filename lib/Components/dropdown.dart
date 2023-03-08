@@ -18,7 +18,7 @@ class BookingDropdownMenu extends StatelessWidget {
     required this.dropdownTitle,
   }) : super(key: key);
 
-  final List<String> items;
+  final List<dynamic> items;
   final String formLabel;
   final double? buttonWidth;
   final Key? formKey;
@@ -94,10 +94,7 @@ class BookingDropdownMenu extends StatelessWidget {
                 )
                 .toList(),
             validator: validator,
-            onChanged: onChanged
-            //Do something when changing the item if you want.
-            // widget.selectedDestination = value;
-            ,
+            onChanged: onChanged,
             onSaved: onSaved,
           ),
         ],

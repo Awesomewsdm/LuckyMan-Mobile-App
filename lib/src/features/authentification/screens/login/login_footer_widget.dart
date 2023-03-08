@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:luckyman_app/src/features/authentification/screens/password_reset/password_reset.dart';
 
 import '../../../../common_widgets/form/form_footer.dart';
 import '../../../../constants/text.dart';
@@ -16,12 +17,15 @@ class LoginFooterWidget extends StatelessWidget {
       children: [
         FormFooter(
           text: tDontHaveAnAccount,
-          onTap: (() {
+          onSignUpTap: (() {
             Get.to(
               () => const SignUpScreen(),
             );
           }),
           redirectText: tSignup,
+          onForgotPasswordTap: () {
+            Get.to(() => PasswordResetScreen());
+          },
         )
       ],
     );

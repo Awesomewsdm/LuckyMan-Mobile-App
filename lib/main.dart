@@ -1,28 +1,29 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:luckyman_app/Models/utils/dynamic_links.dart';
-import 'package:luckyman_app/Screens/seat_selection_screen.dart';
-import 'Models/utils/network_status.dart';
-import 'Screens/bus_booking_screen.dart';
-import 'Screens/reservation_details_screen.dart';
-import 'Screens/home_screen.dart';
-import 'Screens/payment_page.dart';
-import 'Screens/splash_screen.dart';
+import 'package:luckyman_app/src/constants/alert.dart';
+import 'package:luckyman_app/src/features/authentification/screens/password_reset/password_reset.dart';
+import 'package:luckyman_app/src/features/core/screens/bus_booking_screen.dart';
+import 'package:luckyman_app/src/features/core/screens/home_screen.dart';
+import 'package:luckyman_app/src/features/core/screens/reservation_details_screen.dart';
+import 'package:luckyman_app/src/features/core/screens/seat_selection_screen.dart';
 import 'firebase_options.dart';
 import 'package:get/get.dart';
+import 'src/features/core/models/utils/Networking/network_status.dart';
+import 'src/features/core/models/utils/dynamic_links.dart';
+import 'src/features/core/screens/splash_screen.dart';
 import 'src/repository/authentification/authentification_repository.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp(
+  await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   ).then(
     (value) => Get.put(
       AuthenticationRepository(),
     ),
   );
-  DynamicLinkProvider().initDynamicLink();
+
   runApp(
     const MyApp(),
   );
@@ -44,42 +45,33 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
+
     super.initState();
+    
+    DynamicLinkProvider().initDynamicLinks();
+
     _networkConnectivity.initialise();
+
     _networkConnectivity.myStream.listen((source) {
       _source = source;
-
-      // 1.
       switch (_source.keys.toList()[0]) {
         case ConnectivityResult.mobile:
-          string = _source.values.toList()[0]
-              ? 'Mobile: Online'
-              : 'Mobile Data is Off';
+          string = _source.values.toList()[0] ? 'Online' : 'Offline';
           break;
         case ConnectivityResult.wifi:
-          string =
-              _source.values.toList()[0] ? 'WiFi: Online' : 'WiFi is Offline';
+          string = _source.values.toList()[0] ? 'Online' : 'Offline';
           break;
         case ConnectivityResult.none:
         default:
-          string = 'Offline';
+          alert("No connection available","Please turn on mobile data or Wifi to continue");
       }
-      // 2.
-      // setState(() {});
-      // 3.
-      Get.snackbar('', 'Your\'e $string');
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    // SystemChrome.setSystemUIOverlayStyle(
-    //   SystemUiOverlayStyle(
-    //       statusBarColor: Colors.blue,
-    //       systemNavigationBarColor: Colors.lightBlue[100]),
-    // );
-
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: const Color.fromRGBO(
           250,
@@ -91,11 +83,11 @@ class _MyAppState extends State<MyApp> {
       initialRoute: SplashScreen.id,
       routes: <String, WidgetBuilder>{
         SplashScreen.id: (context) => const SplashScreen(),
-        HomeScreen.id: (context) => const HomeScreen(),
+        HomeScreen.id: (context) => HomeScreen(),
         BusTicketScreen.id: (context) => BusTicketScreen(),
-        SeatSelectionScreen.id: (context) => const SeatSelectionScreen(),
-        PaymentPage.id: (context) => PaymentPage(),
-        BusBookingScreen.id: (context) => BusBookingScreen(),
+        SeatSelectionScreen.id: (context) => SeatSelectionScreen(),
+        BusBookingScreen.id: (context) => const BusBookingScreen(),
+        PasswordResetScreen.id: (context) => PasswordResetScreen(),
       },
     );
   }
@@ -106,3 +98,64 @@ class _MyAppState extends State<MyApp> {
     super.dispose();
   }
 }
+
+// Variant: debug
+// Config: debug
+// Store: C:\Users\aweso\.android\debug.keystore
+// Alias: AndroidDebugKey
+// MD5: A6:CA:71:F2:D4:34:09:5A:C8:A4:21:CE:40:C2:03:CD
+// SHA1: 47:A6:5F:5C:10:0A:8D:C0:81:72:0D:CB:DF:86:CF:DC:2B:4D:CF:E3
+// SHA-256: D9:C0:8C:7F:0E:C9:74:20:5B:B1:50:7B:B1:AA:61:3E:7D:6C:B8:7D:1B:74:2F:E2:99:8A:92:55:D8:36:6E:45
+// Valid until: Wednesday, December 13, 2051
+
+// routes: <String, WidgetBuilder>{
+//       '/': (BuildContext context) => MyApp(),
+//       '/helloworld': (BuildContext context) => LinkPage(),
+//     },
+
+//  String _linkMessage;
+//   bool _isCreatingLink = false;
+//   String _testString =
+//       "To test: long press link and then copy and click from a non-browser "
+//       "app. Make sure this isn't being tested on iOS simulator and iOS xcode "
+//       "is properly setup. Look at firebase_dynamic_links/README.md for more "
+//       "details.";
+
+//   @override
+//   void initState() {
+//     super.initState();
+//     initDynamicLinks(); //
+//   }
+
+  
+
+// Future<void> _createDynamicLink(bool short) async {
+//     setState(() {
+//       _isCreatingLink = true;
+//     });
+
+//     final DynamicLinkParameters parameters = DynamicLinkParameters(
+//       uriPrefix: 'http://cx4k7.app.goo.gl',
+//       link: Uri.parse('My http url'),
+//       androidParameters: AndroidParameters(
+//         packageName: 'my package id/name',
+//         minimumVersion: 0,
+//       ),
+//       dynamicLinkParametersOptions: DynamicLinkParametersOptions(
+//         shortDynamicLinkPathLength: ShortDynamicLinkPathLength.short,
+//       ),
+//     );
+
+//     Uri url;
+//     if (short) {
+//       final ShortDynamicLink shortLink = await parameters.buildShortLink();
+//       url = shortLink.shortUrl;
+//     } else {
+//       url = await parameters.buildUrl();
+//     }
+
+//     setState(() {
+//       _linkMessage = url.toString();
+//       _isCreatingLink = false;
+//     });
+//   }

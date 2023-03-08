@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:luckyman_app/Screens/booking_history_screen.dart';
-import 'package:luckyman_app/Screens/profile_screen.dart';
-
+import 'package:luckyman_app/src/features/core/screens/booking_history_screen.dart';
+import 'package:luckyman_app/src/features/core/screens/home_screen.dart';
+import 'package:luckyman_app/src/features/core/screens/profile_screen.dart';
 import '../../constants/text.dart';
-import '../../../Screens/home_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -16,10 +15,12 @@ class Home extends StatefulWidget {
 
 class _HomePageState extends State<Home> {
   List<Widget> buildScreens = [
-    const HomeScreen(),
-    const BookingHitory(),
+   HomeScreen(),
+    const BookingHistory(),
     const ProfileScreen(),
   ];
+
+  
 
   int selectedIndex = 0;
   void onItemTapped(int index) {

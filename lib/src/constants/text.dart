@@ -14,7 +14,6 @@ const String tFullName = "Full Name";
 const String tForgetPassword = "Forgot password ?";
 const String tSignInWithGoogle = "Sign-In with Google";
 
-
 // -- Bottom App Bar
 const String tHomeIconName = "Home";
 const String tHistoryIconName = "History";
@@ -55,7 +54,7 @@ const String tSignUpSubTitle = "Create your profile to start your Journey.";
 const String tAlreadyHaveAnAccount = "Already have an Account? ";
 
 // -- Forget Password Text
-const String tForgetPasswordTitle = "Make Selection!";
+const String tForgetPasswordTitle = "Forgot Your Pasword?";
 const String tForgetPasswordSubTitle =
     "Select one of the options given below to reset your password.";
 const String tResetViaEMail = "Reset via Mail Verification";
@@ -67,7 +66,7 @@ const String tForgetPhoneSubTitle =
 
 // -- Forget Password Via E-Mail - Text
 const String tForgetMailSubTitle =
-    "Enter your registered E-Mail to receive OTP";
+    "Enter your registered E-mail to receive password reset link";
 
 // -- Profile Page Info - Text
 const String tContact1 = "0544627962 - Mr. Kassim";
