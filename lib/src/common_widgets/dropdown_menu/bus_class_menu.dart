@@ -1,8 +1,7 @@
-
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:luckyman_app/src/features/core/controllers/controllers/seat_selection_controller.dart';
 import 'package:luckyman_app/src/features/core/models/utils/form_items.dart';
-import '../../features/core/controllers/controllers/seat_selection_controller.dart';
 
 class BusClassDropDownMenu extends StatelessWidget {
   const BusClassDropDownMenu({
@@ -34,8 +33,6 @@ class BusClassDropDownMenu extends StatelessWidget {
                 color: Colors.blue,
               ),
             ),
-            //Add more decoration as you want here
-            //Add label If you want but add hint outside the decoration to be aligned in the button perfectly.
           ),
           isExpanded: true,
           hint: const Text(
@@ -46,7 +43,6 @@ class BusClassDropDownMenu extends StatelessWidget {
             Icons.arrow_drop_down,
             color: Colors.black45,
           ),
-          
           iconSize: 30,
           buttonHeight: 45,
           buttonPadding: const EdgeInsets.only(left: 10, right: 10),
@@ -71,18 +67,9 @@ class BusClassDropDownMenu extends StatelessWidget {
             return null;
           },
           onChanged: (value) {
-            //Do something when changing the item if you want.
-
-            // seatSelectionController
-            //     .selectedDropdownMenuItem = value!;
-            // setState(() {
-            //   selectedValue = value!;
-            // });
             seatSelectionController.changeBusClass(value!);
           },
-          onSaved: (value) {
-            // selectedValue = value.toString();
-          },
+          onSaved: (value) {},
         ));
   }
 }

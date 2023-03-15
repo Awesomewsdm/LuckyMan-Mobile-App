@@ -6,6 +6,7 @@ import 'package:qlevar_router/qlevar_router.dart';
 import 'firebase_options.dart';
 import 'package:get/get.dart';
 import 'src/features/core/models/Routes_model/routes.dart';
+import 'src/features/core/models/Routes_model/routes2.dart';
 import 'src/features/core/models/utils/Networking/network_status.dart';
 import 'src/features/core/models/utils/dynamic_links.dart';
 import 'src/repository/authentification/authentification_repository.dart';
@@ -41,9 +42,8 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
-
     super.initState();
-    
+
     DynamicLinkProvider().initDynamicLinks();
 
     _networkConnectivity.initialise();
@@ -59,7 +59,8 @@ class _MyAppState extends State<MyApp> {
           break;
         case ConnectivityResult.none:
         default:
-          alert("No connection available","Please turn on mobile data or Wifi to continue");
+          alert("No connection available",
+              "Please turn on mobile data or Wifi to continue");
       }
     });
   }
@@ -77,7 +78,8 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
       routeInformationParser: const QRouteInformationParser(),
-        routerDelegate: QRouterDelegate(AppRoutes().routes));
+      routerDelegate: QRouterDelegate(Routes.routes, withWebBar: true),
+    );
   }
 
   @override

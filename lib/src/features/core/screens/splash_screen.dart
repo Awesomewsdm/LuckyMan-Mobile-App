@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:luckyman_app/src/common_widgets/bottom_nav/bottom_nav.dart';
+import 'package:qlevar_router/qlevar_router.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:luckyman_app/src/constants/image_strings.dart';
 import 'package:luckyman_app/src/constants/text.dart';
@@ -61,7 +61,7 @@ class _SplashScreenState extends State<SplashScreen>
         Navigator.pushReplacement(
             context,
             PageTransition(FirebaseAuth.instance.currentUser != null
-                ? const Home()
+                ? const QR.toName(Routes.userPage)
                 : const LoginScreen()));
       });
     });
@@ -119,7 +119,7 @@ class _SplashScreenState extends State<SplashScreen>
                 ),
                 child: Image.asset(tLogo),
                 // child: const Text( `-+
-                
+
                 //   'YOUR APP\'S LOGO',
                 // ),
               ),
