@@ -40,6 +40,7 @@ class Routes {
         DefferedLoader(home.loadLibrary),
       ],
     ),
+<<<<<<< HEAD
     QRoute(
       name: profilePage,
       path: '/profile',
@@ -85,5 +86,7 @@ class Routes {
         DefferedLoader(busselection.loadLibrary),
       ],
     ),
+=======
+>>>>>>> e715aff4436a97a095df92362be04ac861d380dd
   ];
 }
