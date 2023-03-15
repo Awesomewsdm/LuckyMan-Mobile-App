@@ -40,7 +40,6 @@ class Routes {
         DefferedLoader(home.loadLibrary),
       ],
     ),
-<<<<<<< HEAD
     QRoute(
       name: profilePage,
       path: '/profile',
@@ -66,6 +65,7 @@ class Routes {
       ],
     ),
     QRoute(
+      name: forgotPasswordPage,
       path: '/forgot-password',
       builder: () => forgotpassword.PasswordResetScreen(),
       middleware: [
@@ -73,6 +73,7 @@ class Routes {
       ],
     ),
     QRoute(
+      name: seatSelectionPage,
       path: '/seat-selection',
       builder: () => seatselection.SeatSelectionScreen(),
       middleware: [
@@ -80,13 +81,12 @@ class Routes {
       ],
     ),
     QRoute(
+      name: busSelectionPage,
       path: '/bus-selection',
       builder: () => busselection.BusBookingScreen(),
       middleware: [
         DefferedLoader(busselection.loadLibrary),
       ],
     ),
-=======
->>>>>>> e715aff4436a97a095df92362be04ac861d380dd
   ];
 }

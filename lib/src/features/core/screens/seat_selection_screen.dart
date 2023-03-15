@@ -475,8 +475,7 @@ class SeatSelectionScreen extends StatelessWidget {
                                         var url = Uri.parse(checkoutUrl);
 
                                         await launchUrl(url,
-                                                mode:
-                                                    LaunchMode.platformDefault)
+                                                mode: LaunchMode.inAppWebView)
                                             .whenComplete(
                                           () => buttonController
                                               .isButtonClicked.value = false,
@@ -494,6 +493,7 @@ class SeatSelectionScreen extends StatelessWidget {
                           );
                         }
                       },
+                      height: size.width * 0.15,
                     ),
                   ),
                 ],
