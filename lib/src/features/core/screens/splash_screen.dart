@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:luckyman_app/src/features/core/models/Routes_model/routes2.dart';
 import 'package:qlevar_router/qlevar_router.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:luckyman_app/src/constants/image_strings.dart';
@@ -58,11 +59,9 @@ class _SplashScreenState extends State<SplashScreen>
 
     Timer(const Duration(seconds: 4), () {
       setState(() {
-        Navigator.pushReplacement(
-            context,
-            PageTransition(FirebaseAuth.instance.currentUser != null
-                ? const QR.toName(Routes.userPage)
-                : const LoginScreen()));
+        QR.toName(FirebaseAuth.instance.currentUser != null
+            ? Routes.homePage
+            : Routes.loginPage);
       });
     });
   }

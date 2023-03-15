@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/src/common_widgets/bottom_nav/bottom_nav.dart';
+import 'package:luckyman_app/src/features/core/models/Routes_model/routes2.dart';
+import 'package:qlevar_router/qlevar_router.dart';
 import '../exceptions/sign_up_exceptions.dart';
 
 class AuthenticationRepository extends GetxController {
@@ -30,7 +32,6 @@ class AuthenticationRepository extends GetxController {
     try {
       await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
-      
     } on FirebaseAuthException catch (e) {
       final ex = SignUpWithEmailAndPasswordFailure.code(e.code);
       Get.snackbar('SORRY', ex.message);
@@ -48,9 +49,7 @@ class AuthenticationRepository extends GetxController {
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
       Get.snackbar('SUCCESS', 'You,ve been successfully logged in');
-      Get.to(
-        () => const Home(),
-      );
+      QR.toName(Routes.homePage);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         Get.snackbar('Sorry', 'No user found for that email');
@@ -60,8 +59,7 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
-  
-  Future<void> resetUserPassword (String email) async{
+  Future<void> resetUserPassword(String email) async {
     await _auth.sendPasswordResetEmail(email: email);
   }
 
