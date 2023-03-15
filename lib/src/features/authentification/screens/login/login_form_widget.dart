@@ -5,7 +5,6 @@ import 'package:luckyman_app/src/features/core/controllers/controllers/bus_booki
 import 'package:luckyman_app/src/features/core/controllers/controllers/buttons_controller.dart';
 import 'package:luckyman_app/src/features/core/controllers/controllers/login_controller.dart';
 import 'package:luckyman_app/src/features/core/models/utils/validators.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:regexed_validator/regexed_validator.dart';
 import '../../../../constants/input_decoration.dart';
 import '../../../../constants/sizes.dart';

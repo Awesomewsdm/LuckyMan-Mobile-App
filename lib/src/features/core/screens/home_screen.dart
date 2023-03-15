@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,7 +11,7 @@ import 'package:luckyman_app/src/features/core/screens/bus_booking_screen.dart';
 import 'package:luckyman_app/src/features/core/screens/reservation_details_screen.dart';
 
 class HomeScreen extends StatelessWidget {
-  HomeScreen({Key? key}) : super(key: key);
+ const HomeScreen({Key? key}) : super(key: key);
   static const String id = '/HomeScreen';
   getCurrentUserID() {
     final FirebaseAuth auth = FirebaseAuth.instance;
@@ -21,11 +20,10 @@ class HomeScreen extends StatelessWidget {
     return myUid;
   }
 
-  
-
   @override
   Widget build(BuildContext context) {
     final ProfileController profileController = Get.put(ProfileController());
+    
     return SizedBox(
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
@@ -130,7 +128,7 @@ class HomeScreen extends StatelessWidget {
                           label: 'Book Bus Ticket',
                           onTap: () {
                             Get.to(
-                              () => const BusBookingScreen(),
+                              () =>  BusBookingScreen(),
                             );
                           },
                         ),

@@ -37,7 +37,7 @@ class SeatLayoutBuilder extends StatelessWidget {
 
       children: [
         FutureBuilder(
-          future: busBookingController.getSeatList("booked-$busClass-seats"),
+          future: busBookingController.getBookingDataFromDB("booked-$busClass-seats"),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.done) {
               if (snapshot.hasData) {

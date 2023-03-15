@@ -14,9 +14,11 @@ class BusBookingController extends GetxController {
 
   final selectedDestination = ''.obs;
   final selectedBusType = ''.obs;
+  final selectedInstitution = ''.obs;
   final selectedDepatureTime = ''.obs;
   final selectedDepatureDate = ''.obs;
   final selectedPickupPoint = ''.obs;
+  final selectedSchool = ''.obs;
 
   final agentName = TextEditingController();
 
@@ -49,14 +51,6 @@ class BusBookingController extends GetxController {
         });
   }
 
-  Future<DocumentSnapshot<Map<String, dynamic>>> getSeatList(
-      String docID) async {
-    final snapshot = await _db.collection("Booking Data").doc(docID).get();
-
-    return snapshot;
-    // ...
-  }
-
   addBusBookingInfo(
       UserBookingModel userBookingModel, String userDocRef) async {
     await _userRepo.addBooking(userBookingModel, userDocRef);
@@ -82,4 +76,13 @@ class BusBookingController extends GetxController {
       SeatSelectionModel seatSelectionModel, String userDocRef) async {
     await _userRepo.addBookedSeat(seatSelectionModel, userDocRef);
   }
+
+   Future<DocumentSnapshot<Map<String, dynamic>>> getBookingDataFromDB(
+      String docID) async {
+    return await FirebaseFirestore.instance
+        .collection("Booking Data")
+        .doc(docID)
+        .get();
+  }
+
 }

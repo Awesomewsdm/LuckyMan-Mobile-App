@@ -2,16 +2,12 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:luckyman_app/src/constants/alert.dart';
-import 'package:luckyman_app/src/features/authentification/screens/password_reset/password_reset.dart';
-import 'package:luckyman_app/src/features/core/screens/bus_booking_screen.dart';
-import 'package:luckyman_app/src/features/core/screens/home_screen.dart';
-import 'package:luckyman_app/src/features/core/screens/reservation_details_screen.dart';
-import 'package:luckyman_app/src/features/core/screens/seat_selection_screen.dart';
+import 'package:qlevar_router/qlevar_router.dart';
 import 'firebase_options.dart';
 import 'package:get/get.dart';
+import 'src/features/core/models/Routes_model/routes.dart';
 import 'src/features/core/models/utils/Networking/network_status.dart';
 import 'src/features/core/models/utils/dynamic_links.dart';
-import 'src/features/core/screens/splash_screen.dart';
 import 'src/repository/authentification/authentification_repository.dart';
 
 void main() async {
@@ -70,7 +66,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return GetMaterialApp.router(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: const Color.fromRGBO(
@@ -80,16 +76,8 @@ class _MyAppState extends State<MyApp> {
           1,
         ),
       ),
-      initialRoute: SplashScreen.id,
-      routes: <String, WidgetBuilder>{
-        SplashScreen.id: (context) => const SplashScreen(),
-        HomeScreen.id: (context) => HomeScreen(),
-        BusTicketScreen.id: (context) => BusTicketScreen(),
-        SeatSelectionScreen.id: (context) => SeatSelectionScreen(),
-        BusBookingScreen.id: (context) => const BusBookingScreen(),
-        PasswordResetScreen.id: (context) => PasswordResetScreen(),
-      },
-    );
+      routeInformationParser: const QRouteInformationParser(),
+        routerDelegate: QRouterDelegate(AppRoutes().routes));
   }
 
   @override
@@ -98,6 +86,7 @@ class _MyAppState extends State<MyApp> {
     super.dispose();
   }
 }
+
 
 // Variant: debug
 // Config: debug
@@ -127,7 +116,6 @@ class _MyAppState extends State<MyApp> {
 //     initDynamicLinks(); //
 //   }
 
-  
 
 // Future<void> _createDynamicLink(bool short) async {
 //     setState(() {
@@ -159,3 +147,4 @@ class _MyAppState extends State<MyApp> {
 //       _isCreatingLink = false;
 //     });
 //   }
+

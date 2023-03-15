@@ -39,6 +39,9 @@ class SeatSelectionScreen extends StatelessWidget {
 
   final ButtonController buttonController = Get.put(ButtonController());
 
+  
+
+
   // @override
   @override
   Widget build(BuildContext context) {
@@ -127,10 +130,7 @@ class SeatSelectionScreen extends StatelessWidget {
                 ),
               ),
             ),
-          ],
-        ),
-      ),
-      bottomSheet: Container(
+             Container(
         height: size.height * 0.15,
         decoration: const BoxDecoration(
           color: tWhiteColor,
@@ -236,6 +236,7 @@ class SeatSelectionScreen extends StatelessWidget {
                   ),
                 ),
                 onPressed: () async {
+                  
                   if (seatSelectionController.isSeatSelected.value == true &&
                       seatSelectionController.selectedBusClass.value != null) {
                     SeatSelectionModel seatSelectionModel = SeatSelectionModel(
@@ -253,8 +254,12 @@ class SeatSelectionScreen extends StatelessWidget {
                                   .join(" , "),
                       price: seatSelectionController.selectedBusClass.value ==
                               busClasses[0]
-                          ? seatSelectionController.changeEconomySeatPrice().toString()
-                          : seatSelectionController.changeExecutiveSeatPrice().toString(),
+                          ? seatSelectionController
+                              .changeEconomySeatPrice()
+                              .toString()
+                          : seatSelectionController
+                              .changeExecutiveSeatPrice()
+                              .toString(),
                     );
 
                     busBookingController.addSeatListToDB(
@@ -299,7 +304,7 @@ class SeatSelectionScreen extends StatelessWidget {
 
                     var url = Uri.parse(checkoutUrl);
 
-                    await launchUrl(url, mode: LaunchMode.inAppWebView)
+                    await launchUrl(url, mode: LaunchMode.platformDefault)
                         .whenComplete(
                       () => buttonController.isButtonClicked.value = false,
                     );
@@ -313,6 +318,10 @@ class SeatSelectionScreen extends StatelessWidget {
           ],
         ),
       ),
+          ],
+        ),
+      ),
+
     );
   }
 }

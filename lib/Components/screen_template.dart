@@ -7,7 +7,6 @@ class ScreenTemplate extends StatelessWidget {
     required this.decoration,
     required this.title,
     required this.bottomTextLabel,
-    
     required this.subTitle,
   }) : super(key: key);
   final Widget child;
@@ -15,7 +14,6 @@ class ScreenTemplate extends StatelessWidget {
   final String title;
   final String subTitle;
   final String bottomTextLabel;
-  
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +36,7 @@ class ScreenTemplate extends StatelessWidget {
         width: double.infinity,
         height: size.height * 0.4,
         child: SafeArea(
-          minimum: const EdgeInsets.only(top: 50.0),
+          minimum: const EdgeInsets.only(top: 20.0),
           child: Column(
             children: <Widget>[
               Row(
@@ -75,15 +73,14 @@ class ScreenTemplate extends StatelessWidget {
         child: Container(
           height: size.height * 0.8,
           width: size.width * 0.85,
-          margin: const EdgeInsets.only(
-            top: 120.0,
+          margin: EdgeInsets.only(
+            top: size.height * 0.09,
           ),
           decoration: decoration,
           child: child,
           // todo: place booking info here
         ),
       ),
-     
     ]);
   }
 }

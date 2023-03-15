@@ -70,8 +70,8 @@ const String tForgetMailSubTitle =
 
 // -- Profile Page Info - Text
 const String tContact1 = "0544627962 - Mr. Kassim";
-const String tContact2 = "0242581363 - Smart";
-const String tContact3 = "0548504172 - Miss Gifty";
+const String tContact2 = "0548396509 - Wisdom";
+const String tContact3 = "0554809847 - Miss Grace";
 
 // -- Screen Titles - Text
 const String tBookingHistoryScreenTittle = 'Booking History';

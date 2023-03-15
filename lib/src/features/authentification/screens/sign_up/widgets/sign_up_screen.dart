@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/src/features/authentification/screens/sign_up/widgets/sign_up_footer.dart';
-
-import '../../../../../common_widgets/form/form_footer.dart';
 import '../../../../../common_widgets/form/form_header.dart';
 import '../../../../../constants/sizes.dart';
 import '../../../../../constants/text.dart';

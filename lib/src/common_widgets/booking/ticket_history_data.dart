@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,21 +5,14 @@ import 'package:luckyman_app/src/constants/custom_icons1_icons.dart';
 import 'package:luckyman_app/src/features/core/controllers/controllers/bus_booking_controllers.dart';
 import 'package:luckyman_app/src/features/core/controllers/controllers/seat_selection_controller.dart';
 import 'package:luckyman_app/src/features/core/controllers/controllers/ticket_controllers.dart';
-import 'package:luckyman_app/src/features/core/models/utils/API/api_get_payment_details.dart';
-import 'package:luckyman_app/src/features/core/models/utils/form_items.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'ticket_details_widget.dart';
 
-class TicketData extends StatefulWidget {
-  const TicketData({
+class TicketHistoryData extends StatelessWidget {
+   TicketHistoryData({
     Key? key,
   }) : super(key: key);
 
-  @override
-  State<TicketData> createState() => _TicketDataState();
-}
-
-class _TicketDataState extends State<TicketData> {
   final TicketController ticketController = Get.put(TicketController());
 
   final SeatSelectionController seatSelectionController =
@@ -30,39 +22,6 @@ class _TicketDataState extends State<TicketData> {
       Get.put(BusBookingController());
 
   final FirebaseAuth auth = FirebaseAuth.instance;
-
-  final _db = FirebaseFirestore.instance;
-
-  changeIsSeatBookedStatus() async {
-    var user = auth.currentUser!;
-    var userDocRef = user.uid;
-    await _db
-        .collection("Users")
-        .doc(userDocRef)
-        .update({"isSeatBooked": true});
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    busBookingController.addSeatListToDB(
-      seatSelectionController.selectedBusClass.value == busClasses[0]
-          ? seatSelectionController.changeEconomySeatList()
-          : seatSelectionController.changeExecutiveSeatList(),
-      busBookingController.selectedDestination.string,
-      seatSelectionController.selectedBusClass.value == busClasses[0]
-          ? "booked-economy-seats"
-          : "booked-executive-seats",
-    );
-
-    print("Hey: ${seatSelectionController.clientReference.value}");
-
-    changeIsSeatBookedStatus();
-
-    PaymentData().getPaymentDataFromWebhook(
-        seatSelectionController.clientReference.value,
-        seatSelectionController.tokenID.value);
-  }
 
   @override
   Widget build(BuildContext context) {

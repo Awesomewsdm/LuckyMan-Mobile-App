@@ -496,6 +496,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.2.4"
+  qlevar_router:
+    dependency: "direct main"
+    description:
+      name: qlevar_router
+      sha256: efa6b7047705699274003889dd753522787e7d154dbde6f2a4ffbef1fb756f8b
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.8.1"
   qr:
     dependency: transitive
     description:

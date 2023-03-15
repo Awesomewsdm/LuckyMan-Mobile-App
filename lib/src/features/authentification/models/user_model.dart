@@ -10,7 +10,7 @@ class UserModel {
   final String? studentID;
   final String? phoneNumber;
   final String? password;
-  final bool isUserBooked;
+  final bool? isUserBooked;
   final String? selectedSeatNo;
 
   UserModel({
@@ -20,7 +20,7 @@ class UserModel {
     this.studentID,
     this.phoneNumber,
     this.password,
-    required this.isUserBooked,
+     this.isUserBooked,
     this.selectedSeatNo,
   });
 

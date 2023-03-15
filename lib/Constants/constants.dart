@@ -17,7 +17,6 @@ var kBackgroundBoxDecoration = const BoxDecoration(
 );
 
 var kHomeBackgroundBoxDecoration = const BoxDecoration(
-  
   color: Color.fromARGB(253, 253, 253, 253),
   borderRadius: BorderRadius.only(
     topLeft: Radius.circular(20.0),
@@ -66,4 +65,3 @@ const kFocusedBorderColor = OutlineInputBorder(
 );
 
 double seatSize = 35.0;
-
