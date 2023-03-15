@@ -15,6 +15,5 @@ class Routes {
         DefferedLoader(home.loadLibrary),
       ],
     ),
-    
   ];
 }

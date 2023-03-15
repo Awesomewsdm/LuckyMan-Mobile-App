@@ -242,7 +242,7 @@ class SeatSelectionScreen extends StatelessWidget {
                     SeatSelectionModel seatSelectionModel = SeatSelectionModel(
                       selectedBusClass: seatSelectionController
                           .selectedBusClass.value
-                          .toString(),
+                          ,
                       selectedSeatNo:
                           seatSelectionController.selectedBusClass.value ==
                                   busClasses[0]

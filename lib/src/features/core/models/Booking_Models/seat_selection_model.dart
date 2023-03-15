@@ -2,8 +2,8 @@
 import 'dart:convert';
 
 class SeatSelectionModel {
-  final String selectedBusClass;
-  final String selectedSeatNo;
+  final String? selectedBusClass;
+  final String? selectedSeatNo;
   final String price;
   SeatSelectionModel({
     required this.selectedBusClass,
