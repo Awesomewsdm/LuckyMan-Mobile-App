@@ -16,7 +16,7 @@ import 'package:luckyman_app/src/features/core/models/Booking_Models/user_bookin
 import 'package:luckyman_app/src/features/core/models/utils/form_items.dart';
 
 class BusBookingScreen extends StatelessWidget {
-   BusBookingScreen({Key? key}) : super(key: key);
+  BusBookingScreen({Key? key}) : super(key: key);
   static const String id = '/BusBookingScreen';
 
   // String? selectedDestination;
@@ -45,7 +45,8 @@ class BusBookingScreen extends StatelessWidget {
               title: 'Bus Selection',
               subTitle: '',
               child: FutureBuilder(
-                  future: busBookingController.getBookingDataFromDB("booking-menu-items"),
+                  future: busBookingController
+                      .getBookingDataFromDB("booking-menu-items"),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.done) {
                       if (snapshot.hasData) {
@@ -220,10 +221,6 @@ class BusBookingScreen extends StatelessWidget {
 
                 String userName = userData.fullName.toString();
 
-              
-
-                
-
                 final UserBookingModel userBookingModel = UserBookingModel(
                   selectedDestination:
                       busBookingController.selectedDestination.value,
@@ -244,8 +241,8 @@ class BusBookingScreen extends StatelessWidget {
                   if (user != null) {
                     await busBookingController.addBusBookingInfo(
                         userBookingModel, user.uid);
-                    await busBookingController.updateUserBookingData(
-                        userBookingModel, user.uid);
+                    // await busBookingController.updateUserBookingData(
+                    //     userBookingModel, user.uid);
                   }
                 });
                 _formKey.currentState!.save();

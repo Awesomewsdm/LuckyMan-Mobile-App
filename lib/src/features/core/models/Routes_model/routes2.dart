@@ -22,7 +22,6 @@ class Routes {
   static String profilePage = 'Profile Page';
   static String bookingHistoryPage = 'Booking History Page';
   static String reservationPage = 'Reservation Page';
-  static String seatBookingPage = 'Seat Booking Page';
   static String seatSelectionPage = 'Seat Selection Page';
   static String busSelectionPage = 'Bus Selection Page';
   static String loginPage = 'Login Page';
