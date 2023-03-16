@@ -12,9 +12,12 @@ import 'package:luckyman_app/src/features/core/screens/profile_screen.dart'
     deferred as profile;
 import 'package:luckyman_app/src/features/core/screens/seat_selection_screen.dart'
     deferred as seatselection;
+import 'package:luckyman_app/src/features/core/screens/reservation_details_screen.dart'
+    deferred as reservationscreen;
+    import 'package:luckyman_app/src/features/core/screens/booking_history_screen.dart'
+    deferred as bookingscreen;
 import 'package:luckyman_app/src/features/core/screens/splash_screen.dart';
 import 'package:qlevar_router/qlevar_router.dart';
-
 import 'deffered_loader.dart';
 
 class Routes {
@@ -22,7 +25,6 @@ class Routes {
   static String profilePage = 'Profile Page';
   static String bookingHistoryPage = 'Booking History Page';
   static String reservationPage = 'Reservation Page';
-  static String seatBookingPage = 'Seat Booking Page';
   static String seatSelectionPage = 'Seat Selection Page';
   static String busSelectionPage = 'Bus Selection Page';
   static String loginPage = 'Login Page';
@@ -40,7 +42,6 @@ class Routes {
         DefferedLoader(home.loadLibrary),
       ],
     ),
-<<<<<<< HEAD
     QRoute(
       name: profilePage,
       path: '/profile',
@@ -66,6 +67,7 @@ class Routes {
       ],
     ),
     QRoute(
+      name: forgotPasswordPage,
       path: '/forgot-password',
       builder: () => forgotpassword.PasswordResetScreen(),
       middleware: [
@@ -73,6 +75,7 @@ class Routes {
       ],
     ),
     QRoute(
+      name: seatSelectionPage,
       path: '/seat-selection',
       builder: () => seatselection.SeatSelectionScreen(),
       middleware: [
@@ -80,13 +83,20 @@ class Routes {
       ],
     ),
     QRoute(
-      path: '/bus-selection',
-      builder: () => busselection.BusBookingScreen(),
+      name: busSelectionPage,
+      path: '/reservation-screen',
+      builder: () => reservationscreen.BusTicketScreen(),
       middleware: [
-        DefferedLoader(busselection.loadLibrary),
+        DefferedLoader(reservationscreen.loadLibrary),
       ],
     ),
-=======
->>>>>>> e715aff4436a97a095df92362be04ac861d380dd
+    QRoute(
+      name: bookingHistoryPage,
+      path: '/booking-history',
+      builder: () => bookingscreen.BookingHistory(),
+      middleware: [
+        DefferedLoader(bookingscreen.loadLibrary),
+      ],
+    ),
   ];
 }

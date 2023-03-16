@@ -9,6 +9,8 @@ import 'package:luckyman_app/src/features/core/controllers/controllers/profile_c
 import 'package:luckyman_app/src/features/core/controllers/controllers/seat_selection_controller.dart';
 import 'package:ticket_widget/ticket_widget.dart';
 
+
+
 class BusTicketScreen extends StatelessWidget {
   BusTicketScreen({Key? key}) : super(key: key);
   static const String id = '/BusTicketScreen';

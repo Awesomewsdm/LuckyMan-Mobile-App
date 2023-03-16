@@ -7,11 +7,13 @@ import 'package:luckyman_app/src/common_widgets/user_info/user_profile_image.dar
 import 'package:luckyman_app/src/constants/image_strings.dart';
 import 'package:luckyman_app/src/features/core/controllers/controllers/profile_controller.dart';
 import 'package:luckyman_app/src/features/authentification/models/user_model.dart';
+import 'package:luckyman_app/src/features/core/models/Routes_model/routes2.dart';
 import 'package:luckyman_app/src/features/core/screens/bus_booking_screen.dart';
 import 'package:luckyman_app/src/features/core/screens/reservation_details_screen.dart';
+import 'package:qlevar_router/qlevar_router.dart';
 
 class HomeScreen extends StatelessWidget {
- const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({Key? key}) : super(key: key);
   static const String id = '/HomeScreen';
   getCurrentUserID() {
     final FirebaseAuth auth = FirebaseAuth.instance;
@@ -23,7 +25,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ProfileController profileController = Get.put(ProfileController());
-    
+
     return SizedBox(
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
@@ -127,19 +129,13 @@ class HomeScreen extends StatelessWidget {
                           imageLink: tBusIcon,
                           label: 'Book Bus Ticket',
                           onTap: () {
-                            Get.to(
-                              () =>  BusBookingScreen(),
-                            );
+                            QR.toName(Routes.busSelectionPage);
                           },
                         ),
                         HomeWidget(
                           imageLink: tTourIcon,
                           label: 'Go On Tour',
-                          onTap: () {
-                            Get.to(
-                              () => BusTicketScreen(),
-                            );
-                          },
+                          onTap: () {QR.toName(Routes.seatSelectionPage);},
                         ),
                         HomeWidget(
                           imageLink: tLuggagesIcon,
