@@ -14,7 +14,7 @@ import 'package:luckyman_app/src/features/core/screens/seat_selection_screen.dar
     deferred as seatselection;
 import 'package:luckyman_app/src/features/core/screens/reservation_details_screen.dart'
     deferred as reservationscreen;
-    import 'package:luckyman_app/src/features/core/screens/booking_history_screen.dart'
+import 'package:luckyman_app/src/features/core/screens/booking_history_screen.dart'
     deferred as bookingscreen;
 import 'package:luckyman_app/src/features/core/screens/splash_screen.dart';
 import 'package:qlevar_router/qlevar_router.dart';
