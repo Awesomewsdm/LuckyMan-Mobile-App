@@ -17,6 +17,7 @@ import 'package:luckyman_app/src/features/core/models/utils/form_items.dart';
 
 class BusBookingScreen extends StatelessWidget {
   BusBookingScreen({Key? key}) : super(key: key);
+  BusBookingScreen({Key? key}) : super(key: key);
   static const String id = '/BusBookingScreen';
 
   // String? selectedDestination;

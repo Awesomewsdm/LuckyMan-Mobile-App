@@ -8,6 +8,8 @@ import 'package:luckyman_app/src/features/core/controllers/controllers/bus_booki
 import 'package:luckyman_app/src/features/core/controllers/controllers/profile_controller.dart';
 import 'package:luckyman_app/src/features/core/controllers/controllers/seat_selection_controller.dart';
 import 'package:ticket_widget/ticket_widget.dart';
+import 'package:pdf/pdf.dart';
+import 'package:pdf/widgets.dart' as pw;
 
 
 
