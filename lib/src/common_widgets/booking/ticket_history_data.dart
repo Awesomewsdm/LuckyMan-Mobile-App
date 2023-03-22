@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -5,14 +6,20 @@ import 'package:luckyman_app/src/constants/custom_icons1_icons.dart';
 import 'package:luckyman_app/src/features/core/controllers/controllers/bus_booking_controllers.dart';
 import 'package:luckyman_app/src/features/core/controllers/controllers/seat_selection_controller.dart';
 import 'package:luckyman_app/src/features/core/controllers/controllers/ticket_controllers.dart';
+import 'package:luckyman_app/src/features/core/models/utils/API/api_get_payment_details.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'ticket_details_widget.dart';
 
-class TicketHistoryData extends StatelessWidget {
-   TicketHistoryData({
+class TicketHistoryData extends StatefulWidget {
+  const TicketHistoryData({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<TicketHistoryData> createState() => _TicketHistoryDataState();
+}
+
+class _TicketHistoryDataState extends State<TicketHistoryData> {
   final TicketController ticketController = Get.put(TicketController());
 
   final SeatSelectionController seatSelectionController =
@@ -22,6 +29,29 @@ class TicketHistoryData extends StatelessWidget {
       Get.put(BusBookingController());
 
   final FirebaseAuth auth = FirebaseAuth.instance;
+  final FirebaseFirestore _db = FirebaseFirestore.instance;
+
+  changeIsSeatBookedStatus() async {
+    var user = auth.currentUser!;
+    var userDocRef = user.uid;
+    await _db
+        .collection("Users")
+        .doc(userDocRef)
+        .update({"isSeatBooked": true});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    print("Hey: ${seatSelectionController.clientReference.value}");
+
+    changeIsSeatBookedStatus();
+
+    PaymentData().getPaymentDataFromWebhook(
+        seatSelectionController.clientReference.value,
+        seatSelectionController.tokenID.value);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +79,7 @@ class TicketHistoryData extends StatelessWidget {
               String selectedSeatList = userBookingData["selectedSeatNo"];
               String selectedPickupPoint =
                   userBookingData["selectedPickupPoint"];
+              String userName = userBookingData['userName'];
 
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -146,7 +177,7 @@ class TicketHistoryData extends StatelessWidget {
                         width: 180.0,
                         height: 180.0,
                         child: QrImage(
-                          data: '',
+                          data: "Success: $userName",
                           size: 80,
                         ),
                       ),
@@ -161,7 +192,7 @@ class TicketHistoryData extends StatelessWidget {
                 ),
               );
             } else {
-              return const Text("Somthing went wrong");
+              return const Text("Something went wrong");
             }
           } else {
             return const Center(

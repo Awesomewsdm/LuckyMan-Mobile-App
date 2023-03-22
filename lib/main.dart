@@ -37,7 +37,7 @@ class _MyAppState extends State<MyApp> {
   Map _source = {ConnectivityResult.none: false};
 
   final NetworkConnectivity _networkConnectivity = NetworkConnectivity.instance;
-
+  
   String string = '';
 
   @override
@@ -79,6 +79,16 @@ class _MyAppState extends State<MyApp> {
       ),
       routeInformationParser: const QRouteInformationParser(),
       routerDelegate: QRouterDelegate(Routes.routes, initPath: "/"),
+      // initialRoute: SplashScreen.id,
+      // routes: <String, WidgetBuilder>{
+      //   SplashScreen.id: (context) => const SplashScreen(),
+      //   HomeScreen.id: (context) =>const HomeScreen(),
+      //   BusTicketScreen.id: (context) => BusTicketScreen(),
+      //   SeatSelectionScreen.id: (context) => SeatSelectionScreen(),
+      //   // PaymentPage.id: (context) => PaymentPage(),
+      //   BusBookingScreen.id: (context) =>  BusBookingScreen(),
+      //   PasswordResetScreen.id: (context) => PasswordResetScreen(),
+      // },
     );
   }
 

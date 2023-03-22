@@ -90,6 +90,7 @@ class _TicketDataState extends State<TicketData> {
               String selectedSeatList = userBookingData["selectedSeatNo"];
               String selectedPickupPoint =
                   userBookingData["selectedPickupPoint"];
+              String userName = userBookingData['userName'];
 
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -187,7 +188,7 @@ class _TicketDataState extends State<TicketData> {
                         width: 180.0,
                         height: 180.0,
                         child: QrImage(
-                          data: '',
+                          data: "Success: $userName",
                           size: 80,
                         ),
                       ),

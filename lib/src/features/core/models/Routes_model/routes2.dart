@@ -83,11 +83,18 @@ class Routes {
       ],
     ),
     QRoute(
-      name: busSelectionPage,
+      name: reservationPage,
       path: '/reservation-screen',
       builder: () => reservationscreen.BusTicketScreen(),
       middleware: [
         DefferedLoader(reservationscreen.loadLibrary),
+      ],
+    ),QRoute(
+      name: busSelectionPage,
+      path: '/bus-selection',
+      builder: () => busselection.BusBookingScreen(),
+      middleware: [
+        DefferedLoader(busselection.loadLibrary),
       ],
     ),
     QRoute(

@@ -33,6 +33,10 @@ dependencies:
   upgrader: ^6.0.1
   qlevar_router: ^1.8.1
   url_launcher: ^6.1.9
+  barcode: ^2.1.0
+  qr: ^2.1.0
+  pdf: ^1.3.13
+  path_provider: ^2.0.13
   
 
   ## --FIREBASE AND FIRESTORE AUTH PACKAGES
@@ -41,7 +45,7 @@ dependencies:
   firebase_core: ^2.4.0
   firebase_dynamic_links: ^5.0.12
   url_strategy: ^0.2.0
-  pdf: ^1.3.13
+ 
   
   
   

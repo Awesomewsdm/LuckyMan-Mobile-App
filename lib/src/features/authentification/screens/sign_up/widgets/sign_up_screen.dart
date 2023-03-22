@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/src/features/authentification/screens/sign_up/widgets/sign_up_footer.dart';
+import 'package:luckyman_app/src/features/core/models/Routes_model/routes2.dart';
+import 'package:qlevar_router/qlevar_router.dart';
 import '../../../../../common_widgets/form/form_header.dart';
 import '../../../../../constants/sizes.dart';
 import '../../../../../constants/text.dart';
@@ -28,9 +30,7 @@ class SignUpScreen extends StatelessWidget {
                 text: tAlreadyHaveAnAccount,
                 redirectText: tLogin,
                 onSignUpTap: () {
-                  Get.to(
-                    () => const LoginScreen(),
-                  );
+                 QR.toName(Routes.loginPage);
                 },
               ),
             ],

@@ -39,6 +39,9 @@ class SeatSelectionScreen extends StatelessWidget {
 
   final ButtonController buttonController = Get.put(ButtonController());
 
+  
+
+
   // @override
   @override
   Widget build(BuildContext context) {
@@ -48,302 +51,275 @@ class SeatSelectionScreen extends StatelessWidget {
       appBar: getPrimaryAppBar(tSeatSelectionScreenTitle),
       backgroundColor: backgroundColor5,
       body: SafeArea(
-        child: SingleChildScrollView
-        (
-          child: SizedBox(
-            height: size.height,
-            width: size.width,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            const SizedBox(
+              height: 10.0,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                const SizedBox(
-                  height: 10.0,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    SeatStatus(
-                      boxColor: emptySeatColor,
-                      iconLabel: 'Available',
-                      border: Border.all(
-                        color: selectedSeatColor,
-                      ),
-                    ),
-                    SeatStatus(
-                      iconLabel: 'Selected',
-                      boxColor: selectedSeatColor,
-                    ),
-                    SeatStatus(
-                      boxColor: bookedSeatColor,
-                      iconLabel: 'Booked',
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 2.0,
-                ),
-                BusClassDropDownMenu(
-                  size: size,
-                  seatSelectionController: seatSelectionController,
-                ),
-                const SizedBox(
-                  height: 10.0,
-                ),
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: Obx(
-                      () => Container(
-                        height: size.height,
-                        width: size.width - 50,
-                        decoration: kBackgroundBoxDecoration,
-                        child: seatSelectionController.selectedBusClass.value ==
-                                null
-                            ? Container(
-                                width: 120.0,
-                                height: 25.0,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(30.0),
-                                  border: Border.all(
-                                      width: 1.0, color: Colors.redAccent),
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: const [
-                                    Icon(
-                                      FontAwesomeIcons.triangleExclamation,
-                                      color: Colors.red,
-                                    ),
-                                    SizedBox(
-                                      width: 10.0,
-                                    ),
-                                    Text(
-                                      'Please select a bus class to continue',
-                                      style: TextStyle(color: Colors.red),
-                                    ),
-                                  ],
-                                ),
-                              )
-                            : seatSelectionController.selectedBusClass.value ==
-                                    busClasses[0]
-                                ? seatSelectionController
-                                    .changeEconomySeatsLayout()
-                                : seatSelectionController
-                                    .changeExecutiveSeatsLayout(),
-                      ),
-                    ),
+                SeatStatus(
+                  boxColor: emptySeatColor,
+                  iconLabel: 'Available',
+                  border: Border.all(
+                    color: selectedSeatColor,
                   ),
                 ),
-                Container(
-                  height: size.height * 0.15,
-                  decoration: const BoxDecoration(
-                    color: tWhiteColor,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(30.0),
-                      topRight: Radius.circular(30.0),
-                    ),
-                  ),
-                  alignment: Alignment.bottomCenter,
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 20.0, vertical: 10.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Obx(
-                              () => Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: const [
-                                      Icon(CustomIcons.airlineSeatReclineExtra,
-                                          size: 25.0, color: tBlueColor),
-                                      SizedBox(
-                                        width: 6.0,
-                                      ),
-                                      AshTextWidget(text: 'Selected Seat'),
-                                    ],
-                                  ),
-                                  if (seatSelectionController
-                                          .selectedBusClass.value ==
-                                      busClasses[0])
-                                    Text(
-                                      seatSelectionController
-                                          .changeEconomySeatList()
-                                          .join(" , "),
-                                      style: TextStyle(
-                                        color: selectedSeatColor,
-                                        fontSize: 18.0,
-                                        fontWeight: FontWeight.w900,
-                                      ),
-                                    )
-                                  else
-                                    Text(
-                                      seatSelectionController
-                                          .changeExecutiveSeatList()
-                                          .join(" , "),
-                                      style: TextStyle(
-                                        color: selectedSeatColor,
-                                        fontSize: 18.0,
-                                        fontWeight: FontWeight.w900,
-                                      ),
-                                    ),
-                                ],
-                              ),
-                            ),
-                            Obx(
-                              () => Column(
-                                children: [
-                                  Row(
-                                    children: const [
-                                      Icon(FontAwesomeIcons.moneyBill,
-                                          size: 18.0, color: tBlueColor),
-                                      SizedBox(
-                                        width: 10.0,
-                                      ),
-                                      AshTextWidget(text: 'Total Price'),
-                                    ],
-                                  ),
-                                  seatSelectionController
-                                              .selectedBusClass.value ==
-                                          busClasses[0]
-                                      ? Text(
-                                          'GH¢${seatSelectionController.changeEconomySeatPrice()}',
-                                          style: TextStyle(
-                                            color: selectedSeatColor,
-                                            fontSize: 18.0,
-                                            fontWeight: FontWeight.w900,
-                                          ),
-                                        )
-                                      : Text(
-                                          'GH¢${seatSelectionController.changeExecutiveSeatPrice()}',
-                                          style: TextStyle(
-                                            color: selectedSeatColor,
-                                            fontSize: 18.0,
-                                            fontWeight: FontWeight.w900,
-                                          ),
-                                        ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        child: BottomButton(
-                          bottomTextLabel: 'PROCEED TO PAYMENT',
-                          loadingIcon: Obx(
-                            () => SizedBox(
-                              child:
-                                  buttonController.isButtonClicked.value == true
-                                      ? const CircularProgressIndicator(
-                                          color: tWhiteColor)
-                                      : const Text(""),
-                            ),
-                          ),
-                          onPressed: () async {
-                            if (seatSelectionController.isSeatSelected.value ==
-                                    true &&
-                                seatSelectionController
-                                        .selectedBusClass.value !=
-                                    null) {
-                              SeatSelectionModel seatSelectionModel =
-                                  SeatSelectionModel(
-                                selectedBusClass: seatSelectionController
-                                    .selectedBusClass.value,
-                                selectedSeatNo: seatSelectionController
-                                            .selectedBusClass.value ==
-                                        busClasses[0]
-                                    ? seatSelectionController
-                                        .changeEconomySeatList()
-                                        .join(" , ")
-                                    : seatSelectionController
-                                        .changeExecutiveSeatList()
-                                        .join(" , "),
-                                price: seatSelectionController
-                                            .selectedBusClass.value ==
-                                        busClasses[0]
-                                    ? seatSelectionController
-                                        .changeEconomySeatPrice()
-                                        .toString()
-                                    : seatSelectionController
-                                        .changeExecutiveSeatPrice()
-                                        .toString(),
-                              );
-
-                              busBookingController.addSeatListToDB(
-                                seatSelectionController
-                                            .selectedBusClass.value ==
-                                        busClasses[0]
-                                    ? seatSelectionController
-                                        .changeEconomySeatList()
-                                    : seatSelectionController
-                                        .changeExecutiveSeatList(),
-                                busBookingController.selectedDestination.string,
-                                seatSelectionController
-                                            .selectedBusClass.value ==
-                                        busClasses[0]
-                                    ? "booked-economy-seats"
-                                    : "booked-executive-seats",
-                              );
-
-                              FirebaseAuth.instance
-                                  .authStateChanges()
-                                  .listen((User? user) {
-                                if (user != null) {
-                                  busBookingController.addSeatSelectionInfo(
-                                      seatSelectionModel, user.uid);
-                                  busBookingController
-                                      .updateUserSeatSelectionData(
-                                          seatSelectionModel, user.uid);
-                                }
-                              });
-                              buttonController.isButtonClicked.value = true;
-                              String returnUrl = await DynamicLinkProvider()
-                                  .createDynamicLink();
-                              print(returnUrl);
-
-                              String tokenID =
-                                  await WebhookToken().createWebhookToken();
-
-                              seatSelectionController.tokenID.value = tokenID;
-
-                              var checkoutUrl =
-                                  await APIResponseData().getResponseData(
-                                seatSelectionController
-                                            .selectedBusClass.value ==
-                                        busClasses[0]
-                                    ? seatSelectionController
-                                        .changeEconomySeatPrice()
-                                    : seatSelectionController
-                                        .changeExecutiveSeatPrice(),
-                                returnUrl,
-                                tokenID,
-                              );
-
-                              var url = Uri.parse(checkoutUrl);
-
-                              await launchUrl(url,
-                                      mode: LaunchMode.platformDefault)
-                                  .whenComplete(
-                                () => buttonController.isButtonClicked.value =
-                                    false,
-                              );
-                            } else {
-                              alert("Hey",
-                                  "Select atleast one seat to continue!");
-                            }
-                          },
-                          height: size.width * 0.15,
-                        ),
-                      ),
-                    ],
-                  ),
+                SeatStatus(
+                  iconLabel: 'Selected',
+                  boxColor: selectedSeatColor,
+                ),
+                SeatStatus(
+                  boxColor: bookedSeatColor,
+                  iconLabel: 'Booked',
                 ),
               ],
             ),
+            const SizedBox(
+              height: 2.0,
+            ),
+            BusClassDropDownMenu(
+              size: size,
+              seatSelectionController: seatSelectionController,
+            ),
+            const SizedBox(
+              height: 10.0,
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Obx(
+                  () => Container(
+                    height: size.height,
+                    width: size.width - 50,
+                    decoration: kBackgroundBoxDecoration,
+                    child: seatSelectionController.selectedBusClass.value ==
+                            null
+                        ? Container(
+                            width: 120.0,
+                            height: 25.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30.0),
+                              border: Border.all(
+                                  width: 1.0, color: Colors.redAccent),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const [
+                                Icon(
+                                  FontAwesomeIcons.triangleExclamation,
+                                  color: Colors.red,
+                                ),
+                                SizedBox(
+                                  width: 10.0,
+                                ),
+                                Text(
+                                  'Please select a bus class to continue',
+                                  style: TextStyle(color: Colors.red),
+                                ),
+                              ],
+                            ),
+                          )
+                        : seatSelectionController.selectedBusClass.value ==
+                                busClasses[0]
+                            ? seatSelectionController.changeEconomySeatsLayout()
+                            : seatSelectionController
+                                .changeExecutiveSeatsLayout(),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      bottomSheet: Container(
+        height: size.height * 0.15,
+        decoration: const BoxDecoration(
+          color: tWhiteColor,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30.0),
+            topRight: Radius.circular(30.0),
           ),
+        ),
+        alignment: Alignment.bottomCenter,
+        child: Column(
+          children: [
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Obx(
+                    () => Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: const [
+                            Icon(CustomIcons.airlineSeatReclineExtra,
+                                size: 25.0, color: tBlueColor),
+                            SizedBox(
+                              width: 6.0,
+                            ),
+                            AshTextWidget(text: 'Selected Seat'),
+                          ],
+                        ),
+                        if (seatSelectionController.selectedBusClass.value ==
+                            busClasses[0])
+                          Text(
+                            seatSelectionController
+                                .changeEconomySeatList()
+                                .join(" , "),
+                            style: TextStyle(
+                              color: selectedSeatColor,
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.w900,
+                            ),
+                          )
+                        else
+                          Text(
+                            seatSelectionController
+                                .changeExecutiveSeatList()
+                                .join(" , "),
+                            style: TextStyle(
+                              color: selectedSeatColor,
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.w900,
+                            ),
+                          ),
+                      ],
+                    ),
+                  ),
+                  Obx(
+                    () => Column(
+                      children: [
+                        Row(
+                          children: const [
+                            Icon(FontAwesomeIcons.moneyBill,
+                                size: 18.0, color: tBlueColor),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            AshTextWidget(text: 'Total Price'),
+                          ],
+                        ),
+                        seatSelectionController.selectedBusClass.value ==
+                                busClasses[0]
+                            ? Text(
+                                'GH¢${seatSelectionController.changeEconomySeatPrice()}',
+                                style: TextStyle(
+                                  color: selectedSeatColor,
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                              )
+                            : Text(
+                                'GH¢${seatSelectionController.changeExecutiveSeatPrice()}',
+                                style: TextStyle(
+                                  color: selectedSeatColor,
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                              ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: BottomButton(
+                bottomTextLabel: 'PROCEED TO PAYMENT',
+                loadingIcon: Obx(
+                  () => SizedBox(
+                    child: buttonController.isButtonClicked.value == true
+                        ? const CircularProgressIndicator(color: tWhiteColor)
+                        : const Text(""),
+                  ),
+                ),
+                onPressed: () async {
+                  print(busBookingController.selectedDestination.value);
+                  
+                  if (seatSelectionController.isSeatSelected.value == true &&
+                      seatSelectionController.selectedBusClass.value != null) {
+                    SeatSelectionModel seatSelectionModel = SeatSelectionModel(
+                      selectedBusClass: seatSelectionController
+                          .selectedBusClass.value
+                          .toString(),
+                      selectedSeatNo:
+                          seatSelectionController.selectedBusClass.value ==
+                                  busClasses[0]
+                              ? seatSelectionController
+                                  .changeEconomySeatList()
+                                  .join(" , ")
+                              : seatSelectionController
+                                  .changeExecutiveSeatList()
+                                  .join(" , "),
+                      price: seatSelectionController.selectedBusClass.value ==
+                              busClasses[0]
+                          ? seatSelectionController
+                              .changeEconomySeatPrice()
+                              .toString()
+                          : seatSelectionController
+                              .changeExecutiveSeatPrice()
+                              .toString(),
+                    );
+
+                    busBookingController.addSeatListToDB(
+                      seatSelectionController.selectedBusClass.value ==
+                              busClasses[0]
+                          ? seatSelectionController.changeEconomySeatList()
+                          : seatSelectionController.changeExecutiveSeatList(),
+                      busBookingController.selectedDestination.string,
+                      seatSelectionController.selectedBusClass.value ==
+                              busClasses[0]
+                          ? "booked-economy-seats"
+                          : "booked-executive-seats",
+                    );
+
+                    FirebaseAuth.instance
+                        .authStateChanges()
+                        .listen((User? user) {
+                      if (user != null) {
+                        busBookingController.addSeatSelectionInfo(
+                            seatSelectionModel, user.uid);
+                        busBookingController.updateUserSeatSelectionData(
+                            seatSelectionModel, user.uid);
+                      }
+                    });
+                    buttonController.isButtonClicked.value = true;
+                    String returnUrl =
+                        await DynamicLinkProvider().createDynamicLink();
+                    print(returnUrl);
+
+                    String tokenID = await WebhookToken().createWebhookToken();
+
+                    seatSelectionController.tokenID.value = tokenID;
+
+                    var checkoutUrl = await APIResponseData().getResponseData(
+                      seatSelectionController.selectedBusClass.value ==
+                              busClasses[0]
+                          ? seatSelectionController.changeEconomySeatPrice()
+                          : seatSelectionController.changeExecutiveSeatPrice(),
+                      returnUrl,
+                      tokenID,
+                    );
+
+                    var url = Uri.parse(checkoutUrl);
+
+                    await launchUrl(url, mode: LaunchMode.platformDefault)
+                        .whenComplete(
+                      () => buttonController.isButtonClicked.value = false,
+                    );
+                  } else {
+                    alert("Hey", "Select atleast one seat to continue!");
+                  }
+                },
+                height: size.width * 0.15,
+              ),
+            ),
+          ],
         ),
       ),
     );

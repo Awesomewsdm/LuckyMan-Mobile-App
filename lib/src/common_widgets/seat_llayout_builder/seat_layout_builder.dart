@@ -100,7 +100,7 @@ class SeatLayoutBuilder extends StatelessWidget {
                                               unitSeatPrice.value =
                                                   unitSeatPrice.value - price;
 
-                                              seats.remove(seatNo);
+                                              seats.remove(seatNo);      
 
                                               if (seats.isEmpty) {
                                                 seatSelectionController

@@ -104,6 +104,9 @@ class SeatSelectionController extends GetxController {
   String selectedDestination =
       BusBookingController.instance.selectedDestination.toString();
 
+String selectedBusType =
+       BusBookingController.instance.selectedBusType.toString();
+
   double changeEconomySeatPrice() {
     if (selectedDestination == 'Accra') {
       return pAccraEconomySeatPrice.value;
