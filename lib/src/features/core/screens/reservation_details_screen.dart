@@ -4,9 +4,9 @@ import 'package:luckyman_app/src/common_widgets/app_bar/primary_app_bar.dart';
 import 'package:luckyman_app/src/common_widgets/booking/ticket_data_widget.dart';
 import 'package:luckyman_app/src/constants/text.dart';
 import 'package:luckyman_app/src/features/authentification/models/user_model.dart';
-import 'package:luckyman_app/src/features/core/controllers/controllers/bus_booking_controllers.dart';
-import 'package:luckyman_app/src/features/core/controllers/controllers/profile_controller.dart';
-import 'package:luckyman_app/src/features/core/controllers/controllers/seat_selection_controller.dart';
+import 'package:luckyman_app/src/features/core/controllers/bus_booking_controllers.dart';
+import 'package:luckyman_app/src/features/core/controllers/profile_controller.dart';
+import 'package:luckyman_app/src/features/core/controllers/seat_selection_controller.dart';
 import 'package:ticket_widget/ticket_widget.dart';
 
 class BusTicketScreen extends StatelessWidget {
@@ -61,10 +61,29 @@ class BusTicketScreen extends StatelessWidget {
               },
             ),
           ),
-          // BottomSheet(onClosing: onClosing, builder: builder)
-
         ],
       ),
+//       bottomSheet: BottomSheet(
+//         onClosing: () {},
+//         builder: (context) => Container(
+//           width: double.infinity,
+//           height: MediaQuery.of(context).size.height * 0.25,
+//           child: BottomButton(
+//               onPressed: () {
+//                 final pdf = pw.Document();
+// pdf.addPage(pw.Page(
+//       pageFormat: PdfPageFormat.a4,
+//       build: (pw.Context context) {
+//         return pw.Center(
+//           child: pw.TicketData(),
+
+//         ); // Center
+//       })); // Page
+//               },
+//               bottomTextLabel: 'Download Ticket',
+//               height: MediaQuery.of(context).size.width * 0.15),
+//         ),
+//       ),
     );
   }
 }

@@ -1,6 +1,6 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-import 'package:luckyman_app/src/features/core/controllers/controllers/seat_selection_controller.dart';
+import 'package:luckyman_app/src/features/core/controllers/seat_selection_controller.dart';
 import 'package:luckyman_app/src/features/core/models/utils/form_items.dart';
 
 class BusClassDropDownMenu extends StatelessWidget {

@@ -30,7 +30,8 @@ class SignUpScreen extends StatelessWidget {
                 text: tAlreadyHaveAnAccount,
                 redirectText: tLogin,
                 onSignUpTap: () {
-                 QR.toName(Routes.loginPage);
+                  //  QR.toName(Routes.loginPage);
+                  Get.to(() => const LoginScreen());
                 },
               ),
             ],

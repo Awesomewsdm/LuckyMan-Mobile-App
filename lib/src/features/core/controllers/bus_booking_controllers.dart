@@ -2,12 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/src/features/core/models/Booking_Models/seat_selection_model.dart';
-import 'package:luckyman_app/src/features/core/models/Routes_model/routes2.dart';
 import 'package:luckyman_app/src/features/core/screens/seat_selection_screen.dart';
 import 'package:luckyman_app/src/repository/authentification/user_repository.dart';
-import 'package:qlevar_router/qlevar_router.dart';
 
-import '../../models/Booking_Models/user_booking_model.dart';
+import '../models/Booking_Models/user_booking_model.dart';
 
 class BusBookingController extends GetxController {
   static BusBookingController get instance => Get.find();
@@ -21,6 +19,7 @@ class BusBookingController extends GetxController {
   final selectedDepatureDate = ''.obs;
   final selectedPickupPoint = ''.obs;
   final selectedSchool = ''.obs;
+  final selectedAgentName = "".obs;
 
   final agentName = TextEditingController();
 
@@ -56,7 +55,8 @@ class BusBookingController extends GetxController {
   addBusBookingInfo(
       UserBookingModel userBookingModel, String userDocRef) async {
     await _userRepo.addBooking(userBookingModel, userDocRef);
-    QR.toName(Routes.seatSelectionPage);
+    // QR.toName(Routes.seatSelectionPage);
+    Get.to(() => SeatSelectionScreen());
   }
 
   updateUserBookingData(

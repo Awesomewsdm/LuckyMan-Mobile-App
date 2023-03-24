@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:luckyman_app/Constants/constants.dart';
 import 'package:luckyman_app/src/constants/colors.dart';
-import 'package:luckyman_app/src/features/core/controllers/controllers/bus_booking_controllers.dart';
-import 'package:luckyman_app/src/features/core/controllers/controllers/seat_selection_controller.dart';
+import 'package:luckyman_app/src/features/core/controllers/bus_booking_controllers.dart';
+import 'package:luckyman_app/src/features/core/controllers/seat_selection_controller.dart';
 import 'package:luckyman_app/src/features/core/models/Booking_Models/bus_seat_prices.dart';
 import 'package:luckyman_app/src/features/core/models/Booking_Models/seat_layout_mode.dart';
 

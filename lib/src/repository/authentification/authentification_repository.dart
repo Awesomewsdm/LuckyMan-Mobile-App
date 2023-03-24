@@ -49,7 +49,8 @@ class AuthenticationRepository extends GetxController {
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
       Get.snackbar('SUCCESS', 'You,ve been successfully logged in');
-      QR.toName(Routes.homePage);
+      Get.to(() =>const  Home());
+      // QR.toName(Routes.homePage);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         Get.snackbar('Sorry', 'No user found for that email');

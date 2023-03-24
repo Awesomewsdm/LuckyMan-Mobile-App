@@ -5,7 +5,7 @@ import 'package:luckyman_app/src/common_widgets/form/form_header.dart';
 import 'package:luckyman_app/src/constants/input_decoration.dart';
 import 'package:luckyman_app/src/constants/sizes.dart';
 import 'package:luckyman_app/src/constants/text.dart';
-import 'package:luckyman_app/src/features/core/controllers/controllers/sign_up_controller.dart';
+import 'package:luckyman_app/src/features/authentification/controllers/sign_up_controller.dart';
 import 'package:luckyman_app/src/repository/authentification/authentification_repository.dart';
 import 'package:regexed_validator/regexed_validator.dart';
 

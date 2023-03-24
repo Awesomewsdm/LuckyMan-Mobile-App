@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:luckyman_app/src/features/core/controllers/controllers/seat_selection_controller.dart';
+import 'package:luckyman_app/src/features/core/controllers/seat_selection_controller.dart';
 import 'package:luckyman_app/src/features/core/models/Booking_Models/seat_layout_mode.dart';
 
 final SeatSelectionController seatSelectionController =

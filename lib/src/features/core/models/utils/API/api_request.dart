@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:math';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:luckyman_app/src/features/core/controllers/controllers/seat_selection_controller.dart';
+import 'package:luckyman_app/src/features/core/controllers/seat_selection_controller.dart';
 
 final SeatSelectionController seatSelectionController =
     Get.put(SeatSelectionController());

@@ -19,7 +19,6 @@ class SignUpFormFooter extends StatelessWidget {
       alignment: Alignment.bottomCenter,
       child: Column(
         children: [
-         
           const SizedBox(
             height: 20.0,
           ),

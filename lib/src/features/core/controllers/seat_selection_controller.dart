@@ -10,16 +10,16 @@ import 'package:luckyman_app/src/common_widgets/destination_seats_layouts/econom
 import 'package:luckyman_app/src/common_widgets/destination_seats_layouts/economy__seats_layout/takoradi_seats_layout.dart';
 import 'package:luckyman_app/src/common_widgets/destination_seats_layouts/economy__seats_layout/tema_seats_layout.dart';
 import 'package:luckyman_app/src/common_widgets/destination_seats_layouts/executive_seats_layout/madina_seat_layout.dart';
-import 'package:luckyman_app/src/features/core/controllers/controllers/bus_booking_controllers.dart';
+import 'package:luckyman_app/src/features/core/controllers/bus_booking_controllers.dart';
 import 'package:luckyman_app/src/features/core/models/utils/Bus%20Seat%20Layout/economy_seats.dart';
 import 'package:luckyman_app/src/features/core/models/utils/Bus%20Seat%20Layout/executive_seat_layout_model.dart';
-import '../../../../common_widgets/destination_seats_layouts/executive_seats_layout/accra_seats_layout.dart';
-import '../../../../common_widgets/destination_seats_layouts/executive_seats_layout/cape_coast_seats_layout.dart';
-import '../../../../common_widgets/destination_seats_layouts/executive_seats_layout/kasoa_seats_layout.dart';
-import '../../../../common_widgets/destination_seats_layouts/executive_seats_layout/koforidua_seats_layout.dart';
-import '../../../../common_widgets/destination_seats_layouts/executive_seats_layout/sunyani_seats_layout.dart';
-import '../../../../common_widgets/destination_seats_layouts/executive_seats_layout/takoradi_seats_layout.dart';
-import '../../../../common_widgets/destination_seats_layouts/executive_seats_layout/tema_seats_layout.dart';
+import '../../../common_widgets/destination_seats_layouts/executive_seats_layout/accra_seats_layout.dart';
+import '../../../common_widgets/destination_seats_layouts/executive_seats_layout/cape_coast_seats_layout.dart';
+import '../../../common_widgets/destination_seats_layouts/executive_seats_layout/kasoa_seats_layout.dart';
+import '../../../common_widgets/destination_seats_layouts/executive_seats_layout/koforidua_seats_layout.dart';
+import '../../../common_widgets/destination_seats_layouts/executive_seats_layout/sunyani_seats_layout.dart';
+import '../../../common_widgets/destination_seats_layouts/executive_seats_layout/takoradi_seats_layout.dart';
+import '../../../common_widgets/destination_seats_layouts/executive_seats_layout/tema_seats_layout.dart';
 
 class SeatSelectionController extends GetxController {
   static SeatSelectionController get instance => Get.find();

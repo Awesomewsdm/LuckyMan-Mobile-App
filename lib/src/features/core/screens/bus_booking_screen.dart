@@ -9,10 +9,10 @@ import 'package:luckyman_app/Constants/constants.dart';
 import 'package:luckyman_app/src/common_widgets/buttons/bottom_button.dart';
 import 'package:luckyman_app/src/constants/colors.dart';
 import 'package:luckyman_app/src/features/authentification/models/user_model.dart';
-import 'package:luckyman_app/src/features/core/controllers/controllers/bus_booking_controllers.dart';
-import 'package:luckyman_app/src/features/core/controllers/controllers/buttons_controller.dart';
-import 'package:luckyman_app/src/features/core/controllers/controllers/profile_controller.dart';
-import 'package:luckyman_app/src/features/core/controllers/controllers/sign_up_controller.dart';
+import 'package:luckyman_app/src/features/core/controllers/bus_booking_controllers.dart';
+import 'package:luckyman_app/src/features/core/controllers/buttons_controller.dart';
+import 'package:luckyman_app/src/features/core/controllers/profile_controller.dart';
+import 'package:luckyman_app/src/features/authentification/controllers/sign_up_controller.dart';
 import 'package:luckyman_app/src/features/core/models/Booking_Models/user_booking_model.dart';
 import 'package:luckyman_app/src/features/core/models/utils/form_items.dart';
 
@@ -159,32 +159,22 @@ class BusBookingScreen extends StatelessWidget {
                                       formLabel: 'Select Pick Up Point',
                                       dropdownTitle: 'Pickup Points',
                                     ),
-                                    const SizedBox(
-                                      height: 10.0,
+                                     BookingDropdownMenu(
+                                      // validator: (value) {
+                                      //   // if (value == null) {
+                                      //   //   return 'Please select one option';
+                                      //   // } else {
+                                      //   //   return null;
+                                      //   // }
+                                      // },
+                                      onChanged: (value) {
+                                        busBookingController
+                                            .selectedAgentName.value = value!;
+                                      },
+                                      items: snapshot.data!["Agents"],
+                                      formLabel: 'Select Your Agent',
+                                      dropdownTitle: 'LuckyMan Agents',
                                     ),
-                                    const Text(
-                                      'Leave blank if you don\'t have any agent',
-                                      style: TextStyle(
-                                        color: Colors.redAccent,
-                                      ),
-                                    ),
-                                    const SizedBox(height: 2.0),
-                                    Expanded(
-                                      child: Card(
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: InputField(
-                                            controller:
-                                                busBookingController.agentName,
-                                            labelText: 'Enter Agent\'s Name',
-                                            widget: const BlackTextWidget(
-                                              text: 'LTL - ',
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    const SizedBox(height: 10.0),
                                   ],
                                 ),
                               ),

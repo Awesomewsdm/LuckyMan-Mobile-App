@@ -5,7 +5,7 @@ import 'package:luckyman_app/Constants/constants.dart';
 import 'package:luckyman_app/src/common_widgets/buttons/bottom_button.dart';
 import 'package:luckyman_app/src/common_widgets/user_info/user_profile_image.dart';
 import 'package:luckyman_app/src/constants/text.dart';
-import 'package:luckyman_app/src/features/core/controllers/controllers/profile_controller.dart';
+import 'package:luckyman_app/src/features/core/controllers/profile_controller.dart';
 import 'package:luckyman_app/src/features/authentification/models/user_model.dart';
 import 'package:luckyman_app/src/features/authentification/screens/login/login_screen.dart';
 import 'package:luckyman_app/src/repository/authentification/authentification_repository.dart';

@@ -1,26 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:luckyman_app/src/common_widgets/buttons/bottom_button.dart';
-import 'package:luckyman_app/src/features/core/controllers/controllers/bus_booking_controllers.dart';
-import 'package:luckyman_app/src/features/core/controllers/controllers/buttons_controller.dart';
-import 'package:luckyman_app/src/features/core/controllers/controllers/login_controller.dart';
+import 'package:luckyman_app/src/common_widgets/buttons/progress_state_button.dart';
+import 'package:luckyman_app/src/features/core/controllers/bus_booking_controllers.dart';
+import 'package:luckyman_app/src/features/core/controllers/buttons_controller.dart';
+import 'package:luckyman_app/src/features/authentification/controllers/login_controller.dart';
 import 'package:luckyman_app/src/features/core/models/utils/validators.dart';
+import 'package:progress_state_button/progress_button.dart';
 import 'package:regexed_validator/regexed_validator.dart';
 import '../../../../constants/input_decoration.dart';
 import '../../../../constants/sizes.dart';
 import '../../../../constants/text.dart';
 
-class LoginFormWidget extends StatelessWidget {
-  LoginFormWidget({
+class LoginFormWidget extends StatefulWidget {
+  const LoginFormWidget({
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<LoginFormWidget> createState() => _LoginFormWidgetState();
+}
+
+class _LoginFormWidgetState extends State<LoginFormWidget> {
   final LoginController loginController = Get.put(LoginController());
+
   final _formkey = GlobalKey<FormState>();
 
   final BusBookingController busBookingController =
       Get.put(BusBookingController());
+
   final ButtonController buttonController = Get.put(ButtonController());
 
+ButtonState stateOnlyCustomIndicatorText = ButtonState.idle;
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -95,14 +105,12 @@ class LoginFormWidget extends StatelessWidget {
             ),
             SizedBox(
               width: double.infinity,
-              child: BottomButton(
-                loadingIcon: Obx(() => SizedBox(
-                      child: buttonController.isButtonClicked.value == true
-                          ? const CircularProgressIndicator(color: Color.fromARGB(255, 206, 0, 0))
-                          : const Text(""),
-                    )),
-                onPressed: () async {
+              child: ProgressStateButton(
+                onPressedCustomIndicatorButton: () async {
                   if (_formkey.currentState!.validate()) {
+                    setState(() {
+                      stateOnlyCustomIndicatorText = ButtonState.loading;
+                    });
                     buttonController.isButtonClicked.value == true;
 
                     await LoginController.instance
@@ -111,14 +119,42 @@ class LoginFormWidget extends StatelessWidget {
                       loginController.password.text.trim(),
                     )
                         .whenComplete(() {
-                    buttonController.isButtonClicked.value == false;
-                      
+                      setState(() {
+                        stateOnlyCustomIndicatorText = ButtonState.success;
+                      });
+                    });
+                  } else {
+                    setState(() {
+                      stateOnlyCustomIndicatorText = ButtonState.fail;
                     });
                   }
                 },
-                bottomTextLabel: tLogin.toUpperCase(),
-                height: size.width * 0.1,
-              ),
+                stateOnlyCustomIndicatorText: stateOnlyCustomIndicatorText,
+              ).buildCustomProgressIndicatorButton(),
+              //  BottomButton(
+              //   loadingIcon: Obx(() => SizedBox(
+              //         child: buttonController.isButtonClicked.value == true
+              //             ? const CircularProgressIndicator(color: Color.fromARGB(255, 206, 0, 0))
+              //             : const Text(""),
+              //       )),
+              //   onPressed: () async {
+              //     if (_formkey.currentState!.validate()) {
+              //       buttonController.isButtonClicked.value == true;
+
+              //       await LoginController.instance
+              //           .signInUser(
+              //         loginController.email.text.trim(),
+              //         loginController.password.text.trim(),
+              //       )
+              //           .whenComplete(() {
+              //       buttonController.isButtonClicked.value == false;
+                      
+              //       });
+              //     }
+              //   },
+              //   bottomTextLabel: tLogin.toUpperCase(),
+              //   height: size.width * 0.1,
+              // ),
             )
           ],
         ),

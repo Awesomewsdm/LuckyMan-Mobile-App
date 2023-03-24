@@ -5,11 +5,10 @@ import 'package:luckyman_app/Components/text_styling.dart';
 import 'package:luckyman_app/Constants/constants.dart';
 import 'package:luckyman_app/src/common_widgets/user_info/user_profile_image.dart';
 import 'package:luckyman_app/src/constants/image_strings.dart';
-import 'package:luckyman_app/src/features/core/controllers/controllers/profile_controller.dart';
+import 'package:luckyman_app/src/features/core/controllers/profile_controller.dart';
 import 'package:luckyman_app/src/features/authentification/models/user_model.dart';
 import 'package:luckyman_app/src/features/core/models/Routes_model/routes2.dart';
 import 'package:luckyman_app/src/features/core/screens/bus_booking_screen.dart';
-import 'package:luckyman_app/src/features/core/screens/reservation_details_screen.dart';
 import 'package:qlevar_router/qlevar_router.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -129,13 +128,18 @@ class HomeScreen extends StatelessWidget {
                           imageLink: tBusIcon,
                           label: 'Book Bus Ticket',
                           onTap: () {
-                            QR.toName(Routes.busSelectionPage);
+                            // QR.toName(Routes.busSelectionPage);
+                            Get.to(() => BusBookingScreen());
                           },
                         ),
                         HomeWidget(
                           imageLink: tTourIcon,
                           label: 'Go On Tour',
-                          onTap: () {QR.toName(Routes.seatSelectionPage);},
+                          onTap: () {
+                            // Get.to(() =>const  Home());
+
+                            // QR.toName(Routes.seatSelectionPage);
+                          },
                         ),
                         HomeWidget(
                           imageLink: tLuggagesIcon,

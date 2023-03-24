@@ -4,7 +4,7 @@ import 'package:luckyman_app/src/common_widgets/app_bar/primary_app_bar.dart';
 import 'package:luckyman_app/src/common_widgets/booking/ticket_history_data.dart';
 import 'package:luckyman_app/src/constants/text.dart';
 import 'package:luckyman_app/src/features/authentification/models/user_model.dart';
-import 'package:luckyman_app/src/features/core/controllers/controllers/profile_controller.dart';
+import 'package:luckyman_app/src/features/core/controllers/profile_controller.dart';
 import 'package:ticket_widget/ticket_widget.dart';
 
 class BookingHistory extends StatelessWidget {
@@ -34,11 +34,11 @@ class BookingHistory extends StatelessWidget {
               if (snapshot.hasData) {
                 UserModel userData = snapshot.data as UserModel;
                 if (userData.isUserBooked == true) {
-                  return  TicketWidget(
+                  return  const TicketWidget(
                     width: 350,
                     height: 500,
                     isCornerRounded: true,
-                    padding: const EdgeInsets.all(20),
+                    padding: EdgeInsets.all(20),
                     child: TicketHistoryData(),
                   );
                 } else {

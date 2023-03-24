@@ -1,16 +1,17 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:luckyman_app/src/common_widgets/buttons/bottom_button.dart';
-import 'package:luckyman_app/src/features/core/controllers/controllers/bus_booking_controllers.dart';
-import 'package:luckyman_app/src/features/core/controllers/controllers/buttons_controller.dart';
+import 'package:luckyman_app/src/common_widgets/buttons/progress_state_button.dart';
+import 'package:luckyman_app/src/features/core/controllers/bus_booking_controllers.dart';
+import 'package:luckyman_app/src/features/core/controllers/buttons_controller.dart';
 import 'package:luckyman_app/src/features/core/models/utils/validators.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:progress_state_button/progress_button.dart';
 import 'package:regexed_validator/regexed_validator.dart';
 import '../../../../../constants/input_decoration.dart';
 import '../../../../../constants/sizes.dart';
 import '../../../../../constants/text.dart';
-import '../../../../core/controllers/controllers/sign_up_controller.dart';
+import '../../../controllers/sign_up_controller.dart';
 import '../../../models/user_model.dart';
 
 class SignUpFormWidget extends StatefulWidget {
@@ -32,6 +33,8 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
   final ButtonController buttonController = Get.put(ButtonController());
 
   final _formkey = GlobalKey<FormState>();
+
+  ButtonState stateOnlyCustomIndicatorText = ButtonState.idle;
 
   @override
   Widget build(BuildContext context) {
@@ -174,24 +177,22 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
               ), //
               SizedBox(
                 width: double.infinity,
-                child: BottomButton(
-                  loadingIcon: Obx(
-                    () => SizedBox(
-                      child: buttonController.isButtonClicked.value == true
-                          ? const CircularProgressIndicator(color: Colors.white)
-                          : const Text(""),
-                    ),
-                  ),
-                  onPressed: () async {
+                child: ProgressStateButton(
+                  onPressedCustomIndicatorButton: () async {
                     if (_formkey.currentState!.validate()) {
                       buttonController.isButtonClicked.value == true;
+
+                      setState(() {
+                        stateOnlyCustomIndicatorText = ButtonState.loading;
+                      });
+
                       _formkey.currentState!.save();
                       final UserModel userData = UserModel(
                         fullName: signUpController.fullName.text.trim(),
                         email: signUpController.email.text.trim(),
                         phoneNumber: signUpController.phoneNo.text.trim(),
                         password: signUpController.password.text.trim(),
-                        studentID: signUpController.studentID.text.trim(), 
+                        studentID: signUpController.studentID.text.trim(),
                         isUserBooked: false,
                         selectedSeatNo: "",
                       );
@@ -207,15 +208,22 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
 
                       signUpController
                           .createUser(userData, userID)
-                          .whenComplete(() =>
-                              buttonController.isButtonClicked.value == false);
+                          .whenComplete(
+                            () => setState(() {
+                              stateOnlyCustomIndicatorText =
+                                  ButtonState.success;
+                            }),
+                          );
 
                       // _formkey.currentState!.reset();
+                    } else {
+                      setState(() {
+                        stateOnlyCustomIndicatorText = ButtonState.fail;
+                      });
                     }
                   },
-                  bottomTextLabel: tSignup.toUpperCase(),
-                  height: size.width * 0.1,
-                ),
+                  stateOnlyCustomIndicatorText: stateOnlyCustomIndicatorText,
+                ).buildCustomProgressIndicatorButton(),
               ),
             ],
           ),
