@@ -37,13 +37,6 @@ To address these challenges, I developed a state-of-the-art bus booking applicat
 This innovative solution is currently in operation and is serving students from two prominent universities in Ghana. It not only streamlines the booking process for passengers but also enhances the operational efficiency of LuckyMan Transports and Logistics. By addressing the challenges of booking, payment, and data management, it contributes to a more convenient and hassle-free travel experience for university students from multiple institutions.
 
 ## Screenshots:
-![Screenshot_20230530-125454](https://github.com/Awesomewsdm/LuckyMan-Mobile-App/assets/88857387/431c93b3-1165-4a88-807b-eba38a696f34)
-![Screenshot_20230530-125356](https://github.com/Awesomewsdm/LuckyMan-Mobile-App/assets/88857387/363cb701-8556-4924-bb06-13324dc4e6bd)
-![Screenshot_20230530-125349](https://github.com/Awesomewsdm/LuckyMan-Mobile-App/assets/88857387/5afd3d28-00c2-4292-b6d0-c81e2bfead38)
-![Screenshot_20230530-125322](https://github.com/Awesomewsdm/LuckyMan-Mobile-App/assets/88857387/31cd429e-806e-42e3-93c5-c956384872ae)
-![Screenshot_20230530-133330_Chrome](https://github.com/Awesomewsdm/LuckyMan-Mobile-App/assets/88857387/408e7de2-cde8-4be2-bdb2-f246c7d34fd9)
-![Screenshot_20230530-125521](https://github.com/Awesomewsdm/LuckyMan-Mobile-App/assets/88857387/1a62fc4d-8d67-4cea-9f66-6ffb9cc31e68)
-![Screenshot_20230530-125513](https://github.com/Awesomewsdm/LuckyMan-Mobile-App/assets/88857387/1af07c90-9da7-4630-ba44-4d67de7e60f4)
-![Screenshot_20230530-125502](https://github.com/Awesomewsdm/LuckyMan-Mobile-App/assets/88857387/8e3264a2-ad8d-48bf-a6b1-2e45d30c7bac)
 
-
+![Untitled_design__1_-removebg-preview](https://github.com/Awesomewsdm/LuckyMan-Mobile-App/assets/88857387/81353945-895e-4996-96b0-66aede5f3e5b)
+![Untitled_design__2_-removebg-preview](https://github.com/Awesomewsdm/LuckyMan-Mobile-App/assets/88857387/6fe408e4-98d2-4312-92ec-a0a13de4759f)
