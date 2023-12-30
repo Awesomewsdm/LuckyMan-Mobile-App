@@ -23,16 +23,17 @@ dependencies:
   gap: ^3.0.1
   regexed_validator: ^2.0.0+1
   qr_flutter: ^4.0.0
-  ticket_widget: ^0.0.1
+  ticket_widget: ^1.0.2
   font_awesome_flutter: ^10.3.0
   modal_progress_hud_nsn: ^0.3.0
-  connectivity_plus: ^3.0.2
+  connectivity_plus: ^5.0.2
   internet_connection_checker: ^1.0.0+1
   http: ^0.13.5
   in_app_review: ^2.0.6
   upgrader: ^6.0.1
   qlevar_router: ^1.8.1
   url_launcher: ^6.1.9
+  
   
 
   ## --FIREBASE AND FIRESTORE AUTH PACKAGES
@@ -43,13 +44,6 @@ dependencies:
   url_strategy: ^0.2.0
   
   
-  
-  
-  
-  
-  
-  
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

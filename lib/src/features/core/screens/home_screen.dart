@@ -8,8 +8,6 @@ import 'package:luckyman_app/src/constants/image_strings.dart';
 import 'package:luckyman_app/src/features/core/controllers/controllers/profile_controller.dart';
 import 'package:luckyman_app/src/features/authentification/models/user_model.dart';
 import 'package:luckyman_app/src/features/core/models/Routes_model/routes2.dart';
-import 'package:luckyman_app/src/features/core/screens/bus_booking_screen.dart';
-import 'package:luckyman_app/src/features/core/screens/reservation_details_screen.dart';
 import 'package:qlevar_router/qlevar_router.dart';
 
 class HomeScreen extends StatelessWidget {
