@@ -9,7 +9,7 @@ import 'package:qr_flutter/qr_flutter.dart';
 import 'ticket_details_widget.dart';
 
 class TicketHistoryData extends StatelessWidget {
-   TicketHistoryData({
+  TicketHistoryData({
     Key? key,
   }) : super(key: key);
 
@@ -145,7 +145,7 @@ class TicketHistoryData extends StatelessWidget {
                       child: SizedBox(
                         width: 180.0,
                         height: 180.0,
-                        child: QrImage(
+                        child: QrImageView(
                           data: '',
                           size: 80,
                         ),

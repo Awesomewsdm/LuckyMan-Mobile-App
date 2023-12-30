@@ -1,12 +1,13 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:luckyman_app/src/features/core/models/Routes_model/routes2.dart';
+import 'package:luckyman_app/src/common_widgets/bottom_nav/bottom_nav.dart';
+import 'package:luckyman_app/src/constants/exports.dart';
+import 'package:luckyman_app/src/features/authentification/screens/login/login_screen.dart';
 import 'package:qlevar_router/qlevar_router.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:luckyman_app/src/constants/image_strings.dart';
 import 'package:luckyman_app/src/constants/text.dart';
-import 'package:luckyman_app/src/features/authentification/screens/login/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

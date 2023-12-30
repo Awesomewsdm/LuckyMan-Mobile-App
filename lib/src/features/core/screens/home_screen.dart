@@ -135,11 +135,7 @@ class HomeScreen extends StatelessWidget {
                         HomeWidget(
                           imageLink: tTourIcon,
                           label: 'Go On Tour',
-                          onTap: () {
-                            Get.to(
-                              () => BusTicketScreen(),
-                            );
-                          },
+                          onTap: () {},
                         ),
                         HomeWidget(
                           imageLink: tLuggagesIcon,

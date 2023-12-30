@@ -8,10 +8,10 @@ import 'package:luckyman_app/src/features/core/models/utils/validators.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:regexed_validator/regexed_validator.dart';
 import '../../../../../constants/input_decoration.dart';
-import '../../../../../constants/sizes.dart';
 import '../../../../../constants/text.dart';
 import '../../../../core/controllers/controllers/sign_up_controller.dart';
 import '../../../models/user_model.dart';
+import 'package:gap/gap.dart';
 
 class SignUpFormWidget extends StatefulWidget {
   const SignUpFormWidget({
@@ -41,16 +41,13 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
       inAsyncCall: signUpController.showSpinner.value,
       child: Container(
         padding: const EdgeInsets.symmetric(
-          vertical: tFormHeight - 10,
+          vertical: 20,
         ),
         child: Form(
           key: _formkey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(
-                height: tFormHeight - 20,
-              ),
               TextFormField(
                 autofillHints: const [AutofillHints.name],
                 validator: (value) {
@@ -70,9 +67,7 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
                   border: kOutlineInputBorder,
                 ),
               ),
-              const SizedBox(
-                height: tFormHeight - 20,
-              ),
+              const Gap(10),
               TextFormField(
                 validator: (value) {
                   if (value!.isEmpty || value.isValidPhone) {
@@ -91,9 +86,7 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
                   border: kOutlineInputBorder,
                 ),
               ),
-              const SizedBox(
-                height: tFormHeight - 20,
-              ),
+              const Gap(10),
               TextFormField(
                 autofillHints: const [AutofillHints.telephoneNumber],
                 validator: (value) {
@@ -113,9 +106,7 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
                   border: kOutlineInputBorder,
                 ),
               ),
-              const SizedBox(
-                height: tFormHeight - 20,
-              ),
+              const Gap(10),
               TextFormField(
                 autofillHints: const [AutofillHints.email],
                 validator: (value) {
@@ -135,9 +126,7 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
                   border: kOutlineInputBorder,
                 ),
               ),
-              const SizedBox(
-                height: tFormHeight - 20,
-              ),
+              const Gap(10),
               Obx(
                 () => TextFormField(
                   autofillHints: const [AutofillHints.newPassword],
@@ -169,9 +158,7 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 20.0,
-              ), //
+              const Gap(10),
               SizedBox(
                 width: double.infinity,
                 child: BottomButton(
@@ -191,7 +178,7 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
                         email: signUpController.email.text.trim(),
                         phoneNumber: signUpController.phoneNo.text.trim(),
                         password: signUpController.password.text.trim(),
-                        studentID: signUpController.studentID.text.trim(), 
+                        studentID: signUpController.studentID.text.trim(),
                         isUserBooked: false,
                         selectedSeatNo: "",
                       );
@@ -205,18 +192,19 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
                       var user = auth.currentUser!;
                       var userID = user.uid;
 
-                      signUpController
+                      await signUpController
                           .createUser(userData, userID)
                           .whenComplete(() =>
                               buttonController.isButtonClicked.value == false);
 
-                      // _formkey.currentState!.reset();
+                      _formkey.currentState!.reset();
                     }
                   },
                   bottomTextLabel: tSignup.toUpperCase(),
                   height: size.width * 0.1,
                 ),
               ),
+              const Gap(10),
             ],
           ),
         ),

@@ -2,13 +2,12 @@ name: luckyman_app
 description: A new Flutter project.
 
 
-
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.18.2 <3.0.0'
+  sdk: '>=3.0.5 <4.0.0'
 
 dependencies:
   flutter:
@@ -21,6 +20,7 @@ dependencies:
   get: ^4.6.5
   circles_background: ^0.0.2
   google_nav_bar: ^5.0.6
+  gap: ^3.0.1
   regexed_validator: ^2.0.0+1
   qr_flutter: ^4.0.0
   ticket_widget: ^0.0.1
@@ -81,14 +81,4 @@ flutter:
     - family: CustomIcons1
       fonts:
         - asset: fonts/CustomIcons1.ttf
-    # - family: Schyler
-    #   fonts:
-    #     - asset: fonts/Schyler-Regular.ttf
-    #     - asset: fonts/Schyler-Italic.ttf
-    #       style: italic
-    # - family: Trajan Pro
-    #   fonts:
-    #     - asset: fonts/TrajanPro.ttf
-    #     - asset: fonts/TrajanPro_Bold.ttf
-    #       weight: 700
  

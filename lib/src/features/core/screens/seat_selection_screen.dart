@@ -101,9 +101,9 @@ class SeatSelectionScreen extends StatelessWidget {
                               border: Border.all(
                                   width: 1.0, color: Colors.redAccent),
                             ),
-                            child: Row(
+                            child: const Row(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
+                              children: [
                                 Icon(
                                   FontAwesomeIcons.triangleExclamation,
                                   color: Colors.red,
@@ -149,8 +149,8 @@ class SeatSelectionScreen extends StatelessWidget {
                           () => Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Row(
-                                children: const [
+                              const Row(
+                                children: [
                                   Icon(CustomIcons.airlineSeatReclineExtra,
                                       size: 25.0, color: tBlueColor),
                                   SizedBox(
@@ -189,8 +189,8 @@ class SeatSelectionScreen extends StatelessWidget {
                         Obx(
                           () => Column(
                             children: [
-                              Row(
-                                children: const [
+                              const Row(
+                                children: [
                                   Icon(FontAwesomeIcons.moneyBill,
                                       size: 18.0, color: tBlueColor),
                                   SizedBox(

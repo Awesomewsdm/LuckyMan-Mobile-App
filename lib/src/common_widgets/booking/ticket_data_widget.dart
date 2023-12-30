@@ -55,8 +55,6 @@ class _TicketDataState extends State<TicketData> {
           : "booked-executive-seats",
     );
 
-    print("Hey: ${seatSelectionController.clientReference.value}");
-
     changeIsSeatBookedStatus();
 
     PaymentData().getPaymentDataFromWebhook(
@@ -186,7 +184,7 @@ class _TicketDataState extends State<TicketData> {
                       child: SizedBox(
                         width: 180.0,
                         height: 180.0,
-                        child: QrImage(
+                        child: QrImageView(
                           data: '',
                           size: 80,
                         ),

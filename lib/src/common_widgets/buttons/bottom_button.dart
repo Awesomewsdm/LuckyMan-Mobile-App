@@ -20,18 +20,21 @@ class BottomButton extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        color: Colors.lightBlue,
         width: double.infinity,
+        decoration: BoxDecoration(
+          color: Colors.lightBlue,
+          borderRadius: BorderRadius.circular(10),
+        ),
         height: height,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
-                padding: const EdgeInsets.only(
-                  right: 10.0,
-                ),
-                child: loadingIcon,
-                ),
+              padding: const EdgeInsets.only(
+                right: 10.0,
+              ),
+              child: loadingIcon,
+            ),
             Text(
               bottomTextLabel,
               style: const TextStyle(
