@@ -42,6 +42,7 @@ dependencies:
   firebase_core: ^2.4.0
   firebase_dynamic_links: ^5.0.12
   url_strategy: ^0.2.0
+  google_fonts: ^4.0.4
   
   
 dev_dependencies:

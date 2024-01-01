@@ -13,9 +13,12 @@ class BlackTextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
+      // softWrap: true,
+      // maxLines: 2,
       text,
-      textDirection: TextDirection.ltr,
+      // textDirection: TextDirection.ltr,
       style: TextStyle(
+        overflow: TextOverflow.ellipsis,
         color: color,
         fontSize: fontSize,
         fontFamily: 'Roboto',
@@ -29,7 +32,8 @@ class AshTextWidget extends StatelessWidget {
   const AshTextWidget({
     Key? key,
     required this.text,
-    this.fontSize = 14.0, this.fontWeight,
+    this.fontSize = 14.0,
+    this.fontWeight,
   }) : super(key: key);
   final String text;
   final double? fontSize;

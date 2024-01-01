@@ -6,12 +6,13 @@ class SeatStatus extends StatelessWidget {
     Key? key,
     required this.boxColor,
     required this.iconLabel,
-    this.icon, this.border,
+    this.icon,
+    this.border,
   }) : super(key: key);
   final Color boxColor;
   final String iconLabel;
   final Widget? icon;
-  final  BoxBorder?    border;
+  final BoxBorder? border;
 
   @override
   Widget build(BuildContext context) {

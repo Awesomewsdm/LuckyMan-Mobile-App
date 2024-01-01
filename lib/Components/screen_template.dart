@@ -71,13 +71,13 @@ class ScreenTemplate extends StatelessWidget {
       ),
       Center(
         child: Container(
-          height: size.height * 0.8,
-          width: size.width * 0.85,
+          width: size.width * 0.9,
           margin: EdgeInsets.only(
-            top: size.height * 0.09,
+            top: size.height * 0.15,
           ),
           decoration: decoration,
           child: child,
+          // todo: place booking info here
           // todo: place booking info here
         ),
       ),

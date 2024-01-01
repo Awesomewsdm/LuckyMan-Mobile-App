@@ -10,7 +10,7 @@ class BookingDropdownMenu extends StatelessWidget {
     Key? key,
     required this.items,
     required this.formLabel,
-    // this.buttonWidth,
+    this.buttonWidth,
     this.formKey,
     this.onSaved,
     this.onChanged,
@@ -20,7 +20,7 @@ class BookingDropdownMenu extends StatelessWidget {
 
   final List<dynamic> items;
   final String formLabel;
-  // final double? buttonWidth;
+  final double? buttonWidth;
   final Key? formKey;
   final void Function(String?)? onSaved;
   final void Function(String?)? onChanged;
@@ -47,7 +47,7 @@ class BookingDropdownMenu extends StatelessWidget {
           ),
           DropdownButtonFormField2(
             key: formKey,
-            // buttonWidth: buttonWidth,
+            buttonWidth: buttonWidth,
             buttonDecoration: BoxDecoration(
                 color: backgroundColor5,
                 borderRadius: BorderRadius.circular(10)),
@@ -94,7 +94,10 @@ class BookingDropdownMenu extends StatelessWidget {
                 )
                 .toList(),
             validator: validator,
-            onChanged: onChanged,
+            onChanged: onChanged
+            //Do something when changing the item if you want.
+            // widget.selectedDestination = value;
+            ,
             onSaved: onSaved,
           ),
         ],
